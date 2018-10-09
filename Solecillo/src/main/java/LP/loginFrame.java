@@ -57,7 +57,6 @@ public class loginFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
 		
 		
 		JTextPane txtpnSolecillosl = new JTextPane();
@@ -65,6 +64,12 @@ public class loginFrame extends JFrame {
 		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 22));
 		txtpnSolecillosl.setText("SOLECILLO.S.L");
 		txtpnSolecillosl.setBounds(120, 16, 184, 38);
+		
+		JTextPane txtpnSolecillos2 = new JTextPane();
+		txtpnSolecillosl.setBackground(Color.ORANGE);
+		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 22));
+		txtpnSolecillosl.setText("SOLECILLO.S.L");
+		txtpnSolecillosl.setBounds(300, 16, 184, 38);
 	
 		contentPane.add(txtpnSolecillosl);
 		
