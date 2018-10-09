@@ -96,10 +96,9 @@ public class loginFrame extends JFrame {
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
 			
-
 			
 			public void actionPerformed(ActionEvent arg0) {
-				
+				System.out.println("aaa");
 			}
 		});
 		btnAceptar_1.setBounds(313, 181, 100, 26);
