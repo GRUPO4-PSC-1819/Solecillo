@@ -47,7 +47,7 @@ public class loginFrame extends JFrame {
 	public loginFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnAceptar = new JButton("ACEPTAR");
+		JButton btnAceptar = new JButton("Aceeeeeeeeeeeeeeee");
 		btnAceptar.setBounds(298, 167, 115, 29);
 		getContentPane().add(btnAceptar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +95,6 @@ public class loginFrame extends JFrame {
 		btnAceptar_1 = new JButton("ACEPTAR");
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
-			
 			
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("aaa");
