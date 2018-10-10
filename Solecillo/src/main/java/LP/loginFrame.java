@@ -47,7 +47,7 @@ public class loginFrame extends JFrame {
 	public loginFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnAceptar = new JButton("Ypo soy la branch");
+		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(298, 167, 115, 29);
 		getContentPane().add(btnAceptar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,17 +65,6 @@ public class loginFrame extends JFrame {
 		txtpnSolecillosl.setText("SOLECILLO.S.L");
 		txtpnSolecillosl.setBounds(120, 16, 184, 38);
 		
-		JTextPane txtpnSolecillos2 = new JTextPane();
-		txtpnSolecillosl.setBackground(Color.ORANGE);
-		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 22));
-		txtpnSolecillosl.setText("SOLECILLO.S.L");
-		txtpnSolecillosl.setBounds(300, 16, 184, 38);
-		
-		JTextPane txtpnSolecillos3 = new JTextPane();
-		txtpnSolecillos3.setBackground(Color.ORANGE);
-		txtpnSolecillos3.setFont(new Font("Arimo", Font.BOLD, 22));
-		txtpnSolecillos3.setText("SOLECILLO.S.L");
-		txtpnSolecillos3.setBounds(22, 16, 184, 38);
 	
 		contentPane.add(txtpnSolecillosl);
 		
@@ -108,7 +97,6 @@ public class loginFrame extends JFrame {
 		{
 			
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("aaa");
 			}
 		});
 		btnAceptar_1.setBounds(313, 181, 100, 26);
