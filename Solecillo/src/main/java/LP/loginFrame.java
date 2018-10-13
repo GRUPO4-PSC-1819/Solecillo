@@ -48,7 +48,7 @@ public class loginFrame extends JFrame {
 	public loginFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnAceptar = new JButton("ACEPTAR");
+		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(298, 167, 115, 29);
 		getContentPane().add(btnAceptar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,7 +58,6 @@ public class loginFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
 		
 		
 		JTextPane txtpnSolecillosl = new JTextPane();
@@ -67,6 +66,8 @@ public class loginFrame extends JFrame {
 		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 26));
 		txtpnSolecillosl.setText("SOLECILLO.S.L");
 		txtpnSolecillosl.setBounds(337, 16, 319, 123);
+		
+		
 	
 		contentPane.add(txtpnSolecillosl);
 		
@@ -101,13 +102,10 @@ public class loginFrame extends JFrame {
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
 			
-
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane ventanita= new JOptionPane();
 				//Validación de datos
 				ventanita.showInternalMessageDialog(contentPane,"El usuario y/o contraseña son incorrectos. Intentelo de nuevo ","Error", 0);
-				
-				
 			}
 		});
 		btnAceptar_1.setBounds(354, 394, 157, 60);
