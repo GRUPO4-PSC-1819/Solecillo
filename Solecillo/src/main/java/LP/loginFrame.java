@@ -64,6 +64,10 @@ public class loginFrame extends JFrame {
 		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 22));
 		txtpnSolecillosl.setText("SOLECILLO.S.L");
 		txtpnSolecillosl.setBounds(120, 16, 184, 38);
+
+		txtpnSolecillosl.setEditable(false);
+
+
 		
 	
 		contentPane.add(txtpnSolecillosl);
