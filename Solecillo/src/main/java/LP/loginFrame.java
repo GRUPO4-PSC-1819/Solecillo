@@ -1,14 +1,14 @@
 package LP;
 
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JCheckBox;
 
 import javax.swing.JTextPane;
 import java.awt.Font;
@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 
 public class loginFrame extends JFrame {
 
@@ -51,7 +52,7 @@ public class loginFrame extends JFrame {
 		btnAceptar.setBounds(298, 167, 115, 29);
 		getContentPane().add(btnAceptar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 914, 572);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -61,52 +62,66 @@ public class loginFrame extends JFrame {
 		
 		
 		JTextPane txtpnSolecillosl = new JTextPane();
-		txtpnSolecillosl.setBackground(Color.ORANGE);
-		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 22));
-		txtpnSolecillosl.setText("SOLECILLO.S.L");
-		txtpnSolecillosl.setBounds(120, 16, 184, 38);
 		txtpnSolecillosl.setEditable(false);
-		
+		txtpnSolecillosl.setBackground(Color.ORANGE);
+		txtpnSolecillosl.setFont(new Font("Arimo", Font.BOLD, 26));
+		txtpnSolecillosl.setText("SOLECILLO.S.L");
+		txtpnSolecillosl.setBounds(337, 16, 319, 123);
 	
 		contentPane.add(txtpnSolecillosl);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(120, 202, 184, 26);
+		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		passwordField.setBounds(354, 234, 229, 38);
 		contentPane.add(passwordField);
 		
-		JLabel etiqueta = new JLabel();
-		etiqueta.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		etiqueta.setBackground(Color.ORANGE);
-		etiqueta.setText("Password");
-		etiqueta.setBounds(15, 202, 80, 28);
-		contentPane.add(etiqueta);
+		JLabel txtpnPassword = new JLabel();
+		txtpnPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtpnPassword.setBackground(Color.ORANGE);
+		txtpnPassword.setText("Password");
+		txtpnPassword.setBounds(205, 234, 88, 38);
+		contentPane.add(txtpnPassword);
 		
-		JLabel etiqueta_2 = new JLabel();
-		etiqueta_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		etiqueta_2.setText("Usuario");
-		etiqueta_2.setBackground(Color.ORANGE);
-		etiqueta_2.setBounds(15, 162, 65, 28);
-		contentPane.add(etiqueta_2);
+		JLabel txtpnUsuario = new JLabel();
+		txtpnUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		txtpnUsuario.setText("Usuario");
+		txtpnUsuario.setBackground(Color.ORANGE);
+		txtpnUsuario.setBounds(205, 169, 88, 38);
+		contentPane.add(txtpnUsuario);
 		
 		textField = new JTextField();
-		textField.setBounds(118, 160, 186, 26);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		textField.setBounds(354, 169, 229, 38);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		
 		btnAceptar_1 = new JButton("ACEPTAR");
+		btnAceptar_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
 			
 
-			
 			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane ventanita= new JOptionPane();
+				//Validación de datos
+				ventanita.showInternalMessageDialog(contentPane,"El usuario y/o contraseña son incorrectos. Intentelo de nuevo ","Error", 0);
+				
 				
 			}
 		});
-		btnAceptar_1.setBounds(313, 181, 100, 26);
+		btnAceptar_1.setBounds(354, 394, 157, 60);
 		contentPane.add(btnAceptar_1);
+		
+		JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
+		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");
+		
+		chckbxAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		chckbxAdministrador.setBackground(Color.ORANGE);
+		chckbxAdministrador.setBounds(354, 322, 198, 60);
+		contentPane.add(chckbxAdministrador);
 		
 		
 	}
 }
+
