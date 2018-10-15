@@ -21,7 +21,9 @@ public class yyyyy {
 	  }
 
 	public static void main(String[] args) {
+		
 		// TODO Auto-generated method stub
+		System.out.println("fffff");
 		ArrayList<Attribute> atts = new ArrayList<Attribute>(3);
 		ArrayList<String> classVal = new ArrayList<String>();
         classVal.add("No peligra");
