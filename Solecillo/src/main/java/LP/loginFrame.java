@@ -48,7 +48,7 @@ public class loginFrame extends JFrame {
 	public loginFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		JButton btnAceptar = new JButton("branchhhh");
 		btnAceptar.setBounds(298, 167, 115, 29);
 		getContentPane().add(btnAceptar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
