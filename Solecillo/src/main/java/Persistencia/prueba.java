@@ -7,6 +7,7 @@ public class prueba {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Connection conec=clsBD.initBD("prueba");
+		clsBD.crearTablaBD("Usuario");
 		
 	}
 
