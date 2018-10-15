@@ -48,9 +48,6 @@ public class loginFrame extends JFrame {
 	public loginFrame() {
 		getContentPane().setLayout(null);
 		
-		JButton btnAceptar = new JButton("branchhhh");
-		btnAceptar.setBounds(298, 167, 115, 29);
-		getContentPane().add(btnAceptar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 914, 572);
 		contentPane = new JPanel();
@@ -79,8 +76,8 @@ public class loginFrame extends JFrame {
 		JLabel txtpnPassword = new JLabel();
 		txtpnPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtpnPassword.setBackground(Color.ORANGE);
-		txtpnPassword.setText("Password");
-		txtpnPassword.setBounds(205, 234, 88, 38);
+		txtpnPassword.setText("Contraseña");
+		txtpnPassword.setBounds(205, 234, 108, 38);
 		contentPane.add(txtpnPassword);
 		
 		JLabel txtpnUsuario = new JLabel();
