@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
+import LD.GestorSQL;
+import LN.Usuario;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
@@ -50,9 +52,18 @@ public class loginFrame extends JFrame {
 	 */
 	public loginFrame() {
 		
+		//Conectar con la BBDD y recoger los usuarios registrados
+		GestorSQL gestor = new GestorSQL();
+		ArrayList<Usuario> usuarios = new ArrayList();
+		usuarios=gestor.MostrarUsuarios();
 		
-		
-		
+		for(Usuario u : usuarios)
+		{
+			
+			System.out.println(u.getNombre_usuario());
+			
+		}
+		System.out.println(getName());
 		
 		getContentPane().setLayout(null);
 		

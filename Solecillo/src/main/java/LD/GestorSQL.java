@@ -38,7 +38,7 @@ public class GestorSQL
 	
 public ArrayList<Usuario> MostrarUsuarios()  
 	{
-		Connection conn = ConectarA("data/Solecillo.db"); //Nos conectamos a la BD
+		Connection conn = ConectarA("data/Solecillo.bd"); //Nos conectamos a la BD
 		Statement stmt = null;
 	
 		try {
@@ -50,7 +50,7 @@ public ArrayList<Usuario> MostrarUsuarios()
 
 
 		
-		String sentencia= "SELECT * FROM USUARIO";
+		String sentencia= "SELECT * FROM usuario";
 		
 		ResultSet rs = null;
 		
@@ -62,10 +62,10 @@ public ArrayList<Usuario> MostrarUsuarios()
 		}
 		
 		String nombre = " ";
-		String id= " ";
+		//String id= " ";
 		
 		ArrayList<Usuario> datos_U_aux = new ArrayList<Usuario>();
-		int id_int;
+		//int id_int;
 		
 		Usuario U1;
 		
@@ -74,14 +74,14 @@ public ArrayList<Usuario> MostrarUsuarios()
 				while(rs.next())
 				{
 					U1 = new Usuario();
-					id =rs.getString(1);
-					System.out.println(id);
+					//id =rs.getString(1);
+					//System.out.println(id);
 			
-					id_int=Integer.parseInt(id);
-					System.out.println(id_int);
-					U1.setId(id_int);
+					//id_int=Integer.parseInt(id);
+					//System.out.println(id_int);
+					//U1.setId(id_int);
 			
-					nombre= rs.getString(2);
+					nombre= rs.getString(1);
 					System.out.println(nombre);
 					U1.setNombre_usuario(nombre);
 			
