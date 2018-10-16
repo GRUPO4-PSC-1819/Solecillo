@@ -16,7 +16,7 @@ import Persistencia.clsBD;
  * Clase creada para generar un objeto nuevo (clsGestor), que valdrá para establecer un vínculo entre la aplicación y sus dos métodos de persistencia: <br>
  * 1) Base de Datos (para usuarios e historiales de partidas). <br>
  * 2) Ficheros serializados (para guardar el estado de la partida).
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 
 public class clsGestor implements Serializable 

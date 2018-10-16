@@ -2,7 +2,7 @@ package LN;
 
 /**
  * Excepción a aplicar cuando ya haya algún usuario registrado con el mismo nickname.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsUsuarioRepetido extends Exception
 {

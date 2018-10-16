@@ -110,6 +110,8 @@ public class loginFrame extends JFrame {
 				if((textField.getText().toUpperCase().equals(aux.getNickname().toUpperCase()))&&(passwordField.getText().equals(aux.getContraseña())))
 				{
 					existe = true;
+					principalFrame window = new principalFrame();
+					window.setVisible(true);
 					miVentana.dispose();
 				}
 			}

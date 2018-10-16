@@ -114,7 +114,7 @@ public class clsAltaUsuario extends JFrame
 		panelizda=new JPanel();
 		panelbotonera=new JPanel();
 		panelsuperior=new JPanel();
-		this.setBounds(100, 100, 780, 750);
+		this.setBounds(200, 200, 800, 800);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		panelprincipal.setLayout(new BorderLayout());
 		panelizda.setLayout(new BoxLayout(panelizda, BoxLayout.Y_AXIS));
@@ -124,7 +124,7 @@ public class clsAltaUsuario extends JFrame
 		panelprincipal.add(panelbotonera, BorderLayout.SOUTH);
 		panelprincipal.add(panelsuperior, BorderLayout.NORTH);
 		setTitle("Alta de usuario");
-		panelprincipal.setBackground(Color.WHITE);
+		panelprincipal.setBackground(Color.ORANGE);
 		panelizda.setBackground(Color.WHITE);
 		panelbotonera.setBackground(Color.WHITE);
 		panelsuperior.setBackground(Color.WHITE);
@@ -189,7 +189,7 @@ public class clsAltaUsuario extends JFrame
 		
 		
 		
-		add(panelprincipal);
+		getContentPane().add(panelprincipal);
 		pack();
 		
 		/*Escuchadores*/
