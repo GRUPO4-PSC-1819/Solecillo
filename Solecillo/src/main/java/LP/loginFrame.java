@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
@@ -16,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
@@ -46,6 +49,11 @@ public class loginFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public loginFrame() {
+		
+		
+		
+		
+		
 		getContentPane().setLayout(null);
 		
 		JButton btnAceptar = new JButton("Aceptar");
