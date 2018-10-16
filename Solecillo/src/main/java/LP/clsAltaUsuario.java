@@ -37,7 +37,7 @@ import LN.clsGestor;
 /**
  * Clase que generará una JFrame para introducir los datos que a su vez serán enviados a clsBinarios para la creación
  * de un usuario en la base de datos.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsAltaUsuario extends JFrame 
 {
@@ -120,14 +120,14 @@ public class clsAltaUsuario extends JFrame
 		panelizda.setLayout(new BoxLayout(panelizda, BoxLayout.Y_AXIS));
 		panelbotonera.setLayout(new FlowLayout());
 		panelsuperior.setLayout(new FlowLayout());
-		panelprincipal.add(panelizda, BorderLayout.WEST);
+		panelprincipal.add(panelizda, BorderLayout.CENTER);
 		panelprincipal.add(panelbotonera, BorderLayout.SOUTH);
 		panelprincipal.add(panelsuperior, BorderLayout.NORTH);
 		setTitle("Alta de usuario");
 		panelprincipal.setBackground(Color.ORANGE);
-		panelizda.setBackground(Color.WHITE);
-		panelbotonera.setBackground(Color.WHITE);
-		panelsuperior.setBackground(Color.WHITE);
+		panelizda.setBackground(Color.ORANGE);
+		panelbotonera.setBackground(Color.ORANGE);
+		panelsuperior.setBackground(Color.ORANGE);
 
 		lblNombre = new JLabel("        Nombre:           ");
 		lblNombre.setAlignmentX(Component.CENTER_ALIGNMENT);

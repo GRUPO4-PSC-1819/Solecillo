@@ -15,7 +15,7 @@ import LN.clsUsuario;
 /**
  * Clase que se encargará de pasar la información de memoria a una Base de Datos, y al mismo tiempo, que extraerá
  * dicha información de esta BD a memoria.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsBD 
 {

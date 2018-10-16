@@ -154,7 +154,7 @@ public class loginFrame extends JFrame {
 		chckbxAdministrador.setBackground(Color.ORANGE);
 		chckbxAdministrador.setBounds(354, 322, 198, 60);
 		contentPane.add(chckbxAdministrador);
-		
+	
 		
 	}
 }
