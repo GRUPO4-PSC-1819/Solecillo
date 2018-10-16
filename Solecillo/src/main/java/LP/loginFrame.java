@@ -53,17 +53,6 @@ public class loginFrame extends JFrame {
 	public loginFrame() {
 		
 		//Conectar con la BBDD y recoger los usuarios registrados
-		GestorSQL gestor = new GestorSQL();
-		ArrayList<Usuario> usuarios = new ArrayList();
-		usuarios=gestor.MostrarUsuarios();
-		
-		for(Usuario u : usuarios)
-		{
-			
-			System.out.println(u.getNombre_usuario());
-			
-		}
-		System.out.println(getName());
 		
 		getContentPane().setLayout(null);
 		
@@ -122,9 +111,47 @@ public class loginFrame extends JFrame {
 		{
 			
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane ventanita= new JOptionPane();
-				//Validación de datos
-				ventanita.showInternalMessageDialog(contentPane,"El usuario y/o contraseña son incorrectos. Intentelo de nuevo ","Error", 0);
+				
+				//Validacion
+				String nombre=textField.getText();
+				char[] pass=passwordField.getPassword();
+				String contra=String.valueOf(pass);
+				
+				GestorSQL gestor = new GestorSQL();
+				ArrayList<Usuario> usuarios = new ArrayList();
+				usuarios=gestor.MostrarUsuarios();
+				int c=0;
+				
+				for(Usuario u : usuarios)
+				{
+					if(u.getNombre_usuario().equals(nombre))
+					{
+					System.out.println(u.getNombre_usuario());
+					System.out.println(u.getPass());
+					
+					
+					if(u.getPass().equals(contra))
+					{
+						c=1;
+						JOptionPane ventanita= new JOptionPane();
+						ventanita.showInternalMessageDialog(contentPane,"Log in correcto!","Bien!", 1);	
+					}
+					
+					
+					}
+					
+				}
+				if(c==0) 
+				{
+					JOptionPane ventanita= new JOptionPane();
+					ventanita.showInternalMessageDialog(contentPane,"El usuario y/o contraseña son incorrectos. Intentelo de nuevo ","Error", 0);	
+				}
+			
+				
+				
+				
+				
+				
 			}
 		});
 		btnAceptar_1.setBounds(354, 394, 157, 60);

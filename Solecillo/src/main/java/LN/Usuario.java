@@ -4,13 +4,15 @@ public class Usuario {
 	
 	private int id;
 	private String nombre_usuario;
+	private String pass;
 	//private Estadisticas estadisticas;
 	
-	public Usuario (int id, String nombre_usuario)
+	public Usuario (int id, String nombre_usuario, String contrasena)
 	{
 		this.id = id;
 		this.nombre_usuario = nombre_usuario;
 		//estadisticas = new Estadisticas(id);
+		this.setPass(contrasena);
 	}
 
 	public Usuario()
@@ -36,6 +38,14 @@ public class Usuario {
 
 	public void setNombre_usuario(String nombre_usuario) {
 		this.nombre_usuario = nombre_usuario;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	

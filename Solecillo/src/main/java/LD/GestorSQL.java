@@ -62,10 +62,10 @@ public ArrayList<Usuario> MostrarUsuarios()
 		}
 		
 		String nombre = " ";
-		//String id= " ";
-		
+		String id= " ";
+		String cont= " ";
 		ArrayList<Usuario> datos_U_aux = new ArrayList<Usuario>();
-		//int id_int;
+		int id_int;
 		
 		Usuario U1;
 		
@@ -74,16 +74,20 @@ public ArrayList<Usuario> MostrarUsuarios()
 				while(rs.next())
 				{
 					U1 = new Usuario();
-					//id =rs.getString(1);
-					//System.out.println(id);
+					id =rs.getString(2);
+					System.out.println(id);
 			
-					//id_int=Integer.parseInt(id);
-					//System.out.println(id_int);
-					//U1.setId(id_int);
+					id_int=Integer.parseInt(id);
+					System.out.println(id_int);
+					U1.setId(id_int);
 			
 					nombre= rs.getString(1);
 					System.out.println(nombre);
 					U1.setNombre_usuario(nombre);
+					
+					cont= rs.getString(4);
+					System.out.println(cont);
+					U1.setPass(cont);
 			
 					datos_U_aux.add(U1);
 
