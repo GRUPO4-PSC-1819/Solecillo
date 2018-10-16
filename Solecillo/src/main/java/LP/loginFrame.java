@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import LN.clsGestor;
+import LN.clsUsuario;
+import Persistencia.clsBD;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
@@ -16,32 +20,27 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 public class loginFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private JButton btnAceptar_1;
+	private JButton btnAceptar_2;
+	private JFrame miVentana;
+	
+	ArrayList<clsUsuario> usus=new ArrayList<clsUsuario>();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					loginFrame frame = new loginFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -93,20 +92,58 @@ public class loginFrame extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
+		miVentana = this;		
 		
-		btnAceptar_1 = new JButton("ACEPTAR");
+		btnAceptar_1 = new JButton("ENTRAR");
 		btnAceptar_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub	
 			
-			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane ventanita= new JOptionPane();
-				//Validación de datos
-				ventanita.showInternalMessageDialog(contentPane,"El usuario y/o contraseña son incorrectos. Intentelo de nuevo ","Error", 0);
+			clsGestor objGestor=new clsGestor();
+			usus=objGestor.ListaUsuarios();
+			boolean existe = false;
+			for(clsUsuario aux:usus)
+			{
+				if((textField.getText().toUpperCase().equals(aux.getNickname().toUpperCase()))&&(passwordField.getText().equals(aux.getContraseña())))
+				{
+					existe = true;
+					miVentana.dispose();
+				}
+			}
+			if(!existe)
+			{
+				JOptionPane.showMessageDialog(null, "¿Está dado de alta? Su nickname o contraseña son incorrectos.", "¡Error de Login!", JOptionPane.ERROR_MESSAGE);
+			}
+			
 			}
 		});
-		btnAceptar_1.setBounds(354, 394, 157, 60);
+		btnAceptar_1.setBounds(604, 194, 157, 60);
 		contentPane.add(btnAceptar_1);
+		
+		
+		btnAceptar_2 = new JButton("¡Regístrate!");
+		btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnAceptar_2.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub	
+				try 
+				{
+					clsAltaUsuario window = new clsAltaUsuario();
+					window.setVisible(true);
+				} 
+				catch (Exception w) 
+				{
+					w.printStackTrace();
+				}
+			}
+		});
+		btnAceptar_2.setBounds(354, 394, 157, 60);
+		contentPane.add(btnAceptar_2);
 		
 		JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
 		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");

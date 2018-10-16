@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import LN.clsUsuario;
+
 
 
 /**
@@ -80,12 +82,12 @@ public class clsBD
 		if (statement==null) return;
 		switch (tipo_tabla)
 		{
-		case "Usuario": 
+		case "USUARIO": 
 			try 
 			{
 				statement.executeUpdate("CREATE TABLE IF NOT EXISTS USUARIO (NICKNAME STRING NOT NULL PRIMARY KEY,"+
-										"CONTRASENYA STRING NOT NULL,"+ 
-										"ELO INT DEFAULT 1000, NOMBRE STRING, APELLIDO1 STRING, APELLIDO2 STRING)");
+										"CONTRASENYA STRING NOT NULL, "+ 
+										"NOMBRE STRING, APELLIDO1 STRING, APELLIDO2 STRING)");
 			} 
 			catch (SQLException e1) 
 			{
@@ -97,18 +99,22 @@ public class clsBD
 	
 	/** Inserta un dato en las tablas previamente mencionadas. <br>
 	 * Debe haberse inicializado la conexión correctamente. <br>
-	 * @param obj Objeto a insertar: Usuario, partida 1v1 o partida vs Mariano.
+	 * @param obj Objeto a insertar: Usuario
 	 */
 	public static void insertarDatoTablaBD(Object obj)
 	{
 		if (statement==null) return;
+		
+		
+		
+		
 		if (obj instanceof clsUsuario)
 			try 
 			{
 				statement.executeUpdate("INSERT INTO USUARIO VALUES ('"+((clsUsuario)obj).getNickname()+"','"
-						+ ((clsUsuario)obj).getContraseña()+","
+						+ ((clsUsuario)obj).getContraseña()+"','"
 						+((clsUsuario)obj).getNombre()+"','"
-						+ ((clsUsuario)obj).getApellido1()+"','"+((clsUsuario)obj).getApellido1()+"')");
+						+ ((clsUsuario)obj).getApellido1()+"','"+((clsUsuario)obj).getApellido2()+"')");
 			} 
 			catch (SQLException e1) 
 			{
@@ -127,20 +133,12 @@ public class clsBD
 		ResultSet rs = null;
 		switch (tipo_tabla)
 		{
-		case "Usuario": 
+		case "USUARIO": 
+			
+			
 			try 
 			{
-			     rs = statement.executeQuery("select * from USUARIO");
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-			break;
-		case "Maquina":
-			try 
-			{
-				 rs = statement.executeQuery("select * from PARTIDA");
+			    rs = statement.executeQuery("select * from USUARIO");
 			} 
 			catch (SQLException e1) 
 			{
@@ -149,5 +147,28 @@ public class clsBD
 			break;
 		}
 		 return rs;
+	}
+	
+	/**
+	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>
+	 * Usuario: Nickname. <br>
+	 * Partida: ID_Partida.
+	 * @param obj Dato a modificar
+	 */
+	public static void modificarDatoTablaBD(Object obj)
+	{
+		if (statement==null) return;
+		if (obj instanceof clsUsuario)
+			try 
+			{
+				statement.executeUpdate("UPDATE USUARIO SET CONTRASENYA ='"+((clsUsuario)obj).getContraseña()+"',"
+						+ "NOMBRE = '"+((clsUsuario)obj).getNombre()+"',"
+						+ "APELLIDO1 = '"+((clsUsuario)obj).getApellido1()+"', APELLIDO2 = '"+((clsUsuario)obj).getApellido2()+"'"
+						+ "WHERE NICKNAME = '"+((clsUsuario)obj).getNickname()+"'");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
 	}
 }
