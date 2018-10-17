@@ -408,6 +408,7 @@ public class clsAltaUsuario extends JFrame
 	/**
 	 * Método que registra un nuevo usuario a la aplicación.
 	 */
+	@SuppressWarnings("deprecation")
 	private void Registrar()
 	{
 		clsGestor objGestor=new clsGestor();

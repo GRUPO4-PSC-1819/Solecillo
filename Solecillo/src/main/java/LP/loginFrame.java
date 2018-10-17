@@ -1,26 +1,19 @@
 package LP;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import LN.clsGestor;
 import LN.clsUsuario;
-import Persistencia.clsBD;
-
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
-
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
@@ -98,9 +91,9 @@ public class loginFrame extends JFrame {
 		btnAceptar_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
+			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub	
 			
 			clsGestor objGestor=new clsGestor();
 			usus=objGestor.ListaUsuarios();
@@ -110,6 +103,8 @@ public class loginFrame extends JFrame {
 				if((textField.getText().toUpperCase().equals(aux.getNickname().toUpperCase()))&&(passwordField.getText().equals(aux.getContraseña())))
 				{
 					existe = true;
+					ProgressBar pb=new ProgressBar("Entrando al sistema...");
+					pb.setVisible(true);
 					miVentana.dispose();
 				}
 			}
@@ -124,13 +119,12 @@ public class loginFrame extends JFrame {
 		contentPane.add(btnAceptar_1);
 		
 		
-		btnAceptar_2 = new JButton("¡Regístrate!");
+		btnAceptar_2 = new JButton("Registrar nuevo usuario");
 		btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAceptar_2.addActionListener(new ActionListener() 
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub	
 				try 
 				{
 					clsAltaUsuario window = new clsAltaUsuario();
