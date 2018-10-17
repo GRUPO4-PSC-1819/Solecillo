@@ -28,7 +28,6 @@ public class loginFrame extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private JButton btnAceptar_1;
-	private JButton btnAceptar_2;
 	private JFrame miVentana;
 	
 	ArrayList<clsUsuario> usus=new ArrayList<clsUsuario>();
@@ -103,7 +102,7 @@ public class loginFrame extends JFrame {
 				if((textField.getText().toUpperCase().equals(aux.getNickname().toUpperCase()))&&(passwordField.getText().equals(aux.getContraseña())))
 				{
 					existe = true;
-					ProgressBar pb=new ProgressBar("Entrando al sistema...", "Principal");
+					ProgressBar pb=new ProgressBar("Entrando al sistema...", "Principal", aux);
 					pb.setVisible(true);
 					miVentana.dispose();
 				}
@@ -119,25 +118,7 @@ public class loginFrame extends JFrame {
 		contentPane.add(btnAceptar_1);
 		
 		
-		btnAceptar_2 = new JButton("Registrar nuevo usuario");
-		btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAceptar_2.addActionListener(new ActionListener() 
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try 
-				{
-					clsAltaUsuario window = new clsAltaUsuario();
-					window.setVisible(true);
-				} 
-				catch (Exception w) 
-				{
-					w.printStackTrace();
-				}
-			}
-		});
-		btnAceptar_2.setBounds(354, 394, 157, 60);
-		contentPane.add(btnAceptar_2);
+		
 		
 		JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
 		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");

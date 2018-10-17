@@ -61,7 +61,6 @@ public class clsAltaUsuario extends JFrame
 	private JLabel lblNickname;
 	private JLabel lblContrasenya1;
 	private JLabel lblContrasenya2;
-	private JLabel lblFrase;
 	
 	JButton btnAceptar;
 	JButton btnCancelar;
@@ -183,17 +182,11 @@ public class clsAltaUsuario extends JFrame
 		btnCancelar = new JButton("Cancelar");
 		panelbotonera.add(btnCancelar);
 		
-		lblFrase = new JLabel("¡Únete a nuestra comunidad!");
-		lblFrase.setFont (lblFrase.getFont ().deriveFont (18.0f));
-		panelsuperior.add(lblFrase);
-		
-		
 		
 		getContentPane().add(panelprincipal);
 		pack();
 		
-		/*Escuchadores*/
-		
+		/*Escuchadores*/		
 		btnAceptar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 

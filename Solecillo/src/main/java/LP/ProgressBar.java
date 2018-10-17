@@ -17,6 +17,8 @@ import java.util.logging.StreamHandler;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
+import LN.clsUsuario;
+
 
 /**
  * Clase que generará una JFrame que visualizará una barra de progreso cuando se inicie la aplicación y cuando se juegue una partida contra Mariano.
@@ -28,6 +30,7 @@ public class ProgressBar extends JFrame
 	
 	MiRunnable miHilo = null; 
 	JProgressBar progressBar;
+	clsUsuario usuario;
 	int v1;
 	int v2;
 	int v3;
@@ -81,7 +84,7 @@ public class ProgressBar extends JFrame
 	 * @param num Identificativo para distinguir un uso de ProgressBar u otro.
 	 * @param aux1 Usuario 2 (en caso
 	 */
-	public ProgressBar(String titulo, String v) {
+	public ProgressBar(String titulo, String v, clsUsuario usu) {
 		
 		setBounds(450, 300, 600, 140);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -110,6 +113,7 @@ public class ProgressBar extends JFrame
 		progressBar.setForeground(Color.blue);
 		
 		ventana_a_abrir=v;
+		usuario=usu;
 		
 		miHilo = new MiRunnable();
 		Thread nuevoHilo = new Thread(miHilo);
@@ -124,7 +128,7 @@ public class ProgressBar extends JFrame
 		if(ventana_a_abrir.equals("Principal"))
 		{
 			logger.log( Level.INFO, "Cargando ventana clsEleccion");
-			principalFrame window = new principalFrame();
+			principalFrame window = new principalFrame(usuario);
 			window.setVisible(true);
 		}		
 		

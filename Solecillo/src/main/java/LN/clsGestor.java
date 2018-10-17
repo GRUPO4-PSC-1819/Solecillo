@@ -1,13 +1,11 @@
 package LN;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-
 import Comun.clsConstantes;
 import LN.clsUsuario;
 import Persistencia.clsBD;
