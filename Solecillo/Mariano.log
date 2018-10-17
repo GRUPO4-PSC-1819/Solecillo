@@ -8,6 +8,7 @@
 	(INFO) 16 de octubre de 2018 9:53:50 CEST
 	(INFO) Dando de alta al usuario a
 	(INFO) 
+<<<<<<< HEAD
 	(INFO) 16 de octubre de 2018 12:22:32 CEST
 	(INFO) 
 	(INFO) 16 de octubre de 2018 12:25:00 CEST
@@ -23,3 +24,15 @@
 	(INFO) 16 de octubre de 2018 13:39:48 CEST
 	(INFO) 
 	(INFO) 16 de octubre de 2018 13:40:11 CEST
+=======
+	(INFO) 17 de octubre de 2018 17:22:21 CEST
+	(INFO) 
+	(INFO) 17 de octubre de 2018 17:23:43 CEST
+	(INFO) 
+	(INFO) 17 de octubre de 2018 17:24:21 CEST
+	(INFO) 
+	(INFO) 17 de octubre de 2018 17:24:38 CEST
+>>>>>>> refs/heads/progress_bar
+	(INFO) 
+	(INFO) 17 de octubre de 2018 20:07:05 CEST
+	(INFO) Cargando ventana clsEleccion
