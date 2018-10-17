@@ -110,9 +110,4 @@ public class principalFrame extends JFrame {
 		panel_3.add(btnAceptar_2);
 	}
 	
-	public void RefrescarUsuario(clsUsuario a)
-	{
-		usuario = a;
-	}	
-	
 }

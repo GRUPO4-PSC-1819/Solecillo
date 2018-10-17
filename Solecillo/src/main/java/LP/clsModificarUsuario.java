@@ -53,7 +53,6 @@ public class clsModificarUsuario extends clsAltaUsuario
 					{
 						modif = objGestor.ModificarUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText(), txtContrasenya1.getText(), usuario.getFechadealta());
 						JOptionPane.showMessageDialog(null, "Ha modificado el usuario correctamente.");
-						//ventanita.RefrescarUsuario(modif);
 						ventanita.dispose();
 						dispose();
 						loginFrame p=new loginFrame();
