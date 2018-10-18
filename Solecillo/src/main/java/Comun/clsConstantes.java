@@ -10,4 +10,6 @@ public class clsConstantes
 	 * Listado de constantes a aplicar en diferentes fases del programa.
 	 */
 	public static final String USUARIO = "USUARIO";
+	public static final String ADMIN = "ADMIN";
+	public static final String PRINCIPAL = "PRINCIPAL";
 }

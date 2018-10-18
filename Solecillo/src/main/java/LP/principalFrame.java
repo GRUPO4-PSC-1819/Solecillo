@@ -4,8 +4,11 @@ package LP;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import Analisisdedatos.ScatterPlotExample;
 import LN.clsUsuario;
+import weka.core.Instances;
 import javax.swing.JTabbedPane;
+import javax.swing.WindowConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,6 +25,8 @@ public class principalFrame extends JFrame {
 	
 	static JFrame miVentana;
 	static clsUsuario usuario;
+	static Instances data;
+	static Instances test;
 	
 
 	/**
@@ -77,37 +82,104 @@ public class principalFrame extends JFrame {
 		lblNewLabel_2.setBounds(326, 16, 95, 56);
 		panel_2.add(lblNewLabel_2);
 		
-		
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(135, 206, 235));
-		tabbedPane.addTab("Modificar datos", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_3, null);
-		panel_3.setLayout(null);
-		
-		JLabel lblNewLabel_3 = new JLabel("Modificar datos");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(326, 16, 195, 56);
-		panel_3.add(lblNewLabel_3);
-		
-		JButton btnAceptar_2 = new JButton("Modificar mis datos");
-		btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnAceptar_2.addActionListener(new ActionListener() 
+		if(usu!=null)//lo que va a visualizar un usuario
 		{
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				try 
-				{
-					clsModificarUsuario window = new clsModificarUsuario(usu, (principalFrame) miVentana);
-					window.setVisible(true);
-				} 
-				catch (Exception w) 
-				{
-					w.printStackTrace();
+			JPanel panel_3 = new JPanel();
+			panel_3.setBackground(new Color(135, 206, 235));
+			tabbedPane.addTab("Modificar datos", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_3, null);
+			panel_3.setLayout(null);
+			
+			JLabel lblNewLabel_3 = new JLabel("Modificar datos");
+			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblNewLabel_3.setBounds(326, 16, 195, 56);
+			panel_3.add(lblNewLabel_3);
+			
+			JButton btnAceptar_2 = new JButton("Modificar mis datos");
+			btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_2.setBounds(254, 194, 257, 60);
+			panel_3.add(btnAceptar_2);
+			btnAceptar_2.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try 
+					{
+						clsModificarUsuario window = new clsModificarUsuario(usu, (principalFrame) miVentana);
+						window.setVisible(true);
+					} 
+					catch (Exception w) 
+					{
+						w.printStackTrace();
+					}
 				}
-			}
-		});
-		btnAceptar_2.setBounds(254, 194, 257, 60);
-		panel_3.add(btnAceptar_2);
+			});
+		 }
+		
+		else //lo que va a visualizar el administrador
+		{
+			JPanel panel_3 = new JPanel();
+			panel_3.setBackground(new Color(135, 206, 235));
+			tabbedPane.addTab("Dar de alta", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_3, null);
+			panel_3.setLayout(null);
+			
+			JLabel lblNewLabel_3 = new JLabel("Registro usuarios");
+			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblNewLabel_3.setBounds(326, 16, 195, 56);
+			panel_3.add(lblNewLabel_3);
+			
+			JButton btnAceptar_2 = new JButton("Crear nuevo usuario");
+			btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_2.setBounds(254, 194, 257, 60);
+			panel_3.add(btnAceptar_2);
+			btnAceptar_2.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try 
+					{
+						clsAltaUsuario window = new clsAltaUsuario();
+						window.setVisible(true);
+					} 
+					catch (Exception w) 
+					{
+						w.printStackTrace();
+					}
+				}
+			});
+			
+			
+			JPanel panel_4 = new JPanel();
+			panel_4.setBackground(new Color(135, 206, 235));
+			tabbedPane.addTab("Análisis", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_4, null);
+			panel_4.setLayout(null);
+			
+			JLabel lblNewLabel_4 = new JLabel("Análisis de datos");
+			lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblNewLabel_4.setBounds(326, 16, 195, 56);
+			panel_4.add(lblNewLabel_4);
+			
+			JButton btnAceptar_3 = new JButton("Visualizar la pantalla de análisis de datos");
+			btnAceptar_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_3.setBounds(254, 194, 257, 60);
+			panel_4.add(btnAceptar_3);
+			btnAceptar_3.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try 
+					{
+					  ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+				      example.setSize(800, 400);
+				      example.setLocationRelativeTo(null);
+				      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				      example.setVisible(true);
+					} 
+					catch (Exception w) 
+					{
+						w.printStackTrace();
+					}
+				}
+			});
+		}
+	   }
 	}
-	
-}

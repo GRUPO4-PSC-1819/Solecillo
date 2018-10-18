@@ -3,6 +3,8 @@ package LP;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Comun.clsConstantes;
 import LN.clsGestor;
 import LN.clsUsuario;
 import java.awt.Color;
@@ -78,6 +80,15 @@ public class loginFrame extends JFrame {
 		txtpnUsuario.setBounds(205, 169, 88, 38);
 		contentPane.add(txtpnUsuario);
 		
+		
+		JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
+		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");
+		chckbxAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		chckbxAdministrador.setBackground(Color.ORANGE);
+		chckbxAdministrador.setBounds(354, 322, 198, 60);
+		contentPane.add(chckbxAdministrador);
+		
+		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		textField.setBounds(354, 169, 229, 38);
@@ -88,6 +99,8 @@ public class loginFrame extends JFrame {
 		
 		btnAceptar_1 = new JButton("ENTRAR");
 		btnAceptar_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnAceptar_1.setBounds(604, 194, 157, 60);
+		contentPane.add(btnAceptar_1);
 		btnAceptar_1.addActionListener(new ActionListener() 
 		{
 			@SuppressWarnings("deprecation")
@@ -102,9 +115,27 @@ public class loginFrame extends JFrame {
 				if((textField.getText().toUpperCase().equals(aux.getNickname().toUpperCase()))&&(passwordField.getText().equals(aux.getContraseña())))
 				{
 					existe = true;
-					ProgressBar pb=new ProgressBar("Entrando al sistema...", "Principal", aux);
+					ProgressBar pb=new ProgressBar("Entrando al sistema como usuario...", clsConstantes.PRINCIPAL, aux);
 					pb.setVisible(true);
 					miVentana.dispose();
+					break;
+				}
+				if(textField.getText().toUpperCase().equals(clsConstantes.ADMIN) && passwordField.getText().toUpperCase().equals(clsConstantes.ADMIN))
+				{
+					if(chckbxAdministrador.isSelected()==true)
+					{
+						existe=true;
+						ProgressBar pb=new ProgressBar("Entrando al sistema como administrador...", clsConstantes.ADMIN, null);
+						pb.setVisible(true);
+						miVentana.dispose();
+						break;
+					}
+					else
+					{
+						existe=true;
+						JOptionPane.showMessageDialog(null, "Sus credenciales son correctas, pero debe marcar la casilla de administrador.", "Error de administrador", JOptionPane.ERROR_MESSAGE);
+						break;
+					}
 				}
 			}
 			if(!existe)
@@ -114,20 +145,8 @@ public class loginFrame extends JFrame {
 			
 			}
 		});
-		btnAceptar_1.setBounds(604, 194, 157, 60);
-		contentPane.add(btnAceptar_1);
 		
 		
-		
-		
-		JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
-		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");
-		
-		chckbxAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxAdministrador.setBackground(Color.ORANGE);
-		chckbxAdministrador.setBounds(354, 322, 198, 60);
-		contentPane.add(chckbxAdministrador);
-	
 		
 	}
 }

@@ -29,6 +29,9 @@ import java.util.logging.StreamHandler;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Comun.clsConstantes;
+
 import javax.swing.JButton;
 
 import LN.clsUsuarioRepetido;
@@ -407,22 +410,29 @@ public class clsAltaUsuario extends JFrame
 		clsGestor objGestor=new clsGestor();
 		if(txtNombre.getText().length()>0&&txtApe1.getText().length()>0&&txtApe2.getText().length()>0&&txtNickname.getText().length()>0&&txtContrasenya1.getText().length()>0&&txtContrasenya2.getText().length()>0)
 		{		
-			if(txtContrasenya1.getText().equals(txtContrasenya2.getText())==false)
+			if(txtNickname.getText().toUpperCase().equals(clsConstantes.ADMIN))
 			{
-				JOptionPane.showMessageDialog(null, "Introduzca la misma contraseña", "¡Contraseñas diferentes!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Este nickname está restringido y no va a poder ser usado.", "Nickname restringido", JOptionPane.WARNING_MESSAGE);
 			}
 			else
 			{
-				try
+				if(txtContrasenya1.getText().equals(txtContrasenya2.getText())==false)
 				{
-					logger.log( Level.INFO, "Dando de alta al usuario "+txtNickname.getText());
-					objGestor.CrearUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText().toUpperCase(), txtContrasenya1.getText());//, frmFechas.getFec());
-					JOptionPane.showMessageDialog(null, "Te has registrado correctamente");
-					dispose();
+					JOptionPane.showMessageDialog(null, "Introduzca la misma contraseña", "¡Contraseñas diferentes!", JOptionPane.ERROR_MESSAGE);
 				}
-				catch(clsUsuarioRepetido p)
+				else
 				{
-					JOptionPane.showMessageDialog(null, p.getMessage(), "Nickname repetido", JOptionPane.WARNING_MESSAGE);
+					try
+					{
+						logger.log( Level.INFO, "Dando de alta al usuario "+txtNickname.getText());
+						objGestor.CrearUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText().toUpperCase(), txtContrasenya1.getText());//, frmFechas.getFec());
+						JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo usuario correctamente");
+						dispose();
+					}
+					catch(clsUsuarioRepetido p)
+					{
+						JOptionPane.showMessageDialog(null, p.getMessage(), "Nickname repetido", JOptionPane.WARNING_MESSAGE);
+					}
 				}
 			}
 		}

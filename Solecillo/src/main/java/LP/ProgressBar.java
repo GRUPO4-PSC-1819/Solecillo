@@ -13,10 +13,9 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
-
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
-
+import Comun.clsConstantes;
 import LN.clsUsuario;
 
 
@@ -125,12 +124,18 @@ public class ProgressBar extends JFrame
 	public void cerrar()
 	{
 		this.dispose();
-		if(ventana_a_abrir.equals("Principal"))
+		if(ventana_a_abrir.equals(clsConstantes.PRINCIPAL))
 		{
 			logger.log( Level.INFO, "Cargando ventana clsEleccion");
 			principalFrame window = new principalFrame(usuario);
 			window.setVisible(true);
-		}		
+		}
+		else if(ventana_a_abrir.equals(clsConstantes.ADMIN))
+		{
+			logger.log( Level.INFO, "Cargando ventana clsEleccion");
+			principalFrame window = new principalFrame(usuario);
+			window.setVisible(true);
+		}
 		
 	}
 	/**

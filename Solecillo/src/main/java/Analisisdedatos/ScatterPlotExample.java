@@ -3,21 +3,16 @@ package Analisisdedatos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.xy.XYDataItem;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.evaluation.Prediction;
@@ -46,6 +41,15 @@ public class ScatterPlotExample extends JFrame {
 
   public ScatterPlotExample(String title) {
     super(title);
+    ArrayList<Attribute> atts = new ArrayList<Attribute>(3);
+	ArrayList<String> classVal = new ArrayList<String>();
+    classVal.add("No peligra");
+    classVal.add("Peligra");
+    atts.add(new Attribute("Semana"));
+    atts.add(new Attribute("Reparaciones"));
+    atts.add(new Attribute("@@class@@",classVal));
+    data=new Instances("Train",atts,0);
+    test=new Instances("Train",atts,0);
 
     // Create dataset
     XYDataset dataset = createDataset();
@@ -226,25 +230,4 @@ private XYDataset createTest(){
 	public static double sigmoidrep(double x) {
 	    return (1/( 1 + Math.pow(Math.E,(-0.5*(x-3)))));
 	  }
-  public static void main(String[] args) {
-	  
-	  
-	  ArrayList<Attribute> atts = new ArrayList<Attribute>(3);
-		ArrayList<String> classVal = new ArrayList<String>();
-	    classVal.add("No peligra");
-	    classVal.add("Peligra");
-	    atts.add(new Attribute("Semana"));
-	    atts.add(new Attribute("Reparaciones"));
-	    atts.add(new Attribute("@@class@@",classVal));
-	  data=new Instances("Train",atts,0);
-	  test=new Instances("Train",atts,0);
-	  
-	  
-      ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-      example.setSize(800, 400);
-      example.setLocationRelativeTo(null);
-      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-      example.setVisible(true);
-
-  }
 }
