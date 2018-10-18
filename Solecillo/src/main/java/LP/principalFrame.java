@@ -173,6 +173,7 @@ public class principalFrame extends JFrame {
 				      example.setLocationRelativeTo(null);
 				      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				      example.setVisible(true);
+
 					} 
 					catch (Exception w) 
 					{
