@@ -110,6 +110,21 @@ public class loginFrame extends JFrame {
 			clsGestor objGestor=new clsGestor();
 			usus=objGestor.ListaUsuarios();
 			boolean existe = false;
+			if(textField.getText().toUpperCase().equals(clsConstantes.ADMIN) && passwordField.getText().toUpperCase().equals(clsConstantes.ADMIN))
+			{
+				if(chckbxAdministrador.isSelected()==true)
+				{
+					existe=true;
+					ProgressBar pb=new ProgressBar("Entrando al sistema como administrador...", clsConstantes.ADMIN, null);
+					pb.setVisible(true);
+					miVentana.dispose();
+				}
+				else
+				{
+					existe=true;
+					JOptionPane.showMessageDialog(null, "Sus credenciales son correctas, pero debe marcar la casilla de administrador.", "Error de administrador", JOptionPane.ERROR_MESSAGE);
+				}
+			}
 			for(clsUsuario aux:usus)
 			{
 				if((textField.getText().toUpperCase().equals(aux.getNickname().toUpperCase()))&&(passwordField.getText().equals(aux.getContraseña())))
@@ -119,23 +134,6 @@ public class loginFrame extends JFrame {
 					pb.setVisible(true);
 					miVentana.dispose();
 					break;
-				}
-				if(textField.getText().toUpperCase().equals(clsConstantes.ADMIN) && passwordField.getText().toUpperCase().equals(clsConstantes.ADMIN))
-				{
-					if(chckbxAdministrador.isSelected()==true)
-					{
-						existe=true;
-						ProgressBar pb=new ProgressBar("Entrando al sistema como administrador...", clsConstantes.ADMIN, null);
-						pb.setVisible(true);
-						miVentana.dispose();
-						break;
-					}
-					else
-					{
-						existe=true;
-						JOptionPane.showMessageDialog(null, "Sus credenciales son correctas, pero debe marcar la casilla de administrador.", "Error de administrador", JOptionPane.ERROR_MESSAGE);
-						break;
-					}
 				}
 			}
 			if(!existe)
