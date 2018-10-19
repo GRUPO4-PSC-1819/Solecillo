@@ -56,8 +56,8 @@ public class ScatterPlotExample extends JFrame {
 
     // Create chart
     JFreeChart chart = ChartFactory.createScatterPlot(
-        "Boys VS Girls weight comparison chart", 
-        "X-Axis", "Y-Axis", dataset);
+        "Máquinas con y sin problemas", 
+        "Semanas", "Reparaciones", dataset);
 
     
     //Changes background color
@@ -67,23 +67,23 @@ public class ScatterPlotExample extends JFrame {
    
     // Create Panel
     ChartPanel panel = new ChartPanel(chart);
+    panel.setLayout(null);
     
     setContentPane(panel);
     
-    btnAceptar_1 = new JButton("ACEPTAR");
+    btnAceptar_1 = new JButton("Predecir");
 	btnAceptar_1.addActionListener(new ActionListener() 
 	{
 		
 		public void actionPerformed(ActionEvent arg0) {
-			
-			ScatterPlotExample example2 = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM",1);
+			ScatterPlotExample example2 = new ScatterPlotExample("Analisis de datos",1);
 			example2.setSize(800, 400);
 		      example2.setLocationRelativeTo(null);
 		      example2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		      example2.setVisible(true);
 		}
 	});
-	btnAceptar_1.setBounds(313, 181, 100, 26);
+	btnAceptar_1.setBounds(600, 300, 100, 26);
 	panel.add(btnAceptar_1);
   }
 
@@ -92,11 +92,10 @@ public class ScatterPlotExample extends JFrame {
 	
 	XYDataset dataset2 = createTest();
 	
-System.out.println("penennnnnnnnnnnnnnnnnnnnn");
     // Create chart
     JFreeChart chart2 = ChartFactory.createScatterPlot(
-        "Boys VS Girls weight comparison chart", 
-        "X-Axis", "Y-Axis", dataset2);
+        "Máquinas con y sin problemas", 
+        "Semanas", "Reparaciones", dataset2);
 
     
     //Changes background color
