@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
  * Clase creada para generar un objeto nuevo (clsPieza), de la que heredarán todas las piezas del ajedrez.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
