@@ -84,6 +84,36 @@ public class clsGestor implements Serializable
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	
+	public void CrearMaquinaEolica(String n, String col, double val, String fab, String np, String nc, double a, double d)
+	{
+		clsMaquina_Eolica nuevo=new clsMaquina_Eolica(n, col, val, fab, np, nc, a, d);
+		clsBD.insertarDatoTablaBD(nuevo);
+	}
+	
+	public void CrearMaquinaHidraulica(String n, String col, double val, String fab, String np, String nr)
+	{
+		clsMaquina_Hidraulica nuevo=new clsMaquina_Hidraulica(n, col, val, fab, np, nr);
+		clsBD.insertarDatoTablaBD(nuevo);
+	}
+	
+	public void CrearMaquinaMareomotriz(String n, String col, double val, String fab, String np, double distancia)
+	{
+		clsMaquina_Mareomotriz nuevo=new clsMaquina_Mareomotriz(n, col, val, fab, np, distancia);
+		clsBD.insertarDatoTablaBD(nuevo);
+	}
+	
+	public void CrearMaquinaSolar(String n, String col, double val, String fab, String np, String nc)
+	{
+		clsMaquina_Solar nuevo=new clsMaquina_Solar(n, col, val, fab, np, nc);
+		clsBD.insertarDatoTablaBD(nuevo);
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * Método para modificar un usuario existente en la Base de Datos.
 	 * @param n Nombre del usuario

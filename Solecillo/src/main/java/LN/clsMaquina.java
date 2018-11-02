@@ -1,7 +1,5 @@
 package LN;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 /**
@@ -18,20 +16,25 @@ public class clsMaquina implements Serializable
 	protected String color;
 	protected double valor;
 	protected String fabricante;
-	protected Date fecha_compra;
-	protected Date fecha_fin;
 
 	//constructor para crear nueva máquina
-	public clsMaquina(int id, String n, String color, double v, String f, Date ff)
+	public clsMaquina(int id, String n, String color, double v, String f)
 	{
 		this.id=id;
 		this.nombre=n;
 		this.color=color;
 		this.valor=v;
 		this.fabricante=f;
-		this.fecha_compra=new Date();
-		this.fecha_fin=ff;
 	}
+	
+	//constructor sin id
+		public clsMaquina(String n, String color, double v, String f)
+		{
+			this.nombre=n;
+			this.color=color;
+			this.valor=v;
+			this.fabricante=f;
+		}
 	
 	//constructor vacío para serializar
 	public clsMaquina()
@@ -41,8 +44,6 @@ public class clsMaquina implements Serializable
 		this.color=null;
 		this.valor=0.0;
 		this.fabricante=null;
-		this.fecha_compra=null;
-		this.fecha_fin=null;
 	}
 	
 	@Override
@@ -73,10 +74,8 @@ public class clsMaquina implements Serializable
 	 */
 	public String toString()
 	{
-		SimpleDateFormat formato = new SimpleDateFormat ("dd/MM/yyyy");
 		String e = "ID: "+this.getId()+" - Nombre: "+this.getNombre()+" - Color: "+this.getColor()+
-				" - Valor: "+this.getValor()+" - Fabricante: "+this.getFabricante()+
-				"- Fecha de registro: "+formato.format(this.getFecha_compra());
+				" - Valor: "+this.getValor()+" - Fabricante: "+this.getFabricante();
 		return e;
 	}
 	
@@ -127,23 +126,4 @@ public class clsMaquina implements Serializable
 	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
 	}
-
-	public Date getFecha_compra() {
-		return fecha_compra;
-	}
-
-	public void setFecha_compra(Date fecha_fin) {
-		this.fecha_fin = fecha_fin;
-	}
-	
-	public Date getFecha_fin() {
-		return fecha_fin;
-	}
-
-	public void setFecha_fin(Date fecha_fin) {
-		this.fecha_fin = fecha_fin;
-	}
-
-
-
 }

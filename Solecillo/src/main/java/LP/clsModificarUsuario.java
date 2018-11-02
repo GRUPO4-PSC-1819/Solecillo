@@ -34,7 +34,6 @@ public class clsModificarUsuario extends clsAltaUsuario
 		this.txtContrasenya1.setText(usuario.getContraseña());
 		this.txtContrasenya2.setText(usuario.getContraseña());
 		
-		modifusu = true;
 		
 		/*Escuchadores*/
 		this.btnAceptar.addActionListener(new ActionListener() 
