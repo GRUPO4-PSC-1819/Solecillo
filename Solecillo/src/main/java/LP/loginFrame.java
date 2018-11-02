@@ -119,13 +119,10 @@ public class loginFrame extends JFrame {
 			{
 				JOptionPane.showMessageDialog(null, "¿Está dado de alta? Su nickname o contraseña son incorrectos.", "¡Error de Login!", JOptionPane.ERROR_MESSAGE);
 			}
-			
 			}
 		});
 		btnAceptar_1.setBounds(604, 194, 157, 60);
 		contentPane.add(btnAceptar_1);
-		
-		
 		btnAceptar_2 = new JButton("¡Regístrate!");
 		btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnAceptar_2.addActionListener(new ActionListener() 
