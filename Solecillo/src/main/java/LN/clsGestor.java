@@ -42,9 +42,39 @@ public class clsGestor implements Serializable
 							rs.getString("APELLIDO2"),
 							rs.getString("NICKNAME"),
 							rs.getString("CONTRASENYA")));
-					
 				}
-				
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return lista;	
+	}
+	
+	
+	public ArrayList<clsMaquina_Eolica> ListaEolica()	
+	{	
+		ArrayList<clsMaquina_Eolica> lista = new ArrayList <clsMaquina_Eolica>();
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_E);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina_Eolica(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getString("NOMBRE_CAMPO"),
+							rs.getInt("ALTURA"),
+							rs.getInt("DIAMETRO")));
+				}
 			} 
 			catch (SQLException e)
 			{
@@ -53,6 +83,95 @@ public class clsGestor implements Serializable
 			
 		}
 				
+		return lista;	
+	}
+	
+	
+	public ArrayList<clsMaquina_Hidraulica> ListaHidraulica()	
+	{	
+		ArrayList<clsMaquina_Hidraulica> lista = new ArrayList <clsMaquina_Hidraulica>();
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_H);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina_Hidraulica(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getString("NOMBRE_RIO")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return lista;	
+	}
+	
+	
+	public ArrayList<clsMaquina_Mareomotriz> ListaMareomotriz()	
+	{	
+		ArrayList<clsMaquina_Mareomotriz> lista = new ArrayList <clsMaquina_Mareomotriz>();
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_M);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina_Mareomotriz(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getDouble("DISTANCIA_MILLAS")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return lista;	
+	}
+	
+	public ArrayList<clsMaquina_Solar> ListaSolar()	
+	{	
+		ArrayList<clsMaquina_Solar> lista = new ArrayList <clsMaquina_Solar>();
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_S);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina_Solar(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getString("NOMBRE_CAMPO")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
 		return lista;	
 	}
 	

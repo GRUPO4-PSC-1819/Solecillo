@@ -2,7 +2,9 @@ import java.awt.EventQueue;
 import java.sql.Connection;
 
 import Comun.clsConstantes;
+import LN.clsUsuario;
 import LP.loginFrame;
+import LP.principalFrame;
 import Persistencia.clsBD;
 
 /**
@@ -22,7 +24,9 @@ public class clsMain
 					Connection conec=clsBD.initBD("Data/Solecillo.bd");
 					clsBD.crearTablaBD(clsConstantes.USUARIO);
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
-					loginFrame p=new loginFrame();
+					clsUsuario u=new clsUsuario();
+					principalFrame p=new principalFrame(u);
+					//loginFrame p=new loginFrame();
 					p.setVisible(true);
 				} 
 				catch (Exception e) 

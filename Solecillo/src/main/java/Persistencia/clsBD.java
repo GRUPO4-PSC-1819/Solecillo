@@ -250,11 +250,53 @@ public class clsBD
 		switch (tipo_tabla)
 		{
 		case "USUARIO": 
-			
-			
 			try 
 			{
 			    rs = statement.executeQuery("select * from USUARIO");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
+			
+		case "MAQUINA_E": 
+			try 
+			{
+			    rs = statement.executeQuery("select * from MAQUINA where tipo='E'");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
+		
+		case "MAQUINA_H": 
+			try 
+			{
+			    rs = statement.executeQuery("select * from MAQUINA where tipo='H'");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
+			
+		case "MAQUINA_M": 
+			try 
+			{
+			    rs = statement.executeQuery("select * from MAQUINA where tipo='M'");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
+			
+		case "MAQUINA_S": 
+			try 
+			{
+			    rs = statement.executeQuery("select * from MAQUINA where tipo='S'");
 			} 
 			catch (SQLException e1) 
 			{

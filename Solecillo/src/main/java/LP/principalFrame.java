@@ -62,13 +62,25 @@ public class principalFrame extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(176, 224, 230));
-		tabbedPane.addTab("Inventario", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/File.gif")), panel_1, null);
+		tabbedPane.addTab("Maquinaria", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/File.gif")), panel_1, null);
 		panel_1.setLayout(null);
+	
 		
-		JLabel lblNewLabel_1 = new JLabel("Inventario");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(326, 16, 95, 56);
-		panel_1.add(lblNewLabel_1);
+		JButton btnM = new JButton("Ver Máquinas");
+		btnM.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnM.setBounds(254, 194, 257, 60);
+		panel_1.add(btnM);
+		
+		btnM.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				clsListaM frame = new clsListaM("Lista de máquinas");
+				frame.pack();
+				frame.setVisible(true);
+			}	
+		});
 		
 		
 		
