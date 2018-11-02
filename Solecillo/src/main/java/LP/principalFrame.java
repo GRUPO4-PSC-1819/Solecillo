@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
@@ -154,7 +154,7 @@ public class principalFrame extends JFrame {
 		
 		panel_2.add(table);
 		
-		TableRowSorter filtro = new TableRowSorter();
+		TableRowSorter filtro = new TableRowSorter(modeloT);
 		
 		JLabel lblNewLabel_2 = new JLabel("Gestion Comercial");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -182,26 +182,26 @@ public class principalFrame extends JFrame {
             {
                 String cadena = (textField.getText());
                 textField.setText(cadena);
-                repaint();
+             
+                int columna=0;
                
                 if(comboBox.getSelectedIndex()==0) {
 					//Nombre  
-					filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), 1));
+					//filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), 1));
+                	
 					}
 				
 				if(comboBox.getSelectedIndex()==1) {
-					filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), 2));
+					columna=1;
 				}
 				if(comboBox.getSelectedIndex()==2) {
-					filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), 3));
-				}
+					columna=2;}
 				if(comboBox.getSelectedIndex()==3) { 
-					filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), 4));
+					columna=3;
 					
 				}
-				
-        table.repaint();        
-        table.setRowSorter(filtro);
+				filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), columna));
+				table.setRowSorter(filtro);
         }}
 
     );
