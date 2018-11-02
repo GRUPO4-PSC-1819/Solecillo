@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -68,6 +70,8 @@ public class clsAltaUsuario extends JFrame
 	
 	
 	
+	boolean modifusu = false;
+	private boolean controlPulsado = false;
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
@@ -190,10 +194,203 @@ public class clsAltaUsuario extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{		
+				if (!modifusu)
 				Registrar();
 			}
 		});	
-			
+		
+		txtNombre.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});
+		
+		txtApe1.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{	
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{	
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}	
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});
+		
+		txtApe2.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{		
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{	
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}			
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});	
+		
+		txtNickname.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});	
+		
+		txtContrasenya1.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}		
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});
+		
+		txtContrasenya2.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e)
+			{				
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});
+		
+		btnAceptar.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{	
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}	
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});
+
+		btnCancelar.addKeyListener(new KeyAdapter() 
+		{
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					if(controlPulsado)
+					{
+						Registrar();
+					}
+					controlPulsado=false;					
+				}	
+			}
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if(e.getKeyCode()==KeyEvent.VK_ENTER)
+				{
+					controlPulsado = true;
+				}			
+			}
+		});
+				
 		btnCancelar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 

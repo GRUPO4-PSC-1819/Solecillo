@@ -8,10 +8,6 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-import LN.clsMaquina_Eolica;
-import LN.clsMaquina_Hidraulica;
-import LN.clsMaquina_Mareomotriz;
-import LN.clsMaquina_Solar;
 import LN.clsUsuario;
 
 
@@ -98,30 +94,7 @@ public class clsBD
 				e1.printStackTrace();
 			}
 			break;
-			
-		case "MAQUINA": 
-			try 
-			{
-				statement.executeUpdate("CREATE TABLE IF NOT EXISTS MAQUINA (ID INTEGER PRIMARY KEY,"+
-										"NOMBRE STRING, "+ 
-										"COLOR STRING, "+
-										"VALOR DOUBLE, "+
-										"FABRICANTE STRING, "+
-										"TIPO CHAR, "+
-										"NOMBRE_PUEBLO STRING, "+
-										"NOMBRE_CAMPO STRING, "+
-										"ALTURA DOUBLE, "+
-										"DIAMETRO DOUBLE, "+
-										"NOMBRE_RIO STRING, "+
-										"DISTANCIA_MILLAS DOUBLE)");
-			} 
-			catch (SQLException e2) 
-			{
-				e2.printStackTrace();
-			}
-			break;
 		}
-		
 	}
 	
 	/** Inserta un dato en las tablas previamente mencionadas. <br>
@@ -131,9 +104,11 @@ public class clsBD
 	public static void insertarDatoTablaBD(Object obj)
 	{
 		if (statement==null) return;
-				
+		
+		
+		
+		
 		if (obj instanceof clsUsuario)
-		{
 			try 
 			{
 				statement.executeUpdate("INSERT INTO USUARIO VALUES ('"+((clsUsuario)obj).getNickname()+"','"
@@ -145,99 +120,6 @@ public class clsBD
 			{
 				e1.printStackTrace();
 			}
-		}
-		else if (obj instanceof clsMaquina_Eolica)
-		{
-			try 
-			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
-						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
-						+"('"+((clsMaquina_Eolica)obj).getNombre()+"','"
-						+ ((clsMaquina_Eolica)obj).getColor()+"',"
-						+((clsMaquina_Eolica)obj).getValor()+",'"
-						+((clsMaquina_Eolica)obj).getFabricante()+"',"
-						+"'E','"
-						+((clsMaquina_Eolica)obj).getNombre_pueblo()+"','"
-						+((clsMaquina_Eolica)obj).getNombre_campo()+"',"
-						+((clsMaquina_Eolica)obj).getAltura()+","
-						+((clsMaquina_Eolica)obj).getDiametro()+","
-						+"'',"
-						+"0.0)");
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-		}
-		else if (obj instanceof clsMaquina_Hidraulica)
-		{
-			try 
-			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
-						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
-						+"('"+((clsMaquina_Hidraulica)obj).getNombre()+"','"
-						+ ((clsMaquina_Hidraulica)obj).getColor()+"',"
-						+((clsMaquina_Hidraulica)obj).getValor()+",'"
-						+((clsMaquina_Hidraulica)obj).getFabricante()+"',"
-						+"'H','"
-						+((clsMaquina_Hidraulica)obj).getNombre_pueblo()+"',"
-						+"'',"
-						+"0.0,"
-						+"0.0,'"
-						+((clsMaquina_Hidraulica)obj).getNombre_rio()+"',"
-						+"0.0)");
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-		}
-		else if (obj instanceof clsMaquina_Mareomotriz)
-		{
-			try 
-			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
-						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
-						+"('"+((clsMaquina_Mareomotriz)obj).getNombre()+"','"
-						+ ((clsMaquina_Mareomotriz)obj).getColor()+"',"
-						+((clsMaquina_Mareomotriz)obj).getValor()+",'"
-						+((clsMaquina_Mareomotriz)obj).getFabricante()+"',"
-						+"'M','"
-						+((clsMaquina_Mareomotriz)obj).getNombre_pueblo()+"',"
-						+"'',"
-						+"0.0,"
-						+"0.0,"
-						+"'','"
-						+((clsMaquina_Mareomotriz)obj).getDistancia_millas_marinas_pueblo()+"')");
-			}  
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-		}
-		else if (obj instanceof clsMaquina_Solar)
-		{
-			try 
-			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
-						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
-						+"('"+((clsMaquina_Solar)obj).getNombre()+"','"
-						+ ((clsMaquina_Solar)obj).getColor()+"',"
-						+((clsMaquina_Solar)obj).getValor()+",'"
-						+((clsMaquina_Solar)obj).getFabricante()+"',"
-						+"'S','"
-						+((clsMaquina_Solar)obj).getNombre_pueblo()+"','"
-						+((clsMaquina_Solar)obj).getNombre_campo()+"',"
-						+"0.0,"
-						+"0.0,"
-						+"'',"
-						+"0.0)");
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-		}
 	}
 	
 	/**
@@ -252,6 +134,8 @@ public class clsBD
 		switch (tipo_tabla)
 		{
 		case "USUARIO": 
+			
+			
 			try 
 			{
 			    rs = statement.executeQuery("select * from USUARIO");

@@ -129,7 +129,7 @@ public class principalFrame extends JFrame {
 			
 			JButton btnAceptar_2 = new JButton("Crear nuevo usuario");
 			btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_2.setBounds(254, 70, 257, 60);
+			btnAceptar_2.setBounds(254, 194, 257, 60);
 			panel_3.add(btnAceptar_2);
 			btnAceptar_2.addActionListener(new ActionListener() 
 			{
@@ -147,87 +147,7 @@ public class principalFrame extends JFrame {
 				}
 			});
 			
-			JButton btnAceptar_3 = new JButton("Crear máquina eólica");
-			btnAceptar_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_3.setBounds(254, 140, 257, 60);
-			panel_3.add(btnAceptar_3);
-			btnAceptar_3.addActionListener(new ActionListener() 
-			{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					try 
-					{
-						clsAltaEolica window = new clsAltaEolica();
-						window.setVisible(true);
-					} 
-					catch (Exception w) 
-					{
-						w.printStackTrace();
-					}
-				}
-			});
 			
-			JButton btnAceptar_4 = new JButton("Crear máquina hidráulica");
-			btnAceptar_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_4.setBounds(254, 210, 257, 60);
-			panel_3.add(btnAceptar_4);
-			btnAceptar_4.addActionListener(new ActionListener() 
-			{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					try 
-					{
-						clsAltaHidraulica window = new clsAltaHidraulica();
-						window.setVisible(true);
-					} 
-					catch (Exception w) 
-					{
-						w.printStackTrace();
-					}
-				}
-			});
-			
-			JButton btnAceptar_5 = new JButton("Crear máquina mareomotriz");
-			btnAceptar_5.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_5.setBounds(254, 280, 257, 60);
-			panel_3.add(btnAceptar_5);
-			btnAceptar_5.addActionListener(new ActionListener() 
-			{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					try 
-					{
-						clsAltaMareomotriz window = new clsAltaMareomotriz();
-						window.setVisible(true);
-					} 
-					catch (Exception w) 
-					{
-						w.printStackTrace();
-					}
-				}
-			});
-			
-			JButton btnAceptar_6 = new JButton("Crear máquina solar");
-			btnAceptar_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_6.setBounds(254, 350, 257, 60);
-			panel_3.add(btnAceptar_6);
-			btnAceptar_6.addActionListener(new ActionListener() 
-			{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					try 
-					{
-						clsAltaSolar window = new clsAltaSolar();
-						window.setVisible(true);
-					} 
-					catch (Exception w) 
-					{
-						w.printStackTrace();
-					}
-				}
-			});	
-			
-		
 			JPanel panel_4 = new JPanel();
 			panel_4.setBackground(new Color(135, 206, 235));
 			tabbedPane.addTab("Análisis", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_4, null);
@@ -238,11 +158,11 @@ public class principalFrame extends JFrame {
 			lblNewLabel_4.setBounds(326, 16, 195, 56);
 			panel_4.add(lblNewLabel_4);
 			
-			JButton btnAceptar_7 = new JButton("Visualizar la pantalla de análisis de datos");
-			btnAceptar_7.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_7.setBounds(254, 194, 257, 60);
-			panel_4.add(btnAceptar_7);
-			btnAceptar_7.addActionListener(new ActionListener() 
+			JButton btnAceptar_3 = new JButton("Visualizar la pantalla de análisis de datos");
+			btnAceptar_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_3.setBounds(254, 194, 257, 60);
+			panel_4.add(btnAceptar_3);
+			btnAceptar_3.addActionListener(new ActionListener() 
 			{
 				@Override
 				public void actionPerformed(ActionEvent e) {
