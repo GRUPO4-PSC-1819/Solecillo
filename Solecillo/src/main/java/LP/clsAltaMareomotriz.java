@@ -204,13 +204,13 @@ public class clsAltaMareomotriz extends JFrame
 				logger.log( Level.INFO, "Dando de alta máquina mareomotriz "+txtNombre.getText());
 				try {
 					objGestor.CrearMaquinaMareomotriz(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), Double.parseDouble(txtDistancia.getText()));
+					dispose();
+					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina mareomotriz correctamente.");
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Los campos 'Valor' y 'Distancia' deben ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-				JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina mareomotriz correctamente.");
-				dispose();
-			
+		
 		}
 		else
 		{

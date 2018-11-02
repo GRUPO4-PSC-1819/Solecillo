@@ -222,13 +222,12 @@ public class clsAltaEolica extends JFrame
 				logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
 				try {
 					objGestor.CrearMaquinaEolica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
+					dispose();
+					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina eólica correctamente.");
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Los campos 'Valor', 'Altura' y 'Diametro' deben ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-				JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina eólica correctamente.");
-				dispose();
-			
 		}
 		else
 		{

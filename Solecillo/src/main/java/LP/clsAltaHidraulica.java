@@ -204,13 +204,13 @@ public class clsAltaHidraulica extends JFrame
 				logger.log( Level.INFO, "Dando de alta máquina hidráulica "+txtNombre.getText());
 				try {
 					objGestor.CrearMaquinaHidraulica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreRio.getText());
+					dispose();
+					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina hidráulica correctamente.");
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "El campo 'Valor' debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-				JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina hidráulica correctamente.");
-				dispose();
-			
+				
 		}
 		else
 		{
