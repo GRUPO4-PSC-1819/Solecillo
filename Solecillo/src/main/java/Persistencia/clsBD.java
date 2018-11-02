@@ -94,6 +94,22 @@ public class clsBD
 				e1.printStackTrace();
 			}
 			break;
+
+
+		case "CLIENTE": 
+			try 
+			{
+				statement.executeUpdate("CREATE TABLE IF NOT EXISTS  CLIENTE (NOMBRE STRING NOT NULL PRIMARY KEY,"+ "AP_1 STRING, "+"AP_2 STRING,"+
+										"NOMBRE STRING NOT NULL PRIMARY KEY,"+ 
+										"EMPRESA STRING)");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
+			
+			
 		}
 	}
 	
@@ -129,13 +145,12 @@ public class clsBD
 	 */
 	public static ResultSet obtenerDatosTablaBD (String tipo_tabla)
 	{
-		if (statement==null) return null;
+		System.out.println(tipo_tabla);
+		//if (statement==null) return null;
 		ResultSet rs = null;
 		switch (tipo_tabla)
 		{
 		case "USUARIO": 
-			
-			
 			try 
 			{
 			    rs = statement.executeQuery("select * from USUARIO");
@@ -145,9 +160,20 @@ public class clsBD
 				e1.printStackTrace();
 			}
 			break;
+		case "CLIENTE":
+			try 
+			{System.out.println("Clientes");
+			    rs = statement.executeQuery("SELECT * from CLIENTE");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
 		}
 		 return rs;
 	}
+	
 	
 	/**
 	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>

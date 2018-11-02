@@ -9,6 +9,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
+import LN.clsCliente;
+import LN.clsGestor;
+import LN.clsUsuario;
+
 import javax.swing.JTabbedPane;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
@@ -30,12 +35,14 @@ import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class principalFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField textField;
+	ArrayList<clsCliente> clnts=new ArrayList<clsCliente>();
 
 	/**
 	 * Launch the application.
@@ -136,7 +143,7 @@ public class principalFrame extends JFrame {
 		modeloT.addColumn("Apellido 1");
 		modeloT.addColumn("Apellido 2");
 		modeloT.addColumn("DNI ");
-		
+		modeloT.addColumn("EMPRESA");
 		table = new JTable(modeloT);
 		
 		table.setColumnSelectionAllowed(true);
@@ -146,10 +153,17 @@ public class principalFrame extends JFrame {
 		
 		
 		// Datos prueba
+		clsGestor objGestor=new clsGestor();
+		clnts=objGestor.ListaClientes();
+		int i;
+		int max=clnts.size();
+		System.out.println(max);
 		
-		
-		modeloT.addRow(new Object[]{"Josune","Ordoñez","Arrillaga","72555252"});
-		modeloT.addRow(new Object[]{"Nerea","Etxeberria","Garcia","123456789"});
+		for(clsCliente cliente : clnts)
+		{
+			modeloT.addRow(new Object[]{cliente.getNombre(),cliente.getApellido1(),cliente.getApellido2(),cliente.getdni(), cliente.getEmpresa()});
+		}
+	
 		table.setModel(modeloT);
 		
 		panel_2.add(table);
@@ -250,6 +264,11 @@ public class principalFrame extends JFrame {
 		
 		
 		}
+
+	private Object i(int size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 	}
 
