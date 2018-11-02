@@ -1,16 +1,12 @@
 package LP;
-
-import java.awt.Color;
+ import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
-
-import javax.swing.BoxLayout;
+ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-
-import java.awt.BorderLayout;
+ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
@@ -24,47 +20,43 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
-
-import javax.swing.JLabel;
+ import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-import Comun.clsConstantes;
-
-import javax.swing.JButton;
-
-import LN.clsUsuarioRepetido;
-import LN.clsGestor;
-
-/**
+ import javax.swing.JButton;
+ import LN.clsGestor;
+ /**
  * Clase que generará una JFrame para introducir los datos que a su vez serán enviados a clsBinarios para la creación
  * de un usuario en la base de datos.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
-public class clsAltaUsuario extends JFrame 
+public class clsAltaSolar extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
-
-	private JPanel panelprincipal;
+ 	private JPanel panelprincipal;
 	private JPanel panelizda;
 	private JPanel panelbotonera;
 	private JPanel panelsuperior;	
 	
 	JTextField txtNombre;
-	JTextField txtApe1;
-	JTextField txtApe2;
-	JTextField txtNickname;
-	JPasswordField txtContrasenya1;
-	JPasswordField txtContrasenya2;
+	JTextField txtColor;
+	JTextField txtValor;
+	JTextField txtFabricante;
+	JTextField txtNombrePueblo;
+	JTextField txtNombreCampo;
+	
 	
 	private JLabel lblNombre;
-	private JLabel lblApe1;
-	private JLabel lblApe2;
-	private JLabel lblNickname;
-	private JLabel lblContrasenya1;
-	private JLabel lblContrasenya2;
+	private JLabel lblColor;
+	private JLabel lblValor;
+	private JLabel lblFabricante;
+	private JLabel lblNombrePueblo;
+	private JLabel lblNombreCampo;
 	
 	JButton btnAceptar;
 	JButton btnCancelar;
+	
+	
+	
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
@@ -94,7 +86,7 @@ public class clsAltaUsuario extends JFrame
 		} 
 		catch (SecurityException | IOException e) 
 		{
-			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaUsuario.class.getName() );
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaSolar.class.getName() );
 		}
 		logger.log( Level.INFO, "" );
 		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
@@ -103,7 +95,7 @@ public class clsAltaUsuario extends JFrame
 	/**
 	 * Constructor del JFrame que genera la parte visual de la ventana, así como los escuchadores requeridos para mejorar la interacción de la ventana.
 	 */
-	public clsAltaUsuario() 
+	public clsAltaSolar() 
 	{
 		panelprincipal = new JPanel();
 		panelizda=new JPanel();
@@ -123,8 +115,7 @@ public class clsAltaUsuario extends JFrame
 		panelizda.setBackground(Color.ORANGE);
 		panelbotonera.setBackground(Color.ORANGE);
 		panelsuperior.setBackground(Color.ORANGE);
-
-		lblNombre = new JLabel("        Nombre:           ");
+ 		lblNombre = new JLabel("        Nombre:           ");
 		lblNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelizda.add(lblNombre);
 		
@@ -132,45 +123,46 @@ public class clsAltaUsuario extends JFrame
 		txtNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelizda.add(txtNombre);
 		
-		lblApe1 = new JLabel("        Apellido 1:        ");
-		lblApe1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(lblApe1);
+		lblColor = new JLabel("        Color:        ");
+		lblColor.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(lblColor);
 		
-		txtApe1 = new JTextField();
-		txtApe1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(txtApe1);
+		txtColor = new JTextField();
+		txtColor.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(txtColor);
 		
-		lblApe2 = new JLabel("        Apellido 2:        ");
-		lblApe2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(lblApe2);
+		lblValor = new JLabel("        Valor:        ");
+		lblValor.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(lblValor);
 		
-		txtApe2 = new JTextField();
-		txtApe2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(txtApe2);	
+		txtValor = new JTextField();
+		txtValor.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(txtValor);	
 		
-		lblNickname = new JLabel("         Nickname:         ");
-		lblNickname.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(lblNickname);
+		lblFabricante = new JLabel("         Fabricante:         ");
+		lblFabricante.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(lblFabricante);
 		
-		txtNickname = new JTextField();
-		txtNickname.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(txtNickname);
+		txtFabricante = new JTextField();
+		txtFabricante.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(txtFabricante);
 			
-		lblContrasenya1 = new JLabel("        Contraseña:        ");
-		lblContrasenya1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(lblContrasenya1);
+		lblNombrePueblo = new JLabel("        Nombre del pueblo:        ");
+		lblNombrePueblo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(lblNombrePueblo);
 		
-		txtContrasenya1 = new JPasswordField();
-		txtContrasenya1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(txtContrasenya1);		
+		txtNombrePueblo = new JTextField();
+		txtNombrePueblo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(txtNombrePueblo);		
 		
-		lblContrasenya2 = new JLabel("        Contraseña:        ");
-		lblContrasenya2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(lblContrasenya2);
+		lblNombreCampo = new JLabel("        Nombre del campo:        ");
+		lblNombreCampo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(lblNombreCampo);
 		
-		txtContrasenya2 = new JPasswordField();
-		txtContrasenya2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(txtContrasenya2);
+		txtNombreCampo = new JTextField();
+		txtNombreCampo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(txtNombreCampo);
+		
 		
 		btnAceptar = new JButton("Aceptar");
 		panelbotonera.add(btnAceptar);
@@ -191,8 +183,6 @@ public class clsAltaUsuario extends JFrame
 			}
 		});	
 		
-		
-				
 		btnCancelar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -200,43 +190,27 @@ public class clsAltaUsuario extends JFrame
 				dispose();
 			}
 		});
+		
 	}
-	
 	
 	/**
 	 * Método que registra un nuevo usuario a la aplicación.
 	 */
-	@SuppressWarnings("deprecation")
 	private void Registrar()
 	{
 		clsGestor objGestor=new clsGestor();
-		if(txtNombre.getText().length()>0&&txtApe1.getText().length()>0&&txtApe2.getText().length()>0&&txtNickname.getText().length()>0&&txtContrasenya1.getText().length()>0&&txtContrasenya2.getText().length()>0)
+		if(txtNombre.getText().length()>0&&txtColor.getText().length()>0&&txtValor.getText().length()>0&&txtFabricante.getText().length()>0&&txtNombrePueblo.getText().length()>0&&txtNombreCampo.getText().length()>0)
 		{		
-			if(txtNickname.getText().toUpperCase().equals(clsConstantes.ADMIN))
-			{
-				JOptionPane.showMessageDialog(null, "Este nickname está restringido y no va a poder ser usado.", "Nickname restringido", JOptionPane.WARNING_MESSAGE);
-			}
-			else
-			{
-				if(txtContrasenya1.getText().equals(txtContrasenya2.getText())==false)
-				{
-					JOptionPane.showMessageDialog(null, "Introduzca la misma contraseña", "¡Contraseñas diferentes!", JOptionPane.ERROR_MESSAGE);
+				logger.log( Level.INFO, "Dando de alta máquina mareomotriz "+txtNombre.getText());
+				try {
+					objGestor.CrearMaquinaSolar(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText());
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				else
-				{
-					try
-					{
-						logger.log( Level.INFO, "Dando de alta al usuario "+txtNickname.getText());
-						objGestor.CrearUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText().toUpperCase(), txtContrasenya1.getText());//, frmFechas.getFec());
-						JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo usuario correctamente");
-						dispose();
-					}
-					catch(clsUsuarioRepetido p)
-					{
-						JOptionPane.showMessageDialog(null, p.getMessage(), "Nickname repetido", JOptionPane.WARNING_MESSAGE);
-					}
-				}
-			}
+				JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina mareomotriz correctamente.");
+				dispose();
+			
 		}
 		else
 		{

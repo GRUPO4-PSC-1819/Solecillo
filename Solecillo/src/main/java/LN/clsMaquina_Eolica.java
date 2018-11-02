@@ -1,7 +1,6 @@
 package LN;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 
@@ -17,14 +16,24 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 
 
 		//constructor para crear nueva máquina_hidraulica
-		public clsMaquina_Eolica(int id, String n, String color, double v, String f, Date ff, String np, String nc, double a, double d)
+		public clsMaquina_Eolica(int id, String n, String color, double v, String f, String np, String nc, double a, double d)
 		{
-			super(id, n, color, v, f, ff);
+			super(id, n, color, v, f);
 			this.nombre_pueblo=np;
 			this.nombre_campo=nc;
 			this.altura=a;
 			this.diametro=d;
 		}
+		
+		//constructor sin id
+				public clsMaquina_Eolica(String n, String color, double v, String f, String np, String nc, double a, double d)
+				{
+					super(n, color, v, f);
+					this.nombre_pueblo=np;
+					this.nombre_campo=nc;
+					this.altura=a;
+					this.diametro=d;
+				}
 		
 		//constructor vacío para serializar
 		public clsMaquina_Eolica()
