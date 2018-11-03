@@ -26,7 +26,7 @@ public class clsMain
 					clsBD.crearTablaBD(clsConstantes.USUARIO);
 					clsBD.crearTablaBD(clsConstantes.CLIENTE);
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
-					
+
 					//clsBD.insertarDatoTablaBD(new clsCliente("a","a","a","a","a"));
 					//clsBD.insertarDatoTablaBD(new clsCliente("b","b","a","a","a"));
 					//clsBD.insertarDatoTablaBD(new clsCliente("c","b","a","a","a"));
