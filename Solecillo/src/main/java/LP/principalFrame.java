@@ -33,6 +33,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -166,6 +168,8 @@ public class principalFrame extends JFrame {
 	
 		table.setModel(modeloT);
 		
+	
+		
 		panel_2.add(table);
 		
 		TableRowSorter filtro = new TableRowSorter(modeloT);
@@ -178,6 +182,13 @@ public class principalFrame extends JFrame {
 		
 		JButton btnVenta = new JButton("VENTA");
 		btnVenta.setBounds(729, 407, 115, 29);
+		btnVenta.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{		
+				System.out.println(table.getValueAt(table.getSelectedRow(),1));
+			}
+		});
 		panel_2.add(btnVenta);
 		
 		JComboBox comboBox = new JComboBox();
