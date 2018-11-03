@@ -5,14 +5,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+
 import Analisisdedatos.ScatterPlotExample;
+import Comun.clsConstantes;
 import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsUsuario;
+import Persistencia.clsBD;
 import weka.core.Instances;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -23,13 +30,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.util.ArrayList;
+
 
 public class principalFrame extends JFrame {
 
@@ -47,6 +61,7 @@ public class principalFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
 	public principalFrame(clsUsuario usu) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
@@ -124,6 +139,7 @@ public class principalFrame extends JFrame {
 		
 		// Datos prueba
 		clsGestor objGestor=new clsGestor();
+		
 		clnts=objGestor.ListaClientes();
 		int i;
 		int max=clnts.size();
@@ -160,14 +176,15 @@ public class principalFrame extends JFrame {
 		textField.setBounds(493, 283, 210, 36);
 		panel_2.add(textField);
 		textField.setColumns(10);
+	
 		
-		
-		/*textField.addKeyListener(new KeyAdapter() {
+		textField.addKeyListener(new KeyAdapter() {
             public void keyReleased(final KeyEvent e) 
             {
                 String cadena = (textField.getText());
                 textField.setText(cadena);
-             
+                
+                System.out.println(textField.getText());
                 int columna=0;
                
                 if(comboBox.getSelectedIndex()==0) {
@@ -189,7 +206,7 @@ public class principalFrame extends JFrame {
 				table.setRowSorter(filtro);
         }}
 
-    );*/
+    );
 		
 		
 		
@@ -422,4 +439,8 @@ public class principalFrame extends JFrame {
 			});
 		}
 	   }
+	private Object i(int size) {
+		// TODO Auto-generated method stub
+		return null;
+}
 	}
