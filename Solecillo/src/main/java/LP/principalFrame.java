@@ -49,7 +49,7 @@ public class principalFrame extends JFrame {
 	 */
 	public principalFrame(clsUsuario usu) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 818, 515);
+		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,7 +59,7 @@ public class principalFrame extends JFrame {
 		
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 796, 459);
+		tabbedPane.setBounds(0, 0, 1000, 700);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
@@ -102,10 +102,10 @@ public class principalFrame extends JFrame {
 		tabbedPane.addTab("Clientes", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")), panel_2, null);
 		panel_2.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Clientes");
+		/*JLabel lblNewLabel_2 = new JLabel("Clientes");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel_2.setBounds(326, 16, 95, 56);
-		panel_2.add(lblNewLabel_2);
+		panel_2.add(lblNewLabel_2);*/
 		
 		DefaultTableModel modeloT= new DefaultTableModel();
 		modeloT.addColumn("Nombre");
