@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
+
+import LN.clsCliente;
 import LN.clsMaquina_Eolica;
 import LN.clsMaquina_Hidraulica;
 import LN.clsMaquina_Mareomotriz;
@@ -123,7 +125,7 @@ public class clsBD
 			try 
 			{
 				statement.executeUpdate("CREATE TABLE IF NOT EXISTS  CLIENTE (NOMBRE STRING NOT NULL PRIMARY KEY,"+ "AP_1 STRING, "+"AP_2 STRING,"+
-										"NOMBRE STRING NOT NULL PRIMARY KEY,"+ 
+										"DNI STRING ,"+ 
 										"EMPRESA STRING)");
 			} 
 			catch (SQLException e1) 
@@ -251,6 +253,21 @@ public class clsBD
 				e1.printStackTrace();
 			}
 		}
+		else if (obj instanceof clsCliente)
+		{
+			try 
+			{
+				statement.executeUpdate("INSERT INTO CLIENTE VALUES ('"+((clsCliente)obj).getNombre()+"','"
+						+ ((clsCliente)obj).getApellido1()+"','"
+						+((clsCliente)obj).getApellido2()+"','"
+						+ ((clsCliente)obj).getdni()+"','"+((clsCliente)obj).getEmpresa()+"')");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+		}
+		
 	}
 	
 	/**

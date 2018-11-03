@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 import java.sql.Connection;
 
 import Comun.clsConstantes;
+import LN.clsCliente;
 import LN.clsUsuario;
 import LP.loginFrame;
 import LP.principalFrame;
@@ -25,6 +26,10 @@ public class clsMain
 					clsBD.crearTablaBD(clsConstantes.USUARIO);
 					clsBD.crearTablaBD(clsConstantes.CLIENTE);
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
+					
+					clsBD.insertarDatoTablaBD(new clsCliente("a","a","a","a","a"));
+					clsBD.insertarDatoTablaBD(new clsCliente("b","b","a","a","a"));
+					clsBD.insertarDatoTablaBD(new clsCliente("c","b","a","a","a"));
 					//clsUsuario u=new clsUsuario();
 					//principalFrame p=new principalFrame(u);
 					loginFrame p=new loginFrame();

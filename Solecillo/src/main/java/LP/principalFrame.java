@@ -3,25 +3,40 @@ package LP;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 import Analisisdedatos.ScatterPlotExample;
+import LN.clsCliente;
+import LN.clsGestor;
 import LN.clsUsuario;
 import weka.core.Instances;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Label;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class principalFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	principalFrame a;
+	private ArrayList<clsCliente> clnts;
 	
 	static JFrame miVentana;
 	static clsUsuario usuario;
@@ -125,11 +140,11 @@ public class principalFrame extends JFrame {
 		
 		TableRowSorter filtro = new TableRowSorter(modeloT);
 		
-		JLabel lblNewLabel_2 = new JLabel("Gestion Comercial");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(323, 16, 257, 56);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		panel_2.add(lblNewLabel_2);
+		JLabel lblNewLabel_3 = new JLabel("Gestion Comercial");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(323, 16, 257, 56);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel_2.add(lblNewLabel_3);
 		
 
 		JButton btnVenta = new JButton("VENTA");
@@ -147,7 +162,7 @@ public class principalFrame extends JFrame {
 		textField.setColumns(10);
 		
 		
-		textField.addKeyListener(new KeyAdapter() {
+		/*textField.addKeyListener(new KeyAdapter() {
             public void keyReleased(final KeyEvent e) 
             {
                 String cadena = (textField.getText());
@@ -174,7 +189,7 @@ public class principalFrame extends JFrame {
 				table.setRowSorter(filtro);
         }}
 
-    );
+    );*/
 		
 		
 		
@@ -234,10 +249,10 @@ public class principalFrame extends JFrame {
 			tabbedPane.addTab("Modificar datos", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_3, null);
 			panel_3.setLayout(null);
 			
-			JLabel lblNewLabel_3 = new JLabel("Modificar datos");
-			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblNewLabel_3.setBounds(326, 16, 195, 56);
-			panel_3.add(lblNewLabel_3);
+			JLabel lblNewLabel_31 = new JLabel("Modificar datos");
+			lblNewLabel_31.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblNewLabel_31.setBounds(326, 16, 195, 56);
+			panel_3.add(lblNewLabel_31);
 			
 			JButton btnAceptar_2 = new JButton("Modificar mis datos");
 			btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -267,10 +282,10 @@ public class principalFrame extends JFrame {
 			tabbedPane.addTab("Dar de alta", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_3, null);
 			panel_3.setLayout(null);
 			
-			JLabel lblNewLabel_3 = new JLabel("Registro usuarios");
-			lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblNewLabel_3.setBounds(326, 16, 195, 56);
-			panel_3.add(lblNewLabel_3);
+			JLabel lblNewLabel_31 = new JLabel("Registro usuarios");
+			lblNewLabel_31.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			lblNewLabel_31.setBounds(326, 16, 195, 56);
+			panel_3.add(lblNewLabel_31);
 			
 			JButton btnAceptar_2 = new JButton("Crear nuevo usuario");
 			btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));

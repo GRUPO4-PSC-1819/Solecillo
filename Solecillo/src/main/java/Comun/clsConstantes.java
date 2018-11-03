@@ -17,4 +17,5 @@ public class clsConstantes
 	public static final String MAQUINA_S = "MAQUINA_S";
 	public static final String ADMIN = "ADMIN";
 	public static final String PRINCIPAL = "PRINCIPAL";
+	public static final String CLIENTE = "CLIENTE";
 }
