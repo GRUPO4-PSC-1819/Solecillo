@@ -72,8 +72,8 @@ public class clsGestor implements Serializable
 							rs.getString("FABRICANTE"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_CAMPO"),
-							rs.getInt("ALTURA"),
-							rs.getInt("DIAMETRO")));
+							rs.getDouble("ALTURA"),
+							rs.getDouble("DIAMETRO")));
 				}
 			} 
 			catch (SQLException e)

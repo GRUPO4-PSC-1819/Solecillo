@@ -44,9 +44,10 @@ public class clsListaM extends JFrame
 	static ArrayList <clsMaquina_Solar> listaSolar;
 	
 	private JLabel lblInformacion;
-	private JRadioButton rdbtnOrdenPuntos;
-	private JRadioButton rdbtnOrdenNick;
-	private JRadioButton rdbtnOrdenAntig;
+	private JRadioButton rdbtnEolica;
+	private JRadioButton rdbtnHidraulica;
+	private JRadioButton rdbtnMareomotriz;
+	private JRadioButton rdbtnSolar;
 	private ButtonGroup btngrp;
 	private JButton btnSalir;
 	
@@ -108,25 +109,32 @@ public class clsListaM extends JFrame
 		lblInformacion.setFont(new Font(labelFont.getName(), Font.PLAIN, 24));
 		panelbotonera.add(lblInformacion, BorderLayout.CENTER);
 		
-		rdbtnOrdenPuntos = new JRadioButton("Puntuación (Elo)");
-		rdbtnOrdenPuntos.setBounds(51, 400, 128, 23);
-		rdbtnOrdenPuntos.setBackground(Color.WHITE);
-		panelbotonera.add(rdbtnOrdenPuntos);
+		rdbtnEolica = new JRadioButton("Eólicas");
+		rdbtnEolica.setBounds(51, 400, 128, 23);
+		rdbtnEolica.setBackground(Color.WHITE);
+		panelbotonera.add(rdbtnEolica);
 		
-		rdbtnOrdenNick = new JRadioButton("Nickname");
-		rdbtnOrdenNick.setBounds(262, 400, 109, 23);
-		rdbtnOrdenNick.setBackground(Color.WHITE);
-		panelbotonera.add(rdbtnOrdenNick);
+		rdbtnHidraulica = new JRadioButton("Hidrúalicas");
+		rdbtnHidraulica.setBounds(262, 400, 109, 23);
+		rdbtnHidraulica.setBackground(Color.WHITE);
+		panelbotonera.add(rdbtnHidraulica);
 		
-		rdbtnOrdenAntig = new JRadioButton("Antigüedad");
-		rdbtnOrdenAntig.setBounds(426, 400, 109, 23);
-		rdbtnOrdenAntig.setBackground(Color.WHITE);
-		panelbotonera.add(rdbtnOrdenAntig);
+		rdbtnMareomotriz = new JRadioButton("Mareomotrices");
+		rdbtnMareomotriz.setBounds(426, 400, 109, 23);
+		rdbtnMareomotriz.setBackground(Color.WHITE);
+		panelbotonera.add(rdbtnMareomotriz);
+		
+		rdbtnSolar = new JRadioButton("Solares");
+		rdbtnSolar.setBounds(426, 400, 109, 23);
+		rdbtnSolar.setBackground(Color.WHITE);
+		panelbotonera.add(rdbtnSolar);
 		
 		btngrp = new ButtonGroup();
-		btngrp.add(rdbtnOrdenPuntos);
-		btngrp.add(rdbtnOrdenNick);
-		btngrp.add(rdbtnOrdenAntig);
+		btngrp.add(rdbtnEolica);
+		btngrp.add(rdbtnHidraulica);
+		btngrp.add(rdbtnMareomotriz);
+		btngrp.add(rdbtnSolar);
+
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.setBounds(612, 400, 89, 23);
@@ -136,9 +144,12 @@ public class clsListaM extends JFrame
 
 		clsGestor objGestor = new clsGestor();
 		listaEolica = objGestor.ListaEolica();
+		listaHidraulica = objGestor.ListaHidraulica();
+		listaMareomotriz = objGestor.ListaMareomotriz();
+		listaSolar = objGestor.ListaSolar();
 		
 		/*Escuchadores*/
-		rdbtnOrdenPuntos.addActionListener(new ActionListener()
+		rdbtnEolica.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) 
@@ -154,36 +165,56 @@ public class clsListaM extends JFrame
 		        setVisible(true);
 			}
 		});
-		/*rdbtnOrdenNick.addActionListener(new ActionListener()
+		rdbtnHidraulica.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Nickname");
-				Collections.sort(listaUsuarios);
-				TablaOrden t=new TablaOrden(listaUsuarios);
-				t.setOpaque(true); //content panes must be opaque
-				getContentPane().add(t, BorderLayout.NORTH);
-		        
-		        pack();
-		        setVisible(true);
-			}
-		});
-		rdbtnOrdenAntig.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Antigüedad");
-				Collections.sort(listaUsuarios, new clsOrdenarPorAntiguedad());
-				TablaOrden t=new TablaOrden(listaUsuarios);
+				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
+				//Collections.sort(listaEolica, new clsOrdenarPorElo());
+				
+				clsTablaH t=new clsTablaH(listaHidraulica);
 				t.setOpaque(true); //content panes must be opaque
 				getContentPane().add(t, BorderLayout.NORTH);
 				
 		        pack();
-		        setVisible(true);	
-			}			
-		});*/
+		        setVisible(true);
+			}
+		});
+		rdbtnMareomotriz.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
+				//Collections.sort(listaEolica, new clsOrdenarPorElo());
+				
+				clsTablaM t=new clsTablaM(listaMareomotriz);
+				t.setOpaque(true); //content panes must be opaque
+				getContentPane().add(t, BorderLayout.NORTH);
+				
+		        pack();
+		        setVisible(true);
+			}
+		});
+		rdbtnSolar.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
+				//Collections.sort(listaEolica, new clsOrdenarPorElo());
+				
+				clsTablaS t=new clsTablaS(listaSolar);
+				t.setOpaque(true); //content panes must be opaque
+				getContentPane().add(t, BorderLayout.NORTH);
+				
+		        pack();
+		        setVisible(true);
+			}
+		});
+		
+		
 		btnSalir.addActionListener(new ActionListener()
 		{
 			@Override

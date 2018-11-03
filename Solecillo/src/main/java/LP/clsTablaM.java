@@ -28,17 +28,19 @@ public class clsTablaM extends JPanel
     public clsTablaM(ArrayList<clsMaquina_Mareomotriz> u) 
     {
     	super(new GridLayout(1,0));
-    	JFrame frame = new JFrame("Rankings");
+    	JFrame frame = new JFrame("Máquinas Mareomotrices");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
         JTable table = new JTable(new MyTableModel(u));
         table.setFillsViewportHeight(true);
         
-     //   table.getColumn("#").setCellRenderer(rendererCentrado);
-       // table.getColumn("Fecha de alta").setCellRenderer(rendererCentrado);
-        //table.getColumn("Puntuación (ELO)").setCellRenderer(rendererCentrado);
+        table.getColumn("ID").setCellRenderer(rendererCentrado);
+        table.getColumn("Valor").setCellRenderer(rendererCentrado);
+        table.getColumn("Distancia millas").setCellRenderer(rendererCentrado);
 
-        //table.getColumn("#").setPreferredWidth(20);
+        table.getColumn("ID").setPreferredWidth(25);
+        table.getColumn("Valor").setPreferredWidth(25);
+        table.getColumn("Distancia millas").setPreferredWidth(45);
         
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);

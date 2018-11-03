@@ -81,9 +81,7 @@ public class principalFrame extends JFrame {
 				frame.setVisible(true);
 			}	
 		});
-		
-		
-		
+				
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(135, 206, 235));
 		tabbedPane.addTab("Clientes", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")), panel_2, null);
