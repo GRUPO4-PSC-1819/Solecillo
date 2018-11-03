@@ -92,6 +92,141 @@ public class principalFrame extends JFrame {
 		lblNewLabel_2.setBounds(326, 16, 95, 56);
 		panel_2.add(lblNewLabel_2);
 		
+		DefaultTableModel modeloT= new DefaultTableModel();
+		modeloT.addColumn("Nombre");
+		modeloT.addColumn("Apellido 1");
+		modeloT.addColumn("Apellido 2");
+		modeloT.addColumn("DNI ");
+		modeloT.addColumn("EMPRESA");
+		
+		JTable table = new JTable(modeloT);
+		
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		table.setBounds(41, 333, 645, 169);
+	
+		
+		
+		// Datos prueba
+		clsGestor objGestor=new clsGestor();
+		clnts=objGestor.ListaClientes();
+		int i;
+		int max=clnts.size();
+		System.out.println(max);
+		
+		for(clsCliente cliente : clnts)
+		{
+			modeloT.addRow(new Object[]{cliente.getNombre(),cliente.getApellido1(),cliente.getApellido2(),cliente.getdni(), cliente.getEmpresa()});
+		}
+	
+		table.setModel(modeloT);
+		
+		panel_2.add(table);
+		
+		TableRowSorter filtro = new TableRowSorter(modeloT);
+		
+		JLabel lblNewLabel_2 = new JLabel("Gestion Comercial");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(323, 16, 257, 56);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		panel_2.add(lblNewLabel_2);
+		
+
+		JButton btnVenta = new JButton("VENTA");
+		btnVenta.setBounds(729, 407, 115, 29);
+		panel_2.add(btnVenta);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"NOMBRE", "APELLIDO", "DNI", "COMPRAS"}));
+		comboBox.setBounds(173, 281, 259, 26);
+		panel_2.add(comboBox);
+		
+		JTextField textField = new JTextField();
+		textField.setBounds(493, 283, 210, 36);
+		panel_2.add(textField);
+		textField.setColumns(10);
+		
+		
+		textField.addKeyListener(new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) 
+            {
+                String cadena = (textField.getText());
+                textField.setText(cadena);
+             
+                int columna=0;
+               
+                if(comboBox.getSelectedIndex()==0) {
+					//Nombre  
+					//filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), 1));
+                	
+					}
+				
+				if(comboBox.getSelectedIndex()==1) {
+					columna=1;
+				}
+				if(comboBox.getSelectedIndex()==2) {
+					columna=2;}
+				if(comboBox.getSelectedIndex()==3) { 
+					columna=3;
+					
+				}
+				filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), columna));
+				table.setRowSorter(filtro);
+        }}
+
+    );
+		
+		
+		
+	
+		JLabel lblBuscarPor = new JLabel("Buscar por: ");
+		lblBuscarPor.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblBuscarPor.setBounds(48, 283, 152, 20);
+		panel_2.add(lblBuscarPor);
+		
+		
+		
+		JButton btnNewButton = new JButton("BUSCAR");
+		btnNewButton.setBounds(729, 281, 115, 29);
+		panel_2.add(btnNewButton);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(15, 243, 881, 10);
+		panel_2.add(separator);
+		
+		Label label = new Label("Nombre");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		label.setBounds(15, 94, 100, 27);
+		panel_2.add(label);
+		
+		Label label_1 = new Label("Apellido 1");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		label_1.setBounds(15, 137, 100, 27);
+		panel_2.add(label_1);
+		
+		Label label_2 = new Label("Apellido 2");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		label_2.setBounds(15, 190, 100, 27);
+		panel_2.add(label_2);
+		
+		TextField textField_1 = new TextField();
+		textField_1.setBounds(130, 94, 231, 27);
+		panel_2.add(textField_1);
+		
+		TextField textField_2 = new TextField();
+		textField_2.setBounds(130, 137, 231, 27);
+		panel_2.add(textField_2);
+		
+		TextField textField_3 = new TextField();
+		textField_3.setBounds(130, 190, 231, 27);
+		panel_2.add(textField_3);
+		
+		
+		
+	
+		
+		
+		
 		if(usu!=null)//lo que va a visualizar un usuario
 		{
 			JPanel panel_3 = new JPanel();
