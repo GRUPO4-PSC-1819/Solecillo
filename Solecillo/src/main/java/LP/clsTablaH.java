@@ -77,6 +77,7 @@ public class clsTablaH extends JPanel
     		data=new Object[filas][];
     		cont=0;
     		
+    		
     		for (clsMaquina_Hidraulica aux : u)
     		{
     			Object[]n={new Integer(aux.getId()),

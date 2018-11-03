@@ -205,6 +205,39 @@ public class clsGestor implements Serializable
 				
 		return lista;	
 	}
+	
+	public ArrayList<clsVenta> ListaVentas()	
+	{	
+		ArrayList<clsVenta> lista = new ArrayList <clsVenta>();
+		ResultSet rs = clsBD.obtenerDatosTablaBD("VENTA");
+
+
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{System.out.println("Hay clientes");
+					lista.add(new clsVenta(
+							rs.getInt("ID"),
+							rs.getString("NOMBREC"),
+							rs.getInt("IDM"),
+							rs.getInt("CANTIDAD")
+							));
+					
+				}
+				
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+			
+		}
+				
+		return lista;	
+	}
+	
 	/**
 	 * Envía una serie de atributos para crear un nuevo usuario. En caso de que hubiera alguna repetición de nickname, saltará una excepción que impida
 	 * que se lleve a cabo dicho registro.

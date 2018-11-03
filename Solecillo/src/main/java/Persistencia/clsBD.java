@@ -14,6 +14,7 @@ import LN.clsMaquina_Hidraulica;
 import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
 import LN.clsUsuario;
+import LN.clsVenta;
 
 
 
@@ -93,6 +94,18 @@ public class clsBD
 				statement.executeUpdate("CREATE TABLE IF NOT EXISTS USUARIO (NICKNAME STRING NOT NULL PRIMARY KEY,"+
 										"CONTRASENYA STRING NOT NULL, "+ 
 										"NOMBRE STRING, APELLIDO1 STRING, APELLIDO2 STRING)");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+			break;
+		case "VENTA": 
+			try 
+			{
+				statement.executeUpdate("CREATE TABLE IF NOT EXISTS VENTA (ID INT NOT NULL PRIMARY KEY,"+
+										"NOMBREC STRING NOT NULL, "+ 
+										"IDM INT, CANTIDAD INT)");
 			} 
 			catch (SQLException e1) 
 			{
@@ -267,6 +280,20 @@ public class clsBD
 				e1.printStackTrace();
 			}
 		}
+		else if (obj instanceof clsVenta)
+		{
+			try 
+			{
+				statement.executeUpdate("INSERT INTO VENTA VALUES ('"+((clsVenta)obj).getId()+"','"
+						+ ((clsVenta)obj).getNombreC()+"','"
+						+((clsVenta)obj).getIdm()+"','"
+						+ ((clsVenta)obj).getCantidad()+"')");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+		}
 		
 	}
 	
@@ -346,7 +373,17 @@ public class clsBD
 				e1.printStackTrace();
 			}
 			break;
+	case "VENTA":
+		try 
+		{System.out.println("Clientes");
+		    rs = statement.executeQuery("SELECT * from VENTA");
+		} 
+		catch (SQLException e1) 
+		{
+			e1.printStackTrace();
 		}
+		break;
+	}
 		 return rs;
 	}
 	

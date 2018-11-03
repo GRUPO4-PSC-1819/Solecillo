@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import Comun.clsConstantes;
 import LN.clsGestor;
@@ -31,6 +32,8 @@ import LN.clsMaquina_Eolica;
 import LN.clsMaquina_Hidraulica;
 import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
+import LN.clsVenta;
+import Persistencia.clsBD;
 
 /**
  * Clase que generará una JFrame para mostrar los datos de los usuarios registrados.
@@ -55,6 +58,14 @@ public class clsListaM extends JFrame
 	
 	private JPanel paneltabla;
 	private JPanel panelbotonera;
+
+	private clsTablaE te;
+
+	private clsTablaS ts;
+
+	private clsTablaM tm;
+
+	private clsTablaH th;
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
@@ -93,7 +104,7 @@ public class clsListaM extends JFrame
 	 * Constructor del JFrame que incluye escuchadores varios.
 	 * @param titulo Título de la ventana.
 	 */	
-	public clsListaM(String titulo, String funcion)
+	public clsListaM(String titulo, String funcion,String cliente)
 	{
 		super(titulo);
 		getContentPane().setLayout(new BorderLayout());
@@ -122,7 +133,7 @@ public class clsListaM extends JFrame
 		panelbotonera.add(rdbtnHidraulica);
 		
 		rdbtnMareomotriz = new JRadioButton("Mareomotrices");
-		rdbtnMareomotriz.setBounds(426, 400, 109, 23);
+		rdbtnMareomotriz.setBounds(426, 400, 300, 23);
 		rdbtnMareomotriz.setBackground(Color.WHITE);
 		panelbotonera.add(rdbtnMareomotriz);
 		
@@ -149,6 +160,15 @@ public class clsListaM extends JFrame
 		{
 			btnSalir = new JButton("Modificar");
 		}
+		else if(funcion.equals(clsConstantes.VENTA))
+		{
+			//MEJORARLOOOOOO
+			btnSalir = new JButton("Venta");
+			JTextField textField = new JTextField();
+			textField.setBounds(600, 600, 100, 36);
+			paneltabla.add(textField);
+			//textField.setColumns(10);
+		}
 		btnSalir.setBounds(612, 400, 89, 23);
 		panelbotonera.add(btnSalir);
 		
@@ -161,10 +181,10 @@ public class clsListaM extends JFrame
 		listaMareomotriz = objGestor.ListaMareomotriz();
 		listaSolar = objGestor.ListaSolar();
 		
-		clsTablaE te=new clsTablaE(listaEolica);
-		clsTablaH th=new clsTablaH(listaHidraulica);
-		clsTablaM tm=new clsTablaM(listaMareomotriz);
-		clsTablaS ts=new clsTablaS(listaSolar);
+		 te=new clsTablaE(listaEolica);
+		th=new clsTablaH(listaHidraulica);
+		tm=new clsTablaM(listaMareomotriz);
+		ts=new clsTablaS(listaSolar);
 		
 		
 		/*Escuchadores*/
@@ -299,6 +319,42 @@ public class clsListaM extends JFrame
 						}
 					}
 				}
+				else if(funcion.equals(clsConstantes.VENTA)){
+					if(rdbtnEolica.isSelected())
+					{
+						int a=te.getFila();
+						if(a>-1)
+						{
+							System.out.println(listaEolica.get(a-1));
+							clsBD.insertarDatoTablaBD(new clsVenta(listaEolica.get(a-1).getId(),cliente,5));
+						}
+					}
+					else if(rdbtnHidraulica.isSelected())
+					{
+						int a=th.getFila();
+						if(a>-1)
+						{
+					        clsBD.insertarDatoTablaBD(new clsVenta(listaHidraulica.get(a-1).getId(),cliente,5));
+						}
+					}
+					else if(rdbtnMareomotriz.isSelected())
+					{
+						int a=tm.getFila();
+						if(a>-1)
+						{
+					        clsBD.insertarDatoTablaBD(new clsVenta(listaMareomotriz.get(a-1).getId(),cliente,5));
+						}
+					}
+					else if(rdbtnSolar.isSelected())
+					{
+						int a=ts.getFila();
+						if(a>-1)
+						{
+					        clsBD.insertarDatoTablaBD(new clsVenta(listaSolar.get(a-1).getId(),cliente,5));
+						}
+					}
+				}
+				
 			/*	else if(funcion.equals(clsConstantes.MODIFICAR))
 				{
 					if(rdbtnEolica.isSelected())

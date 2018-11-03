@@ -21,6 +21,7 @@ public class clsConstantes
 	public static final String VISUALIZAR = "VISUALIZAR";
 	public static final String BORRAR = "BORRAR";
 	public static final String MODIFICAR = "MODIFICAR";
+	public static final String VENTA = "VENTA";
 
 	
 }

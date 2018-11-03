@@ -17,6 +17,7 @@ import Comun.clsConstantes;
 import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsUsuario;
+import LN.clsVenta;
 import Persistencia.clsBD;
 import weka.core.Instances;
 
@@ -51,6 +52,8 @@ public class principalFrame extends JFrame {
 	private JPanel contentPane;
 	principalFrame a;
 	private ArrayList<clsCliente> clnts;
+	private ArrayList<clsVenta> ventas;
+	private clsGestor objGestor;
 	
 	static JFrame miVentana;
 	static clsUsuario usuario;
@@ -106,7 +109,7 @@ public class principalFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VISUALIZAR);
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VISUALIZAR,null);
 				frame.pack();
 				frame.setVisible(true);
 			}	
@@ -122,7 +125,7 @@ public class principalFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.BORRAR);
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.BORRAR,null);
 				frame.pack();
 				frame.setVisible(true);
 			}	
@@ -138,7 +141,7 @@ public class principalFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.MODIFICAR);
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.MODIFICAR,null);
 				frame.pack();
 				frame.setVisible(true);
 			}	
@@ -148,6 +151,56 @@ public class principalFrame extends JFrame {
 		panel_2.setBackground(new Color(135, 206, 235));
 		tabbedPane.addTab("Clientes", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")), panel_2, null);
 		panel_2.setLayout(null);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(new Color(135, 206, 235));
+		tabbedPane.addTab("Ventas", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")), panel_5, null);
+		panel_5.setLayout(null);
+		
+		DefaultTableModel modeloV= new DefaultTableModel();
+		modeloV.addColumn("Id");
+		modeloV.addColumn("Cliente");
+		modeloV.addColumn("Producto");
+		modeloV.addColumn("Cantidad");
+		
+		JTable tableV = new JTable(modeloV);
+		tableV.setColumnSelectionAllowed(true);
+		tableV.setCellSelectionEnabled(true);
+		tableV.setBounds(41, 333, 645, 169);
+		
+		objGestor=new clsGestor();
+		ventas=objGestor.ListaVentas();
+		
+		for(clsVenta venta : ventas)
+		{
+			modeloV.addRow(new Object[]{venta.getId(),venta.getNombreC(),venta.getIdm(),venta.getCantidad()});
+		}
+		
+		JButton btnRefrescar = new JButton("Refrescar");
+		btnRefrescar.setBounds(729, 407, 115, 29);
+		btnRefrescar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ventas=objGestor.ListaVentas();
+				if (modeloV.getRowCount() > 0) {
+				    for (int i = modeloV.getRowCount() - 1; i > -1; i--) {
+				        modeloV.removeRow(i);
+				    }
+				}
+				for(clsVenta venta : ventas)
+				{
+					modeloV.addRow(new Object[]{venta.getId(),venta.getNombreC(),venta.getIdm(),venta.getCantidad()});
+				}
+			}});
+		panel_5.add(btnRefrescar);
+		
+	
+		tableV.setModel(modeloV);
+		
+		panel_5.add(tableV);
+		
 		
 		/*JLabel lblNewLabel_2 = new JLabel("Clientes");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -170,7 +223,7 @@ public class principalFrame extends JFrame {
 		
 		
 		// Datos prueba
-		clsGestor objGestor=new clsGestor();
+		objGestor=new clsGestor();
 		
 		clnts=objGestor.ListaClientes();
 		int i;
@@ -197,6 +250,22 @@ public class principalFrame extends JFrame {
 
 		JButton btnVenta = new JButton("VENTA");
 		btnVenta.setBounds(729, 407, 115, 29);
+		btnVenta.addActionListener(new ActionListener() 
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//0 por el ud
+				System.out.println(table.getValueAt(table.getSelectedRow(), 0));
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VENTA,(String) table.getValueAt(table.getSelectedRow(), 0));
+				frame.pack();
+				frame.setVisible(true);
+				
+			}
+			
+		});
+		
 		panel_2.add(btnVenta);
 		
 		JComboBox comboBox = new JComboBox();
