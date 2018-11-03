@@ -23,6 +23,7 @@ public class clsMain
 				{
 					Connection conec=clsBD.initBD("Data/Solecillo.bd");
 					clsBD.crearTablaBD(clsConstantes.USUARIO);
+					clsBD.crearTablaBD(clsConstantes.CLIENTE);
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
 					//clsUsuario u=new clsUsuario();
 					//principalFrame p=new principalFrame(u);
