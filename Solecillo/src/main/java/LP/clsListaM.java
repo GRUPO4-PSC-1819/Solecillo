@@ -24,6 +24,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+
+import Comun.clsConstantes;
 import LN.clsGestor;
 import LN.clsMaquina_Eolica;
 import LN.clsMaquina_Hidraulica;
@@ -91,7 +93,7 @@ public class clsListaM extends JFrame
 	 * Constructor del JFrame que incluye escuchadores varios.
 	 * @param titulo Título de la ventana.
 	 */	
-	public clsListaM(String titulo)
+	public clsListaM(String titulo, String funcion)
 	{
 		super(titulo);
 		getContentPane().setLayout(new BorderLayout());
@@ -135,18 +137,35 @@ public class clsListaM extends JFrame
 		btngrp.add(rdbtnMareomotriz);
 		btngrp.add(rdbtnSolar);
 
-		
-		btnSalir = new JButton("Salir");
+		if(funcion.equals(clsConstantes.VISUALIZAR))
+		{
+			btnSalir = new JButton("Salir");
+		}
+		else if(funcion.equals(clsConstantes.BORRAR))
+		{
+			btnSalir = new JButton("Borrar");
+		}
+		else if(funcion.equals(clsConstantes.MODIFICAR))
+		{
+			btnSalir = new JButton("Modificar");
+		}
 		btnSalir.setBounds(612, 400, 89, 23);
 		panelbotonera.add(btnSalir);
 		
 		this.setPreferredSize(new Dimension(750,500));
 
 		clsGestor objGestor = new clsGestor();
+		
 		listaEolica = objGestor.ListaEolica();
 		listaHidraulica = objGestor.ListaHidraulica();
 		listaMareomotriz = objGestor.ListaMareomotriz();
 		listaSolar = objGestor.ListaSolar();
+		
+		clsTablaE te=new clsTablaE(listaEolica);
+		clsTablaH th=new clsTablaH(listaHidraulica);
+		clsTablaM tm=new clsTablaM(listaMareomotriz);
+		clsTablaS ts=new clsTablaS(listaSolar);
+		
 		
 		/*Escuchadores*/
 		rdbtnEolica.addActionListener(new ActionListener()
@@ -157,9 +176,8 @@ public class clsListaM extends JFrame
 				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
 				//Collections.sort(listaEolica, new clsOrdenarPorElo());
 				
-				clsTablaE t=new clsTablaE(listaEolica);
-				t.setOpaque(true); //content panes must be opaque
-				getContentPane().add(t, BorderLayout.NORTH);
+				te.setOpaque(true); //content panes must be opaque
+				getContentPane().add(te, BorderLayout.NORTH);
 				
 		        pack();
 		        setVisible(true);
@@ -173,9 +191,9 @@ public class clsListaM extends JFrame
 				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
 				//Collections.sort(listaEolica, new clsOrdenarPorElo());
 				
-				clsTablaH t=new clsTablaH(listaHidraulica);
-				t.setOpaque(true); //content panes must be opaque
-				getContentPane().add(t, BorderLayout.NORTH);
+				
+				th.setOpaque(true); //content panes must be opaque
+				getContentPane().add(th, BorderLayout.NORTH);
 				
 		        pack();
 		        setVisible(true);
@@ -189,9 +207,8 @@ public class clsListaM extends JFrame
 				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
 				//Collections.sort(listaEolica, new clsOrdenarPorElo());
 				
-				clsTablaM t=new clsTablaM(listaMareomotriz);
-				t.setOpaque(true); //content panes must be opaque
-				getContentPane().add(t, BorderLayout.NORTH);
+				tm.setOpaque(true); //content panes must be opaque
+				getContentPane().add(tm, BorderLayout.NORTH);
 				
 		        pack();
 		        setVisible(true);
@@ -205,9 +222,8 @@ public class clsListaM extends JFrame
 				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
 				//Collections.sort(listaEolica, new clsOrdenarPorElo());
 				
-				clsTablaS t=new clsTablaS(listaSolar);
-				t.setOpaque(true); //content panes must be opaque
-				getContentPane().add(t, BorderLayout.NORTH);
+				ts.setOpaque(true); //content panes must be opaque
+				getContentPane().add(ts, BorderLayout.NORTH);
 				
 		        pack();
 		        setVisible(true);
@@ -220,7 +236,117 @@ public class clsListaM extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				dispose();	
+				if(funcion.equals(clsConstantes.VISUALIZAR))
+				{
+					dispose();
+				}
+				else if(funcion.equals(clsConstantes.BORRAR))
+				{
+					if(rdbtnEolica.isSelected())
+					{
+						int a=te.getFila();
+						if(a>-1)
+						{
+							objGestor.BorrarMaquina(a);
+							listaEolica = objGestor.ListaEolica();
+							clsTablaE te1=new clsTablaE(listaEolica);
+							te1.setOpaque(true); //content panes must be opaque
+							getContentPane().add(te1, BorderLayout.NORTH);
+					        pack();
+					        setVisible(true);
+						}
+					}
+					else if(rdbtnHidraulica.isSelected())
+					{
+						int a=th.getFila();
+						if(a>-1)
+						{
+							objGestor.BorrarMaquina(a);
+							listaHidraulica = objGestor.ListaHidraulica();
+							clsTablaH th1=new clsTablaH(listaHidraulica);
+							th1.setOpaque(true); //content panes must be opaque
+							getContentPane().add(th1, BorderLayout.NORTH);
+					        pack();
+					        setVisible(true);	
+						}
+					}
+					else if(rdbtnMareomotriz.isSelected())
+					{
+						int a=tm.getFila();
+						if(a>-1)
+						{
+							objGestor.BorrarMaquina(a);
+							listaMareomotriz = objGestor.ListaMareomotriz();
+							clsTablaM tm1=new clsTablaM(listaMareomotriz);
+							tm1.setOpaque(true); //content panes must be opaque
+							getContentPane().add(tm1, BorderLayout.NORTH);
+					        pack();
+					        setVisible(true);
+						}
+					}
+					else if(rdbtnSolar.isSelected())
+					{
+						int a=ts.getFila();
+						if(a>-1)
+						{
+							objGestor.BorrarMaquina(a);
+							listaSolar = objGestor.ListaSolar();
+							clsTablaS ts1=new clsTablaS(listaSolar);
+							ts1.setOpaque(true); //content panes must be opaque
+							getContentPane().add(ts1, BorderLayout.NORTH);
+					        pack();
+					        setVisible(true);
+						}
+					}
+				}
+			/*	else if(funcion.equals(clsConstantes.MODIFICAR))
+				{
+					if(rdbtnEolica.isSelected())
+					{
+						int a=te.getFila();
+						clsModificarEolica window = new clsModificarEolica(usu, (principalFrame) miVentana);
+						objGestor.ModificarMaquinaEolica(a);
+						listaEolica = objGestor.ListaEolica();
+						clsTablaE te1=new clsTablaE(listaEolica);
+						te1.setOpaque(true); //content panes must be opaque
+						getContentPane().add(te1, BorderLayout.NORTH);
+				        pack();
+				        setVisible(true);
+					}
+					else if(rdbtnHidraulica.isSelected())
+					{
+						int a=th.getFila();
+						objGestor.BorrarMaquina(a);
+						listaHidraulica = objGestor.ListaHidraulica();
+						clsTablaH th1=new clsTablaH(listaHidraulica);
+						th1.setOpaque(true); //content panes must be opaque
+						getContentPane().add(th1, BorderLayout.NORTH);
+				        pack();
+				        setVisible(true);					
+					}
+					else if(rdbtnMareomotriz.isSelected())
+					{
+						int a=tm.getFila();
+						objGestor.BorrarMaquina(a);
+						listaMareomotriz = objGestor.ListaMareomotriz();
+						clsTablaM tm1=new clsTablaM(listaMareomotriz);
+						tm1.setOpaque(true); //content panes must be opaque
+						getContentPane().add(tm1, BorderLayout.NORTH);
+				        pack();
+				        setVisible(true);					
+					}
+					else if(rdbtnSolar.isSelected())
+					{
+						int a=ts.getFila();
+						objGestor.BorrarMaquina(a);
+						listaSolar = objGestor.ListaSolar();
+						clsTablaS ts1=new clsTablaS(listaSolar);
+						ts1.setOpaque(true); //content panes must be opaque
+						getContentPane().add(ts1, BorderLayout.NORTH);
+				        pack();
+				        setVisible(true);					
+					}
+				}*/
 			}
 		});
 	}	

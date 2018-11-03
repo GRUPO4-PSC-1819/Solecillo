@@ -243,4 +243,17 @@ public class clsGestor implements Serializable
 		clsBD.modificarDatoTablaBD(modificado);
 		return modificado;
 	}
+	
+	
+	public void BorrarMaquina(int id)
+	{
+		clsBD.BorrarMaquina(id);
+	}
+	
+	public clsMaquina_Eolica ModificarMaquinaEolica(String n, String col, double val, String fab, String np, String nc, double a, double d)
+	{
+		clsMaquina_Eolica modificado=new clsMaquina_Eolica(n, col, val, fab, np, nc, a, d);
+		clsBD.modificarDatoTablaBD(modificado);
+		return modificado;
+	}
 }

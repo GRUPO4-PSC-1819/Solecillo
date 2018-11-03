@@ -329,4 +329,17 @@ public class clsBD
 				e1.printStackTrace();
 			}
 	}
+	
+	public static void BorrarMaquina(int id)
+	{
+		if (statement==null) return;
+			try 
+			{
+				statement.executeUpdate("DELETE FROM MAQUINA WHERE ID="+id);
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+	}
 }

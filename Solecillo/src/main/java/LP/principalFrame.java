@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import Analisisdedatos.ScatterPlotExample;
+import Comun.clsConstantes;
 import LN.clsUsuario;
 import weka.core.Instances;
 import javax.swing.JTabbedPane;
@@ -68,7 +69,7 @@ public class principalFrame extends JFrame {
 		
 		JButton btnM = new JButton("Ver Máquinas");
 		btnM.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnM.setBounds(254, 194, 257, 60);
+		btnM.setBounds(254, 60, 257, 60);
 		panel_1.add(btnM);
 		
 		btnM.addActionListener(new ActionListener()
@@ -76,7 +77,39 @@ public class principalFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				clsListaM frame = new clsListaM("Lista de máquinas");
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VISUALIZAR);
+				frame.pack();
+				frame.setVisible(true);
+			}	
+		});
+		
+		JButton btnBM = new JButton("Borrar Máquinas");
+		btnBM.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnBM.setBounds(254, 130, 257, 60);
+		panel_1.add(btnBM);
+		
+		btnBM.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.BORRAR);
+				frame.pack();
+				frame.setVisible(true);
+			}	
+		});
+		
+		JButton btnMM = new JButton("Modificar Máquinas");
+		btnMM.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnMM.setBounds(254, 200, 257, 60);
+		panel_1.add(btnMM);
+		
+		btnMM.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.MODIFICAR);
 				frame.pack();
 				frame.setVisible(true);
 			}	

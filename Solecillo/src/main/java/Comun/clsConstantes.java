@@ -17,4 +17,9 @@ public class clsConstantes
 	public static final String MAQUINA_S = "MAQUINA_S";
 	public static final String ADMIN = "ADMIN";
 	public static final String PRINCIPAL = "PRINCIPAL";
+	public static final String VISUALIZAR = "VISUALIZAR";
+	public static final String BORRAR = "BORRAR";
+	public static final String MODIFICAR = "MODIFICAR";
+
+	
 }

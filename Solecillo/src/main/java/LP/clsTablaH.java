@@ -1,6 +1,7 @@
 package LP;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,6 +19,8 @@ public class clsTablaH extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
+	JTable table;
+	
 	/*Renderer de la tabla*/
 	private static DefaultTableCellRenderer rendererCentrado = new DefaultTableCellRenderer();
 	static 
@@ -31,7 +34,7 @@ public class clsTablaH extends JPanel
     	JFrame frame = new JFrame("Maquinas Hidráulicas");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
-        JTable table = new JTable(new MyTableModel(u));
+        table = new JTable(new MyTableModel(u));
         table.setFillsViewportHeight(true);
         
         table.getColumn("ID").setCellRenderer(rendererCentrado);
@@ -128,4 +131,17 @@ public class clsTablaH extends JPanel
                 return false;
         }
     }
+    
+    public int getFila() {
+		try
+		{
+			int id=(int)table.getValueAt(table.getSelectedRow(), 0);
+			return id;
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			JOptionPane.showMessageDialog(null, "Seleccione una máquina a borrar.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		return 0;
+	}
 }
