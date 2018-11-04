@@ -1,10 +1,13 @@
 import java.awt.EventQueue;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import Comun.clsConstantes;
 import LN.clsCliente;
+import LN.clsGestor;
 import LN.clsMaquina_Eolica;
 import LN.clsUsuario;
+import LN.clsVenta;
 import LP.loginFrame;
 import LP.principalFrame;
 import Persistencia.clsBD;

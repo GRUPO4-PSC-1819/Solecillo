@@ -11,7 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import org.jfree.ui.RefineryUtilities;
 
+import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
 import LN.clsCliente;
@@ -195,6 +197,20 @@ public class principalFrame extends JFrame {
 				}
 			}});
 		panel_5.add(btnRefrescar);
+		
+		JButton btngrafico = new JButton("Grafico");
+		btngrafico.setBounds(529, 407, 115, 29);
+		btngrafico.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				PieChart_AWT demo = new PieChart_AWT( "Mobile Sales" );  
+			      demo.setSize( 560 , 367 );    
+			      RefineryUtilities.centerFrameOnScreen( demo );    
+			      demo.setVisible( true ); 
+			}});
+		panel_5.add(btngrafico);
 		
 	
 		tableV.setModel(modeloV);
