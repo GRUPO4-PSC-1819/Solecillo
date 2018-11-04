@@ -7,7 +7,7 @@ public class clsVenta implements Serializable{
 	
 	private int idm;
 	private String nombreC;
-	private static int nid=13;
+	private static int nid=20;
 	private int cantidad;
 	private int id;
 	

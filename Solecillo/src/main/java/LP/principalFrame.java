@@ -199,13 +199,13 @@ public class principalFrame extends JFrame {
 		panel_5.add(btnRefrescar);
 		
 		JButton btngrafico = new JButton("Grafico");
-		btngrafico.setBounds(529, 407, 115, 29);
+		btngrafico.setBounds(729, 307, 115, 29);
 		btngrafico.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				PieChart_AWT demo = new PieChart_AWT( "Mobile Sales" );  
+				PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
 			      demo.setSize( 560 , 367 );    
 			      RefineryUtilities.centerFrameOnScreen( demo );    
 			      demo.setVisible( true ); 
