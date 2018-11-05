@@ -398,7 +398,7 @@ public class principalFrame extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					try 
 					{
-						clsModificarUsuario window = new clsModificarUsuario(usu, (principalFrame) miVentana);
+						clsModificarUsuario window = new clsModificarUsuario(usu, miVentana);
 						window.setVisible(true);
 					} 
 					catch (Exception w) 

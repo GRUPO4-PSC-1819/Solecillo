@@ -56,7 +56,7 @@ public class clsAltaSolar extends JFrame
 	JButton btnCancelar;
 	
 	
-	
+	boolean modifmaq = false;
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
@@ -178,7 +178,8 @@ public class clsAltaSolar extends JFrame
 		btnAceptar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
-			{		
+			{	
+				if(!modifmaq)
 				Registrar();
 			}
 		});	

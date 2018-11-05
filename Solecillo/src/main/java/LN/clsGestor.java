@@ -86,6 +86,39 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	public clsMaquina_Eolica ObtenerEolica(int id)	
+	{	
+		clsMaquina_Eolica m=null;
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					m=new clsMaquina_Eolica(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getString("NOMBRE_CAMPO"),
+							rs.getDouble("ALTURA"),
+							rs.getDouble("DIAMETRO"));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+		}
+				
+		return m;	
+	}
+	
 	
 	public ArrayList<clsMaquina_Hidraulica> ListaHidraulica()	
 	{	
@@ -114,6 +147,37 @@ public class clsGestor implements Serializable
 			}
 		}
 		return lista;	
+	}
+	
+	public clsMaquina_Hidraulica ObtenerHidraulica(int id)	
+	{	
+		clsMaquina_Hidraulica m=null;
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					m=new clsMaquina_Hidraulica(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getString("NOMBRE_RIO"));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+		}
+				
+		return m;	
 	}
 	
 	
@@ -146,6 +210,35 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	public clsMaquina_Mareomotriz ObtenerMareomotriz(int id)	
+	{	
+		clsMaquina_Mareomotriz m=null;
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					m=new clsMaquina_Mareomotriz(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getDouble("DISTANCIA_MILLAS"));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return m;	
+	}
+	
 	public ArrayList<clsMaquina_Solar> ListaSolar()	
 	{	
 		ArrayList<clsMaquina_Solar> lista = new ArrayList <clsMaquina_Solar>();
@@ -173,6 +266,35 @@ public class clsGestor implements Serializable
 			}
 		}
 		return lista;	
+	}
+	
+	public clsMaquina_Solar ObtenerSolar(int id)	
+	{	
+		clsMaquina_Solar m=null;
+		clsBD.crearTablaBD(clsConstantes.MAQUINA);
+		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					m=new clsMaquina_Solar(
+							rs.getInt("ID"),
+							rs.getString("NOMBRE"),
+							rs.getString("COLOR"),
+							rs.getDouble("VALOR"),
+							rs.getString("FABRICANTE"),
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getString("NOMBRE_CAMPO"));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return m;	
 	}
 	public ArrayList<clsCliente> ListaClientes()	
 	{	
@@ -314,11 +436,26 @@ public class clsGestor implements Serializable
 		clsBD.BorrarMaquina(id);
 	}
 	
-	public clsMaquina_Eolica ModificarMaquinaEolica(String n, String col, double val, String fab, String np, String nc, double a, double d)
+	
+	
+	public void ModificarMaquinaEolica(int id, String n, String col, double val, String fab, String np, String nc, double a, double d)
 	{
-		clsMaquina_Eolica modificado=new clsMaquina_Eolica(n, col, val, fab, np, nc, a, d);
-		clsBD.modificarDatoTablaBD(modificado);
-		return modificado;
+		clsBD.modificarEolica(id, n, col, val, fab, np, nc, a, d);
+	}
+	
+	public void ModificarMaquinaHidraulica(int id, String n, String col, double val, String fab, String np, String nr)
+	{
+		clsBD.modificarHidraulica(id, n, col, val, fab, np, nr);
+	}
+	
+	public void ModificarMaquinaMareomotriz(int id, String n, String col, double val, String fab, String np, double d)
+	{
+		clsBD.modificarMareomotriz(id, n, col, val, fab, np, d);
+	}
+	
+	public void ModificarMaquinaSolar(int id, String n, String col, double val, String fab, String np, String nc)
+	{
+		clsBD.modificarSolar(id, n, col, val, fab, np, nc);
 	}
 
 }

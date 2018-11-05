@@ -66,6 +66,8 @@ public class clsAltaUsuario extends JFrame
 	JButton btnAceptar;
 	JButton btnCancelar;
 	
+	boolean modifusu = false;
+	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
 	/*Logger*/
@@ -186,7 +188,8 @@ public class clsAltaUsuario extends JFrame
 		btnAceptar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
-			{		
+			{	
+				if(!modifusu)
 				Registrar();
 			}
 		});	
