@@ -133,18 +133,16 @@ public class clsTablaH extends JPanel
         }
     }
     
-  public int getFila() {
-		
-    	int id;
-    	try
+    public int getFila() {
+		try
 		{
-			id=(int)table.getValueAt(table.getSelectedRow(), 0);
+			int id=(int)table.getValueAt(table.getSelectedRow(), 0);
 			return id;
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
-			JOptionPane.showMessageDialog(null, "Seleccione una máquina.", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Seleccione una máquina a borrar.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		return -1;
+		return 0;
 	}
 }

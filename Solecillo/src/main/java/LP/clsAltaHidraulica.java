@@ -55,7 +55,7 @@ public class clsAltaHidraulica extends JFrame
 	JButton btnAceptar;
 	JButton btnCancelar;
 	
-	boolean modifmaq=false;
+	
 	
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
@@ -179,7 +179,6 @@ public class clsAltaHidraulica extends JFrame
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{		
-				if(!modifmaq)
 				Registrar();
 			}
 		});	

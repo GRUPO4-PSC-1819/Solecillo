@@ -1,14 +1,14 @@
 package LP;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import LN.clsGestor;
 import LN.clsMaquina_Eolica;
+import LN.clsUsuario;
 /**
  * Clase que generará una ventana que hereda de clsAltaUsuario para modificar los datos de un usuario existente en la base de datos.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
@@ -17,30 +17,30 @@ public class clsModificarEolica extends clsAltaEolica
 {
 	private static final long serialVersionUID = 1L;
 	
+	clsMaquina_Eolica modif;
 	
 	/**
 	 * Constructor de la ventana que aprovecha la interfaz gráfica de clsAltaUsuario, incluyendo los datos de un usuario dado.
 	 * @param usuario El usuario que está modificando sus datos.
-	 * @param miVentana La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
+	 * @param ventanita La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
 	 */
-	public clsModificarEolica(clsMaquina_Eolica maq, JFrame miVentana)
+	public clsModificarEolica(clsMaquina_Eolica maq, principalFrame ventanita)
 	{
-		
-		setTitle("Modificar máquina eólica");
-		txtNombre.setText(maq.getNombre());
-		txtColor.setText(maq.getColor());
-		txtValor.setText(Double.toString(maq.getValor()));
-		txtFabricante.setText(maq.getFabricante());
-		txtNombrePueblo.setText(maq.getNombre_pueblo());
-		txtNombreCampo.setText(maq.getNombre_campo());
-		txtAltura.setText(Double.toString(maq.getAltura()));
-		txtDiametro.setText(Double.toString(maq.getDiametro()));
-		
-		modifmaq=true;
+		super();
+		this.setTitle("Modificar máquina eólica");
+		this.txtNombre.setText(maq.getNombre());
+		this.txtColor.setText(maq.getColor());
+		this.txtValor.setText(Double.toString(maq.getValor()));
+		this.txtFabricante.setText(maq.getFabricante());
+		this.txtNombrePueblo.setText(maq.getNombre_pueblo());
+		this.txtNombreCampo.setText(maq.getNombre_campo());
+		this.txtAltura.setText(Double.toString(maq.getAltura()));
+		this.txtDiametro.setText(Double.toString(maq.getDiametro()));
 				
 		/*Escuchadores*/
-		btnAceptar.addActionListener(new ActionListener() 
+		this.btnAceptar.addActionListener(new ActionListener() 
 		{
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				clsGestor objGestor=new clsGestor();
@@ -48,16 +48,11 @@ public class clsModificarEolica extends clsAltaEolica
 				{		
 						//logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
 						try {
-							objGestor.ModificarMaquinaEolica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
-							JOptionPane.showMessageDialog(null, "Se ha modificado la máquina eólica correctamente.");
+							//objGestor.ModificarMaquinaEolica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
 							dispose();
-							clsListaM.listaEolica = objGestor.ListaEolica();
-							clsTablaE te1=new clsTablaE(clsListaM.listaEolica);
-							te1.setOpaque(true); //content panes must be opaque
-							clsListaM.miVentana.getContentPane().add(te1, BorderLayout.NORTH);
-					        pack();
-					        clsListaM.miVentana.setVisible(true);
+							JOptionPane.showMessageDialog(null, "Se ha modificado la máquina eólica correctamente.");
 						} catch (NumberFormatException e) {
+							// TODO Auto-generated catch block
 							JOptionPane.showMessageDialog(null, "Los campos 'Valor', 'Altura' y 'Diametro' deben ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 				}

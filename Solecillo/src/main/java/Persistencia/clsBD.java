@@ -387,22 +387,6 @@ public class clsBD
 		 return rs;
 	}
 	
-		
-	public static ResultSet ObtenerUnaMaquina(int id)
-	{
-		if (statement==null) return null;
-		ResultSet rs = null;
-			try 
-			{
-			    rs = statement.executeQuery("select * from MAQUINA where id="+id);
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-		return rs;
-	}
-	
 	/**
 	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>
 	 * Usuario: Nickname. <br>
@@ -426,97 +410,14 @@ public class clsBD
 			}
 	}
 
+
 	
 	public static void BorrarMaquina(int id)
 	{
 		if (statement==null) return;
 			try 
 			{
-				statement.executeQuery("DELETE FROM MAQUINA WHERE ID="+id);
-			} 
-			catch (SQLException e1) 
-			{
-				JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
-			}
-	}
-	
-	public static void modificarEolica(int id, String n, String c, double v, String f, String np, String nc, double a, double d)
-	{
-		if (statement==null) return;
-			try 
-			{
-				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
-						+ "COLOR = '"+c+"',"
-						+ "VALOR = "+v+"," 
-						+ "FABRICANTE = '"+f+"',"
-						+ "NOMBRE_PUEBLO = '"+np+"',"
-						+ "NOMBRE_CAMPO = '"+nc+"',"
-						+ "ALTURA = "+a+","
-						+ "DIAMETRO = "+d+" "
-						+ "WHERE ID = "+id+"");
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-	}
-	
-	public static void modificarHidraulica(int id, String n, String c, double v, String f, String np, String nr)
-	{
-		if (statement==null) return;
-			try 
-			{
-				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
-						+ "COLOR = '"+c+"',"
-						+ "VALOR = "+v+"," 
-						+ "FABRICANTE = '"+f+"',"
-						+ "NOMBRE_PUEBLO = '"+np+"',"
-						+ "NOMBRE_RIO = '"+nr+"' "
-						+ "WHERE ID = "+id+"");
-				
-				
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-	}
-	
-	public static void modificarMareomotriz(int id, String n, String c, double v, String f, String np, double d)
-	{
-		if (statement==null) return;
-			try 
-			{
-				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
-						+ "COLOR = '"+c+"',"
-						+ "VALOR = "+v+"," 
-						+ "FABRICANTE = '"+f+"',"
-						+ "NOMBRE_PUEBLO = '"+np+"',"
-						+ "DISTANCIA_MILLAS = "+d+" "
-						+ "WHERE ID = "+id+"");
-				
-				
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-	}
-	
-	public static void modificarSolar(int id, String n, String c, double v, String f, String np, String nc)
-	{
-		if (statement==null) return;
-			try 
-			{
-				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
-						+ "COLOR = '"+c+"',"
-						+ "VALOR = "+v+"," 
-						+ "FABRICANTE = '"+f+"',"
-						+ "NOMBRE_PUEBLO = '"+np+"',"
-						+ "NOMBRE_CAMPO = '"+nc+"' "
-						+ "WHERE ID = "+id+"");
-				
-				
+				statement.executeUpdate("DELETE FROM MAQUINA WHERE ID="+id);
 			} 
 			catch (SQLException e1) 
 			{
