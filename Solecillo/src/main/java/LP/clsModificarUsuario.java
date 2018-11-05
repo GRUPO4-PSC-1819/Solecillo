@@ -2,9 +2,8 @@ package LP;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import LN.clsGestor;
 import LN.clsUsuario;
 /**
@@ -15,27 +14,49 @@ public class clsModificarUsuario extends clsAltaUsuario
 {
 	private static final long serialVersionUID = 1L;
 	
-	clsUsuario modif;
+	/*private JPanel panelprincipal;
+	private JPanel panelizda;
+	private JPanel panelbotonera;
+	private JPanel panelsuperior;	
+	
+	JTextField txtNombre;
+	JTextField txtApe1;
+	JTextField txtApe2;
+	JTextField txtNickname;
+	JPasswordField txtContrasenya1;
+	JPasswordField txtContrasenya2;
+	
+	private JLabel lblNombre;
+	private JLabel lblApe1;
+	private JLabel lblApe2;
+	private JLabel lblNickname;
+	private JLabel lblContrasenya1;
+	private JLabel lblContrasenya2;
+	
+	JButton btnAceptar;
+	JButton btnCancelar;*/
+	
 	
 	/**
 	 * Constructor de la ventana que aprovecha la interfaz gráfica de clsAltaUsuario, incluyendo los datos de un usuario dado.
 	 * @param usuario El usuario que está modificando sus datos.
-	 * @param ventanita La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
+	 * @param miVentana La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
 	 */
-	public clsModificarUsuario(clsUsuario usuario, principalFrame ventanita)
+	public clsModificarUsuario(clsUsuario usuario, JFrame miVentana)
 	{
-		super();
-		this.setTitle("Modificar usuario");
-		this.txtNombre.setText(usuario.getNombre());
-		this.txtApe1.setText(usuario.getApellido1());
-		this.txtApe2.setText(usuario.getApellido2());
-		this.txtNickname.setText(usuario.getNickname());
+		setTitle("Modificar usuario");
+		txtNombre.setText(usuario.getNombre());
+		txtApe1.setText(usuario.getApellido1());
+		txtApe2.setText(usuario.getApellido2());
+		txtNickname.setText(usuario.getNickname());
 		txtNickname.setEditable(false);
-		this.txtContrasenya1.setText(usuario.getContraseña());
-		this.txtContrasenya2.setText(usuario.getContraseña());
+		txtContrasenya1.setText(usuario.getContraseña());
+		txtContrasenya2.setText(usuario.getContraseña());
+		
+		modifusu=true;
 				
 		/*Escuchadores*/
-		this.btnAceptar.addActionListener(new ActionListener() 
+		btnAceptar.addActionListener(new ActionListener() 
 		{
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) 
@@ -49,9 +70,9 @@ public class clsModificarUsuario extends clsAltaUsuario
 					}
 					else
 					{
-						modif = objGestor.ModificarUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText(), txtContrasenya1.getText(), usuario.getFechadealta());
+						objGestor.ModificarUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText(), txtContrasenya1.getText(), usuario.getFechadealta());
 						JOptionPane.showMessageDialog(null, "Ha modificado el usuario correctamente.");
-						ventanita.dispose();
+						miVentana.dispose();
 						dispose();
 						loginFrame p=new loginFrame();
 						p.setVisible(true);

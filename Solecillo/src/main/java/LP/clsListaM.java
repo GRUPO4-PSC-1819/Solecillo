@@ -55,6 +55,7 @@ public class clsListaM extends JFrame
 	private JRadioButton rdbtnSolar;
 	private ButtonGroup btngrp;
 	private JButton btnSalir;
+	static JFrame miVentana;
 	
 	private JPanel paneltabla;
 	private JPanel panelbotonera;
@@ -149,6 +150,8 @@ public class clsListaM extends JFrame
 		btngrp.add(rdbtnHidraulica);
 		btngrp.add(rdbtnMareomotriz);
 		btngrp.add(rdbtnSolar);
+		
+		miVentana=this;
 
 		if(funcion.equals(clsConstantes.VISUALIZAR))
 		{
@@ -327,7 +330,7 @@ public class clsListaM extends JFrame
 						int a=te.getFila();
 						if(a>-1)
 						{
-							System.out.println(listaEolica.get(a-1));
+							//System.out.println(listaEolica.get(a-1));
 							clsBD.insertarDatoTablaBD(new clsVenta(listaEolica.get(a-1).getId(),cliente,(int) Double.parseDouble(textField.getText())));
 						}
 					}
@@ -356,55 +359,53 @@ public class clsListaM extends JFrame
 						}
 					}
 				}
-				
-			/*	else if(funcion.equals(clsConstantes.MODIFICAR))
+				else if(funcion.equals(clsConstantes.MODIFICAR))
 				{
 					if(rdbtnEolica.isSelected())
 					{
 						int a=te.getFila();
-						clsModificarEolica window = new clsModificarEolica(usu, (principalFrame) miVentana);
-						objGestor.ModificarMaquinaEolica(a);
-						listaEolica = objGestor.ListaEolica();
-						clsTablaE te1=new clsTablaE(listaEolica);
-						te1.setOpaque(true); //content panes must be opaque
-						getContentPane().add(te1, BorderLayout.NORTH);
-				        pack();
-				        setVisible(true);
+						if(a>-1)
+						{
+							clsMaquina_Eolica mod;
+							mod=objGestor.ObtenerEolica(a);
+							clsModificarEolica window = new clsModificarEolica(mod, miVentana);
+							window.setVisible(true);
+						}
 					}
 					else if(rdbtnHidraulica.isSelected())
 					{
 						int a=th.getFila();
-						objGestor.BorrarMaquina(a);
-						listaHidraulica = objGestor.ListaHidraulica();
-						clsTablaH th1=new clsTablaH(listaHidraulica);
-						th1.setOpaque(true); //content panes must be opaque
-						getContentPane().add(th1, BorderLayout.NORTH);
-				        pack();
-				        setVisible(true);					
+						if(a>-1)
+						{
+							clsMaquina_Hidraulica mod;
+							mod=objGestor.ObtenerHidraulica(a);
+							clsModificarHidraulica window = new clsModificarHidraulica(mod, miVentana);
+							window.setVisible(true);
+						}					
 					}
 					else if(rdbtnMareomotriz.isSelected())
 					{
 						int a=tm.getFila();
-						objGestor.BorrarMaquina(a);
-						listaMareomotriz = objGestor.ListaMareomotriz();
-						clsTablaM tm1=new clsTablaM(listaMareomotriz);
-						tm1.setOpaque(true); //content panes must be opaque
-						getContentPane().add(tm1, BorderLayout.NORTH);
-				        pack();
-				        setVisible(true);					
+						if(a>-1)
+						{
+							clsMaquina_Mareomotriz mod;
+							mod=objGestor.ObtenerMareomotriz(a);
+							clsModificarMareomotriz window = new clsModificarMareomotriz(mod, miVentana);
+							window.setVisible(true);
+						}					
 					}
 					else if(rdbtnSolar.isSelected())
 					{
 						int a=ts.getFila();
-						objGestor.BorrarMaquina(a);
-						listaSolar = objGestor.ListaSolar();
-						clsTablaS ts1=new clsTablaS(listaSolar);
-						ts1.setOpaque(true); //content panes must be opaque
-						getContentPane().add(ts1, BorderLayout.NORTH);
-				        pack();
-				        setVisible(true);					
+						if(a>-1)
+						{
+							clsMaquina_Solar mod;
+							mod=objGestor.ObtenerSolar(a);
+							clsModificarSolar window = new clsModificarSolar(mod, miVentana);
+							window.setVisible(true);
+						}					
 					}
-				}*/
+				}
 			}
 		});
 	}	

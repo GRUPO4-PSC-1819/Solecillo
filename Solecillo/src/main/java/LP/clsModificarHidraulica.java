@@ -3,17 +3,15 @@ package LP;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import LN.clsGestor;
-import LN.clsMaquina_Eolica;
+import LN.clsMaquina_Hidraulica;
 /**
  * Clase que generará una ventana que hereda de clsAltaUsuario para modificar los datos de un usuario existente en la base de datos.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
  */
-public class clsModificarEolica extends clsAltaEolica
+public class clsModificarHidraulica extends clsAltaHidraulica
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,18 +21,16 @@ public class clsModificarEolica extends clsAltaEolica
 	 * @param usuario El usuario que está modificando sus datos.
 	 * @param miVentana La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
 	 */
-	public clsModificarEolica(clsMaquina_Eolica maq, JFrame miVentana)
+	public clsModificarHidraulica(clsMaquina_Hidraulica maq, JFrame miVentana)
 	{
 		
-		setTitle("Modificar máquina eólica");
+		setTitle("Modificar máquina hidráulica");
 		txtNombre.setText(maq.getNombre());
 		txtColor.setText(maq.getColor());
 		txtValor.setText(Double.toString(maq.getValor()));
 		txtFabricante.setText(maq.getFabricante());
 		txtNombrePueblo.setText(maq.getNombre_pueblo());
-		txtNombreCampo.setText(maq.getNombre_campo());
-		txtAltura.setText(Double.toString(maq.getAltura()));
-		txtDiametro.setText(Double.toString(maq.getDiametro()));
+		txtNombreRio.setText(maq.getNombre_rio());
 		
 		modifmaq=true;
 				
@@ -44,22 +40,24 @@ public class clsModificarEolica extends clsAltaEolica
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				clsGestor objGestor=new clsGestor();
-				if(txtNombre.getText().length()>0&&txtColor.getText().length()>0&&txtValor.getText().length()>0&&txtFabricante.getText().length()>0&&txtNombrePueblo.getText().length()>0&&txtNombreCampo.getText().length()>0&&txtAltura.getText().length()>0&&txtDiametro.getText().length()>0)
+				if(txtNombre.getText().length()>0&&txtColor.getText().length()>0&&txtValor.getText().length()>0&&txtFabricante.getText().length()>0&&txtNombrePueblo.getText().length()>0&&txtNombreRio.getText().length()>0)
 				{		
-						//logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
+						//logger.log( Level.INFO, "Dando de alta máquina hidráulica "+txtNombre.getText());
 						try {
-							objGestor.ModificarMaquinaEolica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
-							JOptionPane.showMessageDialog(null, "Se ha modificado la máquina eólica correctamente.");
+							objGestor.ModificarMaquinaHidraulica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreRio.getText());
+							JOptionPane.showMessageDialog(null, "Se ha modificado una máquina hidráulica correctamente.");
 							dispose();
-							clsListaM.listaEolica = objGestor.ListaEolica();
-							clsTablaE te1=new clsTablaE(clsListaM.listaEolica);
-							te1.setOpaque(true); //content panes must be opaque
-							clsListaM.miVentana.getContentPane().add(te1, BorderLayout.NORTH);
+							clsListaM.listaHidraulica = objGestor.ListaHidraulica();
+							clsTablaH th1=new clsTablaH(clsListaM.listaHidraulica);
+							th1.setOpaque(true); //content panes must be opaque
+							clsListaM.miVentana.getContentPane().add(th1, BorderLayout.NORTH);
 					        pack();
 					        clsListaM.miVentana.setVisible(true);
 						} catch (NumberFormatException e) {
-							JOptionPane.showMessageDialog(null, "Los campos 'Valor', 'Altura' y 'Diametro' deben ser un número", "Error", JOptionPane.ERROR_MESSAGE);
+							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null, "El campo 'Valor' debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 						}
+						
 				}
 				else
 				{
