@@ -34,7 +34,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ScatterPlotExample extends JFrame {
 	static Instances data;
 	static Instances test;
-	private JButton btnAceptar_1;
+	public JButton btnAceptar_1;
 	static LinkedList<DenseInstance> ltest;
 	static XYSeries series1;
 	static XYSeries series2;

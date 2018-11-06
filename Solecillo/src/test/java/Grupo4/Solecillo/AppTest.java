@@ -7,7 +7,10 @@ import java.sql.Connection;
 
 import org.omg.CORBA.portable.InputStream;
 
+import Analisisdedatos.PieChart_AWT;
+import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
+import LN.clsGestor;
 import LP.clsAltaEolica;
 import LP.clsAltaHidraulica;
 import LP.clsAltaMareomotriz;
@@ -81,6 +84,21 @@ public class AppTest
 		clsAltaMareomotriz a3=new clsAltaMareomotriz();
 		
 		clsAltaSolar a4=new clsAltaSolar();
+		
+		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
+		
+		 ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+		 example.btnAceptar_1.doClick();
+		 
+		 clsGestor ge=new clsGestor();
+		 ge.ListaClientes();
+		 ge.ListaEolica();
+		 ge.ListaMareomotriz();
+		 ge.ListaSolar();
+		 ge.ObtenerEolica(1);
+		 ge.ObtenerHidraulica(1);
+		 ge.ObtenerMareomotriz(1);
+		 ge.ObtenerSolar(1);
 		
 		
     }
