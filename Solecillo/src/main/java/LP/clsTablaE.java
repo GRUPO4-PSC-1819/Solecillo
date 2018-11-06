@@ -144,12 +144,14 @@ public class clsTablaE extends JPanel
                 return false;
         }
     }
-
+    
+    
     public int getFila() {
 		
     	int id;
     	try
 		{
+    		
     		id=(int)table.getValueAt(table.getSelectedRow(), 0);
 			return id;
 		}
@@ -158,6 +160,12 @@ public class clsTablaE extends JPanel
 			JOptionPane.showMessageDialog(null, "Seleccione una máquina.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return -1;
+	}
+
+
+	public void setRowSelectionInterval(int i, int j) {
+		// TODO Auto-generated method stub
+		table.setRowSelectionInterval(i, i);
 	}
 
 }

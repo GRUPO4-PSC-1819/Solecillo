@@ -52,25 +52,27 @@ public class clsListaM extends JFrame
 	static JFrame miVentana;
 	
 	private JLabel lblInformacion;
-	private JRadioButton rdbtnEolica;
-	private JRadioButton rdbtnHidraulica;
-	private JRadioButton rdbtnMareomotriz;
-	private JRadioButton rdbtnSolar;
+	public JRadioButton rdbtnEolica;
+	public  JRadioButton rdbtnHidraulica;
+	public  JRadioButton rdbtnMareomotriz;
+	public  JRadioButton rdbtnSolar;
 	private ButtonGroup btngrp;
-	private JButton btnSalir;
+	public JButton btnSalir;
 	
 	private JPanel paneltabla;
 	private JPanel panelbotonera;
 
-	private clsTablaE te;
+	public clsTablaE te;
 
 	private clsTablaS ts;
 
 	private clsTablaM tm;
 
 	private clsTablaH th;
+	
+	public int a;
 
-	private JTextField textField;
+	public JTextField textField;
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
@@ -260,6 +262,8 @@ public class clsListaM extends JFrame
 		
 		btnSalir.addActionListener(new ActionListener()
 		{
+			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -271,7 +275,7 @@ public class clsListaM extends JFrame
 				{
 					if(rdbtnEolica.isSelected())
 					{
-						int a=te.getFila();
+						a=te.getFila();
 						if(a>-1)
 						{
 							objGestor.BorrarMaquina(a);
@@ -285,7 +289,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnHidraulica.isSelected())
 					{
-						int a=th.getFila();
+						a=th.getFila();
 						if(a>-1)
 						{
 							objGestor.BorrarMaquina(a);
@@ -299,7 +303,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnMareomotriz.isSelected())
 					{
-						int a=tm.getFila();
+						a=tm.getFila();
 						if(a>-1)
 						{
 							objGestor.BorrarMaquina(a);
@@ -313,7 +317,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnSolar.isSelected())
 					{
-						int a=ts.getFila();
+						a=ts.getFila();
 						if(a>-1)
 						{
 							objGestor.BorrarMaquina(a);
@@ -329,17 +333,17 @@ public class clsListaM extends JFrame
 				else if(funcion.equals(clsConstantes.VENTA)){
 					if(rdbtnEolica.isSelected())
 					{
-						int a=te.getFila();
+						a=te.getFila();
 						if(a>-1)
 						{
 							System.out.println(listaEolica.get(a-1));
 							clsBD.insertarDatoTablaBD(new clsVenta(listaEolica.get(a-1).getId(),cliente,(int) (listaEolica.get(a-1).getValor()*Double.parseDouble(textField.getText()))));
-							JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta.");
+							//JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta.");
 						}
 					}
 					else if(rdbtnHidraulica.isSelected())
 					{
-						int a=th.getFila();
+						a=th.getFila();
 						if(a>-1)
 						{
 					        clsBD.insertarDatoTablaBD(new clsVenta(listaHidraulica.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
@@ -347,7 +351,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnMareomotriz.isSelected())
 					{
-						int a=tm.getFila();
+						a=tm.getFila();
 						if(a>-1)
 						{
 					        clsBD.insertarDatoTablaBD(new clsVenta(listaMareomotriz.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
@@ -355,7 +359,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnSolar.isSelected())
 					{
-						int a=ts.getFila();
+						a=ts.getFila();
 						if(a>-1)
 						{
 					        clsBD.insertarDatoTablaBD(new clsVenta(listaSolar.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
@@ -367,7 +371,7 @@ public class clsListaM extends JFrame
 				{
 					if(rdbtnEolica.isSelected())
 					{
-						int a=te.getFila();
+						a=te.getFila();
 						if(a>-1)
 						{
 							clsMaquina_Eolica mod;
@@ -378,7 +382,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnHidraulica.isSelected())
 					{
-						int a=th.getFila();
+						a=th.getFila();
 						if(a>-1)
 						{
 							clsMaquina_Hidraulica mod;
@@ -389,7 +393,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnMareomotriz.isSelected())
 					{
-						int a=tm.getFila();
+						a=tm.getFila();
 						if(a>-1)
 						{
 							clsMaquina_Mareomotriz mod;
@@ -400,7 +404,7 @@ public class clsListaM extends JFrame
 					}
 					else if(rdbtnSolar.isSelected())
 					{
-						int a=ts.getFila();
+						a=ts.getFila();
 						if(a>-1)
 						{
 							clsMaquina_Solar mod;

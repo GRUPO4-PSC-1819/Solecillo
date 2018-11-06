@@ -56,6 +56,7 @@ public class principalFrame extends JFrame {
 	private TextField textField_3;
 	private TextField textField_4;
 	private TextField textField_5;
+	public JButton btnRefrescar;
 	
 	static JFrame miVentana;
 	static clsUsuario usuario;
@@ -178,7 +179,7 @@ public class principalFrame extends JFrame {
 			modeloV.addRow(new Object[]{venta.getId(),venta.getNombreC(),venta.getIdm(),venta.getCantidad()});
 		}
 		
-		JButton btnRefrescar = new JButton("Refrescar");
+		btnRefrescar = new JButton("Refrescar");
 		btnRefrescar.setBounds(729, 407, 115, 29);
 		btnRefrescar.addActionListener(new ActionListener() {
 
