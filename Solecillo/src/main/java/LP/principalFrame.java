@@ -15,6 +15,7 @@ import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsUsuario;
 import LN.clsVenta;
+import Persistencia.clsBD;
 import weka.core.Instances;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -28,6 +29,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.RowFilter;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
@@ -49,6 +51,11 @@ public class principalFrame extends JFrame {
 	private ArrayList<clsCliente> clnts;
 	private ArrayList<clsVenta> ventas;
 	private clsGestor objGestor;
+	private TextField textField_1;
+	private TextField textField_2;
+	private TextField textField_3;
+	private TextField textField_4;
+	private TextField textField_5;
 	
 	static JFrame miVentana;
 	static clsUsuario usuario;
@@ -198,6 +205,8 @@ public class principalFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+		        
 				PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
 			      demo.setSize( 560 , 367 );    
 			      RefineryUtilities.centerFrameOnScreen( demo );   
@@ -352,17 +361,56 @@ public class principalFrame extends JFrame {
 		label_2.setBounds(15, 190, 100, 27);
 		panel_2.add(label_2);
 		
-		TextField textField_1 = new TextField();
+		Label label_3 = new Label("DNI");
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		label_3.setBounds(400, 94, 100, 27);
+		panel_2.add(label_3);
+		
+		Label label_4 = new Label("Empresa");
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		label_4.setBounds(400, 137, 100, 27);
+		panel_2.add(label_4);
+		
+		textField_1 = new TextField();
 		textField_1.setBounds(130, 94, 231, 27);
 		panel_2.add(textField_1);
 		
-		TextField textField_2 = new TextField();
+		textField_2 = new TextField();
 		textField_2.setBounds(130, 137, 231, 27);
 		panel_2.add(textField_2);
 		
-		TextField textField_3 = new TextField();
+		textField_3 = new TextField();
 		textField_3.setBounds(130, 190, 231, 27);
 		panel_2.add(textField_3);
+		
+		textField_4 = new TextField();
+		textField_4.setBounds(510, 94, 231, 27);
+		panel_2.add(textField_4);
+		
+		textField_5 = new TextField();
+		textField_5.setBounds(510, 137, 231, 27);
+		panel_2.add(textField_5);
+		
+		JButton btnNewCliente = new JButton("Nuevo cliente");
+		btnNewCliente.setBounds(400, 190, 115, 29);
+		panel_2.add(btnNewCliente);
+		btnNewCliente.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clsBD.insertarDatoTablaBD(new clsCliente(textField_1.getText(),textField_2.getText(),textField_3.getText(),textField_4.getText(),textField_5.getText()));
+				 ArrayList<clsCliente> clientes = objGestor.ListaClientes();
+				if (modeloT.getRowCount() > 0) {
+				    for (int i = modeloT.getRowCount() - 1; i > -1; i--) {
+				        modeloT.removeRow(i);
+				    }
+				}
+				for(clsCliente cliente : clientes)
+				{
+					modeloT.addRow(new Object[]{cliente.getNombre(),cliente.getApellido1(),cliente.getApellido2(),cliente.getdni(), cliente.getEmpresa()});
+				}
+			}
+		});
 		
 		
 		

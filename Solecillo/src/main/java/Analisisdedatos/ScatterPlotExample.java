@@ -44,7 +44,7 @@ public class ScatterPlotExample extends JFrame {
 
   public ScatterPlotExample(String title) {
     super(title);
-    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     ArrayList<Attribute> atts = new ArrayList<Attribute>(3);
 	ArrayList<String> classVal = new ArrayList<String>();
     classVal.add("No peligra");
@@ -83,26 +83,13 @@ public class ScatterPlotExample extends JFrame {
 			ScatterPlotExample example2 = new ScatterPlotExample("Analisis de datos",1);
 			example2.setSize(800, 400);
 		      example2.setLocationRelativeTo(null);
-		      example2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		      example2.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		      example2.setVisible(true);
 		}
 	});
 	btnAceptar_1.setBounds(600, 300, 100, 26);
 	panel.add(btnAceptar_1);
 	
-	
-	addWindowListener( new WindowAdapter() 
-	{
-		@Override
-		public void windowClosing(WindowEvent e) 
-		{
-			//logger.log(Level.INFO, "Volviendo al menu principal");
-			//JOptionPane.showMessageDialog(miVentana, "Esperemos que haya disfrutado de las partidas.");
-			dispose();
-			//loginFrame frame = new loginFrame();
-			//frame.setVisible(true);
-		}
-	});	
   }
 
   public ScatterPlotExample(String string, int i) {

@@ -18,10 +18,12 @@ import LN.clsGestor;
 import LN.clsVenta;
 import LP.loginFrame;
  
-public class PieChart_AWT extends ApplicationFrame {
+public class PieChart_AWT extends JFrame {
    
    public PieChart_AWT( String title ) {
+	  
       super( title ); 
+      this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       setContentPane(createDemoPanel( ));
       	
    }

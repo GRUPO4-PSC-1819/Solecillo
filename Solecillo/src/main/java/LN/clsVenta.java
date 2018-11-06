@@ -7,17 +7,10 @@ public class clsVenta implements Serializable{
 	
 	private int idm;
 	private String nombreC;
-	private static int nid=20;
 	private int cantidad;
 	private int id;
 	
-	
-	public static int getNid() {
-		return nid;
-	}
-	public static void setNid(int nid) {
-		clsVenta.nid = nid;
-	}
+
 	public clsVenta()
 	{
 		
@@ -27,8 +20,7 @@ public class clsVenta implements Serializable{
 		this.idm = idm;
 		this.nombreC = nombreC;
 		this.cantidad = cantidad;
-		this.id=nid;
-		nid++;
+		
 	}
 	public clsVenta(int id,String nombreC,int idm, int cantidad) {
 		super();

@@ -22,6 +22,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -332,7 +333,8 @@ public class clsListaM extends JFrame
 						if(a>-1)
 						{
 							System.out.println(listaEolica.get(a-1));
-							clsBD.insertarDatoTablaBD(new clsVenta(listaEolica.get(a-1).getId(),cliente,(int) Double.parseDouble(textField.getText())));
+							clsBD.insertarDatoTablaBD(new clsVenta(listaEolica.get(a-1).getId(),cliente,(int) (listaEolica.get(a-1).getValor()*Double.parseDouble(textField.getText()))));
+							JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta.");
 						}
 					}
 					else if(rdbtnHidraulica.isSelected())
@@ -340,7 +342,7 @@ public class clsListaM extends JFrame
 						int a=th.getFila();
 						if(a>-1)
 						{
-					        clsBD.insertarDatoTablaBD(new clsVenta(listaHidraulica.get(a-1).getId(),cliente,(int) Double.parseDouble(textField.getText())));
+					        clsBD.insertarDatoTablaBD(new clsVenta(listaHidraulica.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
 						}
 					}
 					else if(rdbtnMareomotriz.isSelected())
@@ -348,7 +350,7 @@ public class clsListaM extends JFrame
 						int a=tm.getFila();
 						if(a>-1)
 						{
-					        clsBD.insertarDatoTablaBD(new clsVenta(listaMareomotriz.get(a-1).getId(),cliente,(int) Double.parseDouble(textField.getText())));
+					        clsBD.insertarDatoTablaBD(new clsVenta(listaMareomotriz.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
 						}
 					}
 					else if(rdbtnSolar.isSelected())
@@ -356,7 +358,7 @@ public class clsListaM extends JFrame
 						int a=ts.getFila();
 						if(a>-1)
 						{
-					        clsBD.insertarDatoTablaBD(new clsVenta(listaSolar.get(a-1).getId(),cliente,(int) Double.parseDouble(textField.getText())));
+					        clsBD.insertarDatoTablaBD(new clsVenta(listaSolar.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
 						}
 					}
 				}

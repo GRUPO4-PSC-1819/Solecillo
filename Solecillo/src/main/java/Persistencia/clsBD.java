@@ -103,7 +103,7 @@ public class clsBD
 		case "VENTA": 
 			try 
 			{
-				statement.executeUpdate("CREATE TABLE IF NOT EXISTS VENTA (ID INT NOT NULL PRIMARY KEY,"+
+				statement.executeUpdate("CREATE TABLE IF NOT EXISTS VENTA (ID INTEGER PRIMARY KEY,"+
 										"NOMBREC STRING NOT NULL, "+ 
 										"IDM INT, CANTIDAD INT)");
 			} 
@@ -284,7 +284,7 @@ public class clsBD
 		{
 			try 
 			{
-				statement.executeUpdate("INSERT INTO VENTA VALUES ('"+((clsVenta)obj).getId()+"','"
+				statement.executeUpdate("INSERT INTO VENTA (NOMBREC, IDM,CANTIDAD)VALUES ('"
 						+ ((clsVenta)obj).getNombreC()+"','"
 						+((clsVenta)obj).getIdm()+"','"
 						+ ((clsVenta)obj).getCantidad()+"')");
