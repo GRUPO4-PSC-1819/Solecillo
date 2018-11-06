@@ -3,6 +3,9 @@ package Analisisdedatos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -41,6 +44,7 @@ public class ScatterPlotExample extends JFrame {
 
   public ScatterPlotExample(String title) {
     super(title);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     ArrayList<Attribute> atts = new ArrayList<Attribute>(3);
 	ArrayList<String> classVal = new ArrayList<String>();
     classVal.add("No peligra");
@@ -85,6 +89,20 @@ public class ScatterPlotExample extends JFrame {
 	});
 	btnAceptar_1.setBounds(600, 300, 100, 26);
 	panel.add(btnAceptar_1);
+	
+	
+	addWindowListener( new WindowAdapter() 
+	{
+		@Override
+		public void windowClosing(WindowEvent e) 
+		{
+			//logger.log(Level.INFO, "Volviendo al menu principal");
+			//JOptionPane.showMessageDialog(miVentana, "Esperemos que haya disfrutado de las partidas.");
+			dispose();
+			//loginFrame frame = new loginFrame();
+			//frame.setVisible(true);
+		}
+	});	
   }
 
   public ScatterPlotExample(String string, int i) {

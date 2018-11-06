@@ -5,14 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 import org.jfree.ui.RefineryUtilities;
-
 import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
@@ -20,9 +15,7 @@ import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsUsuario;
 import LN.clsVenta;
-import Persistencia.clsBD;
 import weka.core.Instances;
-
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -33,7 +26,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 
 import java.awt.Color;
@@ -44,7 +36,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 
@@ -68,7 +61,7 @@ public class principalFrame extends JFrame {
 	 */
 
 	public principalFrame(clsUsuario usu) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -198,7 +191,7 @@ public class principalFrame extends JFrame {
 			}});
 		panel_5.add(btnRefrescar);
 		
-		JButton btngrafico = new JButton("Grafico");
+		JButton btngrafico = new JButton("Gráfico");
 		btngrafico.setBounds(729, 307, 115, 29);
 		btngrafico.addActionListener(new ActionListener() {
 
@@ -207,7 +200,8 @@ public class principalFrame extends JFrame {
 				// TODO Auto-generated method stub
 				PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
 			      demo.setSize( 560 , 367 );    
-			      RefineryUtilities.centerFrameOnScreen( demo );    
+			      RefineryUtilities.centerFrameOnScreen( demo );   
+			      demo.pack();
 			      demo.setVisible( true ); 
 			}});
 		panel_5.add(btngrafico);
@@ -555,9 +549,20 @@ public class principalFrame extends JFrame {
 				}
 			});
 		}
+			addWindowListener( new WindowAdapter() 
+			{
+				@Override
+				public void windowClosing(WindowEvent e) 
+				{
+					//logger.log(Level.INFO, "Volviendo al menu principal");
+					//JOptionPane.showMessageDialog(miVentana, "Esperemos que haya disfrutado de las partidas.");
+					dispose();
+					loginFrame frame = new loginFrame();
+					frame.setVisible(true);
+				}
+			});	
+		
 	   }
-	private Object i(int size) {
-		// TODO Auto-generated method stub
-		return null;
+
 }
-	}
+	

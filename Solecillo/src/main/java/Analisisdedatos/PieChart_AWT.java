@@ -1,7 +1,10 @@
 package Analisisdedatos;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
@@ -10,16 +13,17 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
 
 import LN.clsGestor;
 import LN.clsVenta;
+import LP.loginFrame;
  
 public class PieChart_AWT extends ApplicationFrame {
    
    public PieChart_AWT( String title ) {
       super( title ); 
       setContentPane(createDemoPanel( ));
+      	
    }
    
    private static PieDataset createDataset( ) {
@@ -62,7 +66,8 @@ public class PieChart_AWT extends ApplicationFrame {
    }
    
    public static JPanel createDemoPanel( ) {
-      JFreeChart chart = createChart(createDataset( ) );  
+      JFreeChart chart = createChart(createDataset( ) );
+      
       return new ChartPanel( chart ); 
    }
 

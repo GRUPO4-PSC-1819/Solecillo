@@ -1,6 +1,8 @@
 package LP;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -42,6 +44,8 @@ public class ProgressBar extends JFrame
 	int e4;
 	int e5;
 	String ventana_a_abrir;
+	
+	boolean sigo = true;
 	
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
@@ -86,7 +90,7 @@ public class ProgressBar extends JFrame
 	public ProgressBar(String titulo, String v, clsUsuario usu) {
 		
 		setBounds(450, 300, 600, 140);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(Color.white);
 		
@@ -117,6 +121,20 @@ public class ProgressBar extends JFrame
 		miHilo = new MiRunnable();
 		Thread nuevoHilo = new Thread(miHilo);
 		nuevoHilo.start();
+		
+		addWindowListener( new WindowAdapter() 
+		{
+			@Override
+			public void windowClosing(WindowEvent e) 
+			{
+				//logger.log(Level.INFO, "Volviendo al menu principal");
+				//JOptionPane.showMessageDialog(miVentana, "Esperemos que haya disfrutado de las partidas.");
+				nuevoHilo.stop();
+				dispose();
+				loginFrame frame = new loginFrame();
+				frame.setVisible(true);
+			}
+		});	
 	}
 	/**
 	 * Método que cierra la ProgressBar y carga la nueva ventana, dependiendo de cuál sea la que deba mostrar.
@@ -144,7 +162,7 @@ public class ProgressBar extends JFrame
 	 */
 		class MiRunnable implements Runnable 
 		{
-			boolean sigo = true;
+			
 			@Override
 			public void run() 
 			{

@@ -36,9 +36,9 @@ public class clsMain
 					//clsBD.insertarDatoTablaBD(new clsMaquina_Eolica(3,"c","c",3,"c","c","c",3,3));
 					//clsBD.insertarDatoTablaBD(new clsCliente("b","b","a","a","a"));
 					//clsBD.insertarDatoTablaBD(new clsCliente("c","b","a","a","a"));
-					clsUsuario u=new clsUsuario();
-					principalFrame p=new principalFrame(u);
-					//loginFrame p=new loginFrame();
+					//clsUsuario u=new clsUsuario();
+					//principalFrame p=new principalFrame(u);
+					loginFrame p=new loginFrame();
 					p.setVisible(true);
 				} 
 				catch (Exception e) 
