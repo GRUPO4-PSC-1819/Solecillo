@@ -1,6 +1,5 @@
 package LP;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -16,13 +15,11 @@ import LN.clsClienteRepetido;
 import LN.clsGestor;
 import LN.clsUsuario;
 import LN.clsVenta;
-import Persistencia.clsBD;
 import weka.core.Instances;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,8 +27,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
@@ -43,7 +38,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 
 public class principalFrame extends JFrame {
@@ -249,7 +243,6 @@ public class principalFrame extends JFrame {
 		objGestor=new clsGestor();
 		
 		clnts=objGestor.ListaClientes();
-		int i;
 		int max=clnts.size();
 		System.out.println(max);
 		
@@ -339,12 +332,6 @@ public class principalFrame extends JFrame {
 		lblBuscarPor.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblBuscarPor.setBounds(48, 283, 152, 20);
 		panel_2.add(lblBuscarPor);
-		
-		
-		
-		JButton btnNewButton = new JButton("BUSCAR");
-		btnNewButton.setBounds(729, 281, 115, 29);
-		panel_2.add(btnNewButton);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(15, 243, 881, 10);

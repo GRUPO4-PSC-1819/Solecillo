@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import Comun.clsConstantes;
 import LN.clsUsuario;
@@ -435,9 +434,9 @@ public class clsGestor implements Serializable
 	 * @param fechaalta Fecha de alta del usuario
 	 * @return Usuario modificado para actualizar la ventana clsEleccion
 	 */
-	public clsUsuario ModificarUsuario (String n, String ap1, String ap2, String nick, String cont, Date fechaalta)
+	public clsUsuario ModificarUsuario (String n, String ap1, String ap2, String nick, String cont)
 	{
-		clsUsuario modificado=new clsUsuario(n, ap1, ap2, nick, cont, fechaalta);
+		clsUsuario modificado=new clsUsuario(n, ap1, ap2, nick, cont);
 		clsBD.modificarDatoTablaBD(modificado);
 		return modificado;
 	}

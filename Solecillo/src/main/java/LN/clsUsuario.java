@@ -1,8 +1,6 @@
 package LN;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Clase creada para generar un objeto nuevo (clsUsuario). Implementa la interfaz Comparable con clsUsuario y Serializable. <br>
@@ -19,7 +17,6 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 	private String apellido2;
 	private String nickname;
 	private String contraseña;
-	private Date fechadealta;
 	
 	/**
 	 * Constructor con parámetros para crear un nuevo usuario.
@@ -36,28 +33,9 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 		apellido2=ap2;
 		nickname=nick;
 		contraseña=cont;
-		fechadealta=new Date();
 	}
 	
-	/**
-	 * Constructor con parámetros para tomar usuarios de la Base de Datos.
-	 * @param n Nombre del usuario
-	 * @param ap1 Primer apellido del usuario
-	 * @param ap2 Segundo apellido del usuario
-	 * @param nick Nickname del usuario
-	 * @param cont Contraseña del usuario
-	 * @param el Puntuación ELO del usuario
-	 * @param fecha Fecha de alta del usuario
-	 */
-	public clsUsuario(String n, String ap1, String ap2, String nick, String cont, Date fecha)
-	{
-		nombre=n;
-		apellido1=ap1;
-		apellido2=ap2;
-		nickname=nick;
-		contraseña=cont;
-		fechadealta=fecha;
-	}
+
 	
 	/**
 	 * Constructor vacío para poder serializar.
@@ -69,7 +47,6 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 		apellido2=null;
 		nickname=null;
 		contraseña=null;
-		fechadealta=null;		
 	}
 	
 	/**
@@ -110,9 +87,8 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 	 */
 	public String toString()
 	{
-		SimpleDateFormat formato = new SimpleDateFormat ("dd/MM/yyyy");
 		String e = "Nombre: "+this.getNombre()+" - Apellido 1: "+this.getApellido1()+" - Apellido 2: "+this.getApellido2()+
-				" - Nickname: "+this.getNickname()+" - Fecha de registro: "+formato.format(this.getFechadealta());
+				" - Nickname: "+this.getNickname();
 		return e;
 	}
 	
@@ -147,14 +123,6 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 	public void setApellido2(String apellido2) 
 	{
 		this.apellido2 = apellido2;
-	}
-	public Date getFechadealta()
-	{
-		return fechadealta;
-	}
-	public void setFechadealta(Date fechadealta)
-	{
-		this.fechadealta = fechadealta;
 	}
 	public String getNickname() 
 	{

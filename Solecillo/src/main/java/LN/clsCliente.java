@@ -1,9 +1,7 @@
 package LN;
 
-
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 /**
  * Clase creada para generar un objeto nuevo (clsCliente). Implementa la interfaz Comparable con clsUsuario y Serializable. <br>
@@ -20,7 +18,6 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 	private String apellido2;
 	private String dni;
 	private String empresa;
-	private Date fechadealta;
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -54,8 +51,6 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 		apellido2=ap2;
 		this.dni=dni;
 		setEmpresa(emp);
-
-		fechadealta=new Date();
 	}
 	
 	/**
@@ -97,9 +92,8 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 	 */
 	public String toString()
 	{
-		SimpleDateFormat formato = new SimpleDateFormat ("dd/MM/yyyy");
 		String e = "Nombre: "+this.getNombre()+" - Apellido 1: "+this.getApellido1()+" - Apellido 2: "+this.getApellido2()+
-				" - DNI: "+this.getdni()+" - Fecha de registro: "+formato.format(this.getFechadealta());
+				" - DNI: "+this.getdni();
 		return e;
 	}
 	
@@ -132,18 +126,7 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 	{
 		return dni;
 	}
-	public void setApellido2(String apellido2) 
-	{
-		this.apellido2 = apellido2;
-	}
-	public Date getFechadealta()
-	{
-		return fechadealta;
-	}
-	public void setFechadealta(Date fechadealta)
-	{
-		this.fechadealta = fechadealta;
-	}
+
 	
 	@Override
 	public int compareTo(clsCliente arg0) {
