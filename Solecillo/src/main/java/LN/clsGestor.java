@@ -326,22 +326,18 @@ public class clsGestor implements Serializable
 	public ArrayList<clsVenta> ListaVentas()	
 	{	
 		ArrayList<clsVenta> lista = new ArrayList <clsVenta>();
-		ResultSet rs = clsBD.obtenerDatosTablaBD("VENTA");
-
+		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.VENTA);
 
 		if (rs != null)
 		{
 			try 
 			{
 				while (rs.next())
-				{System.out.println("Hay clientes");
-					lista.add(new clsVenta(
+				{lista.add(new clsVenta(
 							rs.getInt("ID"),
-							rs.getString("NOMBREC"),
 							rs.getInt("IDM"),
-							rs.getInt("CANTIDAD")
-							));
-					
+							rs.getString("DNIC"),
+							rs.getInt("CANTIDAD")));
 				}
 				
 			} 
@@ -421,6 +417,12 @@ public class clsGestor implements Serializable
 	public void CrearMaquinaSolar(String n, String col, double val, String fab, String np, String nc)
 	{
 		clsMaquina_Solar nuevo=new clsMaquina_Solar(n, col, val, fab, np, nc);
+		clsBD.insertarDatoTablaBD(nuevo);
+	}
+	
+	public void CrearVenta(int idm, String dniC, int can)
+	{
+		clsVenta nuevo=new clsVenta(idm, dniC, can);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	

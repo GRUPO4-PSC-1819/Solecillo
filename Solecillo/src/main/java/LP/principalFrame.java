@@ -173,7 +173,7 @@ public class principalFrame extends JFrame {
 		
 		for(clsVenta venta : ventas)
 		{
-			modeloV.addRow(new Object[]{venta.getId(),venta.getNombreC(),venta.getIdm(),venta.getCantidad()});
+			modeloV.addRow(new Object[]{venta.getId(),venta.getDniC(),venta.getIdm(),venta.getCantidad()});
 		}
 		
 		btnRefrescar = new JButton("Refrescar");
@@ -191,7 +191,7 @@ public class principalFrame extends JFrame {
 				}
 				for(clsVenta venta : ventas)
 				{
-					modeloV.addRow(new Object[]{venta.getId(),venta.getNombreC(),venta.getIdm(),venta.getCantidad()});
+					modeloV.addRow(new Object[]{venta.getId(),venta.getDniC(),venta.getIdm(),venta.getCantidad()});
 				}
 			}});
 		panel_5.add(btnRefrescar);
@@ -204,14 +204,37 @@ public class principalFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-		        
-				PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
-			      demo.setSize( 560 , 367 );    
-			      RefineryUtilities.centerFrameOnScreen( demo );   
-			      demo.pack();
-			      demo.setVisible( true ); 
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+					  PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
 			}});
 		panel_5.add(btngrafico);
+		
+		JLabel lblIDV = new JLabel("ID VENTA");
+		lblIDV.setBounds(80, 290, 110, 56);
+		panel_5.add(lblIDV);
+		
+		JLabel lblDNIV = new JLabel("DNI CLIENTE");
+		lblDNIV.setBounds(230, 290, 110, 56);
+		panel_5.add(lblDNIV);
+		
+		JLabel lblIDMV = new JLabel("ID MÁQUINA");
+		lblIDMV.setBounds(380, 290, 110, 56);
+		panel_5.add(lblIDMV);
+		
+		JLabel lblCV = new JLabel("CANTIDAD");
+		lblCV.setBounds(530, 290, 110, 56);
+		panel_5.add(lblCV);
 		
 	
 		tableV.setModel(modeloV);
@@ -235,7 +258,7 @@ public class principalFrame extends JFrame {
 		
 		table.setColumnSelectionAllowed(true);
 		table.setCellSelectionEnabled(true);
-		table.setBounds(41, 333, 645, 169);
+		table.setBounds(41, 373, 645, 169);
 	
 		
 		
@@ -243,14 +266,13 @@ public class principalFrame extends JFrame {
 		objGestor=new clsGestor();
 		
 		clnts=objGestor.ListaClientes();
-		int max=clnts.size();
-		System.out.println(max);
+		//int max=clnts.size();
 		
+		//modeloT.addRow(new Object[]{"NOMBRE", "APELLIDO 1", "APELLIDO 2", "DNI", "EMPRESA"});
 		for(clsCliente cliente : clnts)
 		{
-			modeloT.addRow(new Object[]{cliente.getNombre(),cliente.getApellido1(),cliente.getApellido2(),cliente.getdni(), cliente.getEmpresa()});
+			modeloT.addRow(new Object[]{cliente.getNombre(), cliente.getApellido1(), cliente.getApellido2(), cliente.getdni(), cliente.getEmpresa()});
 		}
-	
 		table.setModel(modeloT);
 		
 		panel_2.add(table);
@@ -263,7 +285,27 @@ public class principalFrame extends JFrame {
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel_2.add(lblNewLabel_3);
 		
-
+		JLabel lblNombre = new JLabel("NOMBRE");
+		lblNombre.setBounds(70, 335, 257, 56);
+		panel_2.add(lblNombre);
+		
+		JLabel lblAp1 = new JLabel("APELLIDO 1");
+		lblAp1.setBounds(200, 335, 257, 56);
+		panel_2.add(lblAp1);
+		
+		JLabel lblAp2 = new JLabel("APELLIDO 2");
+		lblAp2.setBounds(330, 335, 257, 56);
+		panel_2.add(lblAp2);
+		
+		JLabel lblDni = new JLabel("DNI");
+		lblDni.setBounds(460, 335, 257, 56);
+		panel_2.add(lblDni);
+		
+		JLabel lblEmpresa = new JLabel("EMPRESA");
+		lblEmpresa.setBounds(590, 335, 257, 56);
+		panel_2.add(lblEmpresa);
+		
+		
 		JButton btnVenta = new JButton("VENTA");
 		btnVenta.setBounds(729, 407, 115, 29);
 		btnVenta.addActionListener(new ActionListener() 
@@ -272,11 +314,35 @@ public class principalFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//0 por el ud
-				System.out.println(table.getValueAt(table.getSelectedRow(), 0));
-				clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VENTA,(String) table.getValueAt(table.getSelectedRow(), 0));
-				frame.pack();
-				frame.setVisible(true);
+				int i=-1;
+				
+				if(table.getSelectedRow()==-1)
+				{
+					JOptionPane.showMessageDialog(null, "Elija un cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else
+				{
+					clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VENTA, (String) table.getValueAt(table.getSelectedRow(), 3));
+					frame.pack();
+					frame.setVisible(true);
+				}
+				//String b=((String) table.getValueAt(table.getSelectedRow(), 3));
+				
+				//System.out.println(b);
+				
+				
+				/*if(table.getValueAt(table.getSelectedRow(), 3)).length()>0)
+				{
+					JOptionPane.showMessageDialog(null, "Elija un cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else
+				{
+					System.out.println("2222222");
+					clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VENTA, (String) table.getValueAt(table.getSelectedRow(), 3));
+					frame.pack();
+					frame.setVisible(true);
+				}*/
+				
 				
 			}
 			
@@ -285,7 +351,7 @@ public class principalFrame extends JFrame {
 		panel_2.add(btnVenta);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"NOMBRE", "APELLIDO", "DNI", "COMPRAS"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"NOMBRE", "APELLIDO 1", "APELLIDO 2", "DNI", "COMPRAS"}));
 		comboBox.setBounds(173, 281, 259, 26);
 		panel_2.add(comboBox);
 		
@@ -301,7 +367,6 @@ public class principalFrame extends JFrame {
                 String cadena = (textField.getText());
                 textField.setText(cadena);
                 
-                System.out.println(textField.getText());
                 int columna=0;
                
                 if(comboBox.getSelectedIndex()==0) {
@@ -317,7 +382,9 @@ public class principalFrame extends JFrame {
 					columna=2;}
 				if(comboBox.getSelectedIndex()==3) { 
 					columna=3;
-					
+				}
+				if(comboBox.getSelectedIndex()==4) { 
+					columna=4;
 				}
 				filtro.setRowFilter(RowFilter.regexFilter(textField.getText(), columna));
 				table.setRowSorter(filtro);

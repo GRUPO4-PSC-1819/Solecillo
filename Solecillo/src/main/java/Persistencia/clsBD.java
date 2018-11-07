@@ -104,7 +104,7 @@ public class clsBD
 			try 
 			{
 				statement.executeUpdate("CREATE TABLE IF NOT EXISTS VENTA (ID INTEGER PRIMARY KEY,"+
-										"NOMBREC STRING NOT NULL, "+ 
+										"DNIC STRING NOT NULL, "+ 
 										"IDM INT, CANTIDAD INT)");
 			} 
 			catch (SQLException e1) 
@@ -158,7 +158,6 @@ public class clsBD
 	public static void insertarDatoTablaBD(Object obj)
 	{
 		if (statement==null) return;
-		
 		
 		
 		
@@ -284,10 +283,10 @@ public class clsBD
 		{
 			try 
 			{
-				statement.executeUpdate("INSERT INTO VENTA (NOMBREC, IDM,CANTIDAD)VALUES ('"
-						+ ((clsVenta)obj).getNombreC()+"','"
-						+((clsVenta)obj).getIdm()+"','"
-						+ ((clsVenta)obj).getCantidad()+"')");
+				statement.executeUpdate("INSERT INTO VENTA (DNIC, IDM, CANTIDAD) VALUES ('"
+						+ ((clsVenta)obj).getDniC()+"',"
+						+((clsVenta)obj).getIdm()+","
+						+ ((clsVenta)obj).getCantidad()+")");
 			} 
 			catch (SQLException e1) 
 			{

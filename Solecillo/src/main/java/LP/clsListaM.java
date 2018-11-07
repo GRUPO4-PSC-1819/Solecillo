@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -26,15 +28,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
 import Comun.clsConstantes;
 import LN.clsGestor;
 import LN.clsMaquina_Eolica;
 import LN.clsMaquina_Hidraulica;
 import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
-import LN.clsVenta;
-import Persistencia.clsBD;
 
 /**
  * Clase que generará una JFrame para mostrar los datos de los usuarios registrados.
@@ -111,7 +110,7 @@ public class clsListaM extends JFrame
 	 * Constructor del JFrame que incluye escuchadores varios.
 	 * @param titulo Título de la ventana.
 	 */	
-	public clsListaM(String titulo, String funcion,String cliente)
+	public clsListaM(String titulo, String funcion, String cliente)
 	{
 		super(titulo);
 		getContentPane().setLayout(new BorderLayout());
@@ -174,7 +173,14 @@ public class clsListaM extends JFrame
 			//MEJORARLOOOOOO
 			btnSalir = new JButton("Venta");
 			textField = new JTextField("Cantidad");
-			panelbotonera.add(textField, BorderLayout.WEST);
+			textField.addFocusListener(new FocusAdapter() {
+				  public void focusGained(FocusEvent fEvt) {
+				    JTextField tField = (JTextField)fEvt.getSource();
+				    //tField.selectAll();
+				    tField.setText("");
+				  }
+				});
+			panelbotonera.add(textField);
 			//paneltabla.add(textField);
 			//textField.setColumns(10);
 		}
@@ -190,7 +196,7 @@ public class clsListaM extends JFrame
 		listaMareomotriz = objGestor.ListaMareomotriz();
 		listaSolar = objGestor.ListaSolar();
 		
-		 te=new clsTablaE(listaEolica);
+		te=new clsTablaE(listaEolica);
 		th=new clsTablaH(listaHidraulica);
 		tm=new clsTablaM(listaMareomotriz);
 		ts=new clsTablaS(listaSolar);
@@ -336,9 +342,25 @@ public class clsListaM extends JFrame
 						a=te.getFila();
 						if(a>-1)
 						{
-							System.out.println(listaEolica.get(a-1));
-							clsBD.insertarDatoTablaBD(new clsVenta(listaEolica.get(a-1).getId(),cliente,(int) (listaEolica.get(a-1).getValor()*Double.parseDouble(textField.getText()))));
-							//JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta.");
+							if(textField.getText().length()>0)
+							{
+								try
+								{
+									clsMaquina_Eolica m;
+									m=objGestor.ObtenerEolica(a);
+									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
+									dispose();
+									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
+								}
+							 catch (NumberFormatException e) {
+								// TODO Auto-generated catch block
+								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+							 	}
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Elija una cantidad", "Error", JOptionPane.ERROR_MESSAGE);
+							}
 						}
 					}
 					else if(rdbtnHidraulica.isSelected())
@@ -346,7 +368,25 @@ public class clsListaM extends JFrame
 						a=th.getFila();
 						if(a>-1)
 						{
-					        clsBD.insertarDatoTablaBD(new clsVenta(listaHidraulica.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
+							if(textField.getText().length()>0)
+							{
+								try
+								{
+									clsMaquina_Hidraulica m;
+									m=objGestor.ObtenerHidraulica(a);
+									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
+									dispose();
+									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
+								}
+							 catch (NumberFormatException e) {
+								// TODO Auto-generated catch block
+								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+							 	}
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Elija una cantidad", "Error", JOptionPane.ERROR_MESSAGE);
+							}
 						}
 					}
 					else if(rdbtnMareomotriz.isSelected())
@@ -354,7 +394,25 @@ public class clsListaM extends JFrame
 						a=tm.getFila();
 						if(a>-1)
 						{
-					        clsBD.insertarDatoTablaBD(new clsVenta(listaMareomotriz.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
+							if(textField.getText().length()>0)
+							{
+								try
+								{
+									clsMaquina_Mareomotriz m;
+									m=objGestor.ObtenerMareomotriz(a);
+									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
+									dispose();
+									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
+								}
+							 catch (NumberFormatException e) {
+								// TODO Auto-generated catch block
+								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+							 	}
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Elija una cantidad", "Error", JOptionPane.ERROR_MESSAGE);
+							}
 						}
 					}
 					else if(rdbtnSolar.isSelected())
@@ -362,7 +420,25 @@ public class clsListaM extends JFrame
 						a=ts.getFila();
 						if(a>-1)
 						{
-					        clsBD.insertarDatoTablaBD(new clsVenta(listaSolar.get(a-1).getId(),cliente,(int)(listaEolica.get(a-1).getValor()* Double.parseDouble(textField.getText()))));
+							if(textField.getText().length()>0)
+							{
+								try
+								{
+									clsMaquina_Solar m;
+									m=objGestor.ObtenerSolar(a);
+									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
+									dispose();
+									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
+								}
+							 catch (NumberFormatException e) {
+								// TODO Auto-generated catch block
+								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+							 	}
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Elija una cantidad", "Error", JOptionPane.ERROR_MESSAGE);
+							}
 						}
 					}
 				}

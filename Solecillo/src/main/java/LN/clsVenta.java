@@ -5,8 +5,12 @@ import java.io.Serializable;
 public class clsVenta implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idm;
-	private String nombreC;
+	private String dniC;
 	private int cantidad;
 	private int id;
 	
@@ -15,32 +19,52 @@ public class clsVenta implements Serializable{
 	{
 		
 	}
-	public clsVenta(int idm, String nombreC, int cantidad) {
-		super();
-		this.idm = idm;
-		this.nombreC = nombreC;
-		this.cantidad = cantidad;
-		
-	}
-	public clsVenta(int id,String nombreC,int idm, int cantidad) {
-		super();
-		this.idm = idm;
-		this.nombreC = nombreC;
-		this.cantidad = cantidad;
+	public clsVenta(int id, int idm, String dniC, int cantidad) {
 		this.id=id;
+		this.idm = idm;
+		this.dniC = dniC;
+		this.cantidad = cantidad;
 	}
+	public clsVenta(int idm, String dniC, int cantidad) {
+		this.idm = idm;
+		this.dniC = dniC;
+		this.cantidad = cantidad;
+	}
+
 	
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsVenta other = (clsVenta) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 	public int getIdm() {
 		return idm;
 	}
 	public void setIdm(int idm) {
 		this.idm = idm;
 	}
-	public String getNombreC() {
-		return nombreC;
+	public String getDniC() {
+		return dniC;
 	}
-	public void setNombreC(String nombreC) {
-		this.nombreC = nombreC;
+	public void setDniC(String dniC) {
+		this.dniC = dniC;
 	}
 	public int getId() {
 		return id;

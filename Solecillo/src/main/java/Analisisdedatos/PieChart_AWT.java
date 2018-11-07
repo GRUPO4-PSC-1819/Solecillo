@@ -1,22 +1,15 @@
 package Analisisdedatos;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
-
 import LN.clsGestor;
 import LN.clsVenta;
-import LP.loginFrame;
  
 public class PieChart_AWT extends JFrame {
    
@@ -37,16 +30,16 @@ public class PieChart_AWT extends JFrame {
       for(clsVenta venta: Ventas)
       {
     	  total=venta.getCantidad()+total;
-    	  if(!clientes.contains(venta.getNombreC()))
+    	  if(!clientes.contains(venta.getDniC()))
     	  {
-    		  clientes.add(venta.getNombreC());
+    		  clientes.add(venta.getDniC());
     	  }
       }
       int hola[]= new int[clientes.size()];
       
       for(clsVenta venta: Ventas)
       {
-    	  hola[clientes.indexOf(venta.getNombreC())]+=venta.getCantidad();
+    	  hola[clientes.indexOf(venta.getDniC())]+=venta.getCantidad();
       }
       System.out.println((double)hola[0]/total);
       for(int i=0;i<hola.length;i++)
