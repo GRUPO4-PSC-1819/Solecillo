@@ -220,10 +220,10 @@ public class clsAltaEolica extends JFrame
 		clsGestor objGestor=new clsGestor();
 		if(txtNombre.getText().length()>0&&txtColor.getText().length()>0&&txtValor.getText().length()>0&&txtFabricante.getText().length()>0&&txtNombrePueblo.getText().length()>0&&txtNombreCampo.getText().length()>0&&txtAltura.getText().length()>0&&txtDiametro.getText().length()>0)
 		{		
-				logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
 				try {
 					objGestor.CrearMaquinaEolica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
 					dispose();
+					logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
 					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina eólica correctamente.");
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block

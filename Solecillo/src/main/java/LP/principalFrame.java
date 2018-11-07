@@ -12,6 +12,7 @@ import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
 import LN.clsCliente;
+import LN.clsClienteRepetido;
 import LN.clsGestor;
 import LN.clsUsuario;
 import LN.clsVenta;
@@ -27,6 +28,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 
 import java.awt.BorderLayout;
@@ -41,6 +43,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 
 public class principalFrame extends JFrame {
@@ -51,11 +54,11 @@ public class principalFrame extends JFrame {
 	private ArrayList<clsCliente> clnts;
 	private ArrayList<clsVenta> ventas;
 	private clsGestor objGestor;
-	private TextField textField_1;
-	private TextField textField_2;
-	private TextField textField_3;
-	private TextField textField_4;
-	private TextField textField_5;
+	private TextField textNombre;
+	private TextField textApe1;
+	private TextField textApe2;
+	private TextField textDNI;
+	private TextField textEmpresa;
 	public JButton btnRefrescar;
 	
 	static JFrame miVentana;
@@ -372,25 +375,25 @@ public class principalFrame extends JFrame {
 		label_4.setBounds(400, 137, 100, 27);
 		panel_2.add(label_4);
 		
-		textField_1 = new TextField();
-		textField_1.setBounds(130, 94, 231, 27);
-		panel_2.add(textField_1);
+		textNombre = new TextField();
+		textNombre.setBounds(130, 94, 231, 27);
+		panel_2.add(textNombre);
 		
-		textField_2 = new TextField();
-		textField_2.setBounds(130, 137, 231, 27);
-		panel_2.add(textField_2);
+		textApe1 = new TextField();
+		textApe1.setBounds(130, 137, 231, 27);
+		panel_2.add(textApe1);
 		
-		textField_3 = new TextField();
-		textField_3.setBounds(130, 190, 231, 27);
-		panel_2.add(textField_3);
+		textApe2 = new TextField();
+		textApe2.setBounds(130, 190, 231, 27);
+		panel_2.add(textApe2);
 		
-		textField_4 = new TextField();
-		textField_4.setBounds(510, 94, 231, 27);
-		panel_2.add(textField_4);
+		textDNI = new TextField();
+		textDNI.setBounds(510, 94, 231, 27);
+		panel_2.add(textDNI);
 		
-		textField_5 = new TextField();
-		textField_5.setBounds(510, 137, 231, 27);
-		panel_2.add(textField_5);
+		textEmpresa = new TextField();
+		textEmpresa.setBounds(510, 137, 231, 27);
+		panel_2.add(textEmpresa);
 		
 		JButton btnNewCliente = new JButton("Nuevo cliente");
 		btnNewCliente.setBounds(400, 190, 115, 29);
@@ -399,16 +402,37 @@ public class principalFrame extends JFrame {
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clsBD.insertarDatoTablaBD(new clsCliente(textField_1.getText(),textField_2.getText(),textField_3.getText(),textField_4.getText(),textField_5.getText()));
-				 ArrayList<clsCliente> clientes = objGestor.ListaClientes();
-				if (modeloT.getRowCount() > 0) {
-				    for (int i = modeloT.getRowCount() - 1; i > -1; i--) {
-				        modeloT.removeRow(i);
-				    }
-				}
-				for(clsCliente cliente : clientes)
+				if(textNombre.getText().length()>0&&textApe1.getText().length()>0&&textApe2.getText().length()>0&&textDNI.getText().length()>0&&textEmpresa.getText().length()>0)
 				{
-					modeloT.addRow(new Object[]{cliente.getNombre(),cliente.getApellido1(),cliente.getApellido2(),cliente.getdni(), cliente.getEmpresa()});
+					try {
+						objGestor.CrearCliente(textNombre.getText(),textApe1.getText(),textApe2.getText(),textDNI.getText(),textEmpresa.getText());
+						//logger.log( Level.INFO, "Dando de alta al cliente con DNI: "+textDNI.getText());
+						ArrayList<clsCliente> clientes = objGestor.ListaClientes();
+						if (modeloT.getRowCount() > 0) {
+						    for (int i = modeloT.getRowCount() - 1; i > -1; i--) {
+						        modeloT.removeRow(i);
+						    }
+						}
+						for(clsCliente cliente : clientes)
+						{
+							modeloT.addRow(new Object[]{cliente.getNombre(),cliente.getApellido1(),cliente.getApellido2(),cliente.getdni(), cliente.getEmpresa()});
+						}
+						textNombre.setText("");
+						textApe1.setText("");
+						textApe2.setText("");
+						textDNI.setText("");
+						textEmpresa.setText("");
+						JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo cliente correctamente");
+						
+					} catch (clsClienteRepetido e1) 
+					{
+						JOptionPane.showMessageDialog(null, e1.getMessage(), "DNI repetido", JOptionPane.WARNING_MESSAGE);
+					}
+						
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Introduzca todos los datos.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -576,7 +600,7 @@ public class principalFrame extends JFrame {
 			
 			JButton btnAceptar_7 = new JButton("Visualizar la pantalla de análisis de datos");
 			btnAceptar_7.setFont(new Font("Tahoma", Font.PLAIN, 17));
-			btnAceptar_7.setBounds(254, 194, 257, 60);
+			btnAceptar_7.setBounds(254, 194, 367, 60);
 			panel_4.add(btnAceptar_7);
 			btnAceptar_7.addActionListener(new ActionListener() 
 			{
@@ -587,7 +611,6 @@ public class principalFrame extends JFrame {
 					  ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
 				      example.setSize(800, 400);
 				      example.setLocationRelativeTo(null);
-				      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				      example.setVisible(true);
 
 					} 

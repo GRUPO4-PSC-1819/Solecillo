@@ -300,23 +300,19 @@ public class clsGestor implements Serializable
 	{	
 		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
 		ResultSet rs = clsBD.obtenerDatosTablaBD("CLIENTE");
-
-
 		if (rs != null)
 		{
 			try 
 			{
 				while (rs.next())
-				{System.out.println("Hay clientes");
+				{
 					lista.add(new clsCliente(
 							rs.getString("NOMBRE"),
 							rs.getString("AP_1"),
 							rs.getString("AP_2"),
 							rs.getString("DNI"),
 							rs.getString("EMPRESA")));
-					
 				}
-				
 			} 
 			catch (SQLException e)
 			{
@@ -383,6 +379,23 @@ public class clsGestor implements Serializable
 			if(set.add(nuevo)==false)
 			{
 				throw new clsUsuarioRepetido();
+			}
+		}
+		clsBD.insertarDatoTablaBD(nuevo);
+	}
+	
+	public void CrearCliente(String n, String ap1, String ap2, String dni, String empresa) throws clsClienteRepetido
+	{
+		clsCliente nuevo=new clsCliente(n, ap1, ap2, dni, empresa);
+		ArrayList<clsCliente> listaClientes=new ArrayList<clsCliente>();
+		listaClientes=ListaClientes();
+		if(listaClientes.size()!=0)
+		{
+			HashSet<clsCliente> set=new HashSet<clsCliente>();
+			set.addAll(listaClientes);
+			if(set.add(nuevo)==false)
+			{
+				throw new clsClienteRepetido();
 			}
 		}
 		clsBD.insertarDatoTablaBD(nuevo);

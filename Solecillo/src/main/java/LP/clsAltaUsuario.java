@@ -229,8 +229,8 @@ public class clsAltaUsuario extends JFrame
 				{
 					try
 					{
-						logger.log( Level.INFO, "Dando de alta al usuario "+txtNickname.getText());
 						objGestor.CrearUsuario(txtNombre.getText(), txtApe1.getText(), txtApe2.getText(), txtNickname.getText().toUpperCase(), txtContrasenya1.getText());//, frmFechas.getFec());
+						logger.log( Level.INFO, "Dando de alta al usuario "+txtNickname.getText());
 						JOptionPane.showMessageDialog(null, "Se ha registrado un nuevo usuario correctamente");
 						dispose();
 					}

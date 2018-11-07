@@ -137,8 +137,8 @@ public class clsBD
 				case "CLIENTE": 
 			try 
 			{
-				statement.executeUpdate("CREATE TABLE IF NOT EXISTS  CLIENTE (NOMBRE STRING NOT NULL PRIMARY KEY,"+ "AP_1 STRING, "+"AP_2 STRING,"+
-										"DNI STRING ,"+ 
+				statement.executeUpdate("CREATE TABLE IF NOT EXISTS  CLIENTE (NOMBRE STRING,"+ "AP_1 STRING, "+"AP_2 STRING,"+
+										"DNI STRING NOT NULL PRIMARY KEY,"+ 
 										"EMPRESA STRING)");
 			} 
 			catch (SQLException e1) 
@@ -365,7 +365,7 @@ public class clsBD
 				
 		case "CLIENTE":
 			try 
-			{System.out.println("Clientes");
+			{
 			    rs = statement.executeQuery("SELECT * from CLIENTE");
 			} 
 			catch (SQLException e1) 

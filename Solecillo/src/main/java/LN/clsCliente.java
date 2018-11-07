@@ -22,6 +22,23 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 	private String empresa;
 	private Date fechadealta;
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsCliente other = (clsCliente) obj;
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		return true;
+	}
+
 	/**
 	 * Constructor con parÃ¡metros para crear un nuevo usuario.
 	 * @param n Nombre del cliente
@@ -65,16 +82,11 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 
 	}
 	
-	/**
-	 * ImplementaciÃ³n de hashCode() para evitar crear colisiones entre usuarios.
-	 */
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
 		return result;
 	}
 	
