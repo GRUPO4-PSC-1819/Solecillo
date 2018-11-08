@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.jfree.ui.RefineryUtilities;
 import Analisisdedatos.PieChart_AWT;
+import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
 import LN.clsCliente;
@@ -210,7 +211,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		JTable tableV = new JTable(modeloV);
 		tableV.setColumnSelectionAllowed(true);
 		tableV.setCellSelectionEnabled(true);
-		tableV.setBounds(41, 333, 645, 169);
+		tableV.setBounds(41, 150, 645, 169);
 		
 		objGestor=new clsGestor();
 		ventas=objGestor.ListaVentas();
@@ -240,8 +241,8 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			}});
 		panel_5.add(btnRefrescar);
 		
-		JButton btngrafico = new JButton("Gráfico");
-		btngrafico.setBounds(729, 307, 115, 29);
+		JButton btngrafico = new JButton("Gráfico Ventas - Cliente ");
+		btngrafico.setBounds(729, 307, 200, 29);
 		btngrafico.addActionListener(new ActionListener() {
 
 			@Override
@@ -264,20 +265,44 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			}});
 		panel_5.add(btngrafico);
 		
+		JButton btngrafico2 = new JButton("Gráfico Ventas - Producto ");
+		btngrafico2.setBounds(729, 207, 200, 29);
+		btngrafico2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+					  PieChart_PROD demo = new PieChart_PROD( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
+			}});
+		panel_5.add(btngrafico2);
+		
 		JLabel lblIDV = new JLabel("ID VENTA");
-		lblIDV.setBounds(80, 290, 110, 56);
+		lblIDV.setBounds(80, 110, 110, 56);
 		panel_5.add(lblIDV);
 		
 		JLabel lblDNIV = new JLabel("DNI CLIENTE");
-		lblDNIV.setBounds(230, 290, 110, 56);
+		lblDNIV.setBounds(230, 110, 110, 56);
 		panel_5.add(lblDNIV);
 		
 		JLabel lblIDMV = new JLabel("ID MÁQUINA");
-		lblIDMV.setBounds(380, 290, 110, 56);
+		lblIDMV.setBounds(380, 110, 110, 56);
 		panel_5.add(lblIDMV);
 		
 		JLabel lblCV = new JLabel("CANTIDAD");
-		lblCV.setBounds(530, 290, 110, 56);
+		lblCV.setBounds(530, 110, 110, 56);
 		panel_5.add(lblCV);
 		
 	
