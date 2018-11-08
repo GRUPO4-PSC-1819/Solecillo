@@ -27,12 +27,13 @@ public class loginFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JPasswordField passwordField;
-	private JTextField textField;
-	private JButton btnAceptar_1;
+	public JPasswordField passwordField;
+	public JTextField textField;
+	public JButton btnAceptar_1;
 	private JFrame miVentana;
 	
 	ArrayList<clsUsuario> usus=new ArrayList<clsUsuario>();
+	public JCheckBox chckbxAdministrador;
 
 	
 	/**
@@ -81,7 +82,7 @@ public class loginFrame extends JFrame {
 		contentPane.add(txtpnUsuario);
 		
 		
-		JCheckBox chckbxAdministrador = new JCheckBox("Administrador");
+		chckbxAdministrador = new JCheckBox("Administrador");
 		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");
 		chckbxAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxAdministrador.setBackground(Color.ORANGE);
