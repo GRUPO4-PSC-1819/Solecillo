@@ -127,8 +127,7 @@ public class ProgressBar extends JFrame
 			@Override
 			public void windowClosing(WindowEvent e) 
 			{
-				//logger.log(Level.INFO, "Volviendo al menu principal");
-				//JOptionPane.showMessageDialog(miVentana, "Esperemos que haya disfrutado de las partidas.");
+				logger.log(Level.INFO, "Volviendo al menu principal");
 				nuevoHilo.stop();
 				dispose();
 				loginFrame frame = new loginFrame();
@@ -144,13 +143,13 @@ public class ProgressBar extends JFrame
 		this.dispose();
 		if(ventana_a_abrir.equals(clsConstantes.PRINCIPAL))
 		{
-			logger.log( Level.INFO, "Cargando ventana clsEleccion");
+			logger.log( Level.INFO, "Cargando ventana de usuario");
 			principalFrame window = new principalFrame(usuario);
 			window.setVisible(true);
 		}
 		else if(ventana_a_abrir.equals(clsConstantes.ADMIN))
 		{
-			logger.log( Level.INFO, "Cargando ventana clsEleccion");
+			logger.log( Level.INFO, "Cargando ventana de administrador");
 			principalFrame window = new principalFrame(usuario);
 			window.setVisible(true);
 		}

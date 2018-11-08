@@ -45,7 +45,6 @@ public class clsBD
 		} 
 		catch (ClassNotFoundException | SQLException e) {
 			JOptionPane.showMessageDialog( null, "Error de conexión!! No se ha podido conectar con " + nombreBD , "ERROR", JOptionPane.ERROR_MESSAGE );
-			System.out.println( "Error de conexión!! No se ha podido conectar con " + nombreBD );
 			return null;
 		}
 	}
@@ -374,7 +373,7 @@ public class clsBD
 			break;
 	case "VENTA":
 		try 
-		{System.out.println("Clientes");
+		{
 		    rs = statement.executeQuery("SELECT * from VENTA");
 		} 
 		catch (SQLException e1) 

@@ -97,10 +97,6 @@ public class loginFrame extends JFrame {
 		
 		miVentana = this;
 		
-		passwordField.setText("admin");
-		textField.setText("admin");
-		chckbxAdministrador.setSelected(true);
-		
 		
 		btnAceptar_1 = new JButton("ENTRAR");
 		btnAceptar_1.setFont(new Font("Tahoma", Font.PLAIN, 17));

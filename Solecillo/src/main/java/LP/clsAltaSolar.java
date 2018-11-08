@@ -58,10 +58,10 @@ public class clsAltaSolar extends JFrame
 	
 	boolean modifmaq = false;
 	
-	private static final boolean ANYADIR_A_FIC_LOG = true;
+private static final boolean ANYADIR_A_FIC_LOG = true;
 	
 	/*Logger*/
-	private static Logger logger = Logger.getLogger( "Mariano" );
+	private static Logger logger = Logger.getLogger( "Solecillo" );
 	static 
 	{
 		try 
@@ -79,14 +79,14 @@ public class clsAltaSolar extends JFrame
 					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
 				}
 			};
-			FileOutputStream fLog = new FileOutputStream( "Mariano"+".log" , ANYADIR_A_FIC_LOG );
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
 			Handler h = new StreamHandler( fLog, f );
 			h.setLevel( Level.FINEST );
 			logger.addHandler( h );
 		} 
 		catch (SecurityException | IOException e) 
 		{
-			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaSolar.class.getName() );
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
 		}
 		logger.log( Level.INFO, "" );
 		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );

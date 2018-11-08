@@ -41,7 +41,6 @@ public class PieChart_AWT extends JFrame {
       {
     	  hola[clientes.indexOf(venta.getDniC())]+=venta.getCantidad();
       }
-      System.out.println((double)hola[0]/total);
       for(int i=0;i<hola.length;i++)
       {
     	  dataset.setValue( clientes.get(i), new Double( (100*hola[i])/total) );  

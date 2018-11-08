@@ -37,7 +37,18 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 
 
 public class principalFrame extends JFrame {
@@ -61,6 +72,39 @@ public class principalFrame extends JFrame {
 	static Instances test;
 	
 
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -240,13 +284,7 @@ public class principalFrame extends JFrame {
 		tableV.setModel(modeloV);
 		
 		panel_5.add(tableV);
-		
-		
-		/*JLabel lblNewLabel_2 = new JLabel("Clientes");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(326, 16, 95, 56);
-		panel_2.add(lblNewLabel_2);*/
-		
+
 		DefaultTableModel modeloT= new DefaultTableModel();
 		modeloT.addColumn("Nombre");
 		modeloT.addColumn("Apellido 1");
@@ -326,22 +364,6 @@ public class principalFrame extends JFrame {
 					frame.pack();
 					frame.setVisible(true);
 				}
-				//String b=((String) table.getValueAt(table.getSelectedRow(), 3));
-				
-				//System.out.println(b);
-				
-				
-				/*if(table.getValueAt(table.getSelectedRow(), 3)).length()>0)
-				{
-					JOptionPane.showMessageDialog(null, "Elija un cliente.", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-				else
-				{
-					System.out.println("2222222");
-					clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VENTA, (String) table.getValueAt(table.getSelectedRow(), 3));
-					frame.pack();
-					frame.setVisible(true);
-				}*/
 				
 				
 			}
@@ -460,7 +482,7 @@ public class principalFrame extends JFrame {
 				{
 					try {
 						objGestor.CrearCliente(textNombre.getText(),textApe1.getText(),textApe2.getText(),textDNI.getText(),textEmpresa.getText());
-						//logger.log( Level.INFO, "Dando de alta al cliente con DNI: "+textDNI.getText());
+						logger.log( Level.INFO, "Dando de alta al cliente con DNI: "+textDNI.getText());
 						ArrayList<clsCliente> clientes = objGestor.ListaClientes();
 						if (modeloT.getRowCount() > 0) {
 						    for (int i = modeloT.getRowCount() - 1; i > -1; i--) {
@@ -680,8 +702,7 @@ public class principalFrame extends JFrame {
 				@Override
 				public void windowClosing(WindowEvent e) 
 				{
-					//logger.log(Level.INFO, "Volviendo al menu principal");
-					//JOptionPane.showMessageDialog(miVentana, "Esperemos que haya disfrutado de las partidas.");
+					logger.log(Level.INFO, "Volviendo al menu principal");
 					dispose();
 					loginFrame frame = new loginFrame();
 					frame.setVisible(true);

@@ -73,10 +73,10 @@ public class clsListaM extends JFrame
 
 	public JTextField textField;
 	
-	private static final boolean ANYADIR_A_FIC_LOG = true;
+private static final boolean ANYADIR_A_FIC_LOG = true;
 	
-	/*Logger de la clase*/
-	private static Logger logger = Logger.getLogger( "Mariano" );
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
 	static 
 	{
 		try 
@@ -94,14 +94,14 @@ public class clsListaM extends JFrame
 					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
 				}
 			};
-			FileOutputStream fLog = new FileOutputStream( "Mariano"+".log" , ANYADIR_A_FIC_LOG );
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
 			Handler h = new StreamHandler( fLog, f );
 			h.setLevel( Level.FINEST );
 			logger.addHandler( h );
-			}
+		} 
 		catch (SecurityException | IOException e) 
 		{
-			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsListaM.class.getName() );
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
 		}
 		logger.log( Level.INFO, "" );
 		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
@@ -170,19 +170,15 @@ public class clsListaM extends JFrame
 		}
 		else if(funcion.equals(clsConstantes.VENTA))
 		{
-			//MEJORARLOOOOOO
 			btnSalir = new JButton("Venta");
 			textField = new JTextField("Cantidad");
 			textField.addFocusListener(new FocusAdapter() {
 				  public void focusGained(FocusEvent fEvt) {
 				    JTextField tField = (JTextField)fEvt.getSource();
-				    //tField.selectAll();
 				    tField.setText("");
 				  }
 				});
 			panelbotonera.add(textField);
-			//paneltabla.add(textField);
-			//textField.setColumns(10);
 		}
 		btnSalir.setBounds(612, 400, 89, 23);
 		panelbotonera.add(btnSalir);
@@ -208,12 +204,9 @@ public class clsListaM extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
-				//Collections.sort(listaEolica, new clsOrdenarPorElo());
-				
+				logger.log( Level.INFO, "Seleccionando máquinas EÓLICAS");
 				te.setOpaque(true); //content panes must be opaque
 				getContentPane().add(te, BorderLayout.NORTH);
-				
 		        pack();
 		        setVisible(true);
 			}
@@ -223,13 +216,10 @@ public class clsListaM extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
-				//Collections.sort(listaEolica, new clsOrdenarPorElo());
-				
-				
+				logger.log( Level.INFO, "Seleccionando máquinas HIDRÁULICAS");
+				//Collections.sort(listaEolica, new clsOrdenarPorElo());				
 				th.setOpaque(true); //content panes must be opaque
-				getContentPane().add(th, BorderLayout.NORTH);
-				
+				getContentPane().add(th, BorderLayout.NORTH);				
 		        pack();
 		        setVisible(true);
 			}
@@ -239,12 +229,9 @@ public class clsListaM extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
-				//Collections.sort(listaEolica, new clsOrdenarPorElo());
-				
+				logger.log( Level.INFO, "Seleccionando máquinas MAREOMOTRICES");
 				tm.setOpaque(true); //content panes must be opaque
-				getContentPane().add(tm, BorderLayout.NORTH);
-				
+				getContentPane().add(tm, BorderLayout.NORTH);				
 		        pack();
 		        setVisible(true);
 			}
@@ -254,12 +241,9 @@ public class clsListaM extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				logger.log( Level.INFO, "Obteniendo los jugadores ordenados por Elo");
-				//Collections.sort(listaEolica, new clsOrdenarPorElo());
-				
+				logger.log( Level.INFO, "Seleccionando máquinas SOLARES");
 				ts.setOpaque(true); //content panes must be opaque
-				getContentPane().add(ts, BorderLayout.NORTH);
-				
+				getContentPane().add(ts, BorderLayout.NORTH);				
 		        pack();
 		        setVisible(true);
 			}
@@ -284,6 +268,7 @@ public class clsListaM extends JFrame
 						a=te.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando BORRAR EÓLICA");
 							objGestor.BorrarMaquina(a);
 							listaEolica = objGestor.ListaEolica();
 							clsTablaE te1=new clsTablaE(listaEolica);
@@ -298,6 +283,7 @@ public class clsListaM extends JFrame
 						a=th.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando BORRAR HIDRÁULICA");
 							objGestor.BorrarMaquina(a);
 							listaHidraulica = objGestor.ListaHidraulica();
 							clsTablaH th1=new clsTablaH(listaHidraulica);
@@ -312,6 +298,7 @@ public class clsListaM extends JFrame
 						a=tm.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando BORRAR MAREOMOTRIZ");
 							objGestor.BorrarMaquina(a);
 							listaMareomotriz = objGestor.ListaMareomotriz();
 							clsTablaM tm1=new clsTablaM(listaMareomotriz);
@@ -326,6 +313,7 @@ public class clsListaM extends JFrame
 						a=ts.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando BORRAR SOLAR");
 							objGestor.BorrarMaquina(a);
 							listaSolar = objGestor.ListaSolar();
 							clsTablaS ts1=new clsTablaS(listaSolar);
@@ -346,6 +334,7 @@ public class clsListaM extends JFrame
 							{
 								try
 								{
+									logger.log( Level.INFO, "Seleccionando VENDER EÓLICA");
 									clsMaquina_Eolica m;
 									m=objGestor.ObtenerEolica(a);
 									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
@@ -372,6 +361,7 @@ public class clsListaM extends JFrame
 							{
 								try
 								{
+									logger.log( Level.INFO, "Seleccionando VENDER HIDRÁULICA");
 									clsMaquina_Hidraulica m;
 									m=objGestor.ObtenerHidraulica(a);
 									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
@@ -398,6 +388,7 @@ public class clsListaM extends JFrame
 							{
 								try
 								{
+									logger.log( Level.INFO, "Seleccionando VENDER MAREOMOTRIZ");
 									clsMaquina_Mareomotriz m;
 									m=objGestor.ObtenerMareomotriz(a);
 									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
@@ -424,6 +415,7 @@ public class clsListaM extends JFrame
 							{
 								try
 								{
+									logger.log( Level.INFO, "Seleccionando VENDER SOLAR");
 									clsMaquina_Solar m;
 									m=objGestor.ObtenerSolar(a);
 									objGestor.CrearVenta(m.getId(), cliente, Integer.parseInt(textField.getText()));
@@ -450,6 +442,7 @@ public class clsListaM extends JFrame
 						a=te.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando MODIFICAR EÓLICA");
 							clsMaquina_Eolica mod;
 							mod=objGestor.ObtenerEolica(a);
 							clsModificarEolica window = new clsModificarEolica(mod, miVentana);
@@ -461,6 +454,7 @@ public class clsListaM extends JFrame
 						a=th.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando MODIFICAR HIDRÁULICA");
 							clsMaquina_Hidraulica mod;
 							mod=objGestor.ObtenerHidraulica(a);
 							clsModificarHidraulica window = new clsModificarHidraulica(mod, miVentana);
@@ -472,6 +466,7 @@ public class clsListaM extends JFrame
 						a=tm.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando MODIFICAR MAREOMOTRIZ");
 							clsMaquina_Mareomotriz mod;
 							mod=objGestor.ObtenerMareomotriz(a);
 							clsModificarMareomotriz window = new clsModificarMareomotriz(mod, miVentana);
@@ -483,6 +478,7 @@ public class clsListaM extends JFrame
 						a=ts.getFila();
 						if(a>-1)
 						{
+							logger.log( Level.INFO, "Seleccionando MODIFICAR SOLAR");
 							clsMaquina_Solar mod;
 							mod=objGestor.ObtenerSolar(a);
 							clsModificarSolar window = new clsModificarSolar(mod, miVentana);

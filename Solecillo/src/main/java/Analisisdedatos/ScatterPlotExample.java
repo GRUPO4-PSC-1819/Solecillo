@@ -150,8 +150,6 @@ private XYDataset createTest(){
 		    		series2.add(ltest.get(i).value(0),ltest.get(i).value(1));
 		    	}
 		    	i++;
-		    	System.out.println(a.actual());
-		    	System.out.println(i);
 		    }
 		    
 		    dataset2.addSeries(series1);
