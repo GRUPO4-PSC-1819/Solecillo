@@ -86,15 +86,7 @@ public class AppTest
 		clsAltaSolar a4=new clsAltaSolar();
 		
 		 
-		 clsGestor ge=new clsGestor();
-		 ge.ListaClientes();
-		 ge.ListaEolica();
-		 ge.ListaMareomotriz();
-		 ge.ListaSolar();
-		 ge.ObtenerEolica(1);
-		 ge.ObtenerHidraulica(1);
-		 ge.ObtenerMareomotriz(1);
-		 ge.ObtenerSolar(1);
+		 
 		
 		
     }
