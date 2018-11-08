@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.sql.Connection;
 
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import Comun.clsConstantes;
@@ -12,6 +14,10 @@ import Persistencia.clsBD;
 
 public class testGestor {
 
+	//Activa Contiperf cuando se lanza JUnit
+		@Rule
+		public ContiPerfRule i = new ContiPerfRule();
+		
 	@Before public void setUp() {
 		Connection conec=clsBD.initBD("Data/Solecillo.bd");
 		clsBD.crearTablaBD(clsConstantes.USUARIO);
