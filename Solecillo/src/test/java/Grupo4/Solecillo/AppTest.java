@@ -85,10 +85,6 @@ public class AppTest
 		
 		clsAltaSolar a4=new clsAltaSolar();
 		
-		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
-		
-		 ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		 example.btnAceptar_1.doClick();
 		 
 		 clsGestor ge=new clsGestor();
 		 ge.ListaClientes();
