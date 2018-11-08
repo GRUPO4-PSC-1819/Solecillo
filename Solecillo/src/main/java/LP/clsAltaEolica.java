@@ -37,14 +37,14 @@ public class clsAltaEolica extends JFrame
 	private JPanel panelbotonera;
 	private JPanel panelsuperior;	
 	
-	JTextField txtNombre;
-	JTextField txtColor;
-	JTextField txtValor;
-	JTextField txtFabricante;
-	JTextField txtNombrePueblo;
-	JTextField txtNombreCampo;
-	JTextField txtAltura;
-	JTextField txtDiametro;
+	public JTextField txtNombre;
+	public JTextField txtColor;
+	public JTextField txtValor;
+	public JTextField txtFabricante;
+	public JTextField txtNombrePueblo;
+	public JTextField txtNombreCampo;
+	public JTextField txtAltura;
+	public JTextField txtDiametro;
 	
 	private JLabel lblNombre;
 	private JLabel lblColor;
@@ -55,8 +55,8 @@ public class clsAltaEolica extends JFrame
 	private JLabel lblAltura;
 	private JLabel lblDiametro;
 	
-	JButton btnAceptar;
-	JButton btnCancelar;
+	public JButton btnAceptar;
+	public JButton btnCancelar;
 	
 	
 	boolean modifmaq = false;

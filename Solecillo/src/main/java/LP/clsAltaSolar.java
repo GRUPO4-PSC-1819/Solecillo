@@ -37,12 +37,12 @@ public class clsAltaSolar extends JFrame
 	private JPanel panelbotonera;
 	private JPanel panelsuperior;	
 	
-	JTextField txtNombre;
-	JTextField txtColor;
-	JTextField txtValor;
-	JTextField txtFabricante;
-	JTextField txtNombrePueblo;
-	JTextField txtNombreCampo;
+	public JTextField txtNombre;
+	public JTextField txtColor;
+	public JTextField txtValor;
+	public JTextField txtFabricante;
+	public JTextField txtNombrePueblo;
+	public JTextField txtNombreCampo;
 	
 	
 	private JLabel lblNombre;
@@ -52,8 +52,8 @@ public class clsAltaSolar extends JFrame
 	private JLabel lblNombrePueblo;
 	private JLabel lblNombreCampo;
 	
-	JButton btnAceptar;
-	JButton btnCancelar;
+	public JButton btnAceptar;
+	public JButton btnCancelar;
 	
 	
 	boolean modifmaq = false;

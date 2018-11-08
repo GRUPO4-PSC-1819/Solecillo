@@ -49,12 +49,12 @@ public class clsAltaUsuario extends JFrame
 	private JPanel panelbotonera;
 	private JPanel panelsuperior;	
 	
-	JTextField txtNombre;
-	JTextField txtApe1;
-	JTextField txtApe2;
-	JTextField txtNickname;
-	JPasswordField txtContrasenya1;
-	JPasswordField txtContrasenya2;
+	public JTextField txtNombre;
+	public JTextField txtApe1;
+	public JTextField txtApe2;
+	public JTextField txtNickname;
+	public JPasswordField txtContrasenya1;
+	public JPasswordField txtContrasenya2;
 	
 	private JLabel lblNombre;
 	private JLabel lblApe1;
@@ -63,8 +63,8 @@ public class clsAltaUsuario extends JFrame
 	private JLabel lblContrasenya1;
 	private JLabel lblContrasenya2;
 	
-	JButton btnAceptar;
-	JButton btnCancelar;
+	public JButton btnAceptar;
+	public JButton btnCancelar;
 	
 	boolean modifusu = false;
 	
