@@ -10,8 +10,7 @@ public class clsMaquina_Solar extends clsMaquina implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre_pueblo;
-	private String nombre_campo;
-	
+	private String nombre_campo;	
 	
 	//constructor para crear nueva máquina_hidraulica
 		public clsMaquina_Solar(int id, String n, String color, double v, String f, String np, String nc)
