@@ -1,3 +1,4 @@
+package main;
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class clsMain
 			{
 				try 
 				{
-					Connection conec=clsBD.initBD("Data/Solecillo.bd");
+					Connection conec=clsBD.initBD("Solecillo.bd");
 					clsBD.crearTablaBD(clsConstantes.USUARIO);
 					clsBD.crearTablaBD(clsConstantes.CLIENTE);
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);

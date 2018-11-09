@@ -34,21 +34,21 @@ public class Contiperf {
 	
 	@Test
 	@PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500) 
+	@Required(max = 250, average = 250, median=200) 
 	public void testLN() throws InterruptedException
     {
 		Thread.sleep(200);
     }
 	@Test
 	@PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500) 
+	@Required(max = 250, average = 250, median=200) 
 	public void testBD() throws InterruptedException
        {
 		Thread.sleep(200);
        }
 	@Test
 	@PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500) 
+	@Required(max = 250, average = 250, median=200) 
 	public void testGraficos() throws InterruptedException
     {
 		Thread.sleep(200);
@@ -56,7 +56,7 @@ public class Contiperf {
     
 	@Test
 	@PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500) 
+	@Required(max = 250, average = 250, median=200) 
     public void testAlta() throws InterruptedException
     {
     	Thread.sleep(200);
