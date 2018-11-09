@@ -35,45 +35,19 @@ import LP.loginFrame;
 import LP.principalFrame;
 import Persistencia.clsBD;
 import java_cup.Main;
-import junit.framework.Test;
+
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
     
-    
-    @Rule
-	public ContiPerfRule i = new ContiPerfRule();
-	
-    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500)
-    public void testApp()
+	@Test public void testLN()
     {
     	
     	Connection conec=clsBD.initBD("Data/Solecillo.bd");
@@ -114,10 +88,8 @@ public class AppTest
 		frame1.btnSalir.doClick();
 		
     }
-    
-    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-   	@Required(max = 300, average = 300, median=500)
-       public void testBD()
+
+	@Test public void testBD()
        {
     	clsUsuario usu1=new clsUsuario("ytc", "jy", "jyt", "ytf", "ytyf");
 		clsBD.insertarDatoTablaBD(usu1);
@@ -126,9 +98,7 @@ public class AppTest
 		clsBD.insertarDatoTablaBD(cl1);
        }
     
-    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500)
-    public void testGraficos()
+	@Test public void testGraficos()
     {
 		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
 		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
@@ -139,9 +109,8 @@ public class AppTest
 		example1.btnAceptar_1.doClick();
     }
     
-    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
-	@Required(max = 300, average = 300, median=500)
-    public void testAlta()
+    
+    @Test public void testAlta()
     {
     	/*ArrayList<clsUsuario> usus;
     	ArrayList<clsMaquina_Eolica> eolicas;
