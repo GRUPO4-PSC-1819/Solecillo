@@ -11,6 +11,7 @@ public class clsMaquina implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
+	
 	protected int id;
 	protected String nombre;
 	protected String color;
