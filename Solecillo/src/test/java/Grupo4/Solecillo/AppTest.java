@@ -8,12 +8,17 @@ import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.Rule;
 import org.omg.CORBA.portable.InputStream;
 
 import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
+import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsMaquina_Eolica;
 import LN.clsMaquina_Hidraulica;
@@ -63,11 +68,13 @@ public class AppTest
      */
     
     
-    	
+    @Rule
+	public ContiPerfRule i = new ContiPerfRule();
 	
+    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
+	@Required(max = 300, average = 300, median=500)
     public void testApp()
     {
-    	
     	
     	Connection conec=clsBD.initBD("Data/Solecillo.bd");
 		clsBD.crearTablaBD(clsConstantes.USUARIO);
@@ -84,7 +91,7 @@ public class AppTest
 		
 		//VENTAS
 		clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VISUALIZAR,null);
-		clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA,null);
+		clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA, "123456789");
 		
 		frame1.rdbtnEolica.setSelected(true);
 		frame1.textField.setText("10");
@@ -98,27 +105,29 @@ public class AppTest
 		
 		frame1.rdbtnMareomotriz.setSelected(true);
 		frame1.textField.setText("3");
-		frame1.th.setRowSelectionInterval(0, 0);
+		frame1.tm.setRowSelectionInterval(0, 0);
 		frame1.btnSalir.doClick();
 		
 		frame1.rdbtnSolar.setSelected(true);
 		frame1.textField.setText("5");
-		frame1.th.setRowSelectionInterval(0, 0);
+		frame1.ts.setRowSelectionInterval(0, 0);
 		frame1.btnSalir.doClick();
 		
-		
-		//ALTAS
-		
-		
-	    
-	    
-	    	    
-	    
-	    
-	    
-	    
-
     }
+    
+    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
+   	@Required(max = 300, average = 300, median=500)
+       public void testBD()
+       {
+    	clsUsuario usu1=new clsUsuario("ytc", "jy", "jyt", "ytf", "ytyf");
+		clsBD.insertarDatoTablaBD(usu1);
+		
+		clsCliente cl1=new clsCliente("wx", "nyu", "wx", "gtb", "erc");
+		clsBD.insertarDatoTablaBD(cl1);
+       }
+    
+    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
+	@Required(max = 300, average = 300, median=500)
     public void testGraficos()
     {
 		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
@@ -130,20 +139,20 @@ public class AppTest
 		example1.btnAceptar_1.doClick();
     }
     
+    @PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
+	@Required(max = 300, average = 300, median=500)
     public void testAlta()
     {
-    	ArrayList<clsUsuario> usus;
-		ArrayList<clsMaquina_Eolica> eolicas;
+    	/*ArrayList<clsUsuario> usus;
+    	ArrayList<clsMaquina_Eolica> eolicas;
     	ArrayList<clsMaquina_Hidraulica> hidraulicas;
     	ArrayList<clsMaquina_Mareomotriz> mareomotrices;
     	ArrayList<clsMaquina_Solar> solares;
     	
     	clsGestor ges=new clsGestor();
-    	
-    	
     	usus=new ArrayList<clsUsuario>();
 	 	usus=ges.ListaUsuarios();
-		assertTrue(usus.size()>0);//no hay todavía elementos guardados, tamaño del ArrayList será 0
+		assertTrue(usus.size()>0);*///no hay todavía elementos guardados, tamaño del ArrayList será 0
 		clsAltaUsuario u=new clsAltaUsuario();
 		u.txtNombre.setText("n1");
 		u.txtApe1.setText("ap11");
@@ -153,9 +162,9 @@ public class AppTest
 		u.txtContrasenya2.setText("c1");
 		u.btnAceptar.doClick();
 		
-		eolicas=new ArrayList<clsMaquina_Eolica>();
+		/*eolicas=new ArrayList<clsMaquina_Eolica>();
 		eolicas=ges.ListaEolica();
-		assertTrue(eolicas.size()>0);//hay dos eólicas en bbdd, tamaño del ArrayList será 2
+		assertTrue(eolicas.size()>0);*///hay dos eólicas en bbdd, tamaño del ArrayList será 2
 		clsAltaEolica e=new clsAltaEolica();
 		e.txtNombre.setText("n1");
 		e.txtColor.setText("c1");
@@ -167,9 +176,9 @@ public class AppTest
 		e.txtDiametro.setText("39.04");
 	    e.btnAceptar.doClick();
 	    	    
-	    hidraulicas=new ArrayList<clsMaquina_Hidraulica>();
+	    /*hidraulicas=new ArrayList<clsMaquina_Hidraulica>();
 		hidraulicas=ges.ListaHidraulica();
-		assertTrue(hidraulicas.size()>0);//hay dos hidráulicas en bbdd, tamaño del ArrayList será 2
+		assertTrue(hidraulicas.size()>0);*///hay dos hidráulicas en bbdd, tamaño del ArrayList será 2
 		clsAltaHidraulica h=new clsAltaHidraulica();
 		h.txtNombre.setText("n2");
 		h.txtColor.setText("c2");
@@ -179,9 +188,9 @@ public class AppTest
 		h.txtNombreRio.setText("nr2");
 	    h.btnAceptar.doClick();	    
 	    
-	    mareomotrices=new ArrayList<clsMaquina_Mareomotriz>();
+	   /* mareomotrices=new ArrayList<clsMaquina_Mareomotriz>();
 		mareomotrices=ges.ListaMareomotriz();
-		assertTrue(mareomotrices.size()>0);//hay dos mareomotrices en bbdd, tamaño del ArrayList será 2
+		assertTrue(mareomotrices.size()>0);*///hay dos mareomotrices en bbdd, tamaño del ArrayList será 2
 		clsAltaMareomotriz m=new clsAltaMareomotriz();
 		m.txtNombre.setText("n3");
 		m.txtColor.setText("c3");
@@ -191,9 +200,9 @@ public class AppTest
 		m.txtDistancia.setText("9.72");
 	    m.btnAceptar.doClick();	    
 	    
-	    solares=new ArrayList<clsMaquina_Solar>();
+	   /*solares=new ArrayList<clsMaquina_Solar>();
 		solares=ges.ListaSolar();
-		assertTrue(solares.size()>0);//hay dos solares en bbdd, tamaño del ArrayList será 2
+		assertTrue(solares.size()>0);*///hay dos solares en bbdd, tamaño del ArrayList será 2
 		clsAltaSolar s=new clsAltaSolar();
 		s.txtNombre.setText("n4");
 		s.txtColor.setText("c4");
@@ -203,6 +212,31 @@ public class AppTest
 		s.txtNombreCampo.setText("nc4");
 	    s.btnAceptar.doClick();
     }
+    
+   /* public void testVenta()
+    {
+    	clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA, "123456789");
+		
+		frame1.rdbtnEolica.setSelected(true);
+		frame1.textField.setText("10");
+		frame1.te.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
+		
+		frame1.rdbtnHidraulica.setSelected(true);
+		frame1.textField.setText("18");
+		frame1.th.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
+		
+		frame1.rdbtnMareomotriz.setSelected(true);
+		frame1.textField.setText("3");
+		frame1.tm.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
+		
+		frame1.rdbtnSolar.setSelected(true);
+		frame1.textField.setText("5");
+		frame1.ts.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
+    }*/
 
 
 }
