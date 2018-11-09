@@ -38,6 +38,7 @@ public class clsMain
 					//clsBD.insertarDatoTablaBD(new clsCliente("b","b","a","a","a"));
 					//clsBD.insertarDatoTablaBD(new clsCliente("c","b","a","a","a"));
 					//clsUsuario u=new clsUsuario();
+					
 					//principalFrame p=new principalFrame(u);
 					loginFrame p=new loginFrame();
 					p.setVisible(true);
