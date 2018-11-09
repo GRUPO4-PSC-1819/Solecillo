@@ -67,12 +67,8 @@ public class AppTest
 	
     public void testApp()
     {
-    	ArrayList<clsUsuario> usus;
-		ArrayList<clsMaquina_Eolica> eolicas;
-    	ArrayList<clsMaquina_Hidraulica> hidraulicas;
-    	ArrayList<clsMaquina_Mareomotriz> mareomotrices;
-    	ArrayList<clsMaquina_Solar> solares;
-    	clsGestor ges=new clsGestor();
+    	
+    	
     	Connection conec=clsBD.initBD("Data/Solecillo.bd");
 		clsBD.crearTablaBD(clsConstantes.USUARIO);
 		clsBD.crearTablaBD(clsConstantes.CLIENTE);
@@ -112,7 +108,40 @@ public class AppTest
 		
 		
 		//ALTAS
-		usus=new ArrayList<clsUsuario>();
+		
+		
+	    
+	    
+	    	    
+	    
+	    
+	    
+	    
+
+    }
+    public void testGraficos()
+    {
+		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
+		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+		example.btnAceptar_1.doClick();
+		
+		PieChart_PROD demo1 = new PieChart_PROD( "Producción" );  
+		ScatterPlotExample example1 = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+		example1.btnAceptar_1.doClick();
+    }
+    
+    public void testAlta()
+    {
+    	ArrayList<clsUsuario> usus;
+		ArrayList<clsMaquina_Eolica> eolicas;
+    	ArrayList<clsMaquina_Hidraulica> hidraulicas;
+    	ArrayList<clsMaquina_Mareomotriz> mareomotrices;
+    	ArrayList<clsMaquina_Solar> solares;
+    	
+    	clsGestor ges=new clsGestor();
+    	
+    	
+    	usus=new ArrayList<clsUsuario>();
 	 	usus=ges.ListaUsuarios();
 		assertTrue(usus.size()>0);//no hay todavía elementos guardados, tamaño del ArrayList será 0
 		clsAltaUsuario u=new clsAltaUsuario();
@@ -173,19 +202,6 @@ public class AppTest
 		s.txtNombrePueblo.setText("np4");
 		s.txtNombreCampo.setText("nc4");
 	    s.btnAceptar.doClick();
-		
-	    
-	    
-	    
-	    //GRÁFICOS
-		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
-		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		example.btnAceptar_1.doClick();
-		
-		PieChart_PROD demo1 = new PieChart_PROD( "Producción" );  
-		ScatterPlotExample example1 = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		example1.btnAceptar_1.doClick();
-
     }
 
 
