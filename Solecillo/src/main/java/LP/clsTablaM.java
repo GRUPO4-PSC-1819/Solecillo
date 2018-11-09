@@ -148,4 +148,9 @@ public class clsTablaM extends JPanel
 		}
 		return -1;
 	}
+ 
+	public void setRowSelectionInterval(int i, int j) {
+		// TODO Auto-generated method stub
+		table.setRowSelectionInterval(i, i);
+	}
 }

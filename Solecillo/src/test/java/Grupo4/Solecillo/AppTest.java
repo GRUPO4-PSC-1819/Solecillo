@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import org.omg.CORBA.portable.InputStream;
 
 import Analisisdedatos.PieChart_AWT;
+import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
 import LN.clsGestor;
@@ -71,7 +72,7 @@ public class AppTest
     	ArrayList<clsMaquina_Hidraulica> hidraulicas;
     	ArrayList<clsMaquina_Mareomotriz> mareomotrices;
     	ArrayList<clsMaquina_Solar> solares;
-    	clsGestor ges;
+    	clsGestor ges=new clsGestor();
     	Connection conec=clsBD.initBD("Data/Solecillo.bd");
 		clsBD.crearTablaBD(clsConstantes.USUARIO);
 		clsBD.crearTablaBD(clsConstantes.CLIENTE);
@@ -84,6 +85,8 @@ public class AppTest
 		
 		//window.btnRefrescar.doClick();
 		
+		
+		//VENTAS
 		clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VISUALIZAR,null);
 		clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA,null);
 		
@@ -92,8 +95,23 @@ public class AppTest
 		frame1.te.setRowSelectionInterval(0, 0);
 		frame1.btnSalir.doClick();
 		
-		ges=new clsGestor();
+		frame1.rdbtnHidraulica.setSelected(true);
+		frame1.textField.setText("18");
+		frame1.th.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
 		
+		frame1.rdbtnMareomotriz.setSelected(true);
+		frame1.textField.setText("3");
+		frame1.th.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
+		
+		frame1.rdbtnSolar.setSelected(true);
+		frame1.textField.setText("5");
+		frame1.th.setRowSelectionInterval(0, 0);
+		frame1.btnSalir.doClick();
+		
+		
+		//ALTAS
 		usus=new ArrayList<clsUsuario>();
 	 	usus=ges.ListaUsuarios();
 		assertTrue(usus.size()>0);//no hay todavía elementos guardados, tamaño del ArrayList será 0
@@ -119,8 +137,7 @@ public class AppTest
 		e.txtAltura.setText("124.62");
 		e.txtDiametro.setText("39.04");
 	    e.btnAceptar.doClick();
-	    
-	    
+	    	    
 	    hidraulicas=new ArrayList<clsMaquina_Hidraulica>();
 		hidraulicas=ges.ListaHidraulica();
 		assertTrue(hidraulicas.size()>0);//hay dos hidráulicas en bbdd, tamaño del ArrayList será 2
@@ -131,8 +148,7 @@ public class AppTest
 		h.txtFabricante.setText("f2");
 		h.txtNombrePueblo.setText("np2");
 		h.txtNombreRio.setText("nr2");
-	    h.btnAceptar.doClick();
-	    
+	    h.btnAceptar.doClick();	    
 	    
 	    mareomotrices=new ArrayList<clsMaquina_Mareomotriz>();
 		mareomotrices=ges.ListaMareomotriz();
@@ -144,8 +160,7 @@ public class AppTest
 		m.txtFabricante.setText("f3");
 		m.txtNombrePueblo.setText("np3");
 		m.txtDistancia.setText("9.72");
-	    m.btnAceptar.doClick();
-	    
+	    m.btnAceptar.doClick();	    
 	    
 	    solares=new ArrayList<clsMaquina_Solar>();
 		solares=ges.ListaSolar();
@@ -159,9 +174,17 @@ public class AppTest
 		s.txtNombreCampo.setText("nc4");
 	    s.btnAceptar.doClick();
 		
+	    
+	    
+	    
+	    //GRÁFICOS
 		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
 		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
 		example.btnAceptar_1.doClick();
+		
+		PieChart_PROD demo1 = new PieChart_PROD( "Producción" );  
+		ScatterPlotExample example1 = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+		example1.btnAceptar_1.doClick();
 
     }
 

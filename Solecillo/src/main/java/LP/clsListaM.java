@@ -63,11 +63,11 @@ public class clsListaM extends JFrame
 
 	public clsTablaE te;
 
-	private clsTablaS ts;
+	public clsTablaS ts;
 
-	private clsTablaM tm;
+	public clsTablaM tm;
 
-	private clsTablaH th;
+	public clsTablaH th;
 	
 	public int a;
 
