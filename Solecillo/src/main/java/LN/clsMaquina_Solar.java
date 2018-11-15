@@ -13,17 +13,17 @@ public class clsMaquina_Solar extends clsMaquina implements Serializable {
 	private String nombre_campo;	
 	
 	//constructor para crear nueva máquina_hidraulica
-		public clsMaquina_Solar(int id, String n, String color, double v, String f, String e, String np, String nc)
+		public clsMaquina_Solar(int id, String n, String color, double v, String f, String np, String nc)
 		{
-			super(id, n, color, v, f, e);
+			super(id, n, color, v, f);
 			this.nombre_pueblo=np;
 			this.nombre_campo=nc;
 		}
 		
 		//constructor sin id
-				public clsMaquina_Solar(String n, String color, double v, String f, String e, String np, String nc)
+				public clsMaquina_Solar(String n, String color, double v, String f, String np, String nc)
 				{
-					super(n, color, v, f, e);
+					super(n, color, v, f);
 					this.nombre_pueblo=np;
 					this.nombre_campo=nc;
 				}

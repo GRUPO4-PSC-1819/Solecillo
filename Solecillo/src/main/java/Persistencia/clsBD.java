@@ -120,7 +120,6 @@ public class clsBD
 										"VALOR DOUBLE, "+
 										"FABRICANTE STRING, "+
 										"TIPO CHAR, "+
-										"ESTADO STRING, "+
 										"NOMBRE_PUEBLO STRING, "+
 										"NOMBRE_CAMPO STRING, "+
 										"ALTURA DOUBLE, "+
@@ -177,14 +176,13 @@ public class clsBD
 		{
 			try 
 			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
+				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Eolica)obj).getNombre()+"','"
 						+ ((clsMaquina_Eolica)obj).getColor()+"',"
 						+((clsMaquina_Eolica)obj).getValor()+",'"
 						+((clsMaquina_Eolica)obj).getFabricante()+"',"
 						+"'E','"
-						+((clsMaquina_Eolica)obj).getEstado()+"','"
 						+((clsMaquina_Eolica)obj).getNombre_pueblo()+"','"
 						+((clsMaquina_Eolica)obj).getNombre_campo()+"',"
 						+((clsMaquina_Eolica)obj).getAltura()+","
@@ -201,14 +199,13 @@ public class clsBD
 		{
 			try 
 			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
+				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Hidraulica)obj).getNombre()+"','"
 						+ ((clsMaquina_Hidraulica)obj).getColor()+"',"
 						+((clsMaquina_Hidraulica)obj).getValor()+",'"
 						+((clsMaquina_Hidraulica)obj).getFabricante()+"',"
 						+"'H','"
-						+((clsMaquina_Hidraulica)obj).getEstado()+"','"
 						+((clsMaquina_Hidraulica)obj).getNombre_pueblo()+"',"
 						+"'',"
 						+"0.0,"
@@ -225,14 +222,13 @@ public class clsBD
 		{
 			try 
 			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
+				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Mareomotriz)obj).getNombre()+"','"
 						+ ((clsMaquina_Mareomotriz)obj).getColor()+"',"
 						+((clsMaquina_Mareomotriz)obj).getValor()+",'"
 						+((clsMaquina_Mareomotriz)obj).getFabricante()+"',"
 						+"'M','"
-						+((clsMaquina_Mareomotriz)obj).getEstado()+"','"
 						+((clsMaquina_Mareomotriz)obj).getNombre_pueblo()+"',"
 						+"'',"
 						+"0.0,"
@@ -249,14 +245,13 @@ public class clsBD
 		{
 			try 
 			{
-				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
+				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Solar)obj).getNombre()+"','"
 						+ ((clsMaquina_Solar)obj).getColor()+"',"
 						+((clsMaquina_Solar)obj).getValor()+",'"
 						+((clsMaquina_Solar)obj).getFabricante()+"',"
 						+"'S','"
-						+((clsMaquina_Solar)obj).getEstado()+"','"
 						+((clsMaquina_Solar)obj).getNombre_pueblo()+"','"
 						+((clsMaquina_Solar)obj).getNombre_campo()+"',"
 						+"0.0,"
@@ -376,16 +371,16 @@ public class clsBD
 				e1.printStackTrace();
 			}
 			break;
-		case "VENTA":
-			try 
-			{
-			    rs = statement.executeQuery("SELECT * from VENTA");
-			} 
-			catch (SQLException e1) 
-			{
-				e1.printStackTrace();
-			}
-			break;
+	case "VENTA":
+		try 
+		{
+		    rs = statement.executeQuery("SELECT * from VENTA");
+		} 
+		catch (SQLException e1) 
+		{
+			e1.printStackTrace();
+		}
+		break;
 	}
 		 return rs;
 	}
@@ -443,7 +438,7 @@ public class clsBD
 			}
 	}
 	
-	public static void modificarEolica(int id, String n, String c, double v, String f, String e, String np, String nc, double a, double d)
+	public static void modificarEolica(int id, String n, String c, double v, String f, String np, String nc, double a, double d)
 	{
 		if (statement==null) return;
 			try 
@@ -452,7 +447,6 @@ public class clsBD
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
 						+ "FABRICANTE = '"+f+"',"
-						+ "ESTADO = '"+e+"',"
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "NOMBRE_CAMPO = '"+nc+"',"
 						+ "ALTURA = "+a+","
@@ -465,7 +459,7 @@ public class clsBD
 			}
 	}
 	
-	public static void modificarHidraulica(int id, String n, String c, double v, String f, String e, String np, String nr)
+	public static void modificarHidraulica(int id, String n, String c, double v, String f, String np, String nr)
 	{
 		if (statement==null) return;
 			try 
@@ -474,7 +468,6 @@ public class clsBD
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
 						+ "FABRICANTE = '"+f+"',"
-						+ "ESTADO = '"+e+"',"
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "NOMBRE_RIO = '"+nr+"' "
 						+ "WHERE ID = "+id+"");
@@ -487,7 +480,7 @@ public class clsBD
 			}
 	}
 	
-	public static void modificarMareomotriz(int id, String n, String c, double v, String f, String e, String np, double d)
+	public static void modificarMareomotriz(int id, String n, String c, double v, String f, String np, double d)
 	{
 		if (statement==null) return;
 			try 
@@ -496,7 +489,6 @@ public class clsBD
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
 						+ "FABRICANTE = '"+f+"',"
-						+ "ESTADO = '"+e+"',"
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "DISTANCIA_MILLAS = "+d+" "
 						+ "WHERE ID = "+id+"");
@@ -510,7 +502,7 @@ public class clsBD
 	}
 	
 	
-	public static void modificarSolar(int id, String n, String c, double v, String f, String e, String np, String nc)
+	public static void modificarSolar(int id, String n, String c, double v, String f, String np, String nc)
 	{
 		if (statement==null) return;
 			try 
@@ -519,7 +511,6 @@ public class clsBD
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
 						+ "FABRICANTE = '"+f+"',"
-						+ "ESTADO = '"+e+"',"
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "NOMBRE_CAMPO = '"+nc+"' "
 						+ "WHERE ID = "+id+"");

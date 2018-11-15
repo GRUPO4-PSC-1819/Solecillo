@@ -61,7 +61,6 @@ public class clsTablaH extends JPanel
                 "Color",
                 "Valor",
                 "Fabricante",
-                "Estado",
                 "Nombre pueblo",
                 "Nombre río"};
         private Object[][] data;
@@ -86,7 +85,6 @@ public class clsTablaH extends JPanel
     					   new String(aux.getColor()),
     					   new Double(aux.getValor()),
     					   new String(aux.getFabricante()),
-    					   new String(aux.getEstado()),
     					   new String(aux.getNombre_pueblo()),
     					   new String(aux.getNombre_rio())};
     			data[cont]=n;

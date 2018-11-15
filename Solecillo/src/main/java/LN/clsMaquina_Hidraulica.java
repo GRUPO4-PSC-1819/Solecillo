@@ -14,17 +14,17 @@ public class clsMaquina_Hidraulica extends clsMaquina implements Serializable {
 	
 	
 	//constructor para crear nueva máquina_hidraulica
-		public clsMaquina_Hidraulica(int id, String n, String color, double v, String f, String e, String np, String nr)
+		public clsMaquina_Hidraulica(int id, String n, String color, double v, String f, String np, String nr)
 		{
-			super(id, n, color, v, f, e);
+			super(id, n, color, v, f);
 			this.nombre_pueblo=np;
 			this.nombre_rio=nr;
 		}
 		
 		//constructor sin id
-				public clsMaquina_Hidraulica(String n, String color, double v, String f, String e, String np, String nr)
+				public clsMaquina_Hidraulica(String n, String color, double v, String f, String np, String nr)
 				{
-					super(n, color, v, f, e);
+					super(n, color, v, f);
 					this.nombre_pueblo=np;
 					this.nombre_rio=nr;
 				}

@@ -73,7 +73,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		txtColor.setText(maq.getColor());
 		txtValor.setText(Double.toString(maq.getValor()));
 		txtFabricante.setText(maq.getFabricante());
-		txtEstado.setSelectedItem(maq.getEstado());
 		txtNombrePueblo.setText(maq.getNombre_pueblo());
 		txtNombreCampo.setText(maq.getNombre_campo());
 		txtAltura.setText(Double.toString(maq.getAltura()));
@@ -92,7 +91,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				{		
 						try {
 							logger.log( Level.INFO, "Modificando eólica de nombre: "+txtNombre.getText());
-							objGestor.ModificarMaquinaEolica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText(), String.valueOf(txtEstado.getSelectedItem()), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
+							objGestor.ModificarMaquinaEolica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
 							JOptionPane.showMessageDialog(null, "Se ha modificado la máquina eólica correctamente.");
 							dispose();
 							clsListaM.listaEolica = objGestor.ListaEolica();

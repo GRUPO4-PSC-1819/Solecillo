@@ -17,26 +17,23 @@ public class clsMaquina implements Serializable
 	protected String color;
 	protected double valor;
 	protected String fabricante;
-	protected String estado;
 
 	//constructor para crear nueva máquina
-	public clsMaquina(int id, String n, String color, double v, String f, String e)
+	public clsMaquina(int id, String n, String color, double v, String f)
 	{
 		this.id=id;
 		this.nombre=n;
 		this.color=color;
 		this.valor=v;
 		this.fabricante=f;
-		this.estado=e;
 	}
 	//constructor sin id
-			public clsMaquina(String n, String color, double v, String f, String e)
+			public clsMaquina(String n, String color, double v, String f)
 			{
 				this.nombre=n;
 				this.color=color;
 				this.valor=v;
 				this.fabricante=f;
-				this.estado=e;
 			}
 	
 	//constructor vacío para serializar
@@ -47,7 +44,6 @@ public class clsMaquina implements Serializable
 		this.color=null;
 		this.valor=0.0;
 		this.fabricante=null;
-		this.estado=null;
 	}
 	
 	@Override
@@ -79,7 +75,7 @@ public class clsMaquina implements Serializable
 	public String toString()
 	{
 		String e = "ID: "+this.getId()+" - Nombre: "+this.getNombre()+" - Color: "+this.getColor()+
-				" - Valor: "+this.getValor()+" - Fabricante: "+this.getFabricante()+" - Estado: "+this.getEstado();
+				" - Valor: "+this.getValor()+" - Fabricante: "+this.getFabricante();
 		return e;
 	}
 	
@@ -129,13 +125,6 @@ public class clsMaquina implements Serializable
 
 	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
-	}
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 
 }

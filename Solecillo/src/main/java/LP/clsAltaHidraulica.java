@@ -22,13 +22,8 @@ import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
  import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-import Comun.clsConstantes;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-
-import LN.clsGestor;
+ import javax.swing.JButton;
+ import LN.clsGestor;
  /**
  * Clase que generará una JFrame para introducir los datos que a su vez serán enviados a clsBinarios para la creación
  * de un usuario en la base de datos.
@@ -46,7 +41,6 @@ public class clsAltaHidraulica extends JFrame
 	public JTextField txtColor;
 	public JTextField txtValor;
 	public JTextField txtFabricante;
-	public JComboBox txtEstado;
 	public JTextField txtNombrePueblo;
 	public JTextField txtNombreRio;
 	
@@ -55,13 +49,11 @@ public class clsAltaHidraulica extends JFrame
 	private JLabel lblColor;
 	private JLabel lblValor;
 	private JLabel lblFabricante;
-	private JLabel lblEstado;
 	private JLabel lblNombrePueblo;
 	private JLabel lblNombreRio;
 	
 	public JButton btnAceptar;
 	public JButton btnCancelar;
-	String[] estados = {clsConstantes.ESTADO1, clsConstantes.ESTADO2, clsConstantes.ESTADO3, clsConstantes.ESTADO4};
 	
 	boolean modifmaq = false;
 	
@@ -154,14 +146,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		txtFabricante = new JTextField();
 		txtFabricante.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelizda.add(txtFabricante);
-		
-		lblEstado = new JLabel("         Estado:         ");
-		lblEstado.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(lblEstado);
-		
-		txtEstado = new JComboBox(estados);
-		txtEstado.setAlignmentX(Component.CENTER_ALIGNMENT);
-		panelizda.add(txtEstado);
 			
 		lblNombrePueblo = new JLabel("        Nombre del pueblo:        ");
 		lblNombrePueblo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -220,7 +204,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		{		
 				logger.log( Level.INFO, "Dando de alta máquina hidráulica "+txtNombre.getText());
 				try {
-					objGestor.CrearMaquinaHidraulica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText(), String.valueOf(txtEstado.getSelectedItem()), txtNombrePueblo.getText(), txtNombreRio.getText());
+					objGestor.CrearMaquinaHidraulica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreRio.getText());
 					dispose();
 					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina hidráulica correctamente.");
 				} catch (NumberFormatException e) {

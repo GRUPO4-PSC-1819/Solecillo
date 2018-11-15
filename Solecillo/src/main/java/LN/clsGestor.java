@@ -69,7 +69,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_CAMPO"),
 							rs.getDouble("ALTURA"),
@@ -103,7 +102,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_CAMPO"),
 							rs.getDouble("ALTURA"),
@@ -138,7 +136,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_RIO")));
 				}
@@ -168,7 +165,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_RIO"));
 				}
@@ -201,7 +197,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getDouble("DISTANCIA_MILLAS")));
 				}
@@ -231,7 +226,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getDouble("DISTANCIA_MILLAS"));
 				}
@@ -261,7 +255,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_CAMPO")));
 				}
@@ -291,7 +284,6 @@ public class clsGestor implements Serializable
 							rs.getString("COLOR"),
 							rs.getDouble("VALOR"),
 							rs.getString("FABRICANTE"),
-							rs.getString("ESTADO"),
 							rs.getString("NOMBRE_PUEBLO"),
 							rs.getString("NOMBRE_CAMPO"));
 				}
@@ -404,27 +396,27 @@ public class clsGestor implements Serializable
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
-	public void CrearMaquinaEolica(String n, String col, double val, String fab, String e, String np, String nc, double a, double d)
+	public void CrearMaquinaEolica(String n, String col, double val, String fab, String np, String nc, double a, double d)
 	{
-		clsMaquina_Eolica nuevo=new clsMaquina_Eolica(n, col, val, fab, e, np, nc, a, d);
+		clsMaquina_Eolica nuevo=new clsMaquina_Eolica(n, col, val, fab, np, nc, a, d);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
-	public void CrearMaquinaHidraulica(String n, String col, double val, String fab, String e, String np, String nr)
+	public void CrearMaquinaHidraulica(String n, String col, double val, String fab, String np, String nr)
 	{
-		clsMaquina_Hidraulica nuevo=new clsMaquina_Hidraulica(n, col, val, fab, e, np, nr);
+		clsMaquina_Hidraulica nuevo=new clsMaquina_Hidraulica(n, col, val, fab, np, nr);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
-	public void CrearMaquinaMareomotriz(String n, String col, double val, String fab, String e, String np, double distancia)
+	public void CrearMaquinaMareomotriz(String n, String col, double val, String fab, String np, double distancia)
 	{
-		clsMaquina_Mareomotriz nuevo=new clsMaquina_Mareomotriz(n, col, val, fab, e, np, distancia);
+		clsMaquina_Mareomotriz nuevo=new clsMaquina_Mareomotriz(n, col, val, fab, np, distancia);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
-	public void CrearMaquinaSolar(String n, String col, double val, String fab, String e, String np, String nc)
+	public void CrearMaquinaSolar(String n, String col, double val, String fab, String np, String nc)
 	{
-		clsMaquina_Solar nuevo=new clsMaquina_Solar(n, col, val, fab, e, np, nc);
+		clsMaquina_Solar nuevo=new clsMaquina_Solar(n, col, val, fab, np, nc);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
@@ -460,24 +452,24 @@ public class clsGestor implements Serializable
 	
 	
 	
-	public void ModificarMaquinaEolica(int id, String n, String col, double val, String fab, String e, String np, String nc, double a, double d)
+	public void ModificarMaquinaEolica(int id, String n, String col, double val, String fab, String np, String nc, double a, double d)
 	{
-		clsBD.modificarEolica(id, n, col, val, fab, e, np, nc, a, d);
+		clsBD.modificarEolica(id, n, col, val, fab, np, nc, a, d);
 	}
 	
-	public void ModificarMaquinaHidraulica(int id, String n, String col, double val, String fab, String e, String np, String nr)
+	public void ModificarMaquinaHidraulica(int id, String n, String col, double val, String fab, String np, String nr)
 	{
-		clsBD.modificarHidraulica(id, n, col, val, fab, e, np, nr);
+		clsBD.modificarHidraulica(id, n, col, val, fab, np, nr);
 	}
 	
-	public void ModificarMaquinaMareomotriz(int id, String n, String col, double val, String fab, String e, String np, double d)
+	public void ModificarMaquinaMareomotriz(int id, String n, String col, double val, String fab, String np, double d)
 	{
-		clsBD.modificarMareomotriz(id, n, col, val, fab, e, np, d);
+		clsBD.modificarMareomotriz(id, n, col, val, fab, np, d);
 	}
 	
-	public void ModificarMaquinaSolar(int id, String n, String col, double val, String fab, String e, String np, String nc)
+	public void ModificarMaquinaSolar(int id, String n, String col, double val, String fab, String np, String nc)
 	{
-		clsBD.modificarSolar(id, n, col, val, fab, e, np, nc);
+		clsBD.modificarSolar(id, n, col, val, fab, np, nc);
 	}
 
 }

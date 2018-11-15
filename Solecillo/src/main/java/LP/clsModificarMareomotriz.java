@@ -74,7 +74,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		txtColor.setText(maq.getColor());
 		txtValor.setText(Double.toString(maq.getValor()));
 		txtFabricante.setText(maq.getFabricante());
-		txtEstado.setSelectedItem(maq.getEstado());
 		txtNombrePueblo.setText(maq.getNombre_pueblo());
 		txtDistancia.setText(Double.toString(maq.getDistancia_millas_marinas_pueblo()));
 		
@@ -90,7 +89,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				{		
 						try {
 							logger.log( Level.INFO, "Modificando mareomotriz de nombre: "+txtNombre.getText());
-							objGestor.ModificarMaquinaMareomotriz(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText(), String.valueOf(txtEstado.getSelectedItem()), txtNombrePueblo.getText(), Double.parseDouble(txtDistancia.getText()));
+							objGestor.ModificarMaquinaMareomotriz(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), Double.parseDouble(txtDistancia.getText()));
 							JOptionPane.showMessageDialog(null, "Se ha modificado la máquina mareomotriz correctamente.");
 							dispose();
 							clsListaM.listaMareomotriz = objGestor.ListaMareomotriz();
