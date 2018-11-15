@@ -73,6 +73,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		txtColor.setText(maq.getColor());
 		txtValor.setText(Double.toString(maq.getValor()));
 		txtFabricante.setText(maq.getFabricante());
+		txtEstado.setSelectedItem(maq.getEstado());
 		txtNombrePueblo.setText(maq.getNombre_pueblo());
 		txtNombreRio.setText(maq.getNombre_rio());
 		
@@ -88,7 +89,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				{		
 						try {
 							logger.log( Level.INFO, "Modificando hidráulica de nombre: "+txtNombre.getText());
-							objGestor.ModificarMaquinaHidraulica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreRio.getText());
+							objGestor.ModificarMaquinaHidraulica(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText(), String.valueOf(txtEstado.getSelectedItem()), txtNombrePueblo.getText(), txtNombreRio.getText());
 							JOptionPane.showMessageDialog(null, "Se ha modificado una máquina hidráulica correctamente.");
 							dispose();
 							clsListaM.listaHidraulica = objGestor.ListaHidraulica();

@@ -22,8 +22,13 @@ import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
  import javax.swing.JLabel;
 import javax.swing.JTextField;
- import javax.swing.JButton;
- import LN.clsGestor;
+
+import Comun.clsConstantes;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
+import LN.clsGestor;
  /**
  * Clase que generará una JFrame para introducir los datos que a su vez serán enviados a clsBinarios para la creación
  * de un usuario en la base de datos.
@@ -41,6 +46,7 @@ public class clsAltaEolica extends JFrame
 	public JTextField txtColor;
 	public JTextField txtValor;
 	public JTextField txtFabricante;
+	public JComboBox txtEstado;
 	public JTextField txtNombrePueblo;
 	public JTextField txtNombreCampo;
 	public JTextField txtAltura;
@@ -50,6 +56,7 @@ public class clsAltaEolica extends JFrame
 	private JLabel lblColor;
 	private JLabel lblValor;
 	private JLabel lblFabricante;
+	private JLabel lblEstado;
 	private JLabel lblNombrePueblo;
 	private JLabel lblNombreCampo;
 	private JLabel lblAltura;
@@ -58,6 +65,7 @@ public class clsAltaEolica extends JFrame
 	public JButton btnAceptar;
 	public JButton btnCancelar;
 	
+	String[] estados = {clsConstantes.ESTADO1, clsConstantes.ESTADO2, clsConstantes.ESTADO3, clsConstantes.ESTADO4};
 	
 	boolean modifmaq = false;
 	
@@ -149,6 +157,14 @@ public class clsAltaEolica extends JFrame
 		txtFabricante = new JTextField();
 		txtFabricante.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panelizda.add(txtFabricante);
+		
+		lblEstado = new JLabel("         Estado:         ");
+		lblEstado.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(lblEstado);
+		
+		txtEstado = new JComboBox(estados);
+		txtEstado.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelizda.add(txtEstado);
 			
 		lblNombrePueblo = new JLabel("        Nombre del pueblo:        ");
 		lblNombrePueblo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -221,7 +237,7 @@ public class clsAltaEolica extends JFrame
 		if(txtNombre.getText().length()>0&&txtColor.getText().length()>0&&txtValor.getText().length()>0&&txtFabricante.getText().length()>0&&txtNombrePueblo.getText().length()>0&&txtNombreCampo.getText().length()>0&&txtAltura.getText().length()>0&&txtDiametro.getText().length()>0)
 		{		
 				try {
-					objGestor.CrearMaquinaEolica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
+					objGestor.CrearMaquinaEolica(txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText(), String.valueOf(txtEstado.getSelectedItem()), txtNombrePueblo.getText(), txtNombreCampo.getText(), Double.parseDouble(txtAltura.getText()), Double.parseDouble(txtDiametro.getText()));
 					dispose();
 					logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
 					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina eólica correctamente.");

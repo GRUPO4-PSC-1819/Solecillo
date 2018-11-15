@@ -63,6 +63,7 @@ public class clsTablaM extends JPanel
                 "Color",
                 "Valor",
                 "Fabricante",
+                "Estado",
                 "Nombre pueblo",
                 "Distancia millas"};
         private Object[][] data;
@@ -86,6 +87,7 @@ public class clsTablaM extends JPanel
     					   new String(aux.getColor()),
     					   new Double(aux.getValor()),
     					   new String(aux.getFabricante()),
+    					   new String(aux.getEstado()),
     					   new String(aux.getNombre_pueblo()),
     					   new Double(aux.getDistancia_millas_marinas_pueblo())};
     			data[cont]=n;
