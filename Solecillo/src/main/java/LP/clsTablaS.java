@@ -61,6 +61,7 @@ public class clsTablaS extends JPanel
                 "Color",
                 "Valor",
                 "Fabricante",
+                "Estado",
                 "Nombre pueblo",
                 "Nombre campo"};
         private Object[][] data;
@@ -84,6 +85,7 @@ public class clsTablaS extends JPanel
     					   new String(aux.getColor()),
     					   new Double(aux.getValor()),
     					   new String(aux.getFabricante()),
+    					   new String(aux.getEstado()),
     					   new String(aux.getNombre_pueblo()),
     					   new String(aux.getNombre_campo())};
     			data[cont]=n;

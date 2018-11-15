@@ -75,6 +75,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		txtColor.setText(maq.getColor());
 		txtValor.setText(Double.toString(maq.getValor()));
 		txtFabricante.setText(maq.getFabricante());
+		txtEstado.setSelectedItem(maq.getEstado());
 		txtNombrePueblo.setText(maq.getNombre_pueblo());
 		txtNombreCampo.setText(maq.getNombre_campo());
 		
@@ -90,7 +91,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				{		
 						try {
 							logger.log( Level.INFO, "Modificando solar de nombre: "+txtNombre.getText());
-							objGestor.ModificarMaquinaSolar(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText().toUpperCase(), txtNombrePueblo.getText(), txtNombreCampo.getText());
+							objGestor.ModificarMaquinaSolar(maq.getId(), txtNombre.getText(), txtColor.getText(), Double.parseDouble(txtValor.getText()), txtFabricante.getText(), String.valueOf(txtEstado.getSelectedItem()), txtNombrePueblo.getText(), txtNombreCampo.getText());
 							JOptionPane.showMessageDialog(null, "Se ha modificado la máquina solar correctamente.");
 							dispose();
 							clsListaM.listaSolar = objGestor.ListaSolar();

@@ -22,6 +22,10 @@ public class clsConstantes
 	public static final String BORRAR = "BORRAR";
 	public static final String MODIFICAR = "MODIFICAR";
 	public static final String VENTA = "VENTA";
+	public static final String ESTADO1 = "Perfecto";
+	public static final String ESTADO2 = "Correcto";
+	public static final String ESTADO3 = "Necesita mantenimiento";
+	public static final String ESTADO4 = "Peligro inminente";
 
 	
 }

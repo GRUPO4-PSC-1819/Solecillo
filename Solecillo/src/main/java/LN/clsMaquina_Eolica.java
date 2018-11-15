@@ -16,9 +16,9 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 
 
 		//constructor para crear nueva máquina_hidraulica
-		public clsMaquina_Eolica(int id, String n, String color, double v, String f, String np, String nc, double a, double d)
+	public clsMaquina_Eolica(int id, String n, String color, double v, String f, String e, String np, String nc, double a, double d)
 		{
-			super(id, n, color, v, f);
+			super(id, n, color, v, f, e);
 			this.nombre_pueblo=np;
 			this.nombre_campo=nc;
 			this.altura=a;
@@ -26,9 +26,9 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 		}
 		
 		//constructor sin id
-				public clsMaquina_Eolica(String n, String color, double v, String f, String np, String nc, double a, double d)
+	public clsMaquina_Eolica(String n, String color, double v, String f, String e, String np, String nc, double a, double d)
 				{
-					super(n, color, v, f);
+					super(n, color, v, f, e);
 					this.nombre_pueblo=np;
 					this.nombre_campo=nc;
 					this.altura=a;
