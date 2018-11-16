@@ -2,6 +2,8 @@
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import Comun.clsConstantes;
 import LN.clsCliente;
@@ -38,7 +40,6 @@ public class clsMain
 					//clsBD.insertarDatoTablaBD(new clsCliente("b","b","a","a","a"));
 					//clsBD.insertarDatoTablaBD(new clsCliente("c","b","a","a","a"));
 					//clsUsuario u=new clsUsuario();
-					
 					//principalFrame p=new principalFrame(u);
 					loginFrame p=new loginFrame();
 					p.setVisible(true);

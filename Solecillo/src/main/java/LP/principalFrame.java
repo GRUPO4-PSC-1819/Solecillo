@@ -15,6 +15,7 @@ import LN.clsCliente;
 import LN.clsClienteRepetido;
 import LN.clsGestor;
 import LN.clsUsuario;
+import LN.clsUsuarioRepetido;
 import LN.clsVenta;
 import weka.core.Instances;
 import javax.swing.JTabbedPane;
@@ -688,6 +689,67 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					}
 				}
 			});
+			
+			JPanel panel_41 = new JPanel();
+			panel_41.setBackground(new Color(135, 206, 235));
+			tabbedPane.addTab("Migración", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_41, null);
+			panel_41.setLayout(null);
+			
+			JButton btnAceptar_21 = new JButton("Migrar datos de usuarios");
+			btnAceptar_21.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_21.setBounds(254, 70, 257, 60);
+			panel_41.add(btnAceptar_21);
+			btnAceptar_21.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					try {
+						objGestor.MigracionUsuarios();
+					} catch (clsUsuarioRepetido e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			JButton btnAceptar_22 = new JButton("Migrar datos de clientes");
+			btnAceptar_22.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_22.setBounds(254, 140, 257, 60);
+			panel_41.add(btnAceptar_22);
+			btnAceptar_22.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+						try {
+							objGestor.MigracionClientes();
+						} catch (clsClienteRepetido e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				}
+			});
+			JButton btnAceptar_23 = new JButton("Migrar datos de máquinas");
+			btnAceptar_23.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_23.setBounds(254, 210, 257, 60);
+			panel_41.add(btnAceptar_23);
+			btnAceptar_23.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+						objGestor.MigracionMaquinas();
+				}
+			});
+			JButton btnAceptar_24 = new JButton("Migrar datos de ventas");
+			btnAceptar_24.setFont(new Font("Tahoma", Font.PLAIN, 17));
+			btnAceptar_24.setBounds(254, 280, 257, 60);
+			panel_41.add(btnAceptar_24);
+			btnAceptar_24.addActionListener(new ActionListener() 
+			{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+						objGestor.MigracionVentas();
+				}
+			});
+			
 			
 			JPanel panel_4 = new JPanel();
 			panel_4.setBackground(new Color(135, 206, 235));

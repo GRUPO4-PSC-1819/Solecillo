@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.concurrent.ThreadLocalRandom;
+
 import Comun.clsConstantes;
 import LN.clsUsuario;
 import Persistencia.clsBD;
@@ -457,6 +459,24 @@ public class clsGestor implements Serializable
 	{
 		clsBD.BorrarMaquina(id);
 	}
+	public void BorrarUsuarios()
+	{
+		clsBD.BorrarUsuarios();
+	}
+	public void BorrarClientes()
+	{
+		clsBD.BorrarClientes();
+	}
+	public void BorrarMaquinas()
+	{
+		clsBD.BorrarMaquinas();
+	}
+	public void BorrarVentas()
+	{
+		clsBD.BorrarVentas();
+	}
+	
+	
 	
 	
 	
@@ -478,6 +498,223 @@ public class clsGestor implements Serializable
 	public void ModificarMaquinaSolar(int id, String n, String col, double val, String fab, String e, String np, String nc)
 	{
 		clsBD.modificarSolar(id, n, col, val, fab, e, np, nc);
+	}
+	
+	public void MigracionUsuarios() throws clsUsuarioRepetido
+	{
+		BorrarUsuarios();
+		String nombre;
+		String apellido1;
+		String apellido2;
+		String nickname;
+		String contraseña;
+		for(int i1=0;i1<100;i1++)
+		{
+			nombre="NumbreUsu_"+i1;
+			apellido1="Apellido1_Usu"+i1;
+			apellido2="Apellido2_Usu"+i1;
+			nickname="Nickname_Usu"+i1;
+			contraseña="Contraseña_Usu"+i1;
+			CrearUsuario(nombre, apellido1, apellido2, nickname, contraseña);
+		}
+	}
+	public void MigracionClientes() throws clsClienteRepetido
+	{
+		BorrarClientes();
+		String nombre_c;
+		String apellido1_c;
+		String apellido2_c;
+		String dni;
+		String empresa;
+		for(int i2=0;i2<100;i2++)
+		{
+			nombre_c="NumbreCli_"+i2;
+			apellido1_c="Apellido1_Cli"+i2;
+			apellido2_c="Apellido2_Cli"+i2;
+			dni="123456789"+i2;
+			empresa="Empresa_Cli"+i2;
+			CrearCliente(nombre_c, apellido1_c, apellido2_c, dni, empresa);
+		}
+	}
+	public void MigracionMaquinas()
+	{
+		BorrarMaquinas();
+		String nombre_m;
+		String color_m=null;
+		double valor_m;
+		String fabricante_m=null;
+		String estado_m=null;
+		String nombre_pueblo_m=null;
+		String nombre_campo_m=null;
+		String nombre_rio_m=null;
+		double altura;
+		double diametro;
+		double distancia;
+		double min_v=10000;
+		double max_v=10000000;
+		double min_a=10;
+		double max_a=100;
+		double min_d=10;
+		double max_d=70;
+		double min_dm=1;
+		double max_dm=15;
+		//EÓLICAS
+		for(int i3=0;i3<100;i3++)
+		{
+			nombre_m="NombreMáquinaEólica"+i3;
+			
+			if(i3%5==0)color_m="Verde";
+			else if(i3%4==0)color_m="Blanco";
+			else if(i3%3==0)color_m="Gris";
+			else if(i3%2==0)color_m="Azul";
+			else if(i3%1==0)color_m="Negro";
+			
+			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			
+			if(i3%3==0)fabricante_m="Fabricante_1";
+			else if(i3%2==0)fabricante_m="Fabricante_2";
+			else if(i3%1==0)fabricante_m="Fabricante_3";
+			
+			if(i3%4==0)estado_m=clsConstantes.ESTADO1;
+			else if(i3%3==0)estado_m=clsConstantes.ESTADO2;
+			else if(i3%2==0)estado_m=clsConstantes.ESTADO3;
+			else if(i3%1==0)estado_m=clsConstantes.ESTADO4;
+			
+			if(i3%5==0)nombre_pueblo_m="Tafalla";
+			else if(i3%4==0)nombre_pueblo_m="Tudela";
+			else if(i3%3==0)nombre_pueblo_m="Legutiano";
+			else if(i3%2==0)nombre_pueblo_m="Estella";
+			else if(i3%1==0)nombre_pueblo_m="Salvatierra";
+			
+			if(i3%2==0)nombre_campo_m="Campo 1";
+			else if(i3%1==0)nombre_campo_m="Campo2";
+			
+			altura=ThreadLocalRandom.current().nextDouble(min_a, max_a);
+			
+			diametro=ThreadLocalRandom.current().nextDouble(min_d, max_d);
+			
+			CrearMaquinaEolica(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, nombre_campo_m, altura, diametro);
+		}
+		//HIDRÁULICAS
+		for(int i4=0;i4<100;i4++)
+		{
+			nombre_m="NombreMáquinaHidráulica"+i4;
+			
+			if(i4%5==0)color_m="Verde";
+			else if(i4%4==0)color_m="Blanco";
+			else if(i4%3==0)color_m="Gris";
+			else if(i4%2==0)color_m="Azul";
+			else if(i4%1==0)color_m="Negro";
+			
+			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			
+			if(i4%3==0)fabricante_m="Fabricante_1";
+			else if(i4%2==0)fabricante_m="Fabricante_2";
+			else if(i4%1==0)fabricante_m="Fabricante_3";
+			
+			if(i4%4==0)estado_m=clsConstantes.ESTADO1;
+			else if(i4%3==0)estado_m=clsConstantes.ESTADO2;
+			else if(i4%2==0)estado_m=clsConstantes.ESTADO3;
+			else if(i4%1==0)estado_m=clsConstantes.ESTADO4;
+			
+			if(i4%5==0)nombre_pueblo_m="Tolosa";
+			else if(i4%4==0)nombre_pueblo_m="Hernani";
+			else if(i4%3==0)nombre_pueblo_m="Deba";
+			else if(i4%2==0)nombre_pueblo_m="Zumaia";
+			else if(i4%1==0)nombre_pueblo_m="Estella";
+			
+			if(i4%5==0)nombre_rio_m="Oria";
+			else if(i4%4==0)nombre_rio_m="Urumea";
+			else if(i4%3==0)nombre_rio_m="Deba";
+			else if(i4%2==0)nombre_rio_m="Urola";
+			else if(i4%1==0)nombre_rio_m="Ega";
+
+			CrearMaquinaHidraulica(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, nombre_rio_m);
+		}
+		//MAREOMOTRICES
+		for(int i5=0;i5<100;i5++)
+		{
+			nombre_m="NombreMáquinaMareomotriz"+i5;
+			
+			if(i5%5==0)color_m="Verde";
+			else if(i5%4==0)color_m="Blanco";
+			else if(i5%3==0)color_m="Gris";
+			else if(i5%2==0)color_m="Azul";
+			else if(i5%1==0)color_m="Negro";
+			
+			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			
+			if(i5%3==0)fabricante_m="Fabricante_1";
+			else if(i5%2==0)fabricante_m="Fabricante_2";
+			else if(i5%1==0)fabricante_m="Fabricante_3";
+			
+			if(i5%4==0)estado_m=clsConstantes.ESTADO1;
+			else if(i5%3==0)estado_m=clsConstantes.ESTADO2;
+			else if(i5%2==0)estado_m=clsConstantes.ESTADO3;
+			else if(i5%1==0)estado_m=clsConstantes.ESTADO4;
+			
+			if(i5%5==0)nombre_pueblo_m="Zarautz";
+			else if(i5%4==0)nombre_pueblo_m="Bakio";
+			else if(i5%3==0)nombre_pueblo_m="Lekeitio";
+			else if(i5%2==0)nombre_pueblo_m="Pasajes";
+			else if(i5%1==0)nombre_pueblo_m="San Juan de Luz";
+			
+			distancia=ThreadLocalRandom.current().nextDouble(min_dm, max_dm);
+
+			CrearMaquinaMareomotriz(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, distancia);
+		}
+		//SOLARES
+		for(int i6=0;i6<100;i6++)
+		{
+			nombre_m="NombreMáquinaSolar"+i6;
+			
+			if(i6%5==0)color_m="Verde";
+			else if(i6%4==0)color_m="Blanco";
+			else if(i6%3==0)color_m="Gris";
+			else if(i6%2==0)color_m="Azul";
+			else if(i6%1==0)color_m="Negro";
+			
+			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			
+			if(i6%3==0)fabricante_m="Fabricante_1";
+			else if(i6%2==0)fabricante_m="Fabricante_2";
+			else if(i6%1==0)fabricante_m="Fabricante_3";
+			
+			if(i6%4==0)estado_m=clsConstantes.ESTADO1;
+			else if(i6%3==0)estado_m=clsConstantes.ESTADO2;
+			else if(i6%2==0)estado_m=clsConstantes.ESTADO3;
+			else if(i6%1==0)estado_m=clsConstantes.ESTADO4;
+			
+			if(i6%5==0)nombre_pueblo_m="Puente la Reina";
+			else if(i6%4==0)nombre_pueblo_m="Olite";
+			else if(i6%3==0)nombre_pueblo_m="Artajona";
+			else if(i6%2==0)nombre_pueblo_m="Lodosa";
+			else if(i6%1==0)nombre_pueblo_m="Caparroso";
+			
+			if(i6%2==0)nombre_campo_m="Campo 1";
+			else if(i6%1==0)nombre_campo_m="Campo2";
+			
+			CrearMaquinaSolar(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, nombre_campo_m);
+		}
+	}
+	public void MigracionVentas()
+	{
+		BorrarVentas();
+		int id_m;
+		String dni_c;
+		int cantidad;
+		ArrayList<clsCliente>clientes=new ArrayList<clsCliente>();
+		clientes=ListaClientes();
+		int id_cliente;
+		for(int i=0;i<1000;i++)
+		{
+			id_m=ThreadLocalRandom.current().nextInt(1, 400);
+			id_cliente=ThreadLocalRandom.current().nextInt(0, 99);
+			dni_c=clientes.get(id_cliente).getdni();
+			cantidad=ThreadLocalRandom.current().nextInt(1, 5);
+			
+			CrearVenta(id_m, dni_c, cantidad);
+		}
 	}
 
 }

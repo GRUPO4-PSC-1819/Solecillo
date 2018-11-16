@@ -531,5 +531,57 @@ public class clsBD
 				e1.printStackTrace();
 			}
 	}
+	
+	public static void BorrarUsuarios()
+	{
+		if (statement==null) return;
+			try 
+			{
+				statement.executeQuery("DELETE FROM USUARIO");
+			} 
+			catch (SQLException e1) 
+			{
+				//JOptionPane.showMessageDialog(null, "Se ha borrado la tabla de usuarios.", "Información", JOptionPane.INFORMATION_MESSAGE);
+			}
+	}
+	
+	public static void BorrarClientes()
+	{
+		if (statement==null) return;
+		try 
+		{
+			statement.executeQuery("DELETE FROM CLIENTE");
+		} 
+		catch (SQLException e1) 
+		{
+			//JOptionPane.showMessageDialog(null, "Se ha borrado la tabla de clientes.", "Información", JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
+	
+	public static void BorrarMaquinas()
+	{
+		if (statement==null) return;
+			try 
+			{
+				statement.executeQuery("DELETE FROM MAQUINA");
+			} 
+			catch (SQLException e1) 
+			{
+				//JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
+			}
+	}
+	
+	public static void BorrarVentas()
+	{
+		if (statement==null) return;
+			try 
+			{
+				statement.executeQuery("DELETE FROM VENTA");
+			} 
+			catch (SQLException e1) 
+			{
+				//JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
+			}
+	}
 			
 }
