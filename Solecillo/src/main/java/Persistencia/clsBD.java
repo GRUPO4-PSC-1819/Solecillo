@@ -25,6 +25,8 @@ import LN.clsVenta;
  */
 public class clsBD 
 {
+	
+	
 	private static Connection connection = null;
 	private static Statement statement = null;
 
@@ -583,5 +585,4 @@ public class clsBD
 				//JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
 			}
 	}
-			
 }
