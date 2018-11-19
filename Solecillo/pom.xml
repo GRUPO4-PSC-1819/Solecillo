@@ -86,14 +86,8 @@
         <groupId>org.codehaus.mojo</groupId><artifactId>cobertura-maven-plugin</artifactId><version>2.7</version>
         <configuration>
 <check>
-<regexes>
-<regex>
-<!-- Más restricivo por paquete P2 -->
-<pattern>Grupo4.Solecillo.*</pattern>
-
-<lineRate>50</lineRate>
-</regex>
-</regexes>
+	 <branchRate>30</branchRate>
+      <lineRate>50</lineRate>
 </check>
 </configuration>
       </plugin>
