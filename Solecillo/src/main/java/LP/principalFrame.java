@@ -292,7 +292,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel_5.add(btngrafico2);
 	
 		tableV.setModel(modeloV);
-		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);
         js1.setBounds(41, 150, 645, 169);
         js1.setVisible(true);
