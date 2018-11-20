@@ -2,6 +2,7 @@ package LP;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -289,27 +290,13 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		          }
 			}});
 		panel_5.add(btngrafico2);
-		
-		JLabel lblIDV = new JLabel("ID VENTA");
-		lblIDV.setBounds(80, 110, 110, 56);
-		panel_5.add(lblIDV);
-		
-		JLabel lblDNIV = new JLabel("DNI CLIENTE");
-		lblDNIV.setBounds(230, 110, 110, 56);
-		panel_5.add(lblDNIV);
-		
-		JLabel lblIDMV = new JLabel("ID MÁQUINA");
-		lblIDMV.setBounds(380, 110, 110, 56);
-		panel_5.add(lblIDMV);
-		
-		JLabel lblCV = new JLabel("CANTIDAD");
-		lblCV.setBounds(530, 110, 110, 56);
-		panel_5.add(lblCV);
-		
 	
 		tableV.setModel(modeloV);
-		
-		panel_5.add(tableV);
+		tableV.setModel(modeloV);
+        JScrollPane js1 = new JScrollPane(tableV);
+        js1.setBounds(41, 150, 645, 169);
+        js1.setVisible(true);
+        panel_5.add(js1);
 
 		DefaultTableModel modeloT= new DefaultTableModel();
 		modeloT.addColumn("Nombre");
@@ -339,7 +326,13 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		}
 		table.setModel(modeloT);
 		
-		panel_2.add(table);
+		
+		table.setModel(modeloT);
+        JScrollPane js = new JScrollPane(table);
+        js.setBounds(41, 373, 645, 169);
+        js.setVisible(true);
+        panel_2.add(js);
+		
 		
 		TableRowSorter filtro = new TableRowSorter(modeloT);
 		
@@ -348,26 +341,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		lblNewLabel_3.setBounds(323, 16, 257, 56);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel_2.add(lblNewLabel_3);
-		
-		JLabel lblNombre = new JLabel("NOMBRE");
-		lblNombre.setBounds(70, 335, 257, 56);
-		panel_2.add(lblNombre);
-		
-		JLabel lblAp1 = new JLabel("APELLIDO 1");
-		lblAp1.setBounds(200, 335, 257, 56);
-		panel_2.add(lblAp1);
-		
-		JLabel lblAp2 = new JLabel("APELLIDO 2");
-		lblAp2.setBounds(330, 335, 257, 56);
-		panel_2.add(lblAp2);
-		
-		JLabel lblDni = new JLabel("DNI");
-		lblDni.setBounds(460, 335, 257, 56);
-		panel_2.add(lblDni);
-		
-		JLabel lblEmpresa = new JLabel("EMPRESA");
-		lblEmpresa.setBounds(590, 335, 257, 56);
-		panel_2.add(lblEmpresa);
 		
 		
 		JButton btnVenta = new JButton("VENTA");

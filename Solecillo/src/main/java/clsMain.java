@@ -42,6 +42,9 @@ public class clsMain
 					//clsUsuario u=new clsUsuario();
 					//principalFrame p=new principalFrame(u);
 					loginFrame p=new loginFrame();
+					//p.textField.setText("admin");
+					//p.passwordField.setText("admin");
+					//p.chckbxAdministrador.setSelected(true);
 					p.setVisible(true);
 				} 
 				catch (Exception e) 
