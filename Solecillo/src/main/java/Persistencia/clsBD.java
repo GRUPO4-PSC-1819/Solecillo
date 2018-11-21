@@ -437,6 +437,21 @@ public class clsBD
 		return rs;
 	}
 	
+	public static ResultSet ventas_tipo_maquina()
+	{
+		if (statement==null) return null;
+		ResultSet rs = null;
+			try 
+			{
+			    rs = statement.executeQuery("SELECT m.tipo, sum(v.cantidad) AS TOTAL_VENTAS FROM venta v INNER JOIN maquina m ON v.idm=m.id GROUP BY m.tipo");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+		return rs;
+	}
+	
 	/**
 	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>
 	 * Usuario: Nickname. <br>

@@ -19,6 +19,7 @@ public class clsMaquina implements Serializable
 	protected String fabricante;
 	protected String estado;
 	private String tipo;
+	private int tot_v;
 
 	//constructor para crear nueva máquina
 	public clsMaquina(int id, String n, String color, double v, String f, String e)
@@ -44,6 +45,12 @@ public class clsMaquina implements Serializable
 			{
 				this.tipo=t;
 				this.valor=v;
+			}
+			
+			public clsMaquina(String t, int tot_v)
+			{
+				this.tipo=t;
+				this.tot_v=tot_v;
 			}
 
 	
@@ -149,6 +156,12 @@ public class clsMaquina implements Serializable
 	}
  	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+ 	public int getTot_ventas() {
+		return tot_v;
+	}
+ 	public void setTot_ventas(int tot_v) {
+		this.tot_v = tot_v;
 	}
 
 }

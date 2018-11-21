@@ -762,5 +762,29 @@ public class clsGestor implements Serializable
 		}
 		return lista;
 	}
+	
+	public ArrayList<clsMaquina> ventas_tipo_maquina()
+	{
+		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
+		ResultSet rs = clsBD.ventas_tipo_maquina();
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina(
+							rs.getString("TIPO"),
+							rs.getInt("TOTAL_VENTAS")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+			
+		}
+		return lista;
+	}
 
 }

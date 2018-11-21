@@ -12,6 +12,7 @@ import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
 import Analisisdedatos.Valor_Medio_Maquinas;
+import Analisisdedatos.Ventas_Maquina;
 import Analisisdedatos.top_clientes;
 import Comun.clsConstantes;
 import LN.clsCliente;
@@ -340,6 +341,30 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		          }
 			}});
 		panel_5.add(btngrafico4);
+		
+		JButton btngrafico5 = new JButton("Gráfico Ventas - Tipo Máquina");
+		btngrafico5.setBounds(729, 457, 225, 29);
+		btngrafico5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+					  Ventas_Maquina demo = new Ventas_Maquina( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
+			}});
+		panel_5.add(btngrafico5);
 	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);
