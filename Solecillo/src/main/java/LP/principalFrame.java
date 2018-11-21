@@ -11,6 +11,7 @@ import org.jfree.ui.RefineryUtilities;
 import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
+import Analisisdedatos.top_clientes;
 import Comun.clsConstantes;
 import LN.clsCliente;
 import LN.clsClienteRepetido;
@@ -290,6 +291,30 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		          }
 			}});
 		panel_5.add(btngrafico2);
+		
+		JButton btngrafico3 = new JButton("Gráfico Ventas Clientes TOP");
+		btngrafico3.setBounds(729, 257, 200, 29);
+		btngrafico3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+					  top_clientes demo = new top_clientes( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
+			}});
+		panel_5.add(btngrafico3);
 	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);

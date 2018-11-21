@@ -716,5 +716,29 @@ public class clsGestor implements Serializable
 			CrearVenta(id_m, dni_c, cantidad);
 		}
 	}
+	
+	public ArrayList<clsCliente> top_10_clientes()
+	{
+		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
+		ResultSet rs = clsBD.clientesTOP();
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsCliente(
+							rs.getString("DNIC"),
+							rs.getInt("TOTAL_VENTAS")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+			
+		}
+		return lista;
+	}
 
 }

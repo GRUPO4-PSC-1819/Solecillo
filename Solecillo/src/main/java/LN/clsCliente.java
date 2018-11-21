@@ -18,6 +18,7 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 	private String apellido2;
 	private String dni;
 	private String empresa;
+	private int tot_ventas;
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -51,6 +52,12 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 		apellido2=ap2;
 		this.dni=dni;
 		setEmpresa(emp);
+	}
+	
+	public clsCliente(String dni, int tot_ventas)
+	{
+		this.dni=dni;
+		this.tot_ventas=tot_ventas;
 	}
 	
 	/**
@@ -140,6 +147,14 @@ public class clsCliente implements Serializable, Comparable<clsCliente>
 
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
+	}
+	
+	public int getTot_Ventas() {
+		return tot_ventas;
+	}
+
+	public void setTot_Ventas(int tot_ventas) {
+		this.tot_ventas = tot_ventas;
 	}
 
 }

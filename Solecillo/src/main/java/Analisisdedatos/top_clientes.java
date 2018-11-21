@@ -8,12 +8,12 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.ui.RefineryUtilities;
 
+import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsVenta;
  
-public class PieChart_AWT extends JFrame {
+public class top_clientes extends JFrame {
    
    /**
 	 * 
@@ -21,7 +21,7 @@ public class PieChart_AWT extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-public PieChart_AWT( String title ) {
+public top_clientes( String title ) {
 	  
       super( title ); 
       this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -32,33 +32,18 @@ public PieChart_AWT( String title ) {
    private static PieDataset createDataset( ) {
       DefaultPieDataset dataset = new DefaultPieDataset( );
       clsGestor gestor=new clsGestor();
-      ArrayList<clsVenta> Ventas = gestor.ListaVentas();
-      int total=0;
-      ArrayList<String> clientes=new ArrayList<String>();
-      for(clsVenta venta: Ventas)
+      ArrayList<clsCliente> top_c=new ArrayList<clsCliente>();
+      top_c=gestor.top_10_clientes();
+      for(clsCliente c:top_c)
       {
-    	  total=venta.getCantidad()+total;
-    	  if(!clientes.contains(venta.getDniC()))
-    	  {
-    		  clientes.add(venta.getDniC());
-    	  }
-      }
-      int hola[]= new int[clientes.size()];
-      
-      for(clsVenta venta: Ventas)
-      {
-    	  hola[clientes.indexOf(venta.getDniC())]+=venta.getCantidad();
-      }
-      for(int i=0;i<hola.length;i++)
-      {
-    	  dataset.setValue( clientes.get(i), new Double( (100*hola[i])/total) );  
+    	  dataset.setValue(c.getdni(), c.getTot_Ventas());
       }
       return dataset;         
    }
    
    private static JFreeChart createChart( PieDataset dataset ) {
       JFreeChart chart = ChartFactory.createPieChart(      
-         "Clientes",   // chart title 
+         "Ventas Clientes TOP",   // chart title 
          dataset,          // data    
          true,             // include legend   
          true, 
@@ -72,4 +57,5 @@ public PieChart_AWT( String title ) {
       
       return new ChartPanel( chart ); 
    }
+
 }
