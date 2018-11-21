@@ -413,7 +413,22 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
-			    rs = statement.executeQuery("SELECT dnic, sum(cantidad) as TOTAL_VENTAS FROM VENTA GROUP BY dnic ORDER BY sum(cantidad) DESC LIMIT 5");
+			    rs = statement.executeQuery("SELECT dnic, sum(cantidad) as TOTAL_VENTAS FROM venta GROUP BY dnic ORDER BY sum(cantidad) DESC LIMIT 5");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+		return rs;
+	}
+	
+	public static ResultSet valor_medio_maquinas()
+	{
+		if (statement==null) return null;
+		ResultSet rs = null;
+			try 
+			{
+			    rs = statement.executeQuery("SELECT tipo, avg(valor) AS MEDIA_VALOR FROM maquina GROUP BY tipo");
 			} 
 			catch (SQLException e1) 
 			{

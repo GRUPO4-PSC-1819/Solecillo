@@ -18,6 +18,7 @@ public class clsMaquina implements Serializable
 	protected double valor;
 	protected String fabricante;
 	protected String estado;
+	private String tipo;
 
 	//constructor para crear nueva máquina
 	public clsMaquina(int id, String n, String color, double v, String f, String e)
@@ -38,6 +39,13 @@ public class clsMaquina implements Serializable
 				this.fabricante=f;
 				this.estado=e;
 			}
+			
+			public clsMaquina(String t, double v)
+			{
+				this.tipo=t;
+				this.valor=v;
+			}
+
 	
 	//constructor vacío para serializar
 	public clsMaquina()
@@ -135,6 +143,12 @@ public class clsMaquina implements Serializable
 	}
  	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+ 	public String getTipo() {
+		return tipo;
+	}
+ 	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }

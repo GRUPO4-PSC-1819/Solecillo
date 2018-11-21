@@ -550,8 +550,6 @@ public class clsGestor implements Serializable
 		double altura;
 		double diametro;
 		double distancia;
-		double min_v=10000;
-		double max_v=10000000;
 		double min_a=10;
 		double max_a=100;
 		double min_d=10;
@@ -569,7 +567,7 @@ public class clsGestor implements Serializable
 			else if(i3%2==0)color_m="Azul";
 			else if(i3%1==0)color_m="Negro";
 			
-			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			valor_m=ThreadLocalRandom.current().nextDouble(1000000, 3000000);
 			
 			if(i3%3==0)fabricante_m="Fabricante_1";
 			else if(i3%2==0)fabricante_m="Fabricante_2";
@@ -606,7 +604,7 @@ public class clsGestor implements Serializable
 			else if(i4%2==0)color_m="Azul";
 			else if(i4%1==0)color_m="Negro";
 			
-			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			valor_m=ThreadLocalRandom.current().nextDouble(70000, 2000000);
 			
 			if(i4%3==0)fabricante_m="Fabricante_1";
 			else if(i4%2==0)fabricante_m="Fabricante_2";
@@ -642,7 +640,7 @@ public class clsGestor implements Serializable
 			else if(i5%2==0)color_m="Azul";
 			else if(i5%1==0)color_m="Negro";
 			
-			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			valor_m=ThreadLocalRandom.current().nextDouble(500000, 2500000);
 			
 			if(i5%3==0)fabricante_m="Fabricante_1";
 			else if(i5%2==0)fabricante_m="Fabricante_2";
@@ -674,7 +672,7 @@ public class clsGestor implements Serializable
 			else if(i6%2==0)color_m="Azul";
 			else if(i6%1==0)color_m="Negro";
 			
-			valor_m=ThreadLocalRandom.current().nextDouble(min_v, max_v);
+			valor_m=ThreadLocalRandom.current().nextDouble(50000, 500000);
 			
 			if(i6%3==0)fabricante_m="Fabricante_1";
 			else if(i6%2==0)fabricante_m="Fabricante_2";
@@ -730,6 +728,30 @@ public class clsGestor implements Serializable
 					lista.add(new clsCliente(
 							rs.getString("DNIC"),
 							rs.getInt("TOTAL_VENTAS")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+			
+		}
+		return lista;
+	}
+	
+	public ArrayList<clsMaquina> valor_medio_maquinas()
+	{
+		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
+		ResultSet rs = clsBD.valor_medio_maquinas();
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina(
+							rs.getString("TIPO"),
+							rs.getDouble("MEDIA_VALOR")));
 				}
 			} 
 			catch (SQLException e)

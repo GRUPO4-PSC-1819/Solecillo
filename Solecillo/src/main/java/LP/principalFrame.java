@@ -11,6 +11,7 @@ import org.jfree.ui.RefineryUtilities;
 import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
+import Analisisdedatos.Valor_Medio_Maquinas;
 import Analisisdedatos.top_clientes;
 import Comun.clsConstantes;
 import LN.clsCliente;
@@ -245,7 +246,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel_5.add(btnRefrescar);
 		
 		JButton btngrafico = new JButton("Gráfico Ventas - Cliente ");
-		btngrafico.setBounds(729, 307, 200, 29);
+		btngrafico.setBounds(729, 307, 225, 29);
 		btngrafico.addActionListener(new ActionListener() {
 
 			@Override
@@ -269,7 +270,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel_5.add(btngrafico);
 		
 		JButton btngrafico2 = new JButton("Gráfico Ventas - Producto ");
-		btngrafico2.setBounds(729, 207, 200, 29);
+		btngrafico2.setBounds(729, 207, 225, 29);
 		btngrafico2.addActionListener(new ActionListener() {
 
 			@Override
@@ -293,7 +294,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel_5.add(btngrafico2);
 		
 		JButton btngrafico3 = new JButton("Gráfico Ventas Clientes TOP");
-		btngrafico3.setBounds(729, 257, 200, 29);
+		btngrafico3.setBounds(729, 257, 225, 29);
 		btngrafico3.addActionListener(new ActionListener() {
 
 			@Override
@@ -315,6 +316,30 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		          }
 			}});
 		panel_5.add(btngrafico3);
+		
+		JButton btngrafico4 = new JButton("Gráfico Valor Medio Máquinas");
+		btngrafico4.setBounds(729, 357, 225, 29);
+		btngrafico4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+		        	  Valor_Medio_Maquinas chart = new Valor_Medio_Maquinas("Valor medio máquinas", 
+		        		         "¿Cuánto valen?");
+		        		      chart.pack( );        
+		        		      RefineryUtilities.centerFrameOnScreen( chart );        
+		        		      chart.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
+			}});
+		panel_5.add(btngrafico4);
 	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);

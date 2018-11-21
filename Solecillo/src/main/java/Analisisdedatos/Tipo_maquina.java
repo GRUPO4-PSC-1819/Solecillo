@@ -12,11 +12,12 @@ import org.jfree.ui.RefineryUtilities;
 public class Tipo_maquina extends ApplicationFrame {
    
    public Tipo_maquina( String applicationTitle , String chartTitle ) {
-      super( applicationTitle );        
+      super( applicationTitle );     
+      this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
          "Tipos de máquina",            
-         "Score",            
+         "Valoración",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
          true, true, false);
@@ -27,15 +28,14 @@ public class Tipo_maquina extends ApplicationFrame {
    }
    
    private CategoryDataset createDataset( ) {
-      final String eol = "Eolicas";        
-      final String hid = "Hidraulicas";  
+      final String eol = "Eólicas";        
+      final String hid = "Hidráulicas";  
       final String mar = "Mareomotrices";   
       final String sol = "Solares";        
-      final String ener = "Energia";        
+      final String ener = "Energía";        
       final String seg = "Seguridad";        
-      final String opin = "Opinion";                
-      final DefaultCategoryDataset dataset = 
-      new DefaultCategoryDataset( );  
+      final String opin = "Opinión";                
+      final DefaultCategoryDataset dataset=new DefaultCategoryDataset( );  
 
       
       dataset.addValue( 1.438 , eol , ener);        
@@ -52,8 +52,7 @@ public class Tipo_maquina extends ApplicationFrame {
 
       dataset.addValue( 4.5 , sol , ener );        
       dataset.addValue( 2.87 , sol , seg );        
-      dataset.addValue( 3.35 , sol , opin );        
-;               
+      dataset.addValue( 3.35 , sol , opin );                     
 
       return dataset; 
    }
