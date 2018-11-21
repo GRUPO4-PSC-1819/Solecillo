@@ -9,13 +9,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame; 
 import org.jfree.ui.RefineryUtilities; 
 
-public class BarChart_AWT extends ApplicationFrame {
+public class Tipo_maquina extends ApplicationFrame {
    
-   public BarChart_AWT( String applicationTitle , String chartTitle ) {
+   public Tipo_maquina( String applicationTitle , String chartTitle ) {
       super( applicationTitle );        
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
-         "Category",            
+         "Tipos de máquina",            
          "Score",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
@@ -28,7 +28,8 @@ public class BarChart_AWT extends ApplicationFrame {
    
    private CategoryDataset createDataset( ) {
       final String eol = "Eolicas";        
-      final String hid = "Hidraulicas";        
+      final String hid = "Hidraulicas";  
+      final String mar = "Mareomotrices";   
       final String sol = "Solares";        
       final String ener = "Energia";        
       final String seg = "Seguridad";        
@@ -37,25 +38,29 @@ public class BarChart_AWT extends ApplicationFrame {
       new DefaultCategoryDataset( );  
 
       
-      dataset.addValue( 1.0 , eol , ener);        
-      dataset.addValue( 3.0 , eol , seg );        
-      dataset.addValue( 5.0 , eol , opin);            
+      dataset.addValue( 1.438 , eol , ener);        
+      dataset.addValue( 3.48 , eol , seg );        
+      dataset.addValue( 5.028 , eol , opin);            
 
-      dataset.addValue( 5.0 , hid , ener );        
-      dataset.addValue( 6.0 , hid , seg );       
-      dataset.addValue( 10.0 , hid , opin );        
+      dataset.addValue( 5.843 , hid , ener );        
+      dataset.addValue( 6.56 , hid , seg );       
+      dataset.addValue( 7.43 , hid , opin );
+      
+      dataset.addValue( 6.7 , mar , ener );        
+      dataset.addValue( 3.67 , mar , seg );       
+      dataset.addValue( 8.2 , mar , opin );  
 
-      dataset.addValue( 4.0 , sol , ener );        
-      dataset.addValue( 2.0 , sol , seg );        
-      dataset.addValue( 3.0 , sol , opin );        
+      dataset.addValue( 4.5 , sol , ener );        
+      dataset.addValue( 2.87 , sol , seg );        
+      dataset.addValue( 3.35 , sol , opin );        
 ;               
 
       return dataset; 
    }
    
    public static void main( String[ ] args ) {
-      BarChart_AWT chart = new BarChart_AWT("Estadísticas máquinas", 
-         "Cual es la mejor?");
+      Tipo_maquina chart = new Tipo_maquina("Estadísticas máquinas", 
+         "¿Cuál es la mejor?");
       chart.pack( );        
       RefineryUtilities.centerFrameOnScreen( chart );        
       chart.setVisible( true ); 

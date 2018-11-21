@@ -37,7 +37,6 @@ public PieChart_PROD( String title ) {
     	  total=venta.getCantidad()+total;
     	  if(!productos.contains(venta.getIdm()))
     	  {
-    		  
     		  productos.add(venta.getIdm());
     	  }
       }
