@@ -44,6 +44,7 @@ public class clsMaquina implements Serializable
 			public clsMaquina(String t, double v)
 			{
 				this.tipo=t;
+				this.estado=t;
 				this.valor=v;
 			}
 			
@@ -52,6 +53,7 @@ public class clsMaquina implements Serializable
 				this.tipo=t;
 				this.tot_v=tot_v;
 			}
+			
 
 	
 	//constructor vacío para serializar

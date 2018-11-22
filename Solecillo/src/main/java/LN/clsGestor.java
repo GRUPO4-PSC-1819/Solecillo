@@ -786,5 +786,31 @@ public class clsGestor implements Serializable
 		}
 		return lista;
 	}
+	public ArrayList<clsMaquina> valor_estado_maquina()
+	{
+		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
+		ResultSet rs = clsBD.valor_estado_maquina();
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina(
+							rs.getString("ESTADO"),
+							rs.getDouble("VALOR_MEDIO")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+			for(clsMaquina m:lista)
+		      {
+		    	 System.out.println(m.getEstado()+" , "+m.getValor());
+		      }
+		}
+		return lista;
+	}
 
 }
