@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import javax.swing.JOptionPane;
-
 import LN.clsCliente;
 import LN.clsMaquina_Eolica;
 import LN.clsMaquina_Hidraulica;
@@ -15,9 +13,6 @@ import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
 import LN.clsUsuario;
 import LN.clsVenta;
-
-
-
 /**
  * Clase que se encargará de pasar la información de memoria a una Base de Datos, y al mismo tiempo, que extraerá
  * dicha información de esta BD a memoria.
@@ -25,8 +20,6 @@ import LN.clsVenta;
  */
 public class clsBD 
 {
-	
-	
 	private static Connection connection = null;
 	private static Statement statement = null;
 
@@ -82,7 +75,7 @@ public class clsBD
 
 	/** Crea diferentes tablas en una base de datos, si no existía ya. <br>
 	 * Debe haberse inicializado la conexión correctamente. <br>
-	 * @param tipo_tabla Tipo de tabla: Usuario o Partida.
+	 * @param tipo_tabla Tipo de tabla: Usuario, Venta, Máquina o Cliente.
 	 */
 	public static void crearTablaBD(String tipo_tabla)
 	{
@@ -134,9 +127,8 @@ public class clsBD
 			{
 				e2.printStackTrace();
 			}
-			break;
-				
-				case "CLIENTE": 
+			break;	
+		case "CLIENTE": 
 			try 
 			{
 				statement.executeUpdate("CREATE TABLE IF NOT EXISTS  CLIENTE (NOMBRE STRING,"+ "AP_1 STRING, "+"AP_2 STRING,"+
@@ -147,22 +139,17 @@ public class clsBD
 			{
 				e1.printStackTrace();
 			}
-			break;
-			
-			
+			break;			
 		}
 	}
 	
 	/** Inserta un dato en las tablas previamente mencionadas. <br>
 	 * Debe haberse inicializado la conexión correctamente. <br>
-	 * @param obj Objeto a insertar: Usuario
+	 * @param obj Objeto a insertar.
 	 */
 	public static void insertarDatoTablaBD(Object obj)
 	{
-		if (statement==null) return;
-		
-		
-		
+		if (statement==null)return;
 		if (obj instanceof clsUsuario)
 			try 
 			{
@@ -301,7 +288,6 @@ public class clsBD
 		}
 		
 	}
-	
 	/**
 	 * Lectura de los datos de una tabla determinada.
 	 * @param tipo_tabla Tipo de tabla
@@ -392,6 +378,11 @@ public class clsBD
 		 return rs;
 	}
 	
+	/**
+	 * Lectura de los datos de una sola máquina.
+	 * @param id El id de la máquina que se quiere buscar información.
+	 * @return Representación abstracta de los datos de la tabla de la BD: ResultSet
+	 */
 	public static ResultSet ObtenerUnaMaquina(int id)
 	{
 		if (statement==null) return null;
@@ -407,6 +398,10 @@ public class clsBD
 		return rs;
 	}
 	
+	/**
+	 * Query para saber quiénes son los mejores clientes.
+	 * @return ResultSet con el dni del cliente junto con el total de las ventas que ha realizado.
+	 */
 	public static ResultSet clientesTOP()
 	{
 		if (statement==null) return null;
@@ -422,6 +417,10 @@ public class clsBD
 		return rs;
 	}
 	
+	/**
+	 * Query para saber el valor medio de las máquinas según su tipo.
+	 * @return ResultSet con el tipo de máquina junto con el valor medio de las máquinas de ese tipo.
+	 */
 	public static ResultSet valor_medio_maquinas()
 	{
 		if (statement==null) return null;
@@ -437,6 +436,10 @@ public class clsBD
 		return rs;
 	}
 	
+	/**
+	 * Query para saber el nº de ventas por tipo de máquina.
+	 * @return ResultSet con el el tipo de las máquinas junto con el nº de ventas total.
+	 */
 	public static ResultSet ventas_tipo_maquina()
 	{
 		if (statement==null) return null;
@@ -452,6 +455,10 @@ public class clsBD
 		return rs;
 	}
 	
+	/**
+	 * Query para saber el valor medio de las máquinas según su estado.
+	 * @return ResultSet con el el estado de las máquinas junto con el valor medio de las máquinas de ese estado.
+	 */
 	public static ResultSet valor_estado_maquina()
 	{
 		if (statement==null) return null;
@@ -467,6 +474,10 @@ public class clsBD
 		return rs;
 	}
 	
+	/**
+	 * Query para saber cuántas máquinas tiene cada fabricante en cada río.
+	 * @return ResultSet con el nombre de los ríos, fabricantes y nº total de máquinas.
+	 */
 	public static ResultSet num_maquinas_rio_fabricante()
 	{
 		if (statement==null) return null;
@@ -482,6 +493,10 @@ public class clsBD
 		return rs;
 	}
 	
+	/**
+	 * Query para saber cuántas la altura y diamtero medio de las máquinas eólicas en cada pueblo.
+	 * @return ResultSet con el nombre de los pueblos, y la altura y diametro medios de sus máquinas eólicas.
+	 */
 	public static ResultSet eolicas_pueblo_media_altura_diametro()
 	{
 		if (statement==null) return null;
@@ -498,12 +513,10 @@ public class clsBD
 	}
 	
 	/**
-	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>
-	 * Usuario: Nickname. <br>
-	 * Partida: ID_Partida.
-	 * @param obj Dato a modificar
+	 * Modifica un usuario, considerando sus atributos identificativos como base: <br>
+	 * @param obj Usuario a modificar
 	 */
-	public static void modificarDatoTablaBD(Object obj)
+	public static void modificarUsuario(Object obj)
 	{
 		if (statement==null) return;
 		if (obj instanceof clsUsuario)
@@ -519,22 +532,11 @@ public class clsBD
 				e1.printStackTrace();
 			}
 	}
-
-
 	
-	public static void BorrarMaquina(int id)
-	{
-		if (statement==null) return;
-			try 
-			{
-				statement.executeQuery("DELETE FROM MAQUINA WHERE ID="+id);
-			} 
-			catch (SQLException e1) 
-			{
-				JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
-			}
-	}
-	
+	/**
+	 * Modifica un máquina eólica, considerando sus atributos identificativos como base: <br>
+	 * @param todos los atributos de una máquina eólica
+	 */
 	public static void modificarEolica(int id, String n, String c, double v, String f, String e, String np, String nc, double a, double d)
 	{
 		if (statement==null) return;
@@ -557,6 +559,10 @@ public class clsBD
 			}
 	}
 	
+	/**
+	 * Modifica un máquina hidráulica, considerando sus atributos identificativos como base: <br>
+	 * @param todos los atributos de una máquina hidráulica
+	 */
 	public static void modificarHidraulica(int id, String n, String c, double v, String f, String e, String np, String nr)
 	{
 		if (statement==null) return;
@@ -579,6 +585,10 @@ public class clsBD
 			}
 	}
 	
+	/**
+	 * Modifica un máquina mareomotriz, considerando sus atributos identificativos como base: <br>
+	 * @param todos los atributos de una máquina mareomotriz
+	 */
 	public static void modificarMareomotriz(int id, String n, String c, double v, String f, String e, String np, double d)
 	{
 		if (statement==null) return;
@@ -601,7 +611,10 @@ public class clsBD
 			}
 	}
 	
-	
+	/**
+	 * Modifica un máquina solar, considerando sus atributos identificativos como base: <br>
+	 * @param todos los atributos de una máquina solar
+	 */
 	public static void modificarSolar(int id, String n, String c, double v, String f, String e, String np, String nc)
 	{
 		if (statement==null) return;
@@ -624,6 +637,9 @@ public class clsBD
 			}
 	}
 	
+	/**
+	 * Elimina todos los usuarios de la aplicación
+	 */
 	public static void BorrarUsuarios()
 	{
 		if (statement==null) return;
@@ -637,6 +653,9 @@ public class clsBD
 			}
 	}
 	
+	/**
+	 * Elimina todos los clientes de la aplicación
+	 */
 	public static void BorrarClientes()
 	{
 		if (statement==null) return;
@@ -650,6 +669,9 @@ public class clsBD
 		}
 	}
 	
+	/**
+	 * Elimina todas las máquinas de la aplicación
+	 */
 	public static void BorrarMaquinas()
 	{
 		if (statement==null) return;
@@ -663,6 +685,9 @@ public class clsBD
 			}
 	}
 	
+	/**
+	 * Elimina todas las ventas de la aplicación
+	 */
 	public static void BorrarVentas()
 	{
 		if (statement==null) return;
@@ -673,6 +698,23 @@ public class clsBD
 			catch (SQLException e1) 
 			{
 				//JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
+			}
+	}
+	
+	/**
+	 * Elimina una máquina de la aplicación
+	 * @param id de la máquina a borrar.
+	 */
+	public static void BorrarMaquina(int id)
+	{
+		if (statement==null) return;
+			try 
+			{
+				statement.executeQuery("DELETE FROM MAQUINA WHERE ID="+id);
+			} 
+			catch (SQLException e1) 
+			{
+				JOptionPane.showMessageDialog(null, "Se ha borrado la máquina con ID: "+id, "Información", JOptionPane.INFORMATION_MESSAGE);
 			}
 	}
 }

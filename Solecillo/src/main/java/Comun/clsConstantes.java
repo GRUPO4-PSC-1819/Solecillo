@@ -1,11 +1,10 @@
 package Comun;
 /**
  * Clase que contendrá aquellos métodos y atributos que deban ser accesibles para cualquiera de las clases restantes.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsConstantes 
 {
-	
 	/**
 	 * Listado de constantes a aplicar en diferentes fases del programa.
 	 */
@@ -25,7 +24,5 @@ public class clsConstantes
 	public static final String ESTADO1 = "Perfecto";
 	public static final String ESTADO2 = "Correcto";
 	public static final String ESTADO3 = "Necesita mantenimiento";
-	public static final String ESTADO4 = "Peligro inminente";
-
-	
+	public static final String ESTADO4 = "Peligro inminente";	
 }

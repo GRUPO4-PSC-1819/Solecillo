@@ -1,23 +1,12 @@
-
 import java.awt.EventQueue;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 import Comun.clsConstantes;
-import LN.clsCliente;
-import LN.clsGestor;
-import LN.clsMaquina_Eolica;
-import LN.clsUsuario;
-import LN.clsVenta;
 import LP.loginFrame;
-import LP.principalFrame;
 import Persistencia.clsBD;
 
 /**
  * Inicio del programa, que llevará a cabo el hilo de ejecución main, del que colgará el resto.  
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsMain 
 {
@@ -35,9 +24,9 @@ public class clsMain
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
 					clsBD.crearTablaBD(clsConstantes.VENTA);
 					loginFrame p=new loginFrame();
-					p.textField.setText("admin");
-					p.passwordField.setText("admin");
-					p.chckbxAdministrador.setSelected(true);
+					//p.textField.setText("admin");
+					//p.passwordField.setText("admin");
+					//p.chckbxAdministrador.setSelected(true);
 					p.setVisible(true);
 				} 
 				catch (Exception e) 

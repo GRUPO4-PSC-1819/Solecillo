@@ -449,7 +449,7 @@ public class clsGestor implements Serializable
 	public clsUsuario ModificarUsuario (String n, String ap1, String ap2, String nick, String cont)
 	{
 		clsUsuario modificado=new clsUsuario(n, ap1, ap2, nick, cont);
-		clsBD.modificarDatoTablaBD(modificado);
+		clsBD.modificarUsuario(modificado);
 		return modificado;
 	}
 
