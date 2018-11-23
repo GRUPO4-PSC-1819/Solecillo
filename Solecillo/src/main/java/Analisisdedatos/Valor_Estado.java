@@ -10,13 +10,9 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import LN.clsGestor;
 import LN.clsMaquina;
-import LN.clsVenta;
  
 public class Valor_Estado extends JFrame {
    
-   /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 public Valor_Estado( String title ) {

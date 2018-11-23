@@ -1,18 +1,8 @@
 package Analisisdedatos;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-
-import weka.classifiers.Evaluation;
-import weka.classifiers.trees.RandomForest;
-import weka.core.Instance;
 import weka.core.Instances;
-
-
-
 
 public class Cargar_datos {
 
@@ -22,7 +12,6 @@ public class Cargar_datos {
 		try {
 			data = new Instances(new FileReader("iris.arff"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 data.setClassIndex(data.numAttributes() - 1);
@@ -53,20 +42,17 @@ public class Cargar_datos {
 		 try {
 			forest.buildClassifier(train);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 Evaluation eval = null;
 		try {
 			eval = new Evaluation(train);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			try {
 				eval.evaluateModel(forest, test);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println("** Decision Tress Evaluation with Datasets **");
@@ -75,7 +61,6 @@ public class Cargar_datos {
 			try {
 				writer = new PrintWriter("the-file-name.txt", "UTF-8");
 			} catch (FileNotFoundException | UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			writer.println(eval.toSummaryString());

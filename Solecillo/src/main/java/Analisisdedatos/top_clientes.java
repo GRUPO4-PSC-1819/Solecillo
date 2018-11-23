@@ -8,17 +8,11 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-
 import LN.clsCliente;
 import LN.clsGestor;
-import LN.clsVenta;
  
 public class top_clientes extends JFrame {
    
-   /**
-	 * 
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 public top_clientes( String title ) {

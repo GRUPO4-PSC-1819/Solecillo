@@ -1,25 +1,21 @@
 package Analisisdedatos;
 
 import java.util.ArrayList;
-
+import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel; 
 import org.jfree.chart.JFreeChart; 
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset; 
 import org.jfree.data.category.DefaultCategoryDataset; 
-import org.jfree.ui.ApplicationFrame; 
-import org.jfree.ui.RefineryUtilities;
-
-import LN.clsCliente;
 import LN.clsGestor;
-import LN.clsMaquina;
 import LN.clsMaquina_Eolica;
-import LN.clsMaquina_Hidraulica; 
 
-public class Pueblo_Altura_Diametro extends ApplicationFrame {
+public class Pueblo_Altura_Diametro extends JFrame {
    
-   public Pueblo_Altura_Diametro( String applicationTitle , String chartTitle ) {
+	private static final long serialVersionUID = 1L;
+
+public Pueblo_Altura_Diametro( String applicationTitle , String chartTitle ) {
       super( applicationTitle );  
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           

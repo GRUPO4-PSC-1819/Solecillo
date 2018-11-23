@@ -2,22 +2,22 @@ package Analisisdedatos;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel; 
 import org.jfree.chart.JFreeChart; 
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset; 
 import org.jfree.data.category.DefaultCategoryDataset; 
-import org.jfree.ui.ApplicationFrame; 
-import org.jfree.ui.RefineryUtilities;
-
-import LN.clsCliente;
 import LN.clsGestor;
 import LN.clsMaquina; 
 
-public class Valor_Medio_Maquinas extends ApplicationFrame {
+public class Valor_Medio_Maquinas extends JFrame {
    
-   public Valor_Medio_Maquinas( String applicationTitle , String chartTitle ) {
+	private static final long serialVersionUID = 1L;
+
+public Valor_Medio_Maquinas( String applicationTitle , String chartTitle ) {
       super( applicationTitle );  
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           

@@ -1,19 +1,19 @@
 package Analisisdedatos;
 
+import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel; 
 import org.jfree.chart.JFreeChart; 
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset; 
 import org.jfree.data.category.DefaultCategoryDataset; 
-import org.jfree.ui.ApplicationFrame; 
-import org.jfree.ui.RefineryUtilities; 
 
-public class Valoracion_General_Maquina extends ApplicationFrame {
-   
-   public Valoracion_General_Maquina( String applicationTitle , String chartTitle ) {
+public class Valoracion_General_Maquina extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
+public Valoracion_General_Maquina( String applicationTitle , String chartTitle ) {
       super( applicationTitle );     
-      this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
          "Tipos de máquina",            
@@ -37,7 +37,6 @@ public class Valoracion_General_Maquina extends ApplicationFrame {
       final String opin = "Opinión";                
       final DefaultCategoryDataset dataset=new DefaultCategoryDataset( );  
 
-      
       dataset.addValue( 1.438 , eol , ener);        
       dataset.addValue( 3.48 , eol , seg );        
       dataset.addValue( 5.028 , eol , opin);            

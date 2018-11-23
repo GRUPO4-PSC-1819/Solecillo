@@ -3,9 +3,6 @@ package Analisisdedatos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -23,7 +20,6 @@ import weka.classifiers.trees.J48;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -122,20 +118,17 @@ private XYDataset createTest(){
 	    try {
 			cls.buildClassifier(data);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    Evaluation eval = null;
 		try {
 			eval = new Evaluation(data);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 try {
 				eval.evaluateModel(cls, test);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		 int i=0;

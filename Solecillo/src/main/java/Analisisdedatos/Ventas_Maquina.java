@@ -8,16 +8,11 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-
 import LN.clsGestor;
 import LN.clsMaquina;
  
 public class Ventas_Maquina extends JFrame {
    
-   /**
-	 * 
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 public Ventas_Maquina( String title ) {
