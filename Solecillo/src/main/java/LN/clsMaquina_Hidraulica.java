@@ -28,6 +28,12 @@ public class clsMaquina_Hidraulica extends clsMaquina implements Serializable {
 					this.nombre_pueblo=np;
 					this.nombre_rio=nr;
 				}
+				
+				public clsMaquina_Hidraulica(String nr, String f, int tot_m)
+				{
+					super(f, tot_m);
+					this.nombre_rio=nr;
+				}
 		
 		//constructor vacío para serializar
 		public clsMaquina_Hidraulica()

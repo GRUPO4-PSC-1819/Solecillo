@@ -467,6 +467,21 @@ public class clsBD
 		return rs;
 	}
 	
+	public static ResultSet num_maquinas_rio_fabricante()
+	{
+		if (statement==null) return null;
+		ResultSet rs = null;
+			try 
+			{
+			    rs = statement.executeQuery("SELECT nombre_rio, fabricante, count(id) AS TOTAL_MAQUINAS FROM maquina WHERE nombre_rio IS NOT '' GROUP BY nombre_rio, fabricante ORDER BY fabricante, nombre_rio");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+		return rs;
+	}
+	
 	/**
 	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>
 	 * Usuario: Nickname. <br>

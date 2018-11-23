@@ -10,6 +10,7 @@ import javax.swing.table.TableRowSorter;
 import org.jfree.ui.RefineryUtilities;
 import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.PieChart_PROD;
+import Analisisdedatos.Rio_Fabricante_Maquina;
 import Analisisdedatos.ScatterPlotExample;
 import Analisisdedatos.Valor_Estado;
 import Analisisdedatos.Valor_Medio_Maquinas;
@@ -233,7 +234,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				ventas=objGestor.ListaVentas();
 				if (modeloV.getRowCount() > 0) {
 				    for (int i = modeloV.getRowCount() - 1; i > -1; i--) {
@@ -252,9 +252,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		btngrafico.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void actionPerformed(ActionEvent e) {				
 		          ventas=objGestor.ListaVentas();
 		          if(ventas.size()>0)
 		          {
@@ -276,9 +274,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		btngrafico2.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void actionPerformed(ActionEvent e) {				
 		          ventas=objGestor.ListaVentas();
 		          if(ventas.size()>0)
 		          {
@@ -300,9 +296,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		btngrafico3.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void actionPerformed(ActionEvent e) {				
 		          ventas=objGestor.ListaVentas();
 		          if(ventas.size()>0)
 		          {
@@ -325,21 +319,11 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-		          ventas=objGestor.ListaVentas();
-		          if(ventas.size()>0)
-		          {
 		        	  Valor_Medio_Maquinas chart = new Valor_Medio_Maquinas("Valor medio máquinas", 
 		        		         "¿Cuánto valen?");
 		        		      chart.pack( );        
 		        		      RefineryUtilities.centerFrameOnScreen( chart );        
 		        		      chart.setVisible( true ); 
-		          }
-		          else
-		          {
-		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
-		          }
 			}});
 		panel_5.add(btngrafico4);
 		
@@ -349,8 +333,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
 		          ventas=objGestor.ListaVentas();
 		          if(ventas.size()>0)
 		          {
@@ -373,23 +355,28 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				
-		          ventas=objGestor.ListaVentas();
-		          if(ventas.size()>0)
-		          {
 					  Valor_Estado demo = new Valor_Estado( "Ventas" );  
 				      demo.setSize( 560 , 367 );    
 				      RefineryUtilities.centerFrameOnScreen( demo );   
 				      demo.pack();
 				      demo.setVisible( true ); 
-		          }
-		          else
-		          {
-		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
-		          }
 			}});
 		panel_5.add(btngrafico6);
+		
+		JButton btngrafico7 = new JButton("Gráfico Río - Fabricante Máquina");
+		btngrafico7.setBounds(729, 557, 225, 29);
+		btngrafico7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 Rio_Fabricante_Maquina chart = new Rio_Fabricante_Maquina("Fabricantes por río", 
+        		         "¿Cuántas máquinas son de cada fabricante?");
+        		      chart.pack( );        
+        		      RefineryUtilities.centerFrameOnScreen( chart );        
+        		      chart.setVisible( true ); 
+			}});
+		panel_5.add(btngrafico7);
 	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);
@@ -778,7 +765,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					try {
 						objGestor.MigracionUsuarios();
 					} catch (clsUsuarioRepetido e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -794,7 +780,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 						try {
 							objGestor.MigracionClientes();
 						} catch (clsClienteRepetido e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 				}

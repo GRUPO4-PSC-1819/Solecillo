@@ -805,10 +805,29 @@ public class clsGestor implements Serializable
 			{
 				e.printStackTrace(); 
 			}
-			for(clsMaquina m:lista)
-		      {
-		    	 System.out.println(m.getEstado()+" , "+m.getValor());
-		      }
+		}
+		return lista;
+	}
+	public ArrayList<clsMaquina_Hidraulica> num_maquinas_rio_fabricante()
+	{
+		ArrayList<clsMaquina_Hidraulica> lista = new ArrayList <clsMaquina_Hidraulica>();
+		ResultSet rs = clsBD.num_maquinas_rio_fabricante();
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina_Hidraulica(
+							rs.getString("NOMBRE_RIO"),
+							rs.getString("FABRICANTE"),
+							rs.getInt("TOTAL_MAQUINAS")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
 		}
 		return lista;
 	}
