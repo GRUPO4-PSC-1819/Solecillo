@@ -134,16 +134,130 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 240, 245));
-		tabbedPane.addTab("Home", new ImageIcon(principalFrame.class.getResource("/javax/swing/plaf/metal/icons/ocean/homeFolder.gif")), panel, null);
+		tabbedPane.addTab("Gráficos", new ImageIcon(principalFrame.class.getResource("/javax/swing/plaf/metal/icons/ocean/homeFolder.gif")), panel, null);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Pagina de inicio");
-		lblNewLabel.setBackground(new Color(255, 240, 245));
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(298, 16, 190, 51);
-		panel.add(lblNewLabel);
+		JButton btngrafico3 = new JButton("Gráfico Ventas Clientes TOP");
+		btngrafico3.setBounds(50, 150, 300, 100);
+		btngrafico3.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+					  top_clientes demo = new top_clientes( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
+			}});
+		panel.add(btngrafico3);
 		
+		JButton btngrafico4 = new JButton("Gráfico Valor Medio Máquinas");
+		btngrafico4.setBounds(50, 400, 300, 100);
+		btngrafico4.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		        	  Valor_Medio_Maquinas chart = new Valor_Medio_Maquinas("Valor medio máquinas", 
+		        		         "¿Cuánto valen?");
+		        		      chart.pack( );        
+		        		      RefineryUtilities.centerFrameOnScreen( chart );        
+		        		      chart.setVisible( true ); 
+			}});
+		panel.add(btngrafico4);
 		
+		JButton btngrafico5 = new JButton("Gráfico Ventas - Tipo Máquina");
+		btngrafico5.setBounds(50, 275, 300, 100);
+		btngrafico5.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico5.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		          ventas=objGestor.ListaVentas();
+		          if(ventas.size()>0)
+		          {
+					  Ventas_Maquina demo = new Ventas_Maquina( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+		          }
+		          else
+		          {
+		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+		          }
+			}});
+		panel.add(btngrafico5);
+		
+		JButton btngrafico6 = new JButton("Gráfico Valor - Estado Máquina");
+		btngrafico6.setBounds(600, 225, 300, 100);
+		btngrafico6.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico6.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+					  Valor_Estado demo = new Valor_Estado( "Ventas" );  
+				      demo.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo );   
+				      demo.pack();
+				      demo.setVisible( true ); 
+			}});
+		panel.add(btngrafico6);
+		
+		JButton btngrafico7 = new JButton("Gráfico Río - Fabricante Máquina");
+		btngrafico7.setBounds(600, 350, 300, 100);
+		btngrafico7.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico7.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 Rio_Fabricante_Maquina chart = new Rio_Fabricante_Maquina("Fabricantes por río", 
+        		         "¿Cuántas máquinas son de cada fabricante?");
+        		      chart.pack( );        
+        		      RefineryUtilities.centerFrameOnScreen( chart );        
+        		      chart.setVisible( true ); 
+			}});
+		panel.add(btngrafico7);
+		
+		JButton btngrafico8 = new JButton("Eólicas Medias / Pueblo");
+		btngrafico8.setBounds(600, 100, 300, 100);
+		btngrafico8.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				Pueblo_Altura_Diametro chart = new Pueblo_Altura_Diametro("Medias eólicas / Pueblo", 
+        		         "¿Cuál es la altura y diametro medios?");
+        		      chart.pack( );        
+        		      RefineryUtilities.centerFrameOnScreen( chart );        
+        		      chart.setVisible( true );
+			}});
+		panel.add(btngrafico8);
+		
+		JButton btngrafico9 = new JButton("Valoración General Máquinas");
+		btngrafico9.setBounds(50, 25, 300, 100);
+		btngrafico9.setFont(new Font("Arial", Font.PLAIN, 16));
+		btngrafico9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				Valoracion_General_Maquina chart = new Valoracion_General_Maquina("Estadísticas máquinas", 
+				         "¿Cuál es la mejor?");
+				      chart.pack( );        
+				      RefineryUtilities.centerFrameOnScreen( chart );        
+				      chart.setVisible( true );
+			}});
+		panel.add(btngrafico9);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(176, 224, 230));
@@ -229,7 +343,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		}
 		
 		btnRefrescar = new JButton("Refrescar");
-		btnRefrescar.setBounds(729, 407, 115, 29);
+		btnRefrescar.setBounds(729, 250, 115, 29);
 		btnRefrescar.addActionListener(new ActionListener() {
 
 			@Override
@@ -250,120 +364,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		
 		
 		
-		JButton btngrafico3 = new JButton("Gráfico Ventas Clientes TOP");
-		btngrafico3.setBounds(729, 257, 225, 29);
-		btngrafico3.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-		          ventas=objGestor.ListaVentas();
-		          if(ventas.size()>0)
-		          {
-					  top_clientes demo = new top_clientes( "Ventas" );  
-				      demo.setSize( 560 , 367 );    
-				      RefineryUtilities.centerFrameOnScreen( demo );   
-				      demo.pack();
-				      demo.setVisible( true ); 
-		          }
-		          else
-		          {
-		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
-		          }
-			}});
-		panel_5.add(btngrafico3);
 		
-		JButton btngrafico4 = new JButton("Gráfico Valor Medio Máquinas");
-		btngrafico4.setBounds(729, 357, 225, 29);
-		btngrafico4.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		        	  Valor_Medio_Maquinas chart = new Valor_Medio_Maquinas("Valor medio máquinas", 
-		        		         "¿Cuánto valen?");
-		        		      chart.pack( );        
-		        		      RefineryUtilities.centerFrameOnScreen( chart );        
-		        		      chart.setVisible( true ); 
-			}});
-		panel_5.add(btngrafico4);
-		
-		JButton btngrafico5 = new JButton("Gráfico Ventas - Tipo Máquina");
-		btngrafico5.setBounds(729, 457, 225, 29);
-		btngrafico5.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		          ventas=objGestor.ListaVentas();
-		          if(ventas.size()>0)
-		          {
-					  Ventas_Maquina demo = new Ventas_Maquina( "Ventas" );  
-				      demo.setSize( 560 , 367 );    
-				      RefineryUtilities.centerFrameOnScreen( demo );   
-				      demo.pack();
-				      demo.setVisible( true ); 
-		          }
-		          else
-		          {
-		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
-		          }
-			}});
-		panel_5.add(btngrafico5);
-		
-		JButton btngrafico6 = new JButton("Gráfico Valor - Estado Máquina");
-		btngrafico6.setBounds(729, 507, 225, 29);
-		btngrafico6.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-					  Valor_Estado demo = new Valor_Estado( "Ventas" );  
-				      demo.setSize( 560 , 367 );    
-				      RefineryUtilities.centerFrameOnScreen( demo );   
-				      demo.pack();
-				      demo.setVisible( true ); 
-			}});
-		panel_5.add(btngrafico6);
-		
-		JButton btngrafico7 = new JButton("Gráfico Río - Fabricante Máquina");
-		btngrafico7.setBounds(729, 557, 225, 29);
-		btngrafico7.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				 Rio_Fabricante_Maquina chart = new Rio_Fabricante_Maquina("Fabricantes por río", 
-        		         "¿Cuántas máquinas son de cada fabricante?");
-        		      chart.pack( );        
-        		      RefineryUtilities.centerFrameOnScreen( chart );        
-        		      chart.setVisible( true ); 
-			}});
-		panel_5.add(btngrafico7);
-		
-		JButton btngrafico8 = new JButton("Eólicas Medias / Pueblo");
-		btngrafico8.setBounds(729, 157, 225, 29);
-		btngrafico8.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				Pueblo_Altura_Diametro chart = new Pueblo_Altura_Diametro("Medias eólicas / Pueblo", 
-        		         "¿Cuál es la altura y diametro medios?");
-        		      chart.pack( );        
-        		      RefineryUtilities.centerFrameOnScreen( chart );        
-        		      chart.setVisible( true );
-			}});
-		panel_5.add(btngrafico8);
-		
-		JButton btngrafico9 = new JButton("Valoración General Máquinas");
-		btngrafico9.setBounds(729, 107, 225, 29);
-		btngrafico9.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				Valoracion_General_Maquina chart = new Valoracion_General_Maquina("Estadísticas máquinas", 
-				         "¿Cuál es la mejor?");
-				      chart.pack( );        
-				      RefineryUtilities.centerFrameOnScreen( chart );        
-				      chart.setVisible( true );
-			}});
-		panel_5.add(btngrafico9);
 	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);
@@ -630,11 +631,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			panel_3.setBackground(new Color(135, 206, 235));
 			tabbedPane.addTab("Dar de alta", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_3, null);
 			panel_3.setLayout(null);
-			
-			JLabel lblNewLabel_31 = new JLabel("Registro usuarios");
-			lblNewLabel_31.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblNewLabel_31.setBounds(326, 16, 195, 56);
-			panel_3.add(lblNewLabel_31);
 			
 			JButton btnAceptar_2 = new JButton("Crear nuevo usuario");
 			btnAceptar_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
