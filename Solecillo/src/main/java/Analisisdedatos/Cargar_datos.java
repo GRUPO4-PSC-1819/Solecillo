@@ -1,7 +1,13 @@
 package Analisisdedatos;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+import weka.classifiers.Evaluation;
+import weka.classifiers.trees.RandomForest;
 import weka.core.Instances;
 
 public class Cargar_datos {
@@ -14,7 +20,8 @@ public class Cargar_datos {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		 data.setClassIndex(data.numAttributes() - 1);
+		data.setClassIndex(data.numAttributes() - 1);
+		 /*data.setClassIndex(data.numAttributes() - 1);
 		 System.out.println(data);
 		 System.out.println(data.numInstances());
 		 
@@ -27,6 +34,8 @@ public class Cargar_datos {
 		    }
 		    
 		 /*System.out.println(data);
+		  * 
+		  */
 		 data.randomize(new java.util.Random(0));
 		 System.out.println(data);
 		 
@@ -55,8 +64,15 @@ public class Cargar_datos {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 			System.out.println("** Decision Tress Evaluation with Datasets **");
-			System.out.println(eval.toSummaryString());
+			//System.out.println(eval.toSummaryString());
+			try {
+				System.out.println(eval.toMatrixString());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			PrintWriter writer = null;
 			try {
 				writer = new PrintWriter("the-file-name.txt", "UTF-8");
@@ -67,7 +83,7 @@ public class Cargar_datos {
 			
 			writer.close();
 			System.out.print(" the expression for the input data as per alogorithm is ");
-		*/
+		
 
 		    
 	   }
