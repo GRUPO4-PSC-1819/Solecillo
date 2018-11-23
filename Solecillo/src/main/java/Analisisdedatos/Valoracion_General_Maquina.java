@@ -9,9 +9,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame; 
 import org.jfree.ui.RefineryUtilities; 
 
-public class Tipo_maquina extends ApplicationFrame {
+public class Valoracion_General_Maquina extends ApplicationFrame {
    
-   public Tipo_maquina( String applicationTitle , String chartTitle ) {
+   public Valoracion_General_Maquina( String applicationTitle , String chartTitle ) {
       super( applicationTitle );     
       this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
       JFreeChart barChart = ChartFactory.createBarChart(
@@ -55,13 +55,5 @@ public class Tipo_maquina extends ApplicationFrame {
       dataset.addValue( 3.35 , sol , opin );                     
 
       return dataset; 
-   }
-   
-   public static void main( String[ ] args ) {
-      Tipo_maquina chart = new Tipo_maquina("Estadísticas máquinas", 
-         "¿Cuál es la mejor?");
-      chart.pack( );        
-      RefineryUtilities.centerFrameOnScreen( chart );        
-      chart.setVisible( true ); 
    }
 }

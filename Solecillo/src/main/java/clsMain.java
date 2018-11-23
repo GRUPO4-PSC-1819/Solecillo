@@ -34,13 +34,6 @@ public class clsMain
 					clsBD.crearTablaBD(clsConstantes.CLIENTE);
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
 					clsBD.crearTablaBD(clsConstantes.VENTA);
-					//clsBD.insertarDatoTablaBD(new clsMaquina_Eolica(1,"a","a",1,"a","a","a",1,1));
-					//clsBD.insertarDatoTablaBD(new clsMaquina_Eolica(2,"b","b",2,"b","b","b",2,2));
-					//clsBD.insertarDatoTablaBD(new clsMaquina_Eolica(3,"c","c",3,"c","c","c",3,3));
-					//clsBD.insertarDatoTablaBD(new clsCliente("b","b","a","a","a"));
-					//clsBD.insertarDatoTablaBD(new clsCliente("c","b","a","a","a"));
-					//clsUsuario u=new clsUsuario();
-					//principalFrame p=new principalFrame(u);
 					loginFrame p=new loginFrame();
 					p.textField.setText("admin");
 					p.passwordField.setText("admin");

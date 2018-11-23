@@ -550,10 +550,10 @@ public class clsGestor implements Serializable
 		double altura;
 		double diametro;
 		double distancia;
-		double min_a=10;
-		double max_a=100;
-		double min_d=10;
-		double max_d=70;
+		double min_a=100;
+		double max_a=150;
+		double min_d=25;
+		double max_d=80;
 		double min_dm=1;
 		double max_dm=15;
 		//EÓLICAS
@@ -822,6 +822,29 @@ public class clsGestor implements Serializable
 							rs.getString("NOMBRE_RIO"),
 							rs.getString("FABRICANTE"),
 							rs.getInt("TOTAL_MAQUINAS")));
+				}
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace(); 
+			}
+		}
+		return lista;
+	}
+	public ArrayList<clsMaquina_Eolica> eolicas_pueblo_media_altura_diametro()
+	{
+		ArrayList<clsMaquina_Eolica> lista = new ArrayList <clsMaquina_Eolica>();
+		ResultSet rs = clsBD.eolicas_pueblo_media_altura_diametro();
+		if (rs != null)
+		{
+			try 
+			{
+				while (rs.next())
+				{
+					lista.add(new clsMaquina_Eolica(
+							rs.getString("NOMBRE_PUEBLO"),
+							rs.getDouble("MEDIA_ALTURA"),
+							rs.getDouble("MEDIA_DIAMETRO")));
 				}
 			} 
 			catch (SQLException e)

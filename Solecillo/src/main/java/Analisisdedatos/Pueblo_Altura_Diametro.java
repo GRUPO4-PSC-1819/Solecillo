@@ -13,16 +13,18 @@ import org.jfree.ui.RefineryUtilities;
 
 import LN.clsCliente;
 import LN.clsGestor;
-import LN.clsMaquina; 
+import LN.clsMaquina;
+import LN.clsMaquina_Eolica;
+import LN.clsMaquina_Hidraulica; 
 
-public class Valor_Medio_Maquinas extends ApplicationFrame {
+public class Pueblo_Altura_Diametro extends ApplicationFrame {
    
-   public Valor_Medio_Maquinas( String applicationTitle , String chartTitle ) {
+   public Pueblo_Altura_Diametro( String applicationTitle , String chartTitle ) {
       super( applicationTitle );  
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
-         "Tipos de máquina",            
-         "Valor",            
+         "Media / Pueblo",            
+         "Metros",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
          true, true, false);
@@ -35,13 +37,14 @@ public class Valor_Medio_Maquinas extends ApplicationFrame {
    private CategoryDataset createDataset( ) {
 	  
 	  clsGestor ges=new clsGestor(); 
-	  ArrayList<clsMaquina> lm=new ArrayList<clsMaquina>(); 
-	  lm=ges.valor_medio_maquinas();        
+	  ArrayList<clsMaquina_Eolica> lm=new ArrayList<clsMaquina_Eolica>(); 
+	  lm=ges.eolicas_pueblo_media_altura_diametro();
       final DefaultCategoryDataset dataset=new DefaultCategoryDataset( );  
       for(int i=0;i<lm.size();i++)
       {
-    	  dataset.setValue(lm.get(i).getValor(), lm.get(i).getTipo(), "");
+    	  dataset.setValue(lm.get(i).getAltura(), "Media Altura", lm.get(i).getNombre_pueblo());
+    	  dataset.setValue(lm.get(i).getDiametro(), "Media Diametro", lm.get(i).getNombre_pueblo());
       }
-      return dataset; 
+	  return dataset; 
    }
 }

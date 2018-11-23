@@ -34,6 +34,14 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 					this.altura=a;
 					this.diametro=d;
 				}
+	
+	//constructor sin id
+	public clsMaquina_Eolica(String np, double a, double d)
+				{
+					this.nombre_pueblo=np;
+					this.altura=a;
+					this.diametro=d;
+				}
 		
 		//constructor vacío para serializar
 		public clsMaquina_Eolica()

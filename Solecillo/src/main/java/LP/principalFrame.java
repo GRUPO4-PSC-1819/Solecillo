@@ -10,10 +10,12 @@ import javax.swing.table.TableRowSorter;
 import org.jfree.ui.RefineryUtilities;
 import Analisisdedatos.PieChart_AWT;
 import Analisisdedatos.PieChart_PROD;
+import Analisisdedatos.Pueblo_Altura_Diametro;
 import Analisisdedatos.Rio_Fabricante_Maquina;
 import Analisisdedatos.ScatterPlotExample;
 import Analisisdedatos.Valor_Estado;
 import Analisisdedatos.Valor_Medio_Maquinas;
+import Analisisdedatos.Valoracion_General_Maquina;
 import Analisisdedatos.Ventas_Maquina;
 import Analisisdedatos.top_clientes;
 import Comun.clsConstantes;
@@ -377,6 +379,34 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
         		      chart.setVisible( true ); 
 			}});
 		panel_5.add(btngrafico7);
+		
+		JButton btngrafico8 = new JButton("Eólicas Medias / Pueblo");
+		btngrafico8.setBounds(729, 157, 225, 29);
+		btngrafico8.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				Pueblo_Altura_Diametro chart = new Pueblo_Altura_Diametro("Medias eólicas / Pueblo", 
+        		         "¿Cuál es la altura y diametro medios?");
+        		      chart.pack( );        
+        		      RefineryUtilities.centerFrameOnScreen( chart );        
+        		      chart.setVisible( true );
+			}});
+		panel_5.add(btngrafico8);
+		
+		JButton btngrafico9 = new JButton("Valoración General Máquinas");
+		btngrafico9.setBounds(729, 107, 225, 29);
+		btngrafico9.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				Valoracion_General_Maquina chart = new Valoracion_General_Maquina("Estadísticas máquinas", 
+				         "¿Cuál es la mejor?");
+				      chart.pack( );        
+				      RefineryUtilities.centerFrameOnScreen( chart );        
+				      chart.setVisible( true );
+			}});
+		panel_5.add(btngrafico9);
 	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);

@@ -482,6 +482,21 @@ public class clsBD
 		return rs;
 	}
 	
+	public static ResultSet eolicas_pueblo_media_altura_diametro()
+	{
+		if (statement==null) return null;
+		ResultSet rs = null;
+			try 
+			{
+			    rs = statement.executeQuery("SELECT nombre_pueblo, avg(altura) AS MEDIA_ALTURA, avg(diametro) AS MEDIA_DIAMETRO FROM maquina WHERE altura>0 GROUP BY nombre_pueblo");
+			} 
+			catch (SQLException e1) 
+			{
+				e1.printStackTrace();
+			}
+		return rs;
+	}
+	
 	/**
 	 * Modifica un dato de una tabla, considerando sus atributos identificativos como base: <br>
 	 * Usuario: Nickname. <br>
