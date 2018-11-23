@@ -4,6 +4,7 @@ import Comun.clsConstantes;
 import LP.loginFrame;
 import Persistencia.clsBD;
 
+
 /**
  * Inicio del programa, que llevará a cabo el hilo de ejecución main, del que colgará el resto.  
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
