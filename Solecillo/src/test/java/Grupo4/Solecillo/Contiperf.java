@@ -1,30 +1,10 @@
 package Grupo4.Solecillo;
 
-import static org.junit.Assert.*;
-
-import java.sql.Connection;
-
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Rule;
 import org.junit.Test;
-
-import Analisisdedatos.PieChart_AWT;
-import Analisisdedatos.PieChart_PROD;
-import Analisisdedatos.ScatterPlotExample;
-import Comun.clsConstantes;
-import LN.clsCliente;
-import LN.clsUsuario;
-import LP.clsAltaEolica;
-import LP.clsAltaHidraulica;
-import LP.clsAltaMareomotriz;
-import LP.clsAltaSolar;
-import LP.clsAltaUsuario;
-import LP.clsListaM;
-import LP.loginFrame;
-import LP.principalFrame;
-import Persistencia.clsBD;
 
 public class Contiperf {
 

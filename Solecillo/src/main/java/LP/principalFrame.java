@@ -8,8 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.jfree.ui.RefineryUtilities;
-import Analisisdedatos.PieChart_AWT;
-import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.Pueblo_Altura_Diametro;
 import Analisisdedatos.Rio_Fabricante_Maquina;
 import Analisisdedatos.ScatterPlotExample;
@@ -249,49 +247,8 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			}});
 		panel_5.add(btnRefrescar);
 		
-		JButton btngrafico = new JButton("Gráfico Ventas - Cliente ");
-		btngrafico.setBounds(729, 307, 225, 29);
-		btngrafico.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-		          ventas=objGestor.ListaVentas();
-		          if(ventas.size()>0)
-		          {
-					  PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
-				      demo.setSize( 560 , 367 );    
-				      RefineryUtilities.centerFrameOnScreen( demo );   
-				      demo.pack();
-				      demo.setVisible( true ); 
-		          }
-		          else
-		          {
-		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
-		          }
-			}});
-		panel_5.add(btngrafico);
 		
-		JButton btngrafico2 = new JButton("Gráfico Ventas - Producto ");
-		btngrafico2.setBounds(729, 207, 225, 29);
-		btngrafico2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-		          ventas=objGestor.ListaVentas();
-		          if(ventas.size()>0)
-		          {
-					  PieChart_PROD demo = new PieChart_PROD( "Ventas" );  
-				      demo.setSize( 560 , 367 );    
-				      RefineryUtilities.centerFrameOnScreen( demo );   
-				      demo.pack();
-				      demo.setVisible( true ); 
-		          }
-		          else
-		          {
-		      		JOptionPane.showMessageDialog(null, "No hay ventas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
-		          }
-			}});
-		panel_5.add(btngrafico2);
+		
 		
 		JButton btngrafico3 = new JButton("Gráfico Ventas Clientes TOP");
 		btngrafico3.setBounds(729, 257, 225, 29);

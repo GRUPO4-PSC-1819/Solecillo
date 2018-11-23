@@ -7,15 +7,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Rule;
 import org.omg.CORBA.portable.InputStream;
-
-import Analisisdedatos.PieChart_AWT;
-import Analisisdedatos.PieChart_PROD;
 import Analisisdedatos.ScatterPlotExample;
 import Comun.clsConstantes;
 import LN.clsCliente;
@@ -35,10 +31,8 @@ import LP.loginFrame;
 import LP.principalFrame;
 import Persistencia.clsBD;
 import java_cup.Main;
-
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
 import org.junit.Test;
 
 /**
@@ -100,13 +94,13 @@ public class AppTest
     
 	@Test public void testGraficos()
     {
-		PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
+		/*PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
 		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
 		example.btnAceptar_1.doClick();
 		
 		PieChart_PROD demo1 = new PieChart_PROD( "Producción" );  
 		ScatterPlotExample example1 = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		example1.btnAceptar_1.doClick();
+		example1.btnAceptar_1.doClick();*/
     }
     
     
