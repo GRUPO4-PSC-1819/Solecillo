@@ -1,7 +1,7 @@
 package LN;
 
 /**
- * Excepción a aplicar cuando ya haya algún usuario registrado con el mismo nickname.
+ * Excepción a aplicar cuando ya haya algún cliente registrado con el mismo Nickname.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsUsuarioRepetido extends Exception

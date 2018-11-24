@@ -3,10 +3,9 @@ import java.io.Serializable;
 
 
 /**
- * Clase creada para generar un objeto nuevo (clsPieza), de la que heredarán todas las piezas del ajedrez.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * Clase creada para generar un objeto nuevo (clsMaquina).
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
-
 public class clsMaquina implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +21,9 @@ public class clsMaquina implements Serializable
 	private int tot_v;
 	private int tot_maquinas;
 
-	//constructor para crear nueva máquina
+	/**
+	 * Constructor con todos los parámetros
+	 */
 	public clsMaquina(int id, String n, String color, double v, String f, String e)
 	{
 		this.id=id;
@@ -32,7 +33,9 @@ public class clsMaquina implements Serializable
 		this.fabricante=f;
 		this.estado=e;
 	}
-	//constructor sin id
+	/**
+	 * Constructor con todos los parámetros, excepto el id
+	 */
 			public clsMaquina(String n, String color, double v, String f, String e)
 			{
 				this.nombre=n;
@@ -42,6 +45,9 @@ public class clsMaquina implements Serializable
 				this.estado=e;
 			}
 			
+			/**
+			 * Constructor para gráficos
+			 */
 			public clsMaquina(String t, double v)
 			{
 				this.tipo=t;
@@ -49,6 +55,9 @@ public class clsMaquina implements Serializable
 				this.valor=v;
 			}
 			
+			/**
+			 * Constructor para gráficos
+			 */
 			public clsMaquina(String t, int tot_v)
 			{
 				this.tipo=t;
@@ -57,11 +66,9 @@ public class clsMaquina implements Serializable
 				this.tot_maquinas=tot_v;
 			}
 			
-			
-			
-
-	
-	//constructor vacío para serializar
+			/**
+			 * Constructor vacío
+			 */
 	public clsMaquina()
 	{
 		this.id=0;

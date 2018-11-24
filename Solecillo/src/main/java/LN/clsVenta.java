@@ -2,38 +2,38 @@ package LN;
 
 import java.io.Serializable;
 
+
+/**
+ * Clase creada para generar un objeto nuevo (clsVenta). Implementa la interfaz Serializable. <br>
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class clsVenta implements Serializable{
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int idm;
 	private String dniC;
 	private int cantidad;
 	private int id;
 	
-
-	public clsVenta()
-	{
-		
-	}
+	/**
+	 * Constructor con todos los parámetros
+	 */
 	public clsVenta(int id, int idm, String dniC, int cantidad) {
 		this.id=id;
 		this.idm = idm;
 		this.dniC = dniC;
 		this.cantidad = cantidad;
 	}
+	
+	/**
+	 * Constructor con todos los parámetros, excepto el id
+	 */
 	public clsVenta(int idm, String dniC, int cantidad) {
 		this.idm = idm;
 		this.dniC = dniC;
 		this.cantidad = cantidad;
 	}
 
-	
-	
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

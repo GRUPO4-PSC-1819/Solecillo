@@ -2,6 +2,10 @@ package LN;
 
 import java.io.Serializable;
 
+/**
+ * Clase creada para generar un objeto nuevo (clsMaquina_Solar).
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class clsMaquina_Solar extends clsMaquina implements Serializable {
 
 	/**
@@ -12,7 +16,9 @@ public class clsMaquina_Solar extends clsMaquina implements Serializable {
 	private String nombre_pueblo;
 	private String nombre_campo;	
 	
-	//constructor para crear nueva máquina_hidraulica
+	/**
+	 * Constructor con todos los parámetros
+	 */
 		public clsMaquina_Solar(int id, String n, String color, double v, String f, String e, String np, String nc)
 		{
 			super(id, n, color, v, f, e);
@@ -20,7 +26,9 @@ public class clsMaquina_Solar extends clsMaquina implements Serializable {
 			this.nombre_campo=nc;
 		}
 		
-		//constructor sin id
+		/**
+		 * Constructor con todos los parámetros, excepto el id
+		 */
 				public clsMaquina_Solar(String n, String color, double v, String f, String e, String np, String nc)
 				{
 					super(n, color, v, f, e);
@@ -28,7 +36,9 @@ public class clsMaquina_Solar extends clsMaquina implements Serializable {
 					this.nombre_campo=nc;
 				}
 		
-		//constructor vacío para serializar
+				/**
+				 * Constructor vacío
+				 */
 		public clsMaquina_Solar()
 		{
 			super();

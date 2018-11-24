@@ -2,11 +2,12 @@ package LN;
 
 import java.io.Serializable;
 
+/**
+ * Clase creada para generar un objeto nuevo (clsMaquina_Eolica).
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre_pueblo;
@@ -15,7 +16,9 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 	private double diametro;
 
 
-		//constructor para crear nueva máquina_hidraulica
+	/**
+	 * Constructor con todos los parámetros
+	 */
 	public clsMaquina_Eolica(int id, String n, String color, double v, String f, String e, String np, String nc, double a, double d)
 		{
 			super(id, n, color, v, f, e);
@@ -25,7 +28,9 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 			this.diametro=d;
 		}
 		
-		//constructor sin id
+	/**
+	 * Constructor con todos los parámetros, excepto el id
+	 */
 	public clsMaquina_Eolica(String n, String color, double v, String f, String e, String np, String nc, double a, double d)
 				{
 					super(n, color, v, f, e);
@@ -35,7 +40,9 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 					this.diametro=d;
 				}
 	
-	//constructor sin id
+	/**
+	 * Constructor específico para gráficos
+	 */
 	public clsMaquina_Eolica(String np, double a, double d)
 				{
 					this.nombre_pueblo=np;
@@ -43,7 +50,9 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 					this.diametro=d;
 				}
 		
-		//constructor vacío para serializar
+	/**
+	 * Constructor vacío
+	 */
 		public clsMaquina_Eolica()
 		{
 			super();

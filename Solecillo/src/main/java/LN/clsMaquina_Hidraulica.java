@@ -2,18 +2,20 @@ package LN;
 
 import java.io.Serializable;
 
+/**
+ * Clase creada para generar un objeto nuevo (clsMaquina_Hidraulica).
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class clsMaquina_Hidraulica extends clsMaquina implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String nombre_pueblo;
 	private String nombre_rio;
 	
-	
-	//constructor para crear nueva máquina_hidraulica
+	/**
+	 * Constructor con todos los parámetros
+	 */
 		public clsMaquina_Hidraulica(int id, String n, String color, double v, String f, String e, String np, String nr)
 		{
 			super(id, n, color, v, f, e);
@@ -21,7 +23,9 @@ public class clsMaquina_Hidraulica extends clsMaquina implements Serializable {
 			this.nombre_rio=nr;
 		}
 		
-		//constructor sin id
+		/**
+		 * Constructor con todos los parámetros, excepto el id
+		 */
 				public clsMaquina_Hidraulica(String n, String color, double v, String f, String e, String np, String nr)
 				{
 					super(n, color, v, f, e);
@@ -29,19 +33,24 @@ public class clsMaquina_Hidraulica extends clsMaquina implements Serializable {
 					this.nombre_rio=nr;
 				}
 				
+				/**
+				 * Constructor para gráficos
+				 */
 				public clsMaquina_Hidraulica(String nr, String f, int tot_m)
 				{
 					super(f, tot_m);
 					this.nombre_rio=nr;
 				}
 		
-		//constructor vacío para serializar
-		public clsMaquina_Hidraulica()
-		{
-			super();
-			this.nombre_pueblo=null;
-			this.nombre_rio=null;
-		}
+				/**
+				 * Constructor vacío
+				 */
+				public clsMaquina_Hidraulica()
+				{
+					super();
+					this.nombre_pueblo=null;
+					this.nombre_rio=null;
+				}
 		
 		
 		public String getNombre_pueblo() {

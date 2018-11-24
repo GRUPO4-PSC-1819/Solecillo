@@ -3,8 +3,8 @@ package LN;
 import java.io.Serializable;
 
 /**
- * Clase creada para generar un objeto nuevo (clsUsuario). Implementa la interfaz Comparable con clsUsuario y Serializable. <br>
- * La ordenación natural se ha hecho mediante los nicknames. Se implementarán de manera externa otros tipos de ordenaciones.
+ * Clase creada para generar un objeto nuevo (clsUsuarios). Implementa la interfaz Comparable con clsCliente y Serializable. <br>
+ * La ordenación natural se ha hecho mediante los nickname.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 
@@ -19,12 +19,7 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 	private String contraseña;
 	
 	/**
-	 * Constructor con parámetros para crear un nuevo usuario.
-	 * @param n Nombre del usuario
-	 * @param ap1 Primer apellido del usuario
-	 * @param ap2 Segundo apellido del usuario
-	 * @param nick Nickname del usuario
-	 * @param cont Contraseña del usuario
+	 * Constructor con todos los parámetros
 	 */
 	public clsUsuario(String n, String ap1, String ap2, String nick, String cont)
 	{
@@ -34,11 +29,9 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 		nickname=nick;
 		contraseña=cont;
 	}
-	
-
-	
+		
 	/**
-	 * Constructor vacío para poder serializar.
+	 * Constructor vacío.
 	 */
 	public clsUsuario()
 	{

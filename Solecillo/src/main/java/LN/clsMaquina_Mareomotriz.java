@@ -2,6 +2,10 @@ package LN;
 
 import java.io.Serializable;
 
+/**
+ * Clase creada para generar un objeto nuevo (clsMaquina_Mareomotriz).
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class clsMaquina_Mareomotriz extends clsMaquina implements Serializable {
 
 	/**
@@ -12,7 +16,9 @@ public class clsMaquina_Mareomotriz extends clsMaquina implements Serializable {
 	private String nombre_pueblo;
 	private double distancia_millas_marinas_pueblo;
 	
-		//constructor para crear nueva máquina_hidraulica
+	/**
+	 * Constructor con todos los parámetros
+	 */
 		public clsMaquina_Mareomotriz(int id, String n, String color, double v, String f, String e, String np, double mm)
 		{
 			super(id, n, color, v, f, e);
@@ -20,7 +26,9 @@ public class clsMaquina_Mareomotriz extends clsMaquina implements Serializable {
 			this.distancia_millas_marinas_pueblo=mm;
 		}
 		
-		//constructor sin id
+		/**
+		 * Constructor con todos los parámetros, excepto el id
+		 */
 				public clsMaquina_Mareomotriz(String n, String color, double v, String f, String e, String np, double mm)
 				{
 					super(n, color, v, f, e);
@@ -28,7 +36,9 @@ public class clsMaquina_Mareomotriz extends clsMaquina implements Serializable {
 					this.distancia_millas_marinas_pueblo=mm;
 				}
 		
-		//constructor vacío para serializar
+				/**
+				 * Constructor vacío
+				 */
 		public clsMaquina_Mareomotriz()
 		{
 			super();
