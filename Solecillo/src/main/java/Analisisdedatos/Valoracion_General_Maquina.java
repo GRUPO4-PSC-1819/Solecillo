@@ -8,6 +8,10 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset; 
 import org.jfree.data.category.DefaultCategoryDataset; 
 
+/**
+ * Clase para crear un gráfico de barras en el que se analiza el estado general de cada una de las máquinas
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class Valoracion_General_Maquina extends JFrame {
 
 	private static final long serialVersionUID = 1L;

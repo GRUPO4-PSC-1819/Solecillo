@@ -10,7 +10,11 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import LN.clsCliente;
 import LN.clsGestor;
- 
+
+/**
+ * Clase para crear un gráfico circular en el que se analizan los 5 clientes que más máquinas han comprado. 
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class top_clientes extends JFrame {
    
 	private static final long serialVersionUID = 1L;
@@ -27,7 +31,7 @@ public top_clientes( String title ) {
       DefaultPieDataset dataset = new DefaultPieDataset( );
       clsGestor gestor=new clsGestor();
       ArrayList<clsCliente> top_c=new ArrayList<clsCliente>();
-      top_c=gestor.top_10_clientes();
+      top_c=gestor.top_5_clientes();
       for(clsCliente c:top_c)
       {
     	  dataset.setValue(c.getdni(), c.getTot_Ventas());

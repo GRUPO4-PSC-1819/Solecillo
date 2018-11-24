@@ -715,7 +715,7 @@ public class clsGestor implements Serializable
 		}
 	}
 	
-	public ArrayList<clsCliente> top_10_clientes()
+	public ArrayList<clsCliente> top_5_clientes()
 	{
 		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
 		ResultSet rs = clsBD.clientesTOP();

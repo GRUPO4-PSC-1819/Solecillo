@@ -25,7 +25,8 @@ import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * @author imssbora
+ * Clase para crear un gráfico en el que se predecirá el estado de las máquinas. 
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class ScatterPlotExample extends JFrame {
 	static Instances data;

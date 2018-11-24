@@ -3,7 +3,6 @@ package Analisisdedatos;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel; 
 import org.jfree.chart.JFreeChart; 
@@ -13,6 +12,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import LN.clsGestor;
 import LN.clsMaquina; 
 
+/**
+ * Clase para crear un gráfico de barras  en el que se analizan el valor medio de las máquinas según el tipo de máquina.
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class Valor_Medio_Maquinas extends JFrame {
    
 	private static final long serialVersionUID = 1L;
