@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
+
 import Comun.clsConstantes;
 import LN.clsUsuario;
 import Persistencia.clsBD;
@@ -15,10 +16,18 @@ import Persistencia.clsBD;
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 
-public class clsGestor implements Serializable 
+public class clsGestor implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-
+	IGestor ges;
+	
+	public void setCal(IGestor cal) {
+		this.ges = cal;
+	}
+	public double media(ArrayList<clsMaquina> lista){
+		return ges.valor_medio_maquinas2(lista);
+	}
+	
 	/**
 	 * Método que recoge la lista de usuarios registrados en la Base de Datos.
 	 * @return Lista de usuarios registrados
@@ -872,10 +881,26 @@ public class clsGestor implements Serializable
 		return lista;
 	}
 	
+
+	public double valor_medio_maquinas3(ArrayList<clsMaquina> lista2)
+	{
+		ArrayList<clsMaquina> lista = lista2;
+		double m=0;
+		int i;
+		for (i=0;i<lista2.size();i++)
+		{
+			m=m+lista2.get(i).valor;
+		}
+		double t=m/i;
+		return t;
+	}
+	
+
 	/**
 	 * Método para saber el nº de ventas por tipo de máquina
 	 * @return lista de máquinas
 	 */
+
 	public ArrayList<clsMaquina> ventas_tipo_maquina()
 	{
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
