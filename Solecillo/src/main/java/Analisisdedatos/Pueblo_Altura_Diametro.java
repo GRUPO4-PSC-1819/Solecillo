@@ -11,6 +11,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import LN.clsGestor;
 import LN.clsMaquina_Eolica;
 
+/**
+ * Clase para crear un gráfico de barras en las que se analizan las máquinas eólicas. Se hace referencia al pueblo y a la altura y diamtero medios. 
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class Pueblo_Altura_Diametro extends JFrame {
    
 	private static final long serialVersionUID = 1L;

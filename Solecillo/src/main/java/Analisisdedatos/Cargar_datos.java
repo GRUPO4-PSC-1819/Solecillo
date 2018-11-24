@@ -5,11 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Instances;
 
+/**
+ * Clase para analizar datos y meterlos en el archivo iris.arff  
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class Cargar_datos {
 
 	 public static void main( String[ ] args ) {
@@ -82,9 +85,6 @@ public class Cargar_datos {
 			writer.println(eval.toSummaryString());
 			
 			writer.close();
-			System.out.print(" the expression for the input data as per alogorithm is ");
-		
-
-		    
+			System.out.print(" the expression for the input data as per alogorithm is ");		    
 	   }
 }
