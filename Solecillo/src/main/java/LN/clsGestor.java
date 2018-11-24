@@ -6,15 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
-
 import Comun.clsConstantes;
 import LN.clsUsuario;
 import Persistencia.clsBD;
 
 /**
- * Clase creada para generar un objeto nuevo (clsGestor), que valdrá para establecer un vínculo entre la aplicación y sus dos métodos de persistencia: <br>
- * 1) Base de Datos (para usuarios e historiales de partidas). <br>
- * 2) Ficheros serializados (para guardar el estado de la partida).
+ * Clase creada para generar un objeto nuevo (clsGestor), que valdrá para establecer un vínculo entre la aplicación y los métodos de persistencia: <br>
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 
@@ -53,7 +50,10 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
-	
+	/**
+	 * Método que recoge la lista de máquinas eólicas registradas en la Base de Datos.
+	 * @return Lista de máquinas eólicas
+	 */
 	public ArrayList<clsMaquina_Eolica> ListaEolica()	
 	{	
 		ArrayList<clsMaquina_Eolica> lista = new ArrayList <clsMaquina_Eolica>();
@@ -88,6 +88,11 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	/**
+	 * Método que para conseguir una máquina eólica de la Base de Datos.
+	 * @param id e la máquina de la que se quiere lograr información.
+	 * @return La máquina eólica
+	 */
 	public clsMaquina_Eolica ObtenerEolica(int id)	
 	{	
 		clsMaquina_Eolica m=null;
@@ -122,7 +127,10 @@ public class clsGestor implements Serializable
 		return m;	
 	}
 	
-	
+	/**
+	 * Método que recoge la lista de máquinas hidráulicas registradas en la Base de Datos.
+	 * @return Lista de máquinas hidráulicas
+	 */
 	public ArrayList<clsMaquina_Hidraulica> ListaHidraulica()	
 	{	
 		ArrayList<clsMaquina_Hidraulica> lista = new ArrayList <clsMaquina_Hidraulica>();
@@ -153,6 +161,11 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	/**
+	 * Método que para conseguir una máquina hidráulica de la Base de Datos.
+	 * @param id e la máquina de la que se quiere lograr información.
+	 * @return La máquina hidráulica
+	 */
 	public clsMaquina_Hidraulica ObtenerHidraulica(int id)	
 	{	
 		clsMaquina_Hidraulica m=null;
@@ -185,7 +198,10 @@ public class clsGestor implements Serializable
 		return m;	
 	}
 	
-	
+	/**
+	 * Método que recoge la lista de máquinas mareomotrices registradas en la Base de Datos.
+	 * @return Lista de máquinas mareomotrices
+	 */
 	public ArrayList<clsMaquina_Mareomotriz> ListaMareomotriz()	
 	{	
 		ArrayList<clsMaquina_Mareomotriz> lista = new ArrayList <clsMaquina_Mareomotriz>();
@@ -216,6 +232,11 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	/**
+	 * Método que para conseguir una máquina mareomotriz de la Base de Datos.
+	 * @param id e la máquina de la que se quiere lograr información.
+	 * @return La máquina mareomotriz
+	 */
 	public clsMaquina_Mareomotriz ObtenerMareomotriz(int id)	
 	{	
 		clsMaquina_Mareomotriz m=null;
@@ -246,6 +267,10 @@ public class clsGestor implements Serializable
 		return m;	
 	}
 	
+	/**
+	 * Método que recoge la lista de máquinas solares registradas en la Base de Datos.
+	 * @return Lista de máquinas solares
+	 */
 	public ArrayList<clsMaquina_Solar> ListaSolar()	
 	{	
 		ArrayList<clsMaquina_Solar> lista = new ArrayList <clsMaquina_Solar>();
@@ -276,6 +301,11 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	/**
+	 * Método que para conseguir una máquina solar de la Base de Datos.
+	 * @param id e la máquina de la que se quiere lograr información.
+	 * @return La máquina solar
+	 */
 	public clsMaquina_Solar ObtenerSolar(int id)	
 	{	
 		clsMaquina_Solar m=null;
@@ -305,6 +335,11 @@ public class clsGestor implements Serializable
 		}
 		return m;	
 	}
+	
+	/**
+	 * Método que recoge la lista de clientes registrados en la Base de Datos.
+	 * @return Lista de clientes
+	 */
 	public ArrayList<clsCliente> ListaClientes()	
 	{	
 		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
@@ -333,6 +368,10 @@ public class clsGestor implements Serializable
 		return lista;	
 	}
 	
+	/**
+	 * Método que recoge la lista de ventas registradas en la Base de Datos.
+	 * @return Lista de ventas
+	 */
 	public ArrayList<clsVenta> ListaVentas()	
 	{	
 		ArrayList<clsVenta> lista = new ArrayList <clsVenta>();
@@ -357,18 +396,13 @@ public class clsGestor implements Serializable
 			}
 			
 		}
-				
 		return lista;	
 	}
 	
 	/**
 	 * Envía una serie de atributos para crear un nuevo usuario. En caso de que hubiera alguna repetición de nickname, saltará una excepción que impida
 	 * que se lleve a cabo dicho registro.
-	 * @param n Nombre del usuario
-	 * @param ap1 Primer apellido del usuario
-	 * @param ap2 Segundo apellido del usuario
-	 * @param nick Nickname del usuario
-	 * @param cont Contraseña del usuario
+	 * @param todos los atributos de un usuario
 	 * @throws clsUsuarioRepetido Excepción indicando que ha sucedido una repetición de nickname
 	 */
 	public void CrearUsuario(String n, String ap1, String ap2, String nick, String cont) throws clsUsuarioRepetido
@@ -389,6 +423,12 @@ public class clsGestor implements Serializable
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	/**
+	 * Envía una serie de atributos para crear un nuevo cliente. En caso de que hubiera alguna repetición de DNI, saltará una excepción que impida
+	 * que se lleve a cabo dicho registro.
+	 * @param todos los atributos de un cliente
+	 * @throws clsClienteRepetido Excepción indicando que ha sucedido una repetición de DNI
+	 */
 	public void CrearCliente(String n, String ap1, String ap2, String dni, String empresa) throws clsClienteRepetido
 	{
 		clsCliente nuevo=new clsCliente(n, ap1, ap2, dni, empresa);
@@ -406,30 +446,50 @@ public class clsGestor implements Serializable
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	/**
+	 * Envía una serie de atributos para crear un nueva máquina eólica.
+	 * @param todos los atributos de una máquina eólica.
+	 */
 	public void CrearMaquinaEolica(String n, String col, double val, String fab, String e, String np, String nc, double a, double d)
 	{
 		clsMaquina_Eolica nuevo=new clsMaquina_Eolica(n, col, val, fab, e, np, nc, a, d);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	/**
+	 * Envía una serie de atributos para crear un nueva máquina hidráulica.
+	 * @param todos los atributos de una máquina hidráulica.
+	 */
 	public void CrearMaquinaHidraulica(String n, String col, double val, String fab, String e, String np, String nr)
 	{
 		clsMaquina_Hidraulica nuevo=new clsMaquina_Hidraulica(n, col, val, fab, e, np, nr);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	/**
+	 * Envía una serie de atributos para crear un nueva máquina mareomotriz.
+	 * @param todos los atributos de una máquina mareomotriz.
+	 */
 	public void CrearMaquinaMareomotriz(String n, String col, double val, String fab, String e, String np, double distancia)
 	{
 		clsMaquina_Mareomotriz nuevo=new clsMaquina_Mareomotriz(n, col, val, fab, e, np, distancia);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	/**
+	 * Envía una serie de atributos para crear un nueva máquina solar.
+	 * @param todos los atributos de una máquina solar.
+	 */
 	public void CrearMaquinaSolar(String n, String col, double val, String fab, String e, String np, String nc)
 	{
 		clsMaquina_Solar nuevo=new clsMaquina_Solar(n, col, val, fab, e, np, nc);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
 	
+	/**
+	 * Envía una serie de atributos para crear un nueva venta.
+	 * @param todos los atributos de una venta.
+	 */
 	public void CrearVenta(int idm, String dniC, int can)
 	{
 		clsVenta nuevo=new clsVenta(idm, dniC, can);
@@ -438,12 +498,7 @@ public class clsGestor implements Serializable
 	
 	/**
 	 * Método para modificar un usuario existente en la Base de Datos.
-	 * @param n Nombre del usuario
-	 * @param ap1 Primer apellido del usuario
-	 * @param ap2 Segundo apellido del usuario
-	 * @param nick Nickname del usuario
-	 * @param cont Contraseña del usuario
-	 * @param fechaalta Fecha de alta del usuario
+	 * @param todos los atributos de un usuario
 	 * @return Usuario modificado para actualizar la ventana clsEleccion
 	 */
 	public clsUsuario ModificarUsuario (String n, String ap1, String ap2, String nick, String cont)
@@ -454,52 +509,86 @@ public class clsGestor implements Serializable
 	}
 
 	
-	
+	/**
+	 * Método para borrar una máquina.
+	 * @param id de la máquina a borrar
+	 */
 	public void BorrarMaquina(int id)
 	{
 		clsBD.BorrarMaquina(id);
 	}
+	
+	/**
+	 * Método para borrar todos los usuarios.
+	 */
 	public void BorrarUsuarios()
 	{
 		clsBD.BorrarUsuarios();
 	}
+	
+	/**
+	 * Método para borrar todos los clientes.
+	 */
 	public void BorrarClientes()
 	{
 		clsBD.BorrarClientes();
 	}
+	
+	/**
+	 * Método para borrar todas las máquinas.
+	 */
 	public void BorrarMaquinas()
 	{
 		clsBD.BorrarMaquinas();
 	}
+	
+	/**
+	 * Método para borrar todas las ventas.
+	 */
 	public void BorrarVentas()
 	{
 		clsBD.BorrarVentas();
 	}
 	
-	
-	
-	
-	
+	/**
+	 * Método para modificar una máquina eólica.
+	 * @param todos los atributos de una máquina eólica
+	 */
 	public void ModificarMaquinaEolica(int id, String n, String col, double val, String fab, String e, String np, String nc, double a, double d)
 	{
 		clsBD.modificarEolica(id, n, col, val, fab, e, np, nc, a, d);
 	}
 	
+	/**
+	 * Método para modificar una máquina hidráulica.
+	 * @param todos los atributos de una máquina hidráulica
+	 */
 	public void ModificarMaquinaHidraulica(int id, String n, String col, double val, String fab, String e, String np, String nr)
 	{
 		clsBD.modificarHidraulica(id, n, col, val, fab, e, np, nr);
 	}
 	
+	/**
+	 * Método para modificar una máquina mareomotriz.
+	 * @param todos los atributos de una máquina mareomotriz
+	 */
 	public void ModificarMaquinaMareomotriz(int id, String n, String col, double val, String fab, String e, String np, double d)
 	{
 		clsBD.modificarMareomotriz(id, n, col, val, fab, e, np, d);
 	}
 	
+	/**
+	 * Método para modificar una máquina solar.
+	 * @param todos los atributos de una máquina solar
+	 */
 	public void ModificarMaquinaSolar(int id, String n, String col, double val, String fab, String e, String np, String nc)
 	{
 		clsBD.modificarSolar(id, n, col, val, fab, e, np, nc);
 	}
 	
+	/**
+	 * Método para modificar una migrar usuarios.
+	 */
 	public void MigracionUsuarios() throws clsUsuarioRepetido
 	{
 		BorrarUsuarios();
@@ -518,6 +607,10 @@ public class clsGestor implements Serializable
 			CrearUsuario(nombre, apellido1, apellido2, nickname, contraseña);
 		}
 	}
+	
+	/**
+	 * Método para modificar una migrar clientes.
+	 */
 	public void MigracionClientes() throws clsClienteRepetido
 	{
 		BorrarClientes();
@@ -536,6 +629,10 @@ public class clsGestor implements Serializable
 			CrearCliente(nombre_c, apellido1_c, apellido2_c, dni, empresa);
 		}
 	}
+	
+	/**
+	 * Método para modificar una migrar máquinas.
+	 */
 	public void MigracionMaquinas()
 	{
 		BorrarMaquinas();
@@ -695,6 +792,10 @@ public class clsGestor implements Serializable
 			CrearMaquinaSolar(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, nombre_campo_m);
 		}
 	}
+	
+	/**
+	 * Método para modificar una migrar ventas.
+	 */
 	public void MigracionVentas()
 	{
 		BorrarVentas();
@@ -715,6 +816,10 @@ public class clsGestor implements Serializable
 		}
 	}
 	
+	/**
+	 * Método para saber los 5 clientes que más han comprado
+	 * @return lista de clientes
+	 */
 	public ArrayList<clsCliente> top_5_clientes()
 	{
 		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
@@ -739,6 +844,10 @@ public class clsGestor implements Serializable
 		return lista;
 	}
 	
+	/**
+	 * Método para saber el valor medio de las máquinas según su tipo
+	 * @return lista de máquinas
+	 */
 	public ArrayList<clsMaquina> valor_medio_maquinas()
 	{
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
@@ -763,6 +872,10 @@ public class clsGestor implements Serializable
 		return lista;
 	}
 	
+	/**
+	 * Método para saber el nº de ventas por tipo de máquina
+	 * @return lista de máquinas
+	 */
 	public ArrayList<clsMaquina> ventas_tipo_maquina()
 	{
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
@@ -786,6 +899,11 @@ public class clsGestor implements Serializable
 		}
 		return lista;
 	}
+	
+	/**
+	 * Método para saber el valor medio de las máquinas por estado
+	 * @return lista de máquinas
+	 */
 	public ArrayList<clsMaquina> valor_estado_maquina()
 	{
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
@@ -808,6 +926,11 @@ public class clsGestor implements Serializable
 		}
 		return lista;
 	}
+	
+	/**
+	 * Método para saber el nº de máquinas que tiene cada fabricante en cada río.
+	 * @return lista de máquinas hidráulicas
+	 */
 	public ArrayList<clsMaquina_Hidraulica> num_maquinas_rio_fabricante()
 	{
 		ArrayList<clsMaquina_Hidraulica> lista = new ArrayList <clsMaquina_Hidraulica>();
@@ -831,6 +954,11 @@ public class clsGestor implements Serializable
 		}
 		return lista;
 	}
+	
+	/**
+	 * Método para saber el las medidad de las máquinas eólicas por pueblo
+	 * @return lista de máquinas eólicas
+	 */
 	public ArrayList<clsMaquina_Eolica> eolicas_pueblo_media_altura_diametro()
 	{
 		ArrayList<clsMaquina_Eolica> lista = new ArrayList <clsMaquina_Eolica>();
@@ -854,5 +982,4 @@ public class clsGestor implements Serializable
 		}
 		return lista;
 	}
-
 }
