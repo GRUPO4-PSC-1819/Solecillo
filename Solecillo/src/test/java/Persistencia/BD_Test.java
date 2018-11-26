@@ -46,9 +46,7 @@ public class BD_Test {
 		clsBD.obtenerDatosTablaBD("CLIENTE");
 		clsBD.obtenerDatosTablaBD("VENTA");
 		
-		
 		clsBD.ObtenerUnaMaquina(12);
-		
 		
 		clsBD.clientesTOP();
 		clsBD.valor_medio_maquinas();
@@ -69,7 +67,6 @@ public class BD_Test {
 		clsBD.BorrarMaquinas();
 		clsBD.BorrarVentas();
 		clsBD.BorrarMaquina(24);
-		
 		
 		clsUsuario usu1=new clsUsuario("ytc", "jy", "jyt", "ytf", "ytyf");
 		clsBD.insertarDatoTablaBD(usu1);

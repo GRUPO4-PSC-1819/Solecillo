@@ -84,16 +84,6 @@ public class AppTest
     
     @Test public void testAlta()
     {
-    	/*ArrayList<clsUsuario> usus;
-    	ArrayList<clsMaquina_Eolica> eolicas;
-    	ArrayList<clsMaquina_Hidraulica> hidraulicas;
-    	ArrayList<clsMaquina_Mareomotriz> mareomotrices;
-    	ArrayList<clsMaquina_Solar> solares;
-    	
-    	clsGestor ges=new clsGestor();
-    	usus=new ArrayList<clsUsuario>();
-	 	usus=ges.ListaUsuarios();
-		assertTrue(usus.size()>0);*///no hay todavía elementos guardados, tamaño del ArrayList será 0
 		clsAltaUsuario u=new clsAltaUsuario();
 		u.txtNombre.setText("n1");
 		u.txtApe1.setText("ap11");
@@ -102,10 +92,7 @@ public class AppTest
 		u.txtContrasenya1.setText("c1");
 		u.txtContrasenya2.setText("c1");
 		u.btnAceptar.doClick();
-		
-		/*eolicas=new ArrayList<clsMaquina_Eolica>();
-		eolicas=ges.ListaEolica();
-		assertTrue(eolicas.size()>0);*///hay dos eólicas en bbdd, tamaño del ArrayList será 2
+
 		clsAltaEolica e=new clsAltaEolica();
 		e.txtNombre.setText("n1");
 		e.txtColor.setText("c1");
@@ -116,10 +103,7 @@ public class AppTest
 		e.txtAltura.setText("124.62");
 		e.txtDiametro.setText("39.04");
 	    e.btnAceptar.doClick();
-	    	    
-	    /*hidraulicas=new ArrayList<clsMaquina_Hidraulica>();
-		hidraulicas=ges.ListaHidraulica();
-		assertTrue(hidraulicas.size()>0);*///hay dos hidráulicas en bbdd, tamaño del ArrayList será 2
+
 		clsAltaHidraulica h=new clsAltaHidraulica();
 		h.txtNombre.setText("n2");
 		h.txtColor.setText("c2");
@@ -128,10 +112,7 @@ public class AppTest
 		h.txtNombrePueblo.setText("np2");
 		h.txtNombreRio.setText("nr2");
 	    h.btnAceptar.doClick();	    
-	    
-	   /* mareomotrices=new ArrayList<clsMaquina_Mareomotriz>();
-		mareomotrices=ges.ListaMareomotriz();
-		assertTrue(mareomotrices.size()>0);*///hay dos mareomotrices en bbdd, tamaño del ArrayList será 2
+
 		clsAltaMareomotriz m=new clsAltaMareomotriz();
 		m.txtNombre.setText("n3");
 		m.txtColor.setText("c3");
@@ -141,9 +122,6 @@ public class AppTest
 		m.txtDistancia.setText("9.72");
 	    m.btnAceptar.doClick();	    
 	    
-	   /*solares=new ArrayList<clsMaquina_Solar>();
-		solares=ges.ListaSolar();
-		assertTrue(solares.size()>0);*///hay dos solares en bbdd, tamaño del ArrayList será 2
 		clsAltaSolar s=new clsAltaSolar();
 		s.txtNombre.setText("n4");
 		s.txtColor.setText("c4");
