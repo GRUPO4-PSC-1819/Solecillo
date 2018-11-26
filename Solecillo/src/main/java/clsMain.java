@@ -25,9 +25,9 @@ public class clsMain
 					clsBD.crearTablaBD(clsConstantes.MAQUINA);
 					clsBD.crearTablaBD(clsConstantes.VENTA);
 					loginFrame p=new loginFrame();
-					//p.textField.setText("admin");
-					//p.passwordField.setText("admin");
-					//p.chckbxAdministrador.setSelected(true);
+					p.textField.setText("admin");
+					p.passwordField.setText("admin");
+					p.chckbxAdministrador.setSelected(true);
 					p.setVisible(true);
 				} 
 				catch (Exception e) 
