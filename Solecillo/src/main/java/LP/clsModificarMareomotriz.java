@@ -1,5 +1,6 @@
 package LP;
- import java.awt.BorderLayout;
+
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
@@ -13,15 +14,14 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
- import LN.clsGestor;
-import LN.clsMaquina_Eolica;
+import LN.clsGestor;
 import LN.clsMaquina_Mareomotriz;
+
 /**
- * Clase que generará una ventana que hereda de clsAltaUsuario para modificar los datos de un usuario existente en la base de datos.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * Clase que generará una ventana que hereda de clsAltaMareomotriz para modificar los datos de una máquina mareomotriz en la base de datos.
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsModificarMareomotriz extends clsAltaMareomotriz
 {
@@ -62,9 +62,9 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 	}
 	
 	/**
-	 * Constructor de la ventana que aprovecha la interfaz gráfica de clsAltaUsuario, incluyendo los datos de un usuario dado.
-	 * @param usuario El usuario que está modificando sus datos.
-	 * @param miVentana La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
+	 * Constructor de la ventana que aprovecha la interfaz gráfica de clsAltaMareomotriz.
+	 * @param maq La máquina de la cual se van a modificar los datos.
+	 * @param ventanita La ventana clsListaM de la que proviene la máquina, y que se utilizará para el refresco de los datos modificados.
 	 */
 	public clsModificarMareomotriz(clsMaquina_Mareomotriz maq, JFrame miVentana)
 	{
@@ -100,10 +100,8 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					        pack();
 					        clsListaM.miVentana.setVisible(true);
 						} catch (NumberFormatException e) {
-							// TODO Auto-generated catch block
 							JOptionPane.showMessageDialog(null, "Los campos 'Valor' y 'Distancia' deben ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 						}
-				
 				}
 				else
 				{

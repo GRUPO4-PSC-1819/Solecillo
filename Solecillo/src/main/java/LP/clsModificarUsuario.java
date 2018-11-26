@@ -13,15 +13,14 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import LN.clsGestor;
 import LN.clsUsuario;
+
 /**
- * Clase que generará una ventana que hereda de clsAltaUsuario para modificar los datos de un usuario existente en la base de datos.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * Clase que generará una ventana que hereda de clsAltaUsuario para modificar los datos de un usuario en la base de datos.
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsModificarUsuario extends clsAltaUsuario
 {
@@ -62,9 +61,9 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 	}
 	
 	/**
-	 * Constructor de la ventana que aprovecha la interfaz gráfica de clsAltaUsuario, incluyendo los datos de un usuario dado.
-	 * @param usuario El usuario que está modificando sus datos.
-	 * @param ventanita La ventana clsEleccion de la que proviene el usuario, que tendrá su atributo "usuario" modificado al cambiar los datos referentes al usuario.
+	 * Constructor de la ventana que aprovecha la interfaz gráfica de clsAltaUsuario.
+	 * @param usuario El usuario del cual se van a modificar los datos.
+	 * @param ventanita La ventana pricipalFrame de la que proviene el usuario.
 	 */
 	public clsModificarUsuario(clsUsuario usuario, JFrame miVentana)
 	{

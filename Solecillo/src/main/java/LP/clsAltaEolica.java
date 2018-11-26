@@ -1,12 +1,13 @@
 package LP;
- import java.awt.Color;
+
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
- import javax.swing.BoxLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
- import java.awt.BorderLayout;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
@@ -20,18 +21,16 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
- import javax.swing.JLabel;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import Comun.clsConstantes;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-
 import LN.clsGestor;
+
  /**
- * Clase que generará una JFrame para introducir los datos que a su vez serán enviados a clsBinarios para la creación
- * de un usuario en la base de datos.
+ * Clase que generará una JFrame para introducir los datos que a su vez serán enviados para la creación
+ * de una máquina eólica en la base de datos.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsAltaEolica extends JFrame 
@@ -228,7 +227,7 @@ public class clsAltaEolica extends JFrame
 	}
 	
 	/**
-	 * Método que registra un nuevo usuario a la aplicación.
+	 * Método que registra una nueva máquina eólica
 	 */
 	private void Registrar()
 	{
@@ -241,7 +240,6 @@ public class clsAltaEolica extends JFrame
 					logger.log( Level.INFO, "Dando de alta máquina eólica "+txtNombre.getText());
 					JOptionPane.showMessageDialog(null, "Se ha registrado una nueva máquina eólica correctamente.");
 				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(null, "Los campos 'Valor', 'Altura' y 'Diametro' deben ser un número", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 		}

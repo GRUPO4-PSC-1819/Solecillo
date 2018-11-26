@@ -58,7 +58,10 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
 
-
+/**
+ * Clase que va a generar un JFrame que será el panel central de la aplicación y desde donde se podrá navegar por las distintas funcionalidades.  
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class principalFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -114,9 +117,9 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
 	}
 	/**
-	 * Create the frame.
+	 * Constructor para poner todo en marcha.
+	 * @param usu para saber si se va a mostrar las funcionalidades de un usuario o de un administrador.
 	 */
-
 	public principalFrame(clsUsuario usu) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
@@ -126,7 +129,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		contentPane.setLayout(null);
 		
 		miVentana=this;
-		
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, 1000, 700);
@@ -362,10 +364,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel_5.add(btnRefrescar);
 		
 		
-		
-		
-		
-	
 		tableV.setModel(modeloV);
         JScrollPane js1 = new JScrollPane(tableV);
         js1.setBounds(41, 150, 645, 169);
@@ -384,8 +382,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		table.setColumnSelectionAllowed(true);
 		table.setCellSelectionEnabled(true);
 		table.setBounds(41, 373, 645, 169);
-	
-		
 		
 		// Datos prueba
 		objGestor=new clsGestor();
@@ -400,13 +396,11 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		}
 		table.setModel(modeloT);
 		
-		
 		table.setModel(modeloT);
         JScrollPane js = new JScrollPane(table);
         js.setBounds(41, 373, 645, 169);
         js.setVisible(true);
         panel_2.add(js);
-		
 		
 		TableRowSorter filtro = new TableRowSorter(modeloT);
 		
@@ -487,9 +481,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 
     );
 		
-		
-		
-	
 		JLabel lblBuscarPor = new JLabel("Buscar por: ");
 		lblBuscarPor.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		lblBuscarPor.setBounds(48, 283, 152, 20);
@@ -586,13 +577,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			}
 		});
 		
-		
-		
-	
-		
-		
-		
-		if(usu!=null)//lo que va a visualizar un usuario
+		if(usu!=null)//lo que va a visualizar solo los usuarios
 		{
 			JPanel panel_3 = new JPanel();
 			panel_3.setBackground(new Color(135, 206, 235));
@@ -625,7 +610,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			});
 		 }
 		
-		else //lo que va a visualizar el administrador
+		else //lo que va a visualizar solo el administrador
 		{
 			JPanel panel_3 = new JPanel();
 			panel_3.setBackground(new Color(135, 206, 235));
@@ -790,7 +775,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				}
 			});
 			
-			
 			JPanel panel_4 = new JPanel();
 			panel_4.setBackground(new Color(135, 206, 235));
 			tabbedPane.addTab("Análisis", new ImageIcon(principalFrame.class.getResource("/com/sun/java/swing/plaf/windows/icons/Inform.gif")), panel_4, null);
@@ -835,8 +819,5 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					frame.setVisible(true);
 				}
 			});	
-		
 	   }
-
 }
-	

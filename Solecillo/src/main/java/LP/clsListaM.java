@@ -1,4 +1,5 @@
 package LP;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -36,7 +37,7 @@ import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
 
 /**
- * Clase que generará una JFrame para mostrar los datos de los usuarios registrados.
+ * Clase que generará una JFrame para gestionar la visualización de las máquinas en listas.
  * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
  */
 public class clsListaM extends JFrame
@@ -62,11 +63,8 @@ public class clsListaM extends JFrame
 	private JPanel panelbotonera;
 
 	public clsTablaE te;
-
 	public clsTablaS ts;
-
 	public clsTablaM tm;
-
 	public clsTablaH th;
 	
 	public int a;
@@ -107,7 +105,8 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
 	}
 	/**
-	 * Constructor del JFrame que incluye escuchadores varios.
+	 * Constructor del JFrame que incluye escuchadores varios. Depende de lo que pulse el usuario, se le mostrará diferentes cosas.
+	 * También se controlarán las opciones de borrar, modificar y vender desde aquí.
 	 * @param titulo Título de la ventana.
 	 */	
 	public clsListaM(String titulo, String funcion, String cliente)
@@ -342,7 +341,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
 								}
 							 catch (NumberFormatException e) {
-								// TODO Auto-generated catch block
 								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
 							 	}
 							}
@@ -369,7 +367,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
 								}
 							 catch (NumberFormatException e) {
-								// TODO Auto-generated catch block
 								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
 							 	}
 							}
@@ -396,7 +393,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
 								}
 							 catch (NumberFormatException e) {
-								// TODO Auto-generated catch block
 								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
 							 	}
 							}
@@ -423,7 +419,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 									JOptionPane.showMessageDialog(null, "Se ha registrado una nueva venta correctamente.");
 								}
 							 catch (NumberFormatException e) {
-								// TODO Auto-generated catch block
 								JOptionPane.showMessageDialog(null, "El campo de Cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
 							 	}
 							}

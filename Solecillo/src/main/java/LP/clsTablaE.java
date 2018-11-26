@@ -1,4 +1,5 @@
 package LP;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,16 +13,14 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 /**
- * Clase que generará un JPanel que contendrá la tabla con los datos extraídos de BD, para poder insertarla después en clsRankingLista.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * Clase que generará un JPanel que contendrá la tabla con los datos de máquina eólicas extraídos de BD, para poder insertarla después en clsListaM.
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsTablaE extends JPanel 
 {
 	private static final long serialVersionUID = 1L;
 	
 	JTable table;
-	
-	
 	
 	/*Renderer de la tabla*/
 	private static DefaultTableCellRenderer rendererCentrado = new DefaultTableCellRenderer();
@@ -51,13 +50,10 @@ public class clsTablaE extends JPanel
         
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
-        
     }
     
     /**
 	 *Clase interna para el manejo del modelo de datos del objeto JTable.
-	 *@see <a href="http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/TableDemoProject/src/components/TableDemo.java">
-	 *http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/TableDemoProject/src/components/TableDemo.java </a>
 	 */	
     class MyTableModel extends AbstractTableModel 
     {
@@ -76,8 +72,8 @@ public class clsTablaE extends JPanel
         private Object[][] data;
         
         /**
-         * Constructor del modelo de datos.
-         * @param Lista de usuarios.
+         * Constructor del modelo de datos de máquinas eólicas.
+         * @param Lista de máquinas eólicas.
          */
         public MyTableModel(ArrayList<clsMaquina_Eolica> u)
         {
@@ -124,8 +120,6 @@ public class clsTablaE extends JPanel
             return data[row][col];
         }
         
-       
-
         /*
          * JTable uses this method to determine the default renderer/
          * editor for each cell.  If we didn't implement this method,
@@ -148,12 +142,15 @@ public class clsTablaE extends JPanel
     }
     
     
+    /**
+     * Método para saber el id de la máquina que se ha seleccionado.
+     * @return fila que se ha seleccionado.
+     */
     public int getFila() {
 		
     	int id;
     	try
 		{
-    		
     		id=(int)table.getValueAt(table.getSelectedRow(), 0);
 			return id;
 		}
@@ -164,9 +161,7 @@ public class clsTablaE extends JPanel
 		return -1;
 	}
 
-
 	public void setRowSelectionInterval(int i, int j) {
-		// TODO Auto-generated method stub
 		table.setRowSelectionInterval(i, i);
 	}
 

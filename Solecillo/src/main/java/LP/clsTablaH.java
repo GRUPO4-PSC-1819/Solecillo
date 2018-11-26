@@ -1,4 +1,5 @@
 package LP;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,8 +13,8 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 /**
- * Clase que generará un JPanel que contendrá la tabla con los datos extraídos de BD, para poder insertarla después en clsRankingLista.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * Clase que generará un JPanel que contendrá la tabla con los datos de máquina hidráulicas extraídos de BD, para poder insertarla después en clsListaM.
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class clsTablaH extends JPanel 
 {
@@ -49,9 +50,7 @@ public class clsTablaH extends JPanel
     
     /**
 	 *Clase interna para el manejo del modelo de datos del objeto JTable.
-	 *@see <a href="http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/TableDemoProject/src/components/TableDemo.java">
-	 *http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/TableDemoProject/src/components/TableDemo.java </a>
-	 */	
+	 */
     class MyTableModel extends AbstractTableModel 
     {
 		private static final long serialVersionUID = 1L;
@@ -67,8 +66,8 @@ public class clsTablaH extends JPanel
         private Object[][] data;
         
         /**
-         * Constructor del modelo de datos.
-         * @param Lista de usuarios.
+         * Constructor del modelo de datos de máquinas hidráulicas.
+         * @param Lista de máquinas hidráulicas.
          */
         public MyTableModel(ArrayList<clsMaquina_Hidraulica> u)
         {
@@ -134,7 +133,11 @@ public class clsTablaH extends JPanel
                 return false;
         }
     }
-    
+ 
+    /**
+     * Método para saber el id de la máquina que se ha seleccionado.
+     * @return fila que se ha seleccionado.
+     */
  public int getFila() {
 		
     	int id;
@@ -151,7 +154,6 @@ public class clsTablaH extends JPanel
 	}
  
 	public void setRowSelectionInterval(int i, int j) {
-		// TODO Auto-generated method stub
 		table.setRowSelectionInterval(i, i);
 	}
 }

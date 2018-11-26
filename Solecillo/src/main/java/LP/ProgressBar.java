@@ -20,10 +20,9 @@ import javax.swing.JProgressBar;
 import Comun.clsConstantes;
 import LN.clsUsuario;
 
-
 /**
- * Clase que generará una JFrame que visualizará una barra de progreso cuando se inicie la aplicación y cuando se juegue una partida contra Mariano.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+ * Clase que generará una JFrame que visualizará una barra de progreso cuando se inicie la aplicación.
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
  */
 public class ProgressBar extends JFrame
 {
@@ -83,9 +82,8 @@ public class ProgressBar extends JFrame
 	/**
 	 * Constructor de la JFrame.
 	 * @param titulo Titulo de la ventana.
-	 * @param aux Usuario 1 (el que ya se encuentra logeado)
-	 * @param num Identificativo para distinguir un uso de ProgressBar u otro.
-	 * @param aux1 Usuario 2 (en caso
+	 * @param v Para saber si es un usuario o el adminstrador
+	 * @param usu El usuario en cuestión.
 	 */
 	public ProgressBar(String titulo, String v, clsUsuario usu) {
 		
@@ -157,7 +155,7 @@ public class ProgressBar extends JFrame
 	}
 	/**
 	 * Clase interna que implementa la interfaz Runnable que repinta la ProgressBar.
-	 * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Beñat Galdós (Benny96)
+	 * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
 	 */
 		class MiRunnable implements Runnable 
 		{

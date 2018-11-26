@@ -3,13 +3,11 @@ package LP;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
-
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,22 +22,18 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import Comun.clsConstantes;
-
 import javax.swing.JButton;
-
 import LN.clsUsuarioRepetido;
 import LN.clsGestor;
 
 /**
- * Clase que generará una JFrame para introducir los datos que a su vez serán enviados a clsBinarios para la creación
- * de un usuario en la base de datos.
- * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
- */
+* Clase que generará una JFrame para introducir los datos que a su vez serán enviados para la creación
+* de un usuario en la base de datos.
+* @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+*/
 public class clsAltaUsuario extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
@@ -193,8 +187,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				Registrar();
 			}
 		});	
-		
-		
 				
 		btnCancelar.addActionListener(new ActionListener() 
 		{
@@ -204,7 +196,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			}
 		});
 	}
-	
 	
 	/**
 	 * Método que registra un nuevo usuario a la aplicación.

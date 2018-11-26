@@ -3,7 +3,6 @@ package LP;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Comun.clsConstantes;
 import LN.clsGestor;
 import LN.clsUsuario;
@@ -20,11 +19,13 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
+
+/**
+ * Ventana de login para poder entrar en la aplicación.  
+ * @author Garikoitz Bereciartua (garibere13), Imanol Echeverria (Echever), Josune Ordoñez (Josune07)
+ */
 public class loginFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public JPasswordField passwordField;
@@ -37,7 +38,7 @@ public class loginFrame extends JFrame {
 
 	
 	/**
-	 * Create the frame.
+	 * Constructor de la clase que inicializa todo.
 	 */
 	public loginFrame() {
 		getContentPane().setLayout(null);
@@ -58,8 +59,6 @@ public class loginFrame extends JFrame {
 		txtpnSolecillosl.setText("SOLECILLO.S.L");
 		txtpnSolecillosl.setBounds(337, 16, 319, 123);
 		
-		
-	
 		contentPane.add(txtpnSolecillosl);
 		
 		passwordField = new JPasswordField();
@@ -81,14 +80,12 @@ public class loginFrame extends JFrame {
 		txtpnUsuario.setBounds(205, 169, 88, 38);
 		contentPane.add(txtpnUsuario);
 		
-		
 		chckbxAdministrador = new JCheckBox("Administrador");
 		chckbxAdministrador.setToolTipText("Seleccione si quiere acceder como administrador");
 		chckbxAdministrador.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxAdministrador.setBackground(Color.ORANGE);
 		chckbxAdministrador.setBounds(354, 322, 198, 60);
 		contentPane.add(chckbxAdministrador);
-		
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -97,7 +94,6 @@ public class loginFrame extends JFrame {
 		textField.setColumns(10);
 		
 		miVentana = this;
-		
 		
 		btnAceptar_1 = new JButton("ENTRAR");
 		btnAceptar_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -142,15 +138,7 @@ public class loginFrame extends JFrame {
 			{
 				JOptionPane.showMessageDialog(null, "¿Está dado de alta? Su nickname o contraseña son incorrectos.", "¡Error de Login!", JOptionPane.ERROR_MESSAGE);
 			}
-			
 			}
 		});
-		
-		
-			
-		
-		
-		
 	}
 }
-
