@@ -11,7 +11,7 @@ public class Contiperf {
 
 	@Rule
 	public ContiPerfRule i = new ContiPerfRule();
-	
+	/*
 	@Test
 	@PerfTest(invocations = 1000, threads = 20, duration=2000)   //PerfTest convierte un JUnit en una prueba Contiperf. A definir nÃºmero de iteraciones y los hilos que se disponen
 	@Required(max = 250, average = 250, median=200) 
@@ -41,7 +41,7 @@ public class Contiperf {
     {
     	Thread.sleep(200);
     }
-    
+    */
    /* public void testVenta()
     {
     	clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA, "123456789");
