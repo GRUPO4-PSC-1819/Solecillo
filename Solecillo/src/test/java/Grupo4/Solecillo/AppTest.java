@@ -80,29 +80,7 @@ public class AppTest
 		frame1.textField.setText("5");
 		frame1.ts.setRowSelectionInterval(0, 0);
 		frame1.btnSalir.doClick();
-		
     }
-
-	@Test public void testBD()
-       {
-    	clsUsuario usu1=new clsUsuario("ytc", "jy", "jyt", "ytf", "ytyf");
-		clsBD.insertarDatoTablaBD(usu1);
-		
-		clsCliente cl1=new clsCliente("wx", "nyu", "wx", "gtb", "erc");
-		clsBD.insertarDatoTablaBD(cl1);
-       }
-    
-	@Test public void testGraficos()
-    {
-		/*PieChart_AWT demo = new PieChart_AWT( "Ventas" );  
-		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		example.btnAceptar_1.doClick();
-		
-		PieChart_PROD demo1 = new PieChart_PROD( "Producción" );  
-		ScatterPlotExample example1 = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		example1.btnAceptar_1.doClick();*/
-    }
-    
     
     @Test public void testAlta()
     {
@@ -175,31 +153,4 @@ public class AppTest
 		s.txtNombreCampo.setText("nc4");
 	    s.btnAceptar.doClick();
     }
-    
-   /* public void testVenta()
-    {
-    	clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA, "123456789");
-		
-		frame1.rdbtnEolica.setSelected(true);
-		frame1.textField.setText("10");
-		frame1.te.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-		
-		frame1.rdbtnHidraulica.setSelected(true);
-		frame1.textField.setText("18");
-		frame1.th.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-		
-		frame1.rdbtnMareomotriz.setSelected(true);
-		frame1.textField.setText("3");
-		frame1.tm.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-		
-		frame1.rdbtnSolar.setSelected(true);
-		frame1.textField.setText("5");
-		frame1.ts.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-    }*/
-
-
 }

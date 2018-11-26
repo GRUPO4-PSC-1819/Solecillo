@@ -12,7 +12,7 @@ import org.junit.Test;
 import Comun.clsConstantes;
 import Persistencia.clsBD;
 
-public class testGestor {
+public class Gestor_Test {
 
 	//Activa Contiperf cuando se lanza JUnit
 		@Rule
@@ -29,7 +29,6 @@ public class testGestor {
 	@Test
 	public void test() {
 		clsGestor ge=new clsGestor();
-		assertTrue(ge.ListaClientes().size()>0);
 		 ge.ListaEolica();
 		 ge.ListaMareomotriz();
 		 ge.ListaSolar();

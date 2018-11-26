@@ -14,7 +14,6 @@ public class Graficos_Test {
 		top_clientes jn=new top_clientes("");
 		Valor_Estado vg=new Valor_Estado("");
 		Valor_Medio_Maquinas t =new Valor_Medio_Maquinas("", "");
-		Valoracion_General_Maquina gbr=new Valoracion_General_Maquina("", "");
 		Ventas_Maquina fve=new Ventas_Maquina("");
 	}
 

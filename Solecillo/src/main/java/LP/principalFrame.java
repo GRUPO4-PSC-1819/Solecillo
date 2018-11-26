@@ -13,7 +13,6 @@ import Analisisdedatos.Rio_Fabricante_Maquina;
 import Analisisdedatos.ScatterPlotExample;
 import Analisisdedatos.Valor_Estado;
 import Analisisdedatos.Valor_Medio_Maquinas;
-import Analisisdedatos.Valoracion_General_Maquina;
 import Analisisdedatos.Ventas_Maquina;
 import Analisisdedatos.top_clientes;
 import Comun.clsConstantes;
@@ -140,7 +139,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel.setLayout(null);
 		
 		JButton btngrafico3 = new JButton("Gráfico Ventas Clientes TOP");
-		btngrafico3.setBounds(50, 150, 300, 100);
+		btngrafico3.setBounds(50, 100, 300, 100);
 		btngrafico3.setFont(new Font("Arial", Font.PLAIN, 16));
 		btngrafico3.addActionListener(new ActionListener() {
 
@@ -163,7 +162,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel.add(btngrafico3);
 		
 		JButton btngrafico4 = new JButton("Gráfico Valor Medio Máquinas");
-		btngrafico4.setBounds(50, 400, 300, 100);
+		btngrafico4.setBounds(50, 350, 300, 100);
 		btngrafico4.setFont(new Font("Arial", Font.PLAIN, 16));
 		btngrafico4.addActionListener(new ActionListener() {
 
@@ -178,7 +177,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		panel.add(btngrafico4);
 		
 		JButton btngrafico5 = new JButton("Gráfico Ventas - Tipo Máquina");
-		btngrafico5.setBounds(50, 275, 300, 100);
+		btngrafico5.setBounds(50, 225, 300, 100);
 		btngrafico5.setFont(new Font("Arial", Font.PLAIN, 16));
 		btngrafico5.addActionListener(new ActionListener() {
 
@@ -245,21 +244,6 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
         		      chart.setVisible( true );
 			}});
 		panel.add(btngrafico8);
-		
-		JButton btngrafico9 = new JButton("Valoración General Máquinas");
-		btngrafico9.setBounds(50, 25, 300, 100);
-		btngrafico9.setFont(new Font("Arial", Font.PLAIN, 16));
-		btngrafico9.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {				
-				Valoracion_General_Maquina chart = new Valoracion_General_Maquina("Estadísticas máquinas", 
-				         "¿Cuál es la mejor?");
-				      chart.pack( );        
-				      RefineryUtilities.centerFrameOnScreen( chart );        
-				      chart.setVisible( true );
-			}});
-		panel.add(btngrafico9);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(176, 224, 230));

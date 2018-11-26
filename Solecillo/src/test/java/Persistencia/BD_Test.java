@@ -59,7 +59,10 @@ public class BD_Test {
 		
 		clsUsuario u=new clsUsuario();
 		clsBD.modificarUsuario(u);
-		
+		clsBD.modificarEolica(13, "", "", 2.34, "", "", "", "", 43.43, 8.45);
+		clsBD.modificarHidraulica(43, "", "", 43.6, "", "", "", "");
+		clsBD.modificarMareomotriz(4, "", "", 43.5, "", "", "", 54.6);
+		clsBD.modificarSolar(74, "", "", 54.5, "", "", "", "");
 		
 		clsBD.BorrarUsuarios();
 		clsBD.BorrarClientes();
@@ -68,6 +71,10 @@ public class BD_Test {
 		clsBD.BorrarMaquina(24);
 		
 		
+		clsUsuario usu1=new clsUsuario("ytc", "jy", "jyt", "ytf", "ytyf");
+		clsBD.insertarDatoTablaBD(usu1);
+		
+		clsCliente cl1=new clsCliente("wx", "nyu", "wx", "gtb", "erc");
+		clsBD.insertarDatoTablaBD(cl1);		
 	}
-
 }
