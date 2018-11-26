@@ -889,8 +889,9 @@ public class clsGestor implements Serializable
 		int i;
 		for (i=0;i<lista2.size();i++)
 		{
-			m=m+lista2.get(i).valor;
+			m=m+lista2.get(i).getValor();
 		}
+		
 		double t=m/i;
 		return t;
 	}

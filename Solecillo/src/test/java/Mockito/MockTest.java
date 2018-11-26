@@ -25,14 +25,20 @@ public class MockTest {
 	public void setup(){
 		
 		listado=new ArrayList<clsMaquina>();
-		listado.add(new clsMaquina("a","a",3,"a","a"));
-		listado.add(new clsMaquina("b","b",2,"b","b"));
-		IGestor gestor = Mockito.mock(IGestor.class);
-		Mockito.when(gestor.valor_medio_maquinas2(listado)).thenReturn((double) 4);
+		clsMaquina a = Mockito.mock(clsMaquina.class);
+		clsMaquina b = Mockito.mock(clsMaquina.class);
+		Mockito.when(a.getValor()).thenReturn((double) 5);
+		Mockito.when(b.getValor()).thenReturn((double) 3);
+		listado.add(a);
+		listado.add(b);
+		//listado.add(new clsMaquina("a","a",3,"a","a"));
+		//listado.add(new clsMaquina("b","b",2,"b","b"));
+		//IGestor gestor = Mockito.mock(IGestor.class);
+		//Mockito.when(gestor.valor_medio_maquinas2(listado)).thenReturn((double) 4);
 		ges= new clsGestor();
-		ges.setCal(gestor);
-		mockedcliente= Mockito.mock(clsCliente.class);
-		Mockito.when(mockedcliente.getApellido1()).thenReturn("Hola");
+		//ges.setCal(gestor);
+		//mockedcliente= Mockito.mock(clsCliente.class);
+		//Mockito.when(mockedcliente.getApellido1()).thenReturn("Hola");
 		
 		
 	}
@@ -40,8 +46,8 @@ public class MockTest {
 	
 	@Test
 	public void test() {
-		Assert.assertEquals((double)4, ges.media(listado),0.1);
-		Assert.assertEquals("Hola", mockedcliente.getApellido1());
+		Assert.assertEquals((double)4, ges.valor_medio_maquinas3(listado),0.1);
+		//Assert.assertEquals("Hola", mockedcliente.getApellido1());
 	}
 
 }
