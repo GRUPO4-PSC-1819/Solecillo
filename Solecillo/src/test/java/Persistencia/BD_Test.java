@@ -2,6 +2,8 @@ package Persistencia;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
+
 import org.junit.Test;
 
 import LN.clsCliente;
@@ -15,6 +17,7 @@ public class BD_Test {
 
 	@Test
 	public void test() {
+		Connection conec=clsBD.initBD("Solecillo.bd");
 		clsBD.crearTablaBD("USUARIO");
 		clsBD.crearTablaBD("MAQUINA");
 		clsBD.crearTablaBD("CLIENTE");
