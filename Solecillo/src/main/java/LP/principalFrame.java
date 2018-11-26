@@ -19,6 +19,10 @@ import Comun.clsConstantes;
 import LN.clsCliente;
 import LN.clsClienteRepetido;
 import LN.clsGestor;
+import LN.clsMaquina_Eolica;
+import LN.clsMaquina_Hidraulica;
+import LN.clsMaquina_Mareomotriz;
+import LN.clsMaquina_Solar;
 import LN.clsUsuario;
 import LN.clsUsuarioRepetido;
 import LN.clsVenta;
@@ -68,6 +72,10 @@ public class principalFrame extends JFrame {
 	principalFrame a;
 	private ArrayList<clsCliente> clnts;
 	private ArrayList<clsVenta> ventas;
+	private ArrayList<clsMaquina_Eolica> me;
+	private ArrayList<clsMaquina_Hidraulica> mh;
+	private ArrayList<clsMaquina_Mareomotriz> mm;
+	private ArrayList<clsMaquina_Solar> ms;
 	private clsGestor objGestor;
 	private TextField textNombre;
 	private TextField textApe1;
@@ -165,14 +173,24 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		btngrafico4.setBounds(50, 350, 300, 100);
 		btngrafico4.setFont(new Font("Arial", Font.PLAIN, 16));
 		btngrafico4.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				me=objGestor.ListaEolica();
+				mh=objGestor.ListaHidraulica();
+				mm=objGestor.ListaMareomotriz();
+				ms=objGestor.ListaSolar();
+				if(me.size()>0||mh.size()>0||mm.size()>0||ms.size()>0)
+				{
 		        	  Valor_Medio_Maquinas chart = new Valor_Medio_Maquinas("Valor medio máquinas", 
 		        		         "¿Cuánto valen?");
 		        		      chart.pack( );        
 		        		      RefineryUtilities.centerFrameOnScreen( chart );        
 		        		      chart.setVisible( true ); 
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "No hay máquinas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}});
 		panel.add(btngrafico4);
 		
@@ -206,12 +224,22 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				me=objGestor.ListaEolica();
+				mh=objGestor.ListaHidraulica();
+				mm=objGestor.ListaMareomotriz();
+				ms=objGestor.ListaSolar();
+				if(me.size()>0||mh.size()>0||mm.size()>0||ms.size()>0)
+				{
 					  Valor_Estado demo = new Valor_Estado( "Ventas" );  
 				      demo.setSize( 560 , 367 );    
 				      RefineryUtilities.centerFrameOnScreen( demo );   
 				      demo.pack();
 				      demo.setVisible( true ); 
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "No hay máquinas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}});
 		panel.add(btngrafico6);
 		
@@ -219,14 +247,22 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		btngrafico7.setBounds(600, 350, 300, 100);
 		btngrafico7.setFont(new Font("Arial", Font.PLAIN, 16));
 		btngrafico7.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				 Rio_Fabricante_Maquina chart = new Rio_Fabricante_Maquina("Fabricantes por río", 
+				mh=objGestor.ListaHidraulica();
+				if(mh.size()>0)
+				{
+					Rio_Fabricante_Maquina chart = new Rio_Fabricante_Maquina("Fabricantes por río", 
         		         "¿Cuántas máquinas son de cada fabricante?");
         		      chart.pack( );        
         		      RefineryUtilities.centerFrameOnScreen( chart );        
-        		      chart.setVisible( true ); 
+        		      chart.setVisible( true );
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "No hay máquinas hidráulicas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}});
 		panel.add(btngrafico7);
 		
@@ -236,12 +272,20 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		btngrafico8.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {				
-				Pueblo_Altura_Diametro chart = new Pueblo_Altura_Diametro("Medias eólicas / Pueblo", 
+			public void actionPerformed(ActionEvent e) {	
+				me=objGestor.ListaEolica();
+				if(me.size()>0)
+				{
+					Pueblo_Altura_Diametro chart = new Pueblo_Altura_Diametro("Medias eólicas / Pueblo", 
         		         "¿Cuál es la altura y diametro medios?");
         		      chart.pack( );        
         		      RefineryUtilities.centerFrameOnScreen( chart );        
-        		      chart.setVisible( true );
+        		      chart.setVisible( true );	
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "No hay máquinas eólicas todavía.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}});
 		panel.add(btngrafico8);
 		
