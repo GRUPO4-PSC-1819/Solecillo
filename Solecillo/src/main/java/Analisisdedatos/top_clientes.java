@@ -26,6 +26,15 @@ public top_clientes( String title ) {
       setContentPane(createDemoPanel( ));
       	
    }
+
+public top_clientes( String title ,ArrayList<clsCliente> a) {
+	  
+    super( title ); 
+    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    setContentPane(createDemoPanel( a));
+    	
+ }
+ 
    
    private static PieDataset createDataset( ) {
       DefaultPieDataset dataset = new DefaultPieDataset( );
@@ -38,7 +47,15 @@ public top_clientes( String title ) {
       }
       return dataset;         
    }
-   
+   private static PieDataset createDataset( ArrayList<clsCliente> a) {
+	      DefaultPieDataset dataset = new DefaultPieDataset( );
+	      ArrayList<clsCliente> top_c=a;
+	      for(clsCliente c:top_c)
+	      {
+	    	  dataset.setValue(c.getdni(), c.getTot_Ventas());
+	      }
+	      return dataset;         
+	   }
    private static JFreeChart createChart( PieDataset dataset ) {
       JFreeChart chart = ChartFactory.createPieChart(      
          "Ventas Clientes TOP",   // chart title 
@@ -50,6 +67,11 @@ public top_clientes( String title ) {
       return chart;
    }
    
+   public static JPanel createDemoPanel( ArrayList<clsCliente> a) {
+	      JFreeChart chart = createChart(createDataset( a) );
+	      
+	      return new ChartPanel( chart ); 
+	   }
    public static JPanel createDemoPanel( ) {
       JFreeChart chart = createChart(createDataset( ) );
       
