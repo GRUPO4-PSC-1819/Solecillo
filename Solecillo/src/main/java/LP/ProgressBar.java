@@ -49,7 +49,7 @@ public class ProgressBar extends JFrame
 	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
 	/*Logger de la clase*/
-	private static Logger logger = Logger.getLogger( "Mariano" );
+	private static Logger logger = Logger.getLogger( "Solecillo" );
 	static 
 	{
 		try
@@ -67,7 +67,7 @@ public class ProgressBar extends JFrame
 					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
 				}
 			};
-			FileOutputStream fLog = new FileOutputStream( "Mariano"+".log" , ANYADIR_A_FIC_LOG );
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
 			Handler h = new StreamHandler( fLog, f );
 			h.setLevel( Level.FINEST );
 			logger.addHandler( h );
