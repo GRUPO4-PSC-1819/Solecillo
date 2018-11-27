@@ -1,10 +1,22 @@
 package Persistencia;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
 import javax.swing.JOptionPane;
 import LN.clsCliente;
 import LN.clsMaquina_Eolica;
@@ -13,6 +25,7 @@ import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
 import LN.clsUsuario;
 import LN.clsVenta;
+import LP.clsAltaEolica;
 /**
  * Clase que se encargará de pasar la información de memoria a una Base de Datos, y al mismo tiempo, que extraerá
  * dicha información de esta BD a memoria.
@@ -20,6 +33,40 @@ import LN.clsVenta;
  */
 public class clsBD 
 {
+	
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	private static Connection connection = null;
 	private static Statement statement = null;
 
@@ -30,6 +77,7 @@ public class clsBD
 	 */
 	public static Connection initBD( String nombreBD ) 
 	{
+		logger.log( Level.INFO, "Iniciando la Base de Datos "+nombreBD);
 		try 
 		{
 		    Class.forName("org.sqlite.JDBC");
@@ -47,6 +95,7 @@ public class clsBD
 	/** Cierra la conexión con la Base de Datos
 	 */
 	public static void close() {
+		logger.log( Level.INFO, "Cerrando la Base de Datos");
 		try 
 		{
 			statement.close();
@@ -79,6 +128,7 @@ public class clsBD
 	 */
 	public static void crearTablaBD(String tipo_tabla)
 	{
+		logger.log( Level.INFO, "Creando en Base de Datos la tabla "+tipo_tabla);
 		if (statement==null) return;
 		switch (tipo_tabla)
 		{
@@ -153,6 +203,7 @@ public class clsBD
 		if (obj instanceof clsUsuario)
 			try 
 			{
+				logger.log( Level.INFO, "Insertando usuario con nickname: "+((clsUsuario)obj).getNickname());
 				statement.executeUpdate("INSERT INTO USUARIO VALUES ('"+((clsUsuario)obj).getNickname()+"','"
 						+ ((clsUsuario)obj).getContraseña()+"','"
 						+((clsUsuario)obj).getNombre()+"','"
@@ -166,6 +217,7 @@ public class clsBD
 		{
 			try 
 			{
+				logger.log( Level.INFO, "Insertando máquina eólica");
 				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Eolica)obj).getNombre()+"','"
@@ -190,6 +242,7 @@ public class clsBD
 		{
 			try 
 			{
+				logger.log( Level.INFO, "Insertando máquina hidráulica");
 				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Hidraulica)obj).getNombre()+"','"
@@ -214,6 +267,7 @@ public class clsBD
 		{
 			try 
 			{
+				logger.log( Level.INFO, "Insertando máquina mareomotriz");
 				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Mareomotriz)obj).getNombre()+"','"
@@ -238,6 +292,7 @@ public class clsBD
 		{
 			try 
 			{
+				logger.log( Level.INFO, "Insertando máquina solar");
 				statement.executeUpdate("INSERT INTO MAQUINA (NOMBRE, COLOR, VALOR, FABRICANTE, TIPO, ESTADO, NOMBRE_PUEBLO, "
 						+"NOMBRE_CAMPO, ALTURA, DIAMETRO, NOMBRE_RIO, DISTANCIA_MILLAS) VALUES "
 						+"('"+((clsMaquina_Solar)obj).getNombre()+"','"
@@ -262,6 +317,7 @@ public class clsBD
 		{
 			try 
 			{
+				logger.log( Level.INFO, "Insertando cliente con DNI: "+((clsCliente)obj).getdni());
 				statement.executeUpdate("INSERT INTO CLIENTE VALUES ('"+((clsCliente)obj).getNombre()+"','"
 						+ ((clsCliente)obj).getApellido1()+"','"
 						+((clsCliente)obj).getApellido2()+"','"
@@ -276,6 +332,7 @@ public class clsBD
 		{
 			try 
 			{
+				logger.log( Level.INFO, "Insertando venta");
 				statement.executeUpdate("INSERT INTO VENTA (DNIC, IDM, CANTIDAD) VALUES ('"
 						+ ((clsVenta)obj).getDniC()+"',"
 						+((clsVenta)obj).getIdm()+","
@@ -302,6 +359,7 @@ public class clsBD
 		case "USUARIO": 
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de la tabla "+tipo_tabla);
 			    rs = statement.executeQuery("select * from USUARIO");
 			} 
 			catch (SQLException e1) 
@@ -313,6 +371,7 @@ public class clsBD
 		case "MAQUINA_E": 
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de máquinas eólicas");
 			    rs = statement.executeQuery("select * from MAQUINA where tipo='E'");
 			} 
 			catch (SQLException e1) 
@@ -324,6 +383,7 @@ public class clsBD
 		case "MAQUINA_H": 
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de máquinas hidráulicas");
 			    rs = statement.executeQuery("select * from MAQUINA where tipo='H'");
 			} 
 			catch (SQLException e1) 
@@ -335,6 +395,7 @@ public class clsBD
 		case "MAQUINA_M": 
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de máquinas mareomotrices");
 			    rs = statement.executeQuery("select * from MAQUINA where tipo='M'");
 			} 
 			catch (SQLException e1) 
@@ -346,6 +407,7 @@ public class clsBD
 		case "MAQUINA_S": 
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de máquinas solares");
 			    rs = statement.executeQuery("select * from MAQUINA where tipo='S'");
 			} 
 			catch (SQLException e1) 
@@ -357,6 +419,7 @@ public class clsBD
 		case "CLIENTE":
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de la tabla "+tipo_tabla);
 			    rs = statement.executeQuery("SELECT * from CLIENTE");
 			} 
 			catch (SQLException e1) 
@@ -367,6 +430,7 @@ public class clsBD
 		case "VENTA":
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de la tabla "+tipo_tabla);
 			    rs = statement.executeQuery("SELECT * from VENTA");
 			} 
 			catch (SQLException e1) 
@@ -389,6 +453,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo todos los datos de la máquina con ID: "+id);
 			    rs = statement.executeQuery("select * from MAQUINA where id="+id);
 			} 
 			catch (SQLException e1) 
@@ -408,6 +473,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo datos de los clientes top");
 			    rs = statement.executeQuery("SELECT dnic, sum(cantidad) as TOTAL_VENTAS FROM venta GROUP BY dnic ORDER BY sum(cantidad) DESC LIMIT 5");
 			} 
 			catch (SQLException e1) 
@@ -427,6 +493,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo datos del valor medio de las máquinas");
 			    rs = statement.executeQuery("SELECT tipo, avg(valor) AS MEDIA_VALOR FROM maquina GROUP BY tipo");
 			} 
 			catch (SQLException e1) 
@@ -446,6 +513,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo datos del ventas por tipo de máquina");
 			    rs = statement.executeQuery("SELECT m.tipo, sum(v.cantidad) AS TOTAL_VENTAS FROM venta v INNER JOIN maquina m ON v.idm=m.id GROUP BY m.tipo");
 			} 
 			catch (SQLException e1) 
@@ -465,6 +533,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo datos del valor según el estado de las máquinas");
 			    rs = statement.executeQuery("SELECT estado, avg(valor) AS VALOR_MEDIO FROM maquina GROUP BY estado");
 			} 
 			catch (SQLException e1) 
@@ -484,6 +553,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo datos número de máquinas que tiene cada fabricante en cada río");
 			    rs = statement.executeQuery("SELECT nombre_rio, fabricante, count(id) AS TOTAL_MAQUINAS FROM maquina WHERE nombre_rio IS NOT '' GROUP BY nombre_rio, fabricante ORDER BY fabricante, nombre_rio");
 			} 
 			catch (SQLException e1) 
@@ -503,6 +573,7 @@ public class clsBD
 		ResultSet rs = null;
 			try 
 			{
+				logger.log( Level.INFO, "Obteniendo datos de medidas media de máquinas eólicas");
 			    rs = statement.executeQuery("SELECT nombre_pueblo, avg(altura) AS MEDIA_ALTURA, avg(diametro) AS MEDIA_DIAMETRO FROM maquina WHERE altura>0 GROUP BY nombre_pueblo");
 			} 
 			catch (SQLException e1) 
@@ -522,6 +593,7 @@ public class clsBD
 		if (obj instanceof clsUsuario)
 			try 
 			{
+				logger.log( Level.INFO, "Modificando en la Base de Datos al usuario con nickname: "+((clsUsuario)obj).getNickname());
 				statement.executeUpdate("UPDATE USUARIO SET CONTRASENYA ='"+((clsUsuario)obj).getContraseña()+"',"
 						+ "NOMBRE = '"+((clsUsuario)obj).getNombre()+"',"
 						+ "APELLIDO1 = '"+((clsUsuario)obj).getApellido1()+"', APELLIDO2 = '"+((clsUsuario)obj).getApellido2()+"'"
@@ -542,6 +614,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Modificando en la Base de Datos la máquina eólica con ID: "+id);
 				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
@@ -568,6 +641,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Modificando en la Base de Datos la máquina hidráulica con ID: "+id);
 				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
@@ -576,8 +650,6 @@ public class clsBD
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "NOMBRE_RIO = '"+nr+"' "
 						+ "WHERE ID = "+id+"");
-				
-				
 			} 
 			catch (SQLException e1) 
 			{
@@ -594,6 +666,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Modificando en la Base de Datos la máquina mareomotriz con ID: "+id);
 				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
@@ -601,9 +674,7 @@ public class clsBD
 						+ "ESTADO = '"+e+"',"
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "DISTANCIA_MILLAS = "+d+" "
-						+ "WHERE ID = "+id+"");
-				
-				
+						+ "WHERE ID = "+id+"");			
 			} 
 			catch (SQLException e1) 
 			{
@@ -620,6 +691,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Modificando en la Base de Datos la máquina solar con ID: "+id);
 				statement.executeUpdate("UPDATE MAQUINA SET NOMBRE ='"+n+"',"
 						+ "COLOR = '"+c+"',"
 						+ "VALOR = "+v+"," 
@@ -627,9 +699,7 @@ public class clsBD
 						+ "ESTADO = '"+e+"',"
 						+ "NOMBRE_PUEBLO = '"+np+"',"
 						+ "NOMBRE_CAMPO = '"+nc+"' "
-						+ "WHERE ID = "+id+"");
-				
-				
+						+ "WHERE ID = "+id+"");				
 			} 				 
 			catch (SQLException e1)
 			{	
@@ -645,6 +715,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Borrando todos los usuarios de la Base de Datos");
 				statement.executeQuery("DELETE FROM USUARIO");
 			} 
 			catch (SQLException e1) 
@@ -661,6 +732,7 @@ public class clsBD
 		if (statement==null) return;
 		try 
 		{
+			logger.log( Level.INFO, "Borrando todos los clientes de la Base de Datos");
 			statement.executeQuery("DELETE FROM CLIENTE");
 		} 
 		catch (SQLException e1) 
@@ -677,6 +749,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Borrando todas las máquinas de la Base de Datos");
 				statement.executeQuery("DELETE FROM MAQUINA");
 			} 
 			catch (SQLException e1) 
@@ -693,6 +766,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Borrando todas las ventas de la Base de Datos");
 				statement.executeQuery("DELETE FROM VENTA");
 			} 
 			catch (SQLException e1) 
@@ -710,6 +784,7 @@ public class clsBD
 		if (statement==null) return;
 			try 
 			{
+				logger.log( Level.INFO, "Borrando de la Base de Datos la máquina con ID: "+id);
 				statement.executeQuery("DELETE FROM MAQUINA WHERE ID="+id);
 			} 
 			catch (SQLException e1) 

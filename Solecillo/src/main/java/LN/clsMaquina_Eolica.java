@@ -1,6 +1,19 @@
 package LN;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
+import LP.clsAltaEolica;
 
 /**
  * Clase creada para generar un objeto nuevo (clsMaquina_Eolica).
@@ -16,6 +29,39 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 	private double diametro;
 
 
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	/**
 	 * Constructor con todos los parámetros
 	 */
@@ -26,6 +72,7 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 			this.nombre_campo=nc;
 			this.altura=a;
 			this.diametro=d;
+		    logger.log( Level.INFO, "Constructor máquina eólica con todos los parámetros");
 		}
 		
 	/**
@@ -38,6 +85,7 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 					this.nombre_campo=nc;
 					this.altura=a;
 					this.diametro=d;
+					logger.log( Level.INFO, "Constructor máquina eólica con todos los parámetros menos id");
 				}
 	
 	/**
@@ -48,6 +96,7 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 					this.nombre_pueblo=np;
 					this.altura=a;
 					this.diametro=d;
+					logger.log( Level.INFO, "Constructor máquina eólica con nombre pueblo, altura y diametro");
 				}
 		
 	/**
@@ -60,6 +109,7 @@ public class clsMaquina_Eolica extends clsMaquina implements Serializable {
 			this.nombre_campo=null;
 			this.altura=0.0;
 			this.diametro=0.0;
+			logger.log( Level.INFO, "Constructor máquina eólica vacío");
 		}
 		
 		

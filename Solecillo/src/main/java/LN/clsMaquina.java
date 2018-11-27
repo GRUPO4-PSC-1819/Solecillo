@@ -1,5 +1,18 @@
 package LN;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
+import LP.clsAltaEolica;
 
 
 /**
@@ -21,6 +34,40 @@ public class clsMaquina implements Serializable
 	private int tot_v;
 	private int tot_maquinas;
 
+	
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	/**
 	 * Constructor con todos los parámetros
 	 */
@@ -32,6 +79,7 @@ public class clsMaquina implements Serializable
 		this.valor=v;
 		this.fabricante=f;
 		this.estado=e;
+		logger.log( Level.INFO, "Constructor máquina con todos los parámetros");
 	}
 	/**
 	 * Constructor con todos los parámetros, excepto el id
@@ -43,6 +91,7 @@ public class clsMaquina implements Serializable
 				this.valor=v;
 				this.fabricante=f;
 				this.estado=e;
+				logger.log( Level.INFO, "Constructor máquina con todos los parámetros excepto el id");
 			}
 			
 			/**
@@ -53,6 +102,7 @@ public class clsMaquina implements Serializable
 				this.tipo=t;
 				this.estado=t;
 				this.valor=v;
+				logger.log( Level.INFO, "Constructor máquina con tipo/estado y valor");
 			}
 			
 			/**
@@ -64,6 +114,7 @@ public class clsMaquina implements Serializable
 				this.fabricante=t;
 				this.tot_v=tot_v;
 				this.tot_maquinas=tot_v;
+				logger.log( Level.INFO, "Constructor máquina con tipo/fabricante y total_ventas/total_maquinas");
 			}
 			
 			/**
@@ -77,6 +128,7 @@ public class clsMaquina implements Serializable
 		this.valor=0.0;
 		this.fabricante=null;
 		this.estado=null;
+		logger.log( Level.INFO, "Constructor máquina vacío");
 	}
 	
 	@Override

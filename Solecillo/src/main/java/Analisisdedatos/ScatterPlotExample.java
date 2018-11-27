@@ -3,6 +3,10 @@ package Analisisdedatos;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -13,6 +17,8 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+
+import LP.clsAltaEolica;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.evaluation.Prediction;
@@ -21,8 +27,16 @@ import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 
 /**
  * Clase para crear un gráfico en el que se predecirá el estado de las máquinas. 
@@ -36,7 +50,39 @@ public class ScatterPlotExample extends JFrame {
 	static XYSeries series1;
 	static XYSeries series2;
 	
+private static final boolean ANYADIR_A_FIC_LOG = true;
 	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
   private static final long serialVersionUID = 6294689542092367723L;
 
   public ScatterPlotExample(String title) {
@@ -51,6 +97,7 @@ public class ScatterPlotExample extends JFrame {
     atts.add(new Attribute("@@class@@",classVal));
     data=new Instances("Train",atts,0);
     test=new Instances("Train",atts,0);
+    logger.log( Level.INFO, "Introduciendo datos en el gráfico de ScatterPlotExample");
 
     // Create dataset
     XYDataset dataset = createDataset();

@@ -1,6 +1,19 @@
 package LN;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
+import LP.clsAltaEolica;
 
 /**
  * Clase creada para generar un objeto nuevo (clsUsuarios). Implementa la interfaz Comparable con clsCliente y Serializable. <br>
@@ -18,6 +31,40 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 	private String nickname;
 	private String contraseña;
 	
+	
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	/**
 	 * Constructor con todos los parámetros
 	 */
@@ -28,6 +75,7 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 		apellido2=ap2;
 		nickname=nick;
 		contraseña=cont;
+		logger.log( Level.INFO, "Constructor usuario con todos los parámetros");
 	}
 		
 	/**
@@ -40,6 +88,7 @@ public class clsUsuario implements Serializable, Comparable<clsUsuario>
 		apellido2=null;
 		nickname=null;
 		contraseña=null;
+		logger.log( Level.INFO, "Constructor usuario vacío");
 	}
 	
 	/**

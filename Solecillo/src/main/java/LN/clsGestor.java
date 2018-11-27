@@ -1,14 +1,26 @@
 package LN;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
 
 import Comun.clsConstantes;
 import LN.clsUsuario;
+import LP.clsAltaEolica;
 import Persistencia.clsBD;
 
 /**
@@ -18,6 +30,40 @@ import Persistencia.clsBD;
 
 public class clsGestor implements Serializable
 {
+	
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	private static final long serialVersionUID = 1L;
 	IGestor ges;
 	
@@ -34,6 +80,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsUsuario> ListaUsuarios()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de usuarios");
 		ArrayList<clsUsuario> lista = new ArrayList <clsUsuario>();
 		clsBD.crearTablaBD(clsConstantes.USUARIO);
 		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.USUARIO);
@@ -65,6 +112,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina_Eolica> ListaEolica()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de máquinas eólicas");
 		ArrayList<clsMaquina_Eolica> lista = new ArrayList <clsMaquina_Eolica>();
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_E);
@@ -104,6 +152,7 @@ public class clsGestor implements Serializable
 	 */
 	public clsMaquina_Eolica ObtenerEolica(int id)	
 	{	
+		logger.log( Level.INFO, "Llamando al método de obtener una máquina eólica");
 		clsMaquina_Eolica m=null;
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
@@ -142,6 +191,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina_Hidraulica> ListaHidraulica()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de máquinas hidráulicas");
 		ArrayList<clsMaquina_Hidraulica> lista = new ArrayList <clsMaquina_Hidraulica>();
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_H);
@@ -177,6 +227,7 @@ public class clsGestor implements Serializable
 	 */
 	public clsMaquina_Hidraulica ObtenerHidraulica(int id)	
 	{	
+		logger.log( Level.INFO, "Llamando al método de obtener una máquina hidráulica");
 		clsMaquina_Hidraulica m=null;
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
@@ -213,6 +264,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina_Mareomotriz> ListaMareomotriz()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de máquinas mareomotrices");
 		ArrayList<clsMaquina_Mareomotriz> lista = new ArrayList <clsMaquina_Mareomotriz>();
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_M);
@@ -248,6 +300,7 @@ public class clsGestor implements Serializable
 	 */
 	public clsMaquina_Mareomotriz ObtenerMareomotriz(int id)	
 	{	
+		logger.log( Level.INFO, "Llamando al método de obtener una máquina mareomotriz");
 		clsMaquina_Mareomotriz m=null;
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
@@ -282,6 +335,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina_Solar> ListaSolar()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de máquinas solares");
 		ArrayList<clsMaquina_Solar> lista = new ArrayList <clsMaquina_Solar>();
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.MAQUINA_S);
@@ -317,6 +371,7 @@ public class clsGestor implements Serializable
 	 */
 	public clsMaquina_Solar ObtenerSolar(int id)	
 	{	
+		logger.log( Level.INFO, "Llamando al método de obtener una máquina solar");
 		clsMaquina_Solar m=null;
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
 		ResultSet rs = clsBD.ObtenerUnaMaquina(id);
@@ -351,6 +406,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsCliente> ListaClientes()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de clientes");
 		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
 		ResultSet rs = clsBD.obtenerDatosTablaBD("CLIENTE");
 		if (rs != null)
@@ -383,6 +439,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsVenta> ListaVentas()	
 	{	
+		logger.log( Level.INFO, "Llamando al método de listado de ventas");
 		ArrayList<clsVenta> lista = new ArrayList <clsVenta>();
 		ResultSet rs = clsBD.obtenerDatosTablaBD(clsConstantes.VENTA);
 
@@ -416,6 +473,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearUsuario(String n, String ap1, String ap2, String nick, String cont) throws clsUsuarioRepetido
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nuevo usuario");
 		clsUsuario nuevo=new clsUsuario(n, ap1, ap2, nick, cont);
 		ArrayList<clsUsuario> listausuarios=new ArrayList<clsUsuario>();
 		listausuarios=ListaUsuarios();
@@ -440,6 +498,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearCliente(String n, String ap1, String ap2, String dni, String empresa) throws clsClienteRepetido
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nuevo cliente");
 		clsCliente nuevo=new clsCliente(n, ap1, ap2, dni, empresa);
 		ArrayList<clsCliente> listaClientes=new ArrayList<clsCliente>();
 		listaClientes=ListaClientes();
@@ -461,6 +520,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearMaquinaEolica(String n, String col, double val, String fab, String e, String np, String nc, double a, double d)
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nueva máquina eólica");
 		clsMaquina_Eolica nuevo=new clsMaquina_Eolica(n, col, val, fab, e, np, nc, a, d);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
@@ -471,6 +531,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearMaquinaHidraulica(String n, String col, double val, String fab, String e, String np, String nr)
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nueva máquina hidráulica");
 		clsMaquina_Hidraulica nuevo=new clsMaquina_Hidraulica(n, col, val, fab, e, np, nr);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
@@ -481,6 +542,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearMaquinaMareomotriz(String n, String col, double val, String fab, String e, String np, double distancia)
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nueva máquina mareomotriz");
 		clsMaquina_Mareomotriz nuevo=new clsMaquina_Mareomotriz(n, col, val, fab, e, np, distancia);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
@@ -491,6 +553,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearMaquinaSolar(String n, String col, double val, String fab, String e, String np, String nc)
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nueva máquina solar");
 		clsMaquina_Solar nuevo=new clsMaquina_Solar(n, col, val, fab, e, np, nc);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
@@ -501,6 +564,7 @@ public class clsGestor implements Serializable
 	 */
 	public void CrearVenta(int idm, String dniC, int can)
 	{
+		logger.log( Level.INFO, "Llamando al método de crear nueva venta");
 		clsVenta nuevo=new clsVenta(idm, dniC, can);
 		clsBD.insertarDatoTablaBD(nuevo);
 	}
@@ -512,6 +576,7 @@ public class clsGestor implements Serializable
 	 */
 	public clsUsuario ModificarUsuario (String n, String ap1, String ap2, String nick, String cont)
 	{
+		logger.log( Level.INFO, "Llamando al método de modificar usuario");
 		clsUsuario modificado=new clsUsuario(n, ap1, ap2, nick, cont);
 		clsBD.modificarUsuario(modificado);
 		return modificado;
@@ -524,6 +589,7 @@ public class clsGestor implements Serializable
 	 */
 	public void BorrarMaquina(int id)
 	{
+		logger.log( Level.INFO, "Llamando al método de borrar una máquina");
 		clsBD.BorrarMaquina(id);
 	}
 	
@@ -532,6 +598,7 @@ public class clsGestor implements Serializable
 	 */
 	public void BorrarUsuarios()
 	{
+		logger.log( Level.INFO, "Llamando al método de borrar usuarios");
 		clsBD.BorrarUsuarios();
 	}
 	
@@ -540,6 +607,7 @@ public class clsGestor implements Serializable
 	 */
 	public void BorrarClientes()
 	{
+		logger.log( Level.INFO, "Llamando al método de borrar clientes");
 		clsBD.BorrarClientes();
 	}
 	
@@ -548,6 +616,7 @@ public class clsGestor implements Serializable
 	 */
 	public void BorrarMaquinas()
 	{
+		logger.log( Level.INFO, "Llamando al método de borrar máquinas");
 		clsBD.BorrarMaquinas();
 	}
 	
@@ -556,6 +625,7 @@ public class clsGestor implements Serializable
 	 */
 	public void BorrarVentas()
 	{
+		logger.log( Level.INFO, "Llamando al método de borrar ventas");
 		clsBD.BorrarVentas();
 	}
 	
@@ -565,6 +635,7 @@ public class clsGestor implements Serializable
 	 */
 	public void ModificarMaquinaEolica(int id, String n, String col, double val, String fab, String e, String np, String nc, double a, double d)
 	{
+		logger.log( Level.INFO, "Llamando al método de modificar una máquina eólica");
 		clsBD.modificarEolica(id, n, col, val, fab, e, np, nc, a, d);
 	}
 	
@@ -574,6 +645,7 @@ public class clsGestor implements Serializable
 	 */
 	public void ModificarMaquinaHidraulica(int id, String n, String col, double val, String fab, String e, String np, String nr)
 	{
+		logger.log( Level.INFO, "Llamando al método de modificar una máquina hidráulica");
 		clsBD.modificarHidraulica(id, n, col, val, fab, e, np, nr);
 	}
 	
@@ -583,6 +655,7 @@ public class clsGestor implements Serializable
 	 */
 	public void ModificarMaquinaMareomotriz(int id, String n, String col, double val, String fab, String e, String np, double d)
 	{
+		logger.log( Level.INFO, "Llamando al método de modificar una máquina mareomotriz");
 		clsBD.modificarMareomotriz(id, n, col, val, fab, e, np, d);
 	}
 	
@@ -592,6 +665,7 @@ public class clsGestor implements Serializable
 	 */
 	public void ModificarMaquinaSolar(int id, String n, String col, double val, String fab, String e, String np, String nc)
 	{
+		logger.log( Level.INFO, "Llamando al método de modificar una máquina solar");
 		clsBD.modificarSolar(id, n, col, val, fab, e, np, nc);
 	}
 	
@@ -600,6 +674,7 @@ public class clsGestor implements Serializable
 	 */
 	public void MigracionUsuarios() throws clsUsuarioRepetido
 	{
+		logger.log( Level.INFO, "Llamando al método de migrar usuarios");
 		BorrarUsuarios();
 		String nombre;
 		String apellido1;
@@ -622,6 +697,7 @@ public class clsGestor implements Serializable
 	 */
 	public void MigracionClientes() throws clsClienteRepetido
 	{
+		logger.log( Level.INFO, "Llamando al método de migrar clientes");
 		BorrarClientes();
 		String nombre_c;
 		String apellido1_c;
@@ -644,6 +720,7 @@ public class clsGestor implements Serializable
 	 */
 	public void MigracionMaquinas()
 	{
+		logger.log( Level.INFO, "Llamando al método de migrar máquinas");
 		BorrarMaquinas();
 		String nombre_m;
 		String color_m=null;
@@ -662,7 +739,7 @@ public class clsGestor implements Serializable
 		double max_d=80;
 		double min_dm=1;
 		double max_dm=15;
-		//EÓLICAS
+		logger.log( Level.INFO, "Empezando migración de máquinas eólicas");
 		for(int i3=0;i3<100;i3++)
 		{
 			nombre_m="NombreMáquinaEólica"+i3;
@@ -699,7 +776,7 @@ public class clsGestor implements Serializable
 			
 			CrearMaquinaEolica(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, nombre_campo_m, altura, diametro);
 		}
-		//HIDRÁULICAS
+		logger.log( Level.INFO, "Empezando migración de máquinas hidráulicas");
 		for(int i4=0;i4<100;i4++)
 		{
 			nombre_m="NombreMáquinaHidráulica"+i4;
@@ -735,7 +812,7 @@ public class clsGestor implements Serializable
 
 			CrearMaquinaHidraulica(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, nombre_rio_m);
 		}
-		//MAREOMOTRICES
+		logger.log( Level.INFO, "Empezando migración de máquinas mareomotrices");
 		for(int i5=0;i5<100;i5++)
 		{
 			nombre_m="NombreMáquinaMareomotriz"+i5;
@@ -767,7 +844,7 @@ public class clsGestor implements Serializable
 
 			CrearMaquinaMareomotriz(nombre_m, color_m, valor_m, fabricante_m, estado_m, nombre_pueblo_m, distancia);
 		}
-		//SOLARES
+		logger.log( Level.INFO, "Empezando migración de máquinas solares");
 		for(int i6=0;i6<100;i6++)
 		{
 			nombre_m="NombreMáquinaSolar"+i6;
@@ -807,6 +884,7 @@ public class clsGestor implements Serializable
 	 */
 	public void MigracionVentas()
 	{
+		logger.log( Level.INFO, "Llamando al método de migrar ventas");
 		BorrarVentas();
 		int id_m;
 		String dni_c;
@@ -831,6 +909,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsCliente> top_5_clientes()
 	{
+		logger.log( Level.INFO, "Llamando al método de lograr mejores clientes");
 		ArrayList<clsCliente> lista = new ArrayList <clsCliente>();
 		ResultSet rs = clsBD.clientesTOP();
 		if (rs != null)
@@ -859,6 +938,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina> valor_medio_maquinas()
 	{
+		logger.log( Level.INFO, "Llamando al método de valor medio de las máquinas");
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
 		ResultSet rs = clsBD.valor_medio_maquinas();
 		if (rs != null)
@@ -881,7 +961,6 @@ public class clsGestor implements Serializable
 		return lista;
 	}
 	
-
 	public double valor_medio_maquinas3(ArrayList<clsMaquina> lista2)
 	{
 		ArrayList<clsMaquina> lista = lista2;
@@ -904,6 +983,7 @@ public class clsGestor implements Serializable
 
 	public ArrayList<clsMaquina> ventas_tipo_maquina()
 	{
+		logger.log( Level.INFO, "Llamando al método de ventas por tipo de máquina");
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
 		ResultSet rs = clsBD.ventas_tipo_maquina();
 		if (rs != null)
@@ -932,6 +1012,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina> valor_estado_maquina()
 	{
+		logger.log( Level.INFO, "Llamando al método de valor según estado de las máquinas");
 		ArrayList<clsMaquina> lista = new ArrayList <clsMaquina>();
 		ResultSet rs = clsBD.valor_estado_maquina();
 		if (rs != null)
@@ -959,6 +1040,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina_Hidraulica> num_maquinas_rio_fabricante()
 	{
+		logger.log( Level.INFO, "Llamando al método de lograr número de máquinas por río-fabricante");
 		ArrayList<clsMaquina_Hidraulica> lista = new ArrayList <clsMaquina_Hidraulica>();
 		ResultSet rs = clsBD.num_maquinas_rio_fabricante();
 		if (rs != null)
@@ -987,6 +1069,7 @@ public class clsGestor implements Serializable
 	 */
 	public ArrayList<clsMaquina_Eolica> eolicas_pueblo_media_altura_diametro()
 	{
+		logger.log( Level.INFO, "Llamando al método de lograr medidas medias de las eólicas");
 		ArrayList<clsMaquina_Eolica> lista = new ArrayList <clsMaquina_Eolica>();
 		ResultSet rs = clsBD.eolicas_pueblo_media_altura_diametro();
 		if (rs != null)

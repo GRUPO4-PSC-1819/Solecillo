@@ -4,11 +4,22 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +30,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import LN.clsGestor;
 import LN.clsMaquina;
+import LP.clsAltaEolica;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.RandomForest;
 import weka.core.Instances;
@@ -29,6 +41,40 @@ import weka.core.Instances;
  */
 public class Valor_Estado extends JFrame {
    
+	
+private static final boolean ANYADIR_A_FIC_LOG = true;
+	
+	/*Logger*/
+	private static Logger logger = Logger.getLogger( "Solecillo" );
+	static 
+	{
+		try 
+		{
+			logger.setLevel( Level.FINEST );
+			Formatter f = new SimpleFormatter() 
+			{
+				@Override
+				public synchronized String format(LogRecord record) 
+				{
+					if (record.getLevel().intValue()<Level.CONFIG.intValue())
+						return "\t\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					if (record.getLevel().intValue()<Level.WARNING.intValue())
+						return "\t(" + record.getLevel() + ") " + record.getMessage() + "\n";
+					return "(" + record.getLevel() + ") " + record.getMessage() + "\n";
+				}
+			};
+			FileOutputStream fLog = new FileOutputStream( "Solecillo"+".log" , ANYADIR_A_FIC_LOG );
+			Handler h = new StreamHandler( fLog, f );
+			h.setLevel( Level.FINEST );
+			logger.addHandler( h );
+		} 
+		catch (SecurityException | IOException e) 
+		{
+			logger.log( Level.SEVERE, "No se ha podido crear fichero de log en clase "+ clsAltaEolica.class.getName() );
+		}
+		logger.log( Level.INFO, "" );
+		logger.log( Level.INFO, DateFormat.getDateTimeInstance( DateFormat.LONG, DateFormat.LONG ).format( new Date() ) );
+	}
 	private static final long serialVersionUID = 1L;
 
 public Valor_Estado( String title ) {
@@ -50,21 +96,6 @@ public Valor_Estado( String title ) {
 					e1.printStackTrace();
 				}
 				data.setClassIndex(data.numAttributes() - 1);
-				 /*data.setClassIndex(data.numAttributes() - 1);
-				 System.out.println(data);
-				 System.out.println(data.numInstances());
-				 
-				 
-				double Data[][] = new double[data.numInstances()][data.numAttributes() ];
-				   for (int i = 0; i < data.numInstances(); i++) {
-				       for (int j = 0; j < data.numAttributes(); j++) {
-				           Data[i][j] = data.instance(i).value(j);
-				        }
-				    }
-				    
-				 /*System.out.println(data);
-				  * 
-				  */
 				 data.randomize(new java.util.Random(0));
 				 System.out.println(data);
 				 
@@ -113,6 +144,7 @@ public Valor_Estado( String title ) {
       DefaultPieDataset dataset = new DefaultPieDataset( );
       clsGestor gestor=new clsGestor();
       ArrayList<clsMaquina>lm=gestor.valor_estado_maquina();
+      logger.log( Level.INFO, "Introduciendo datos en el gráfico de Valor_Estado");
       for(clsMaquina m:lm)
       {
     	  dataset.setValue(m.getEstado(), m.getValor());
