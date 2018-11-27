@@ -19,7 +19,7 @@ public class Gestor_Test {
 		public ContiPerfRule i = new ContiPerfRule();
 		
 	@Before public void setUp() {
-		Connection conec=clsBD.initBD("Data/Solecillo.bd");
+		Connection conec=clsBD.initBD("Solecillo.bd");
 		clsBD.crearTablaBD(clsConstantes.USUARIO);
 		clsBD.crearTablaBD(clsConstantes.CLIENTE);
 		clsBD.crearTablaBD(clsConstantes.MAQUINA);
