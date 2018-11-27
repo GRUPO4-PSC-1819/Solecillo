@@ -75,7 +75,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		apellido2=ap2;
 		nickname=nick;
 		contraseña=cont;
-		logger.log( Level.INFO, "Constructor usuario con todos los parámetros");
+		//logger.log( Level.INFO, "Constructor usuario con todos los parámetros");
 	}
 		
 	/**
@@ -88,7 +88,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		apellido2=null;
 		nickname=null;
 		contraseña=null;
-		logger.log( Level.INFO, "Constructor usuario vacío");
+		//logger.log( Level.INFO, "Constructor usuario vacío");
 	}
 	
 	/**

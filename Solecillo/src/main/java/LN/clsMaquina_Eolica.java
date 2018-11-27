@@ -72,7 +72,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			this.nombre_campo=nc;
 			this.altura=a;
 			this.diametro=d;
-		    logger.log( Level.INFO, "Constructor máquina eólica con todos los parámetros");
+		    //logger.log( Level.INFO, "Constructor máquina eólica con todos los parámetros");
 		}
 		
 	/**
@@ -85,7 +85,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					this.nombre_campo=nc;
 					this.altura=a;
 					this.diametro=d;
-					logger.log( Level.INFO, "Constructor máquina eólica con todos los parámetros menos id");
+					//logger.log( Level.INFO, "Constructor máquina eólica con todos los parámetros menos id");
 				}
 	
 	/**
@@ -96,7 +96,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					this.nombre_pueblo=np;
 					this.altura=a;
 					this.diametro=d;
-					logger.log( Level.INFO, "Constructor máquina eólica con nombre pueblo, altura y diametro");
+					//logger.log( Level.INFO, "Constructor máquina eólica con nombre pueblo, altura y diametro");
 				}
 		
 	/**
@@ -109,7 +109,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			this.nombre_campo=null;
 			this.altura=0.0;
 			this.diametro=0.0;
-			logger.log( Level.INFO, "Constructor máquina eólica vacío");
+			//logger.log( Level.INFO, "Constructor máquina eólica vacío");
 		}
 		
 		

@@ -67,7 +67,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			super(id, n, color, v, f, e);
 			this.nombre_pueblo=np;
 			this.nombre_rio=nr;
-			logger.log( Level.INFO, "Constructor máquina hidráulica con todos los parámetros");
+			//logger.log( Level.INFO, "Constructor máquina hidráulica con todos los parámetros");
 		}
 		
 		/**
@@ -78,7 +78,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					super(n, color, v, f, e);
 					this.nombre_pueblo=np;
 					this.nombre_rio=nr;
-					logger.log( Level.INFO, "Constructor máquina hidráulica con todos los parámetros excepto el id");
+					//logger.log( Level.INFO, "Constructor máquina hidráulica con todos los parámetros excepto el id");
 				}
 				
 				/**
@@ -88,7 +88,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				{
 					super(f, tot_m);
 					this.nombre_rio=nr;
-					logger.log( Level.INFO, "Constructor máquina hidráulica con  nombre río, fabricante y total de máquinas");
+					//logger.log( Level.INFO, "Constructor máquina hidráulica con  nombre río, fabricante y total de máquinas");
 				}
 		
 				/**
@@ -99,7 +99,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					super();
 					this.nombre_pueblo=null;
 					this.nombre_rio=null;
-					logger.log( Level.INFO, "Constructor máquina hidráulica vacío");
+					//logger.log( Level.INFO, "Constructor máquina hidráulica vacío");
 				}
 		
 		

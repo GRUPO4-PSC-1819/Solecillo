@@ -79,7 +79,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		this.valor=v;
 		this.fabricante=f;
 		this.estado=e;
-		logger.log( Level.INFO, "Constructor máquina con todos los parámetros");
+		//logger.log( Level.INFO, "Constructor máquina con todos los parámetros");
 	}
 	/**
 	 * Constructor con todos los parámetros, excepto el id
@@ -91,7 +91,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				this.valor=v;
 				this.fabricante=f;
 				this.estado=e;
-				logger.log( Level.INFO, "Constructor máquina con todos los parámetros excepto el id");
+				//logger.log( Level.INFO, "Constructor máquina con todos los parámetros excepto el id");
 			}
 			
 			/**
@@ -102,7 +102,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				this.tipo=t;
 				this.estado=t;
 				this.valor=v;
-				logger.log( Level.INFO, "Constructor máquina con tipo/estado y valor");
+				//logger.log( Level.INFO, "Constructor máquina con tipo/estado y valor");
 			}
 			
 			/**
@@ -114,7 +114,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				this.fabricante=t;
 				this.tot_v=tot_v;
 				this.tot_maquinas=tot_v;
-				logger.log( Level.INFO, "Constructor máquina con tipo/fabricante y total_ventas/total_maquinas");
+				//logger.log( Level.INFO, "Constructor máquina con tipo/fabricante y total_ventas/total_maquinas");
 			}
 			
 			/**
@@ -128,7 +128,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		this.valor=0.0;
 		this.fabricante=null;
 		this.estado=null;
-		logger.log( Level.INFO, "Constructor máquina vacío");
+		//logger.log( Level.INFO, "Constructor máquina vacío");
 	}
 	
 	@Override

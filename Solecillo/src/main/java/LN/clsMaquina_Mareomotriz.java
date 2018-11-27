@@ -67,7 +67,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			super(id, n, color, v, f, e);
 			this.nombre_pueblo=np;
 			this.distancia_millas_marinas_pueblo=mm;
-			logger.log( Level.INFO, "Constructor máquina mareomotriz con todos los parámetros");
+			//logger.log( Level.INFO, "Constructor máquina mareomotriz con todos los parámetros");
 		}
 		
 		/**
@@ -78,7 +78,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					super(n, color, v, f, e);
 					this.nombre_pueblo=np;
 					this.distancia_millas_marinas_pueblo=mm;
-					logger.log( Level.INFO, "Constructor máquina mareomotriz con todos los parámetros excepto el id");
+					//logger.log( Level.INFO, "Constructor máquina mareomotriz con todos los parámetros excepto el id");
 				}
 		
 				/**
@@ -89,7 +89,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			super();
 			this.nombre_pueblo=null;
 			this.distancia_millas_marinas_pueblo=0.0;
-			logger.log( Level.INFO, "Constructor máquina mareomotriz vacío");
+			//logger.log( Level.INFO, "Constructor máquina mareomotriz vacío");
 		}
 		
 		

@@ -68,7 +68,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			super(id, n, color, v, f, e);
 			this.nombre_pueblo=np;
 			this.nombre_campo=nc;
-			logger.log( Level.INFO, "Constructor máquina solar con todos los parámetros");
+			//logger.log( Level.INFO, "Constructor máquina solar con todos los parámetros");
 		}
 		
 		/**
@@ -79,7 +79,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					super(n, color, v, f, e);
 					this.nombre_pueblo=np;
 					this.nombre_campo=nc;
-					logger.log( Level.INFO, "Constructor máquina solar con todos los parámetros excepto el id");
+					//logger.log( Level.INFO, "Constructor máquina solar con todos los parámetros excepto el id");
 				}
 		
 				/**
@@ -90,7 +90,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 			super();
 			this.nombre_pueblo=null;
 			this.nombre_campo=null;
-			logger.log( Level.INFO, "Constructor máquina solar vacío");
+			//logger.log( Level.INFO, "Constructor máquina solar vacío");
 		}
 		
 		

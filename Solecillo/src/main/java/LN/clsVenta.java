@@ -69,7 +69,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		this.idm = idm;
 		this.dniC = dniC;
 		this.cantidad = cantidad;
-	    logger.log( Level.INFO, "Constructor venta con todos los parámetros");
+		//logger.log( Level.INFO, "Constructor venta con todos los parámetros");
 	}
 	
 	/**
@@ -79,7 +79,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		this.idm = idm;
 		this.dniC = dniC;
 		this.cantidad = cantidad;
-		logger.log( Level.INFO, "Constructor venta con todos los parámetros excepto el id");
+		//logger.log( Level.INFO, "Constructor venta con todos los parámetros excepto el id");
 	}
 
 	@Override

@@ -98,7 +98,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		apellido2=ap2;
 		this.dni=dni;
 		setEmpresa(emp);
-	    logger.log( Level.INFO, "Constructor cliente con todos los parámetros");
+	    //logger.log( Level.INFO, "Constructor cliente con todos los parámetros");
 
 	}
 	
@@ -111,7 +111,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 	{
 		this.dni=dni;
 		this.tot_ventas=tot_ventas;
-		logger.log( Level.INFO, "Constructor cliente con solo dni y total ventas");
+		//logger.log( Level.INFO, "Constructor cliente con solo dni y total ventas");
 	}
 	
 	/**
@@ -124,7 +124,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		apellido2=null;
 		dni=null;
 		setEmpresa(null);
-		logger.log( Level.INFO, "Constructor cliente vacío");
+		//logger.log( Level.INFO, "Constructor cliente vacío");
 	}
 	
 	@Override

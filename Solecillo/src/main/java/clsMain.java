@@ -73,10 +73,10 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 					clsBD.crearTablaBD(clsConstantes.VENTA);
 					loginFrame p=new loginFrame();
 					logger.log( Level.INFO, "Entrando en la aplicación desde el main");
-					//p.textField.setText("admin");
-					//p.passwordField.setText("admin");
-					//p.chckbxAdministrador.setSelected(true);
-					//p.setVisible(true);
+					p.textField.setText("admin");
+					p.passwordField.setText("admin");
+					p.chckbxAdministrador.setSelected(true);
+					p.setVisible(true);
 				} 
 				catch (Exception e) 
 				{
