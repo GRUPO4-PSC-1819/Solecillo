@@ -67,7 +67,7 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 	private static final long serialVersionUID = 1L;
 	IGestor ges;
 	
-	public void setCal(IGestor cal) {
+	public void setI(IGestor cal) {
 		this.ges = cal;
 	}
 	public double media(ArrayList<clsMaquina> lista){
