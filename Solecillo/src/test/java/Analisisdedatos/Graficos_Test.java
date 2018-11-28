@@ -42,29 +42,81 @@ public class Graficos_Test {
 
 	@Test
 	public void test() {
-		Pueblo_Altura_Diametro p=new Pueblo_Altura_Diametro("", "");
-	      p.setSize( 560 , 367 );    
-	      RefineryUtilities.centerFrameOnScreen( p );   
-	      p.pack();
-		p.setVisible(true);
+		Pueblo_Altura_Diametro chart = new Pueblo_Altura_Diametro("Medias eólicas / Pueblo", 
+		         "¿Cuál es la altura y diametro medios?");
+		      chart.pack( );        
+		      RefineryUtilities.centerFrameOnScreen( chart );        
+		      chart.setVisible( true );	
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1500);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Rio_Fabricante_Maquina pq=new Rio_Fabricante_Maquina("", "");
-		pq.setVisible(true);
-		ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
-		example.setVisible(true);
-		top_clientes jn=new top_clientes("");
-		jn.setVisible(true);
-		Valor_Estado vg=new Valor_Estado("");
-		vg.setVisible(true);
-		Valor_Medio_Maquinas t =new Valor_Medio_Maquinas("", "");
-		t.setVisible(true);
-		Ventas_Maquina fve=new Ventas_Maquina("");
-		fve.setVisible(true);
+		
+		Rio_Fabricante_Maquina chart1 = new Rio_Fabricante_Maquina("Fabricantes por río", 
+		         "¿Cuántas máquinas son de cada fabricante?");
+		      chart1.pack( );        
+		      RefineryUtilities.centerFrameOnScreen( chart1 );        
+		      chart1.setVisible( true );
+		      
+		      try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} 
+		      
+		      ScatterPlotExample example = new ScatterPlotExample("Scatter Chart Example | BORAJI.COM");
+		      example.setSize(800, 400);
+		      example.setLocationRelativeTo(null);
+		      example.setVisible(true);
+		     
+		      try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+		      
+		      top_clientes demo = new top_clientes( "Ventas" );  
+		      demo.setSize( 560 , 367 );    
+		      RefineryUtilities.centerFrameOnScreen( demo );   
+		      demo.pack();
+		      demo.setVisible( true );
+		      
+		      try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+		      
+		      Valor_Estado demo4 = new Valor_Estado( "Ventas" );  
+		      demo4.setSize( 560 , 367 );    
+		      RefineryUtilities.centerFrameOnScreen( demo4 );   
+		      demo4.pack();
+		      demo4.setVisible( true );
+     		    
+     		     try {
+     				Thread.sleep(1500);
+     			} catch (InterruptedException e) {
+     				e.printStackTrace();
+     			}
+     		      
+     		     Valor_Medio_Maquinas chart3 = new Valor_Medio_Maquinas("Valor medio máquinas", 
+        		         "¿Cuánto valen?");
+        		      chart3.pack( );        
+        		      RefineryUtilities.centerFrameOnScreen( chart3 );        
+        		      chart3.setVisible( true ); 
+        		      
+        		      try {
+        					Thread.sleep(1500);
+        				} catch (InterruptedException e) {
+        					e.printStackTrace();
+        				}     
+        		      
+        		      Ventas_Maquina demo1 = new Ventas_Maquina( "Ventas" );  
+				      demo1.setSize( 560 , 367 );    
+				      RefineryUtilities.centerFrameOnScreen( demo1 );   
+				      demo1.pack();
+				      demo1.setVisible( true ); 
 	}
 
 }
