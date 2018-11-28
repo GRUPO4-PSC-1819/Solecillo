@@ -12,6 +12,7 @@ import LN.clsMaquina_Hidraulica;
 import LN.clsMaquina_Mareomotriz;
 import LN.clsMaquina_Solar;
 import LN.clsUsuario;
+import LN.clsVenta;
 
 public class BD_Test {
 
@@ -37,6 +38,9 @@ public class BD_Test {
 		
 		clsCliente c=new clsCliente();
 		clsBD.insertarDatoTablaBD(c);
+		
+		clsVenta v=new clsVenta();
+		clsBD.insertarDatoTablaBD(v);
 		
 		clsBD.obtenerDatosTablaBD("USUARIO");
 		clsBD.obtenerDatosTablaBD("MAQUINA_E");

@@ -81,6 +81,17 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 		this.cantidad = cantidad;
 		//logger.log( Level.INFO, "Constructor venta con todos los parámetros excepto el id");
 	}
+	
+	/**
+	 * Constructor vacío
+	 */
+	public clsVenta()
+	{
+		this.idm=0;
+		this.dniC=null;
+		this.cantidad=0;
+		//logger.log( Level.INFO, "Constructor venta vacío");
+	}
 
 	@Override
 	public int hashCode() {
