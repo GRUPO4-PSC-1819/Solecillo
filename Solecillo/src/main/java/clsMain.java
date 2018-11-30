@@ -24,8 +24,7 @@ import Persistencia.clsBD;
  */
 public class clsMain 
 {
-	
-private static final boolean ANYADIR_A_FIC_LOG = true;
+	private static final boolean ANYADIR_A_FIC_LOG = true;
 	
 	/*Logger*/
 	private static Logger logger = Logger.getLogger( "Solecillo" );
