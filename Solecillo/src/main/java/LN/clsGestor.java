@@ -257,7 +257,10 @@ private static final boolean ANYADIR_A_FIC_LOG = true;
 				
 		return m;	
 	}
-	
+	public ArrayList<clsCliente> top5_clientes() {
+		// TODO Auto-generated method stub
+		return ges.top5();
+	}
 	/**
 	 * Método que recoge la lista de máquinas mareomotrices registradas en la Base de Datos.
 	 * @return Lista de máquinas mareomotrices
