@@ -25,16 +25,13 @@ public class Mock3Test {
 		Mockito.when(gestor.valor_medio_maquinas2(listado)).thenReturn((double) 2.55);
 		ges= new clsGestor();
 		ges.setI(gestor);
-		
-		
-		
+	
 	}
 	
 	
 	@Test
 	public void test() {
 		Assert.assertEquals((double)2.5, ges.media(listado),0.1);
-		//Assert.assertEquals("Hola", mockedcliente.getApellido1());
 	}
 	
 }

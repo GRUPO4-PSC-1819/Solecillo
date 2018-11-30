@@ -40,48 +40,6 @@ import org.junit.Test;
  */
 public class AppTest 
 {
-    /*
-	@Test public void testLN()
-    {
-    	
-    	Connection conec=clsBD.initBD("Data/Solecillo.bd");
-		clsBD.crearTablaBD(clsConstantes.USUARIO);
-		clsBD.crearTablaBD(clsConstantes.CLIENTE);
-		clsBD.crearTablaBD(clsConstantes.MAQUINA);
-		clsBD.crearTablaBD(clsConstantes.VENTA);
-		
-		loginFrame p=new loginFrame();
-		
-		principalFrame window = new principalFrame(null);
-		
-		//window.btnRefrescar.doClick();
-		
-		
-		//VENTAS
-		clsListaM frame = new clsListaM("Lista de máquinas", clsConstantes.VISUALIZAR,null);
-		clsListaM frame1 = new clsListaM("Lista de máquinas", clsConstantes.VENTA, "123456789");
-		
-		frame1.rdbtnEolica.setSelected(true);
-		frame1.textField.setText("10");
-		frame1.te.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-		
-		frame1.rdbtnHidraulica.setSelected(true);
-		frame1.textField.setText("18");
-		frame1.th.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-		
-		frame1.rdbtnMareomotriz.setSelected(true);
-		frame1.textField.setText("3");
-		frame1.tm.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-		
-		frame1.rdbtnSolar.setSelected(true);
-		frame1.textField.setText("5");
-		frame1.ts.setRowSelectionInterval(0, 0);
-		frame1.btnSalir.doClick();
-    }
-    */
     @Test public void testAlta()
     {
 		clsAltaUsuario u=new clsAltaUsuario();
@@ -91,7 +49,6 @@ public class AppTest
 		u.txtNickname.setText("nick1");
 		u.txtContrasenya1.setText("c1");
 		u.txtContrasenya2.setText("c1");
-		//u.btnAceptar.doClick();
 
 		clsAltaEolica e=new clsAltaEolica();
 		e.txtNombre.setText("n1");
@@ -102,7 +59,6 @@ public class AppTest
 		e.txtNombreCampo.setText("nc1");
 		e.txtAltura.setText("124.62");
 		e.txtDiametro.setText("39.04");
-	   // e.btnAceptar.doClick();
 
 		clsAltaHidraulica h=new clsAltaHidraulica();
 		h.txtNombre.setText("n2");
@@ -111,7 +67,6 @@ public class AppTest
 		h.txtFabricante.setText("f2");
 		h.txtNombrePueblo.setText("np2");
 		h.txtNombreRio.setText("nr2");
-	   // h.btnAceptar.doClick();	    
 
 		clsAltaMareomotriz m=new clsAltaMareomotriz();
 		m.txtNombre.setText("n3");
@@ -120,7 +75,6 @@ public class AppTest
 		m.txtFabricante.setText("f3");
 		m.txtNombrePueblo.setText("np3");
 		m.txtDistancia.setText("9.72");
-	    //m.btnAceptar.doClick();	    
 	    
 		clsAltaSolar s=new clsAltaSolar();
 		s.txtNombre.setText("n4");
@@ -129,6 +83,5 @@ public class AppTest
 		s.txtFabricante.setText("f4");
 		s.txtNombrePueblo.setText("np4");
 		s.txtNombreCampo.setText("nc4");
-	    //s.btnAceptar.doClick();
     }
 }

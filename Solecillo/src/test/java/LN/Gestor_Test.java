@@ -100,21 +100,6 @@ try {
 		 ge.ModificarMaquinaHidraulica(43, "n", "col", 43.4, "fab", "e", "np", "nr");
 		 ge.ModificarMaquinaMareomotriz(41, "n", "col", 45.4, "fab", "e", "np", 434.34);
 		 ge.ModificarMaquinaSolar(22, "n", "col", 59.3, "fab", "e", "np", "nc");
-		 
-		/* try {
-			ge.MigracionUsuarios();
-		} catch (clsUsuarioRepetido e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 try {
-			ge.MigracionClientes();
-		} catch (clsClienteRepetido e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 ge.MigracionMaquinas();
-		 ge.MigracionVentas();*/
 	}
 
 }
